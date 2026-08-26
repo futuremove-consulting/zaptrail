@@ -5,6 +5,7 @@
  */
 
 import { WhatsAppProvider, WhatsAppMessage, WhatsAppChat, WhatsAppProviderStatusDetails } from './provider';
+import { batchExtractObjects, type ExtractedManagementObject } from '../semantic';
 
 // Mock conversation fixtures (imported from mock-fixtures.ts for fixture data)
 import {
@@ -17,6 +18,7 @@ import {
 // Chat state storage
 const chatsMap = new Map<string, WhatsAppChat>();
 const messagesMap = new Map<string, WhatsAppMessage[]>();
+const extractedObjectsMap = new Map<string, ExtractedManagementObject[]>();
 
 /**
  * Initialize the mock provider with fixture-based data
@@ -65,6 +67,24 @@ export async function initializeMockProvider(): Promise<void> {
   messagesMap.set('conv_group_001', conversationGroupDecisions.messages);
   messagesMap.set('conv_commitment_001', conversationCommitment.messages);
   messagesMap.set('conv_opportunity_001', conversationOpportunity.messages);
+
+  // Extract management objects from conversation messages using semantic pipeline
+  extractedObjectsMap.set('conv_1x1_001', batchExtractObjects(
+    conversation1x1PendingTask.messages,
+    'conv_1x1_001'
+  ));
+  extractedObjectsMap.set('conv_group_001', batchExtractObjects(
+    conversationGroupDecisions.messages,
+    'conv_group_001'
+  ));
+  extractedObjectsMap.set('conv_commitment_001', batchExtractObjects(
+    conversationCommitment.messages,
+    'conv_commitment_001'
+  ));
+  extractedObjectsMap.set('conv_opportunity_001', batchExtractObjects(
+    conversationOpportunity.messages,
+    'conv_opportunity_001'
+  ));
 }
 
 /**
@@ -120,6 +140,15 @@ export async function getRecentMessagesMockProvider(limit?: number): Promise<Wha
   // Sort by timestamp descending, newest first
   allMessages.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
   return limit ? allMessages.slice(0, limit) : allMessages;
+}
+
+/**
+ * Get extracted management objects for a chat
+ */
+export async function getExtractedObjectsMockProvider(
+  chatId: string
+): Promise<ExtractedManagementObject[]> {
+  return extractedObjectsMap.get(chatId) || [];
 }
 
 /**
@@ -187,6 +216,11 @@ export class MockWhatsAppProvider implements WhatsAppProvider {
   async getRecentMessages(limit?: number): Promise<WhatsAppMessage[]> {
     await this.initialize();
     return getRecentMessagesMockProvider(limit);
+  }
+
+  async getExtractedObjects(chatId: string): Promise<ExtractedManagementObject[]> {
+    await this.initialize();
+    return getExtractedObjectsMockProvider(chatId);
   }
 
   async verifyWebhookSignature(request: Request): Promise<boolean> {
