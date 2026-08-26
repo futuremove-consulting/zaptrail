@@ -1,0 +1,24 @@
+ZapTrail GSD Profile
+===================
+
+Active Workflow: GSD × Superpowers
+- GSD = macro: project/milestone/phase lifecycle
+- Superpowers = micro: task-level discipline (brainstorming, TDD, systematic-debugging, verification)
+
+Current Phase: Foundation (ZT-001 to ZT-005)
+- ZT-001: Repositorio, README, AGENTS.md, scripts e convenções
+- ZT-002: Supabase local/Free e ambiente seguro
+- ZT-003: Schema de workspace, membership e onboarding state
+- ZT-004: Contrato WhatsAppProvider
+- ZT-005: MockProvider
+
+Next Phase: Vertical Slice (ZT-006 to ZT-010)
+- ZT-006: Persistir mensagens, participantes, anexos e inbound events
+- ZT-007: Pipeline semântico mínimo
+- ZT-008: Objetos de gestão iniciais (Task, Decision, Opportunity, Commitment, Alert)
+- ZT-009: Aplicacao web mobile-first e timeline dual
+- ZT-010: Onboarding com MockProvider
+
+Decision Records: .planning/DECISIONS.md
+Project Map: .planning/PROJECT_MAP.md
+Roadmap: .planning/roadmap/master.md

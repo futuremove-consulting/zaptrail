@@ -1,0 +1,33 @@
+flowchart TD
+  A[Boas-vindas\norganize sua primeira conversa] --> B{Como começar?}
+  B -->|WhatsApp Business| C[Escopo e consentimento]
+  B -->|Encaminhar mensagem| F[Fallback rápido]
+  B -->|Importar arquivo| G[Importação autorizada]
+  C --> D[Embedded Signup oficial]
+  D --> E[Conexão validada no backend]
+  E --> H[Sincronização e indexação]
+  H --> I{Conversas disponíveis?}
+  I -->|Sim| J[Selecionar 1:1 ou Grupo]
+  I -->|Não| K[Continuar sincronização\nou usar fallback]
+  K --> F
+  F --> J
+  G --> J
+  J --> L[Confirmar conversa\nescopo e contexto]
+  L --> M[Organizar primeira conversa]
+  M --> N[Processamento progressivo]
+  N --> O[Preview de acontecimentos]
+  O --> P[Timeline estruturada]
+  P --> Q[Ver item / evidência]
+  Q --> R[Mostrar na conversa]
+  R --> S[Primeiro valor e ativação]
+
+  classDef start fill:#0f172a,stroke:#0f172a,color:#fff;
+  classDef choice fill:#e0f2fe,stroke:#0284c7,color:#0c4a6e;
+  classDef safe fill:#dcfce7,stroke:#16a34a,color:#14532d;
+  classDef process fill:#fef3c7,stroke:#d97706,color:#78350f;
+  classDef value fill:#ede9fe,stroke:#7c3aed,color:#4c1d95;
+  class A,S start;
+  class B,I choice;
+  class C,D,E,H,J,L,M,N safe;
+  class F,G,K,O process;
+  class P,Q,R value;

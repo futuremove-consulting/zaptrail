@@ -1,0 +1,100 @@
+flowchart LR
+  subgraph CTX[Contexto e identidade]
+    WS[Workspace]
+    ORG[Organization]
+    UNIT[OrgUnit / Team]
+    PARTY[Party: Person / Organization / Agent]
+    ROLE[PartyRole / Membership]
+    REL[PartyRelationship]
+    PLACE[Place]
+  end
+
+  subgraph SRC[Fontes e conversas]
+    CONN[Connector / SourceAccount]
+    CONV[Conversation]
+    CP[ConversationParticipant]
+    MSG[Message]
+    ATT[Attachment / Document]
+    ANN[Annotation / Evidence]
+  end
+
+  subgraph SEM[Semântica]
+    CONCEPT[ConceptScheme / Concept]
+    EVT[InteractionEvent]
+    ANA[SemanticAnalysis]
+    TIME[TimeExpression / Interval]
+  end
+
+  subgraph MGMT[Gestão]
+    OBJ[ManagementObject]
+    STATE[StateTransition]
+    OREL[ObjectRelation]
+    COMM[Commitment]
+    DEC[Decision]
+    FEED[Feedback / Complaint]
+    TRANS[Transaction: Sale / Order / Invoice / Payment]
+    FULF[Delivery / Shipment]
+    APPT[Appointment / Meeting / Call]
+    TASK[Task / Project / Issue]
+  end
+
+  subgraph ACT[Execução e controle]
+    CMD[ActionCommand]
+    RUN[ActionRun / Result]
+    MET[MetricDefinition / Observation]
+    ALERT[AttentionItem / Risk]
+    POL[Policy / Consent / AccessGrant]
+    AUD[AuditLog]
+  end
+
+  WS --> ORG
+  WS --> UNIT
+  WS --> PARTY
+  ORG --> UNIT
+  PARTY --> ROLE
+  PARTY --> REL
+  WS --> CONN
+  CONN --> CONV
+  CONV --> CP
+  CP --> PARTY
+  CONV --> MSG
+  MSG --> ATT
+  MSG --> ANN
+  ATT --> ANN
+  MSG --> EVT
+  ANN --> EVT
+  EVT --> ANA
+  EVT --> CONCEPT
+  EVT --> TIME
+  EVT --> PARTY
+  EVT --> OBJ
+  OBJ --> STATE
+  OBJ --> OREL
+  OBJ --> COMM
+  OBJ --> DEC
+  OBJ --> FEED
+  OBJ --> TRANS
+  OBJ --> FULF
+  OBJ --> APPT
+  OBJ --> TASK
+  OBJ --> PLACE
+  OBJ --> CMD
+  CMD --> RUN
+  CMD --> POL
+  RUN --> AUD
+  EVT --> AUD
+  OBJ --> MET
+  OBJ --> ALERT
+  WS --> POL
+  WS --> AUD
+
+  classDef context fill:#e0f2fe,stroke:#0369a1,color:#0c4a6e;
+  classDef source fill:#ede9fe,stroke:#6d28d9,color:#4c1d95;
+  classDef semantic fill:#fef3c7,stroke:#b45309,color:#78350f;
+  classDef management fill:#dcfce7,stroke:#15803d,color:#14532d;
+  classDef control fill:#fee2e2,stroke:#b91c1c,color:#7f1d1d;
+  class WS,ORG,UNIT,PARTY,ROLE,REL,PLACE context;
+  class CONN,CONV,CP,MSG,ATT,ANN source;
+  class CONCEPT,EVT,ANA,TIME semantic;
+  class OBJ,STATE,OREL,COMM,DEC,FEED,TRANS,FULF,APPT,TASK management;
+  class CMD,RUN,MET,ALERT,POL,AUD control;

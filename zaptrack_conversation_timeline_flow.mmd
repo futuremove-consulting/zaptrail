@@ -1,0 +1,22 @@
+flowchart LR
+  C[Conversa original\nmensagens em ordem] --> M[Marcador semântico\nna mensagem]
+  M --> T[Timeline estruturada\nintenção, ação, decisão, objeto, arquivo]
+  T --> O[Objeto de gestão\nstatus, owner, prazo, evidência]
+  T --> S[Mostrar na conversa]
+  S --> C
+  O --> S
+  C --> F[Filtros\nperíodo, palavra, tipo, pessoa, projeto]
+  F --> T
+  T --> E[Evidência\ntrecho + contexto]
+  E --> S
+  S --> H[Mensagem destacada\ncontexto antes/depois]
+  H --> T
+
+  classDef source fill:#e0f2fe,stroke:#0284c7,color:#0c4a6e;
+  classDef semantic fill:#fef3c7,stroke:#d97706,color:#78350f;
+  classDef object fill:#dcfce7,stroke:#16a34a,color:#14532d;
+  classDef action fill:#ede9fe,stroke:#7c3aed,color:#4c1d95;
+  class C,M,H source;
+  class T,E,F semantic;
+  class O object;
+  class S action;

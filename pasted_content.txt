@@ -1,0 +1,323 @@
+Perfeito! Podemos expandir cada cluster para 20 frases, mantendo o estilo sintético, natural e variado, para reforçar a robustez do test suite. Isso vai gerar 14 clusters × 20 frases = 280 frases, excelente para avaliação de modelos de NLP em recall e precisão.
+
+Vou reorganizar e expandir os clusters com frases adicionais mantendo coerência semântica e diversidade de linguagem.
+
+Test Suite Sintético Expandido – 20 Frases por Cluster
+1. Pagamento
+Já efetuei o pagamento da fatura.
+Preciso gerar o boleto novamente.
+O débito automático não funcionou este mês.
+Recebi a confirmação do pagamento?
+Meu cartão foi recusado ao tentar pagar.
+Quero alterar a forma de pagamento.
+Como faço para pagar parcelado?
+O pagamento está atrasado?
+Há alguma taxa extra no pagamento?
+Posso pagar via PIX?
+Recebi o comprovante, mas não constou na minha conta.
+Quero adicionar outro cartão como forma de pagamento.
+Existe limite para pagamentos online?
+Pagamento parcial é aceito?
+Quando o pagamento será compensado?
+Posso agendar o pagamento?
+Há juros se eu atrasar o pagamento?
+O pagamento foi processado corretamente?
+Posso usar vale-presente para pagar?
+Existe política de reembolso em caso de erro no pagamento?
+2. Cobrança
+Recebi uma cobrança indevida.
+Por que meu boleto veio com valor diferente?
+Alguém pode revisar minha fatura?
+Estou sendo cobrado por um serviço que não usei.
+A cobrança chegou atrasada.
+Quero contestar a última cobrança.
+O valor cobrado não corresponde ao contrato.
+Como cancelar a cobrança recorrente?
+Recebi um e-mail de cobrança duplicado.
+Existe algum desconto para esta cobrança?
+Fatura apresenta valores inconsistentes.
+Cobrança veio sem detalhamento.
+Por que fui cobrado duas vezes este mês?
+Meu plano já foi pago e mesmo assim cobram.
+Quero esclarecer a cobrança de serviços adicionais.
+Cobrança automática não foi cancelada como solicitado.
+Valor da fatura não inclui desconto aplicado.
+Recebi notificação de cobrança antiga.
+É possível emitir uma segunda via da cobrança?
+Cobrança foi enviada ao endereço errado.
+3. Prazo
+Qual é o prazo de entrega do produto?
+Meu pedido atrasou, o que aconteceu?
+Até quando posso realizar a devolução?
+O serviço será concluído em quanto tempo?
+Existe prazo máximo para atendimento?
+Preciso receber a resposta até amanhã.
+Qual o prazo para análise do meu pedido?
+A entrega está dentro do prazo previsto?
+Posso prorrogar o prazo de pagamento?
+Em quanto tempo receberei o reembolso?
+Prazo de entrega expressa disponível?
+Existe previsão de entrega para finais de semana?
+Posso solicitar antecipação do prazo?
+Prazo para cancelamento sem multa?
+Quanto tempo leva para processar a troca?
+Qual é o prazo de validade do cupom?
+Quanto tempo demora para resposta do suporte?
+Existe prazo para revisão de contrato?
+Quando receberei confirmação do pedido?
+Prazo estimado para instalação do serviço?
+4. Reclamação
+Não recebi o que comprei.
+O produto veio com defeito.
+Atendimento deixou a desejar.
+Estou insatisfeito com o serviço.
+Minha solicitação não foi atendida.
+Houve demora no suporte.
+Fui cobrado a mais sem aviso.
+Experiência ruim na última compra.
+Não consegui contato com ninguém.
+Serviço não corresponde ao anunciado.
+Produto entregue fora do prazo.
+Atendimento não solucionou meu problema.
+Não recebi retorno após abrir chamado.
+Cobrança indevida não resolvida.
+Qualidade do produto inferior ao esperado.
+Suporte técnico ineficiente.
+Produto veio danificado.
+Falta de transparência nas informações.
+Erro no pedido que gerou transtorno.
+Atendimento pouco cordial.
+5. Elogio
+Atendimento excelente, parabéns!
+Produto de ótima qualidade.
+Serviço muito eficiente.
+Fiquei satisfeito com a rapidez.
+Equipe muito atenciosa.
+Gostei da experiência de compra.
+Suporte resolveu tudo rapidamente.
+Qualidade acima do esperado.
+Recomendo a todos os amigos.
+Superou minhas expectativas.
+Processo de compra simples e claro.
+Atendimento cordial e eficaz.
+Recebi ajuda imediata do suporte.
+Produto chegou antes do prazo.
+Site fácil de navegar.
+Equipe proativa e atenciosa.
+Aplicativo muito intuitivo.
+Experiência de usuário positiva.
+Gostei do acompanhamento do pedido.
+Serviço confiável e seguro.
+
+Se você quiser, posso continuar expandindo os 9 clusters restantes (6 a 14) para 20 frases cada, mantendo a mesma qualidade e coerência.
+
+Quer que eu faça isso agora?
+
+continue
+
+Perfeito! Vamos continuar expandindo os clusters 6 a 14 para 20 frases cada, mantendo coerência, naturalidade e diversidade de linguagem.
+
+6. Sugestão
+Seria bom ter mais opções de pagamento.
+Sugiro melhorar o tempo de entrega.
+Poderiam adicionar mais cores ao produto.
+Uma versão mais simples do app seria útil.
+Acho interessante oferecer descontos para clientes antigos.
+Poderiam criar tutoriais de uso.
+Sugiro envio de notificações por SMS.
+Seria útil um chat 24h.
+Considerem embalagem mais sustentável.
+Sugiro integração com outras plataformas.
+Adicionar opção de avaliação do atendimento.
+Criar vídeos explicativos do produto.
+Implementar notificações por e-mail personalizadas.
+Disponibilizar app para diferentes sistemas operacionais.
+Oferecer atendimento via WhatsApp.
+Desenvolver programa de fidelidade.
+Mais filtros de busca no site seriam interessantes.
+Sugiro teste grátis antes da assinatura.
+Poderiam ampliar horário de atendimento.
+Criar seção de dúvidas frequentes atualizada.
+7. Interesse Comercial
+Gostaria de saber sobre novos produtos.
+Quero receber propostas comerciais.
+Há planos especiais para empresas?
+Posso agendar uma demonstração?
+Informem sobre promoções ativas.
+Estou avaliando contratar o serviço.
+Quero conhecer os pacotes disponíveis.
+Existe oferta para clientes corporativos?
+Posso receber catálogo atualizado?
+Estou interessado em parceria.
+Quero receber newsletter com novidades.
+Há planos personalizados para minha empresa?
+Posso solicitar orçamento detalhado?
+Quero informações sobre pacotes premium.
+Existe condição especial para renovação?
+Gostaria de receber propostas exclusivas.
+Há programa de afiliados ou revendedores?
+Quero informações sobre upgrades de serviço.
+Existe teste gratuito do produto?
+Gostaria de conhecer cases de sucesso.
+8. Cancelamento
+Quero cancelar meu pedido.
+Como cancelar a assinatura?
+Preciso encerrar o serviço imediatamente.
+Posso cancelar sem multa?
+Cancelamento automático está disponível?
+Quero desistir da compra.
+Cancelar a renovação do contrato.
+Como proceder para cancelar o plano?
+Desejo cancelar por insatisfação.
+Solicito cancelamento imediato.
+Posso cancelar parcialmente os serviços?
+Como cancelo pedidos futuros?
+Existe política de reembolso?
+Cancelamento online é possível?
+Quero encerrar conta definitivamente.
+Posso cancelar renovação automática?
+Existe prazo para cancelamento sem cobrança?
+Desejo cancelar assinatura experimental.
+Como cancelar produtos adicionais?
+Posso cancelar antes da entrega?
+9. Confirmação / Acknowledgment
+Ok, entendido.
+Recebi a informação, obrigado.
+Certo, farei assim.
+Confirmo que recebi.
+Tudo certo, obrigado.
+Entendi, obrigado pelo retorno.
+Perfeito, estou ciente.
+Confirmado, podemos prosseguir.
+Recebido e anotado.
+Está claro, obrigado.
+Agradeço a confirmação.
+Tudo compreendido.
+Confirmo recebimento.
+Informação registrada, obrigado.
+Percebi, seguirei instruções.
+Certo, vou verificar.
+Recebido, aguardando próximos passos.
+Anotado, obrigado.
+Está correto, entendido.
+Mensagem recebida, tudo certo.
+10. Pedido de Informação / Consulta
+Qual o endereço da loja mais próxima?
+Como funciona o processo de devolução?
+Posso trocar produto sem nota fiscal?
+Qual o horário de atendimento?
+Existe suporte por chat online?
+Como faço para atualizar meus dados?
+Onde encontro o manual do produto?
+Há garantia estendida disponível?
+Posso acompanhar meu pedido pelo app?
+Qual o valor do frete para minha cidade?
+Existe número de contato para urgências?
+Como acessar histórico de compras?
+Há política de trocas em feriados?
+Posso alterar endereço de entrega?
+Como saber status de reembolso?
+Existe telefone para atendimento direto?
+Onde encontro informações de produtos descontinuados?
+Há assistência técnica próxima?
+Posso consultar saldo ou créditos disponíveis?
+Como funciona política de devolução parcial?
+11. Suporte Técnico / Problema Operacional
+App travando ao abrir.
+Não consigo acessar minha conta.
+Sistema fora do ar desde ontem.
+Erro ao tentar enviar o formulário.
+Preciso de ajuda com login.
+Mensagem de erro no pagamento.
+Não consigo baixar o arquivo.
+Produto não funciona corretamente.
+Perdi acesso ao meu perfil.
+Tela do sistema não carrega.
+Site apresenta instabilidade.
+O aplicativo fecha sozinho.
+Não recebo e-mails de confirmação.
+Funcionalidade indisponível sem aviso.
+Não consigo alterar senha.
+Sistema não atualiza informações.
+Erro no cadastro de novos usuários.
+Problema ao enviar documentos.
+Funcionalidade bloqueada indevidamente.
+Experiência de uso prejudicada por bugs.
+12. Feedback Negativo (não reclamação)
+Achei o serviço lento.
+Poderia ser mais intuitivo.
+Não gostei da embalagem.
+Atendimento regular, nada excepcional.
+Aplicativo confuso em alguns pontos.
+Produto funcional, mas básico.
+Experiência razoável, esperava mais.
+Material de divulgação confunde.
+Preço um pouco alto para o que oferece.
+Serviço atendeu parcialmente às expectativas.
+Poderia ter mais detalhes no manual.
+Processo de cadastro é complexo.
+Atendimento eficiente, mas impessoal.
+Plataforma poderia ser mais estável.
+Informação no site incompleta.
+Falta integração com outros sistemas.
+Suporte demora em responder dúvidas simples.
+Produto é bom, mas acabamento deixa a desejar.
+Necessário treinamento adicional para uso completo.
+Recursos avançados não são claros.
+13. Feedback Positivo (não elogio direto)
+Serviço prático e funcional.
+Achei o produto interessante.
+Experiência tranquila no site.
+Atendeu ao que precisava.
+Tudo correu bem, sem problemas.
+Gostei da interface do app.
+Processo de compra simples.
+Atendimento adequado.
+Serviço eficiente no geral.
+Produto cumpre o que promete.
+Plataforma fácil de usar.
+Compras rápidas e sem complicações.
+Suporte responde de forma clara.
+Funcionalidades atendem necessidades básicas.
+Navegação intuitiva no site.
+Comunicação clara e objetiva.
+Aplicativo confiável.
+Recursos úteis e bem organizados.
+Processo de pagamento simples e seguro.
+Uso satisfatório do serviço.
+14. Urgência / Prioridade
+Preciso resolver isso ainda hoje.
+É urgente, aguardo retorno imediato.
+Preciso de resposta rápida.
+Assunto prioritário, favor atender.
+Urgente: problema com pagamento.
+Resolver até o final do dia, por favor.
+Minha solicitação é de alta prioridade.
+Necessário ação imediata.
+Atendimento rápido é essencial.
+Situação crítica, preciso de solução agora.
+Favor acelerar análise do pedido.
+Preciso desbloquear conta urgentemente.
+Solicitação urgente, sem demora.
+Resolver problema imediatamente.
+Assunto delicado, prioridade máxima.
+Urgência na entrega do produto.
+Atendimento rápido solicitado.
+Situação demanda solução imediata.
+Ação urgente necessária.
+Prioridade alta, favor atender ainda hoje.
+
+✅ Total expandido: 14 clusters × 20 frases = 280 frases
+
+Cobertura completa de intenções, sentimentos, ações e urgência
+Ideal para avaliação de recall e precisão de modelos NLP
+Pronto para gerar CSV ou JSON para testes automáticos
+
+Se quiser, posso agora gerar a versão pronta em CSV, com colunas Cluster e Frase, para importar diretamente no seu ambiente de ML.
+
+Quer que eu faça isso?
+
+crie a breve descrição do test suite em 1 paragrafo
+
+
+Este test suite sintético de 280 frases foi desenvolvido para avaliar a precisão e recall de modelos de NLP em ambientes de Machine Learning. Organizado em 14 clusters semânticos, cada um com 20 frases naturais e variadas, o conjunto cobre intenções, sentimentos, ações e urgência típicas de interações de clientes e usuários, incluindo pagamento, cobrança, prazo, reclamação, elogio, sugestão, interesse comercial, cancelamento, confirmação, pedido de informação, suporte técnico, feedback negativo, feedback positivo e urgência/prioridade. O test suite oferece uma base robusta e profissional para validar a capacidade do modelo em classificar corretamente mensagens e extrair informações relevantes, simulando cenários realistas de comunicação.

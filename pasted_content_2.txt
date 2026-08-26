@@ -1,0 +1,833 @@
+# Biblioteca Semântica
+
+**Versão:** 1.0
+
+**Status:**
+
+**Autor: Gustavo Rocha**
+
+Equipe: ZapTrack
+
+A Biblioteca Semântica ZapTrack é o dicionário vivo + organizador de significados + ponte para decisões de negócio. É a camada que garante que nenhuma conversa se perca — do “manda pix” ao “preciso renegociar contrato urgente”.
+
+---
+
+## 1. **Fundação Conceitual**
+
+- **Objetivo**: transformar linguagem natural em **entendimento estruturado**, capaz de alimentar gestão, indicadores, insights e automações.
+- **Camadas**:
+    1. **Intents** (intenções explícitas e implícitas do usuário).
+    2. **Entidades** (objetos concretos: valores, prazos, produtos, clientes, contratos).
+    3. **Clusters Semânticos** (agrupamentos de intents e entidades relacionados).
+    4. **Centroides** (formas canônicas de cada conceito).
+    5. **Variações Linguísticas** (sinônimos, gírias, abreviações, erros ortográficos, emojis, ironia).
+    6. **Mapeamento para Objetos de Gestão** (Financeiro, Comercial, Operacional, Relacionamento, Governança, Estratégia).
+- **Intenção → Entidade → Objeto de Gestão → Ação**.
+- Cada frase processada gera um **caminho semântico completo**, desde o que foi dito até a execução de uma ação concreta.
+
+---
+
+## 1. **Camadas Inteligentes**
+
+As camadas inteligentes servem como a base central de entendimento, categorização e ativação de intents, fluxos, métricas e ações.
+
+### 1. **Camada Estratégica (Visão de Negócio e Valor)**
+
+- **Crescimento** → expansão, aquisição de clientes, engajamento, upsell/cross-sell.
+- **Retenção** → churn, satisfação, suporte, pós-venda.
+- **Eficiência** → produtividade, otimização de recursos, automação.
+- **Governança** → compliance, políticas, auditoria, segurança.
+- **Valor ao Cliente** → experiência, NPS, jornada, impacto.
+
+---
+
+### 2. **Camada Funcional (Áreas e Processos)**
+
+- **Marketing e Aquisição** → campanhas, funil, canais, leads, conversão.
+- **Vendas e Relacionamento** → CRM, follow-up, negociações, fechamento.
+- **Produto e Experiência** → UX, features, feedback, roadmap.
+- **Operações e Suporte** → tickets, SLAs, autosserviço, satisfação.
+- **Finanças e Receita** → DRE, faturamento, inadimplência, margem.
+- **Pessoas e Cultura** → onboarding, engajamento, clima, desempenho.
+
+---
+
+### 3. **Camada de Intents (Ações e Necessidades)**
+
+- **Monitorar** → status, progresso, indicadores.
+- **Analisar** → causas, padrões, correlações.
+- **Prever** → tendências, riscos, oportunidades.
+- **Recomendar** → planos, melhorias, alertas.
+- **Executar** → ativar fluxos, automatizar, corrigir.
+- **Validar** → compliance, consistência, confiabilidade.
+
+---
+
+### 4. **Camada de Interação (Forma de Engajamento)**
+
+- **Consulta** → busca, dúvida, exploração.
+- **Exploração** → drill-down, comparativo, histórico.
+- **Ação Rápida** → atalhos, botões, fluxos curtos.
+- **Automação** → integrações, execuções recorrentes.
+- **Colaboração** → comentários, anotações, compartilhamentos.
+- **Decisão** → aprovar, priorizar, delegar.
+
+---
+
+### 5. **Camada de Artefatos (Objetos de Conhecimento)**
+
+- **Indicadores** → métricas, KPIs, OKRs, benchmarks.
+- **Relatórios** → dashboards, snapshots, análises customizadas.
+- **Alertas** → notificações, insights, exceções.
+- **Planos** → estratégias, cronogramas, tarefas.
+- **Registros** → logs, auditoria, histórico.
+- **Modelos** → preditivos, prescritivos, simulações.
+
+---
+
+### 6. **Camada Temporal (Contexto de Tempo)**
+
+- **Tempo Real** → monitoramento instantâneo, eventos live.
+- **Histórico** → análises passadas, registros, evolução.
+- **Projeção** → cenários futuros, tendências, predições.
+- **Ciclo** → diário, semanal, mensal, trimestral.
+
+---
+
+### 7. **Camada Cognitiva (Nível de Inteligência)**
+
+- **Descritivo** → o que aconteceu.
+- **Diagnóstico** → por que aconteceu.
+- **Preditivo** → o que vai acontecer.
+- **Prescritivo** → o que fazer a seguir.
+- **Adaptativo** → aprendizado contínuo, ajuste dinâmico.
+
+---
+
+### 8. **Camada de Usuário (Perfis e Jornadas)**
+
+- **Executivo** → visão macro, resultados, risco.
+- **Gestor** → coordenação, equipe, performance.
+- **Analista** → detalhe, operação, relatórios.
+- **Colaborador** → execução, suporte, interação.
+- **Cliente** → jornada, feedback, experiência.
+
+---
+
+# 🌐 Síntese Final
+
+A **Biblioteca Semântica ZapTrack** une **ontologia de negócio + intents + taxonomia funcional** em uma só camada, permitindo:
+
+✅ **Clareza** → cada termo, ação e objeto é conectado a valor de negócio.
+
+✅ **Escalabilidade** → expansível para novos contextos, indústrias e integrações.
+
+✅ **Game Changer** → transforma dados em **decisões inteligentes**, simplifica complexidade e garante **adoção radical**.
+
+✅ **Integração** → serve como núcleo semântico para IA, APIs, dashboards e automações.
+
+## 2. **Biblioteca de Intents (núcleo da semântica)**
+
+- **Financeiro**: cobrança, pagamento, inadimplência, nota fiscal, reembolso, boleto, desconto, aumento de preço, negociação.
+- **Comercial**: pedido, orçamento, proposta, follow-up, interesse, objeção, contrato, renovação, cancelamento.
+- **Operacional**: entrega, logística, suporte técnico, falha, manutenção, prazo, estoque, indisponibilidade.
+- **Relacionamento**: elogio, reclamação, sugestão, satisfação, insatisfação, urgência, feedback espontâneo.
+- **Governança**: compliance, política interna, aprovação, autorização, acesso, responsabilidade, risco.
+- **Estratégia & Conhecimento**: insights, aprendizado de mercado, concorrência, inovação, tendências, relatórios.
+
+---
+
+## 3. **Clusters Semânticos e Centroides**
+
+- **Pagamento** → ["paguei", "quitado", "boleto pago", "depósito feito", "já mandei o pix", "💸", "✔️"] → Centróide: *Pagamento Efetuado*.
+- **Cobrança** → ["preciso da nota", "não recebi boleto", "ainda não caiu", "cobrança indevida", "🙄"] → Centróide: *Pendência Financeira*.
+- **Prazo** → ["até amanhã", "pra ontem", "semana que vem", "em 15 dias", "qnd chega?", "⌛"] → Centróide: *Gestão de Prazos*.
+- **Reclamação** → ["horrível", "péssimo serviço", "não funciona", "me arrependi", "😡", "nunca mais compro"] → Centróide: *Problema Relatado*.
+- **Elogio** → ["ótimo", "excelente", "parabéns", "maravilhoso", "top demais", "👏"] → Centróide: *Feedback Positivo*.
+- **Sugestão** → ["podia ser melhor se...", "já pensaram em...", "se tivesse tal função", "🤔"] → Centróide: *Ideia de Melhoria*.
+- **Interesse Comercial** → ["quanto custa?", "me manda proposta", "tem desconto?", "quero assinar"] → Centróide: *Lead Quente*.
+- **Cancelamento** → ["não quero mais", "cancelem", "vou desistir", "quero meu dinheiro de volta"] → Centróide: *Risco de Churn*.
+
+---
+
+## 4. Exemplos Expandidos por Cluster
+
+### **Financeiro**
+
+- **Intenção: Pagamento Efetuado**
+    - Exemplo: “já mandei o pix 👍” / “boleto quitado” / “💸✔️”
+    - Estrutura: {intent: pagamento_efetuado, entidade: método=PIX, status=quitado, objeto=Financeiro}
+    - Ação: atualizar DRE, marcar fatura como paga, enviar recibo automático.
+- **Intenção: Cobrança/Pendência**
+    - Exemplo: “ainda não recebi o boleto”, “cobrança errada”, “🙄 cadê a nota?”
+    - Estrutura: {intent: pendencia_financeira, entidade: documento=nota, status=pendente, objeto=Financeiro}
+    - Ação: disparar lembrete financeiro, abrir ticket de cobrança.
+- **Intenção: Negociação de Valor**
+    - Exemplo: “consigo desconto se pagar à vista?”, “muito caro”
+    - Estrutura: {intent: negociacao_preco, entidade: valor=aberto, condição=pagamento, objeto=Financeiro/Comercial}
+    - Ação: alertar vendedor, sugerir condição especial.
+
+---
+
+### **Comercial**
+
+- **Intenção: Interesse/Lead Quente**
+    - Exemplo: “me manda a proposta”, “quanto custa?”
+    - Estrutura: {intent: interesse_comercial, entidade: produto=planoX, status=lead_quente, objeto=Comercial}
+    - Ação: criar oportunidade no CRM, notificar equipe de vendas.
+- **Intenção: Cancelamento**
+    - Exemplo: “quero cancelar”, “não quero mais”, “💔📦”
+    - Estrutura: {intent: cancelamento, entidade: contrato=ativo, status=cancelar, objeto=Comercial/Relacionamento}
+    - Ação: acionar time de retenção, gerar alerta de churn.
+- **Intenção: Renovação**
+    - Exemplo: “quero renovar minha assinatura”, “preciso estender o contrato”
+    - Estrutura: {intent: renovacao, entidade: contrato=expirando, status=renovar, objeto=Comercial}
+    - Ação: abrir fluxo de renovação, atualizar CRM.
+
+---
+
+### **Operacional**
+
+- **Intenção: Problema de Entrega**
+    - Exemplo: “não chegou ainda”, “a entrega atrasou”, “📦❌”
+    - Estrutura: {intent: atraso_entrega, entidade: pedido=123, prazo=atrasado, objeto=Operacional}
+    - Ação: abrir ocorrência logística, informar cliente, recalcular SLA.
+- **Intenção: Suporte Técnico**
+    - Exemplo: “o sistema caiu”, “não consigo acessar minha conta”, “erro 500”
+    - Estrutura: {intent: suporte_tecnico, entidade: sistema=app_web, status=indisponível, objeto=Operacional}
+    - Ação: criar ticket automático, alertar time de TI.
+- **Intenção: Estoque/Disponibilidade**
+    - Exemplo: “tem disponível?”, “acabou o produto?”, “⚠️ sem estoque”
+    - Estrutura: {intent: consulta_estoque, entidade: produto=ABC, status=indisponível, objeto=Operacional}
+    - Ação: disparar integração com ERP, informar previsão de reposição.
+
+---
+
+### **Relacionamento**
+
+- **Intenção: Reclamação**
+    - Exemplo: “péssimo atendimento”, “não funciona nada”, “😡”
+    - Estrutura: {intent: reclamacao, entidade: produto=XYZ, sentimento=negativo, objeto=Relacionamento}
+    - Ação: abrir ticket de CS, notificar gestor, registrar NPS detrator.
+- **Intenção: Elogio**
+    - Exemplo: “ótimo serviço”, “parabéns equipe”, “👏👏👏”
+    - Estrutura: {intent: elogio, entidade: atendimento=satisfatório, sentimento=positivo, objeto=Relacionamento}
+    - Ação: logar indicador de CSAT positivo, compartilhar no time.
+- **Intenção: Sugestão de Melhoria**
+    - Exemplo: “podiam ter mais relatórios”, “seria ótimo se integrasse ao WhatsApp”
+    - Estrutura: {intent: sugestao, entidade: funcionalidade=integração_whatsapp, objeto=Relacionamento/Estratégia}
+    - Ação: registrar no backlog de produto, atribuir prioridade.
+
+---
+
+### **Governança**
+
+- **Intenção: Aprovação/Regras Internas**
+    - Exemplo: “preciso da aprovação do diretor”, “isso passa pelo compliance?”
+    - Estrutura: {intent: aprovacao, entidade: responsável=diretor, status=pending, objeto=Governança}
+    - Ação: acionar workflow de aprovação, registrar auditoria.
+- **Intenção: Responsabilidade/Erro Interno**
+    - Exemplo: “foi o time de vendas que errou”, “a responsabilidade é do fornecedor”
+    - Estrutura: {intent: atribuicao_responsabilidade, entidade: equipe=vendas, objeto=Governança}
+    - Ação: logar ocorrência, enviar para auditoria interna.
+
+---
+
+### **Estratégia & Conhecimento**
+
+- **Intenção: Insight de Mercado**
+    - Exemplo: “o concorrente baixou preço”, “nova lei vai impactar nosso setor”
+    - Estrutura: {intent: insight_mercado, entidade: concorrente/lei, objeto=Estratégia}
+    - Ação: registrar insight, abrir discussão estratégica.
+- **Intenção: Tendência/Aprendizado**
+    - Exemplo: “os clientes estão pedindo mais integrações”
+    - Estrutura: {intent: tendencia, entidade: demanda=integrações, objeto=Estratégia}
+    - Ação: registrar indicador, gerar sugestão de roadmap.
+
+## 5. **Biblioteca de Entidades**
+
+- **Numéricas**: valores monetários (R$, $, €), datas, prazos, quantidades.
+- **Contextuais**: nome do cliente, ID de pedido, produto, serviço, região.
+- **Temporais**: hoje, amanhã, daqui a pouco, imediatamente, já, nunca.
+- **Linguagem Digital**: emojis, hashtags, links, prints de boleto ou nota.
+- **Negação & Ironia**: "até parece", "só que não", "claro que não", "imagina".
+
+---
+
+## 6. **Variações Linguísticas**
+
+- **Regionais**: boleto = carnê, nota = fatura, transporte = frete.
+- **Erros ortográficos**: "pagemento", "boléto", "conserto" vs "conserto".
+- **Abreviações**: "vc", "pq", "qnd", "blz", "mt".
+- **Code-switching**: "payment done", "ticket aberto", "deal fechado".
+- **Emoji-only**: "💔📦" = cancelamento por falha de entrega.
+
+---
+
+## 7. **Mapeamento para Objetos de Gestão**
+
+- **Financeiro** → Pagamento, Cobrança, Nota Fiscal, Reembolso.
+- **Comercial** → Orçamento, Proposta, Interesse, Renovação, Cancelamento.
+- **Operacional** → Entrega, Logística, Suporte, Estoque, Falha.
+- **Relacionamento** → Elogio, Reclamação, Sugestão, Satisfação, Urgência.
+- **Governança** → Aprovação, Política, Compliance, Responsabilidade.
+- **Estratégia** → Tendências, Insights de Mercado, Concorrência.
+
+---
+
+## 8. **Aplicações ML/NLP**
+
+- **Clusterização**: K-means/UMAP para agrupar intents emergentes.
+- **Classificação Supervisionada**: modelos híbridos → zero-shot + dataset sintético.
+- **Detecção de Ironia**: redes neurais treinadas com gírias e sarcasmo.
+- **Enriquecimento Léxico**: embeddings + expansão semântica (faiss, milvus).
+- **Normalização**: transformar variação → centróide → objeto de gestão.
+- **Explicabilidade**: cada decisão gera log de → *frase detectada → intent → objeto → ação*.
+
+---
+
+## 9. **Camada de Evolução Contínua**
+
+- **Feedback Loop**: cada interação real do usuário retroalimenta a biblioteca.
+- **Aprendizado Contínuo**: termos emergentes são detectados e incorporados.
+- **Ciclos de Validação**: testes de estresse trimestrais para garantir recall e precisão.
+
+---
+
+## 10. Multi-Intenção na Prática
+
+### Exemplo 1: Financeiro + Operacional
+
+- Frase: “já paguei o boleto mas ainda não recebi o produto 😡”
+- Detecção:
+    - {intent: pagamento_efetuado, objeto: Financeiro}
+    - {intent: atraso_entrega, objeto: Operacional}
+- Resolução:
+    - Fluxo Financeiro: marcar pagamento como confirmado.
+    - Fluxo Operacional: abrir ocorrência de atraso e notificar logística.
+- Ação Composta:
+    - **Dupla anotação** → pagamento + atraso → insight de risco (cliente já pagou e está insatisfeito).
+
+---
+
+### Exemplo 2: Comercial + Relacionamento
+
+- Frase: “quero cancelar meu contrato mas o suporte foi ótimo 👏”
+- Detecção:
+    - {intent: cancelamento, objeto: Comercial}
+    - {intent: elogio, objeto: Relacionamento}
+- Resolução:
+    - Cancelamento é prioritário (impacta receita).
+    - Elogio é registrado mas como contexto positivo.
+- Ação Composta:
+    - Disparar retenção, marcar NPS positivo no CS.
+
+---
+
+### Exemplo 3: Estratégia + Financeiro
+
+- Frase: “se o concorrente baixar preço, não vou renovar”
+- Detecção:
+    - {intent: insight_mercado, objeto: Estratégia}
+    - {intent: renovacao_condicional, objeto: Comercial/Financeiro}
+- Resolução:
+    - Insight estratégico vai para backlog.
+    - Renovação condicional gera alerta de churn.
+- Ação Composta:
+    - Criar risco de churn atrelado a evento de mercado.
+
+---
+
+## 11. Resolução de Conflitos
+
+### Tipos de conflito:
+
+1. **Contradição direta:**
+    - Frase: “já paguei” + “não paguei ainda” (na mesma sequência).
+    - Estratégia: usar timestamp/contexto → última declaração sobrepõe a anterior.
+2. **Intenções opostas simultâneas:**
+    - Frase: “quero cancelar e também renovar com desconto”
+    - Estratégia: aplicar **árvore de decisão de prioridade**:
+        - Retenção > Cancelamento > Renovação > Negociação.
+3. **Ruído semântico:**
+    - Frase contém emojis/expressões ambíguas → “🔥 esse preço tá matando” (pode ser elogio ou crítica).
+    - Estratégia: resolução contextual → olhar para mensagens anteriores e polaridade de sentimento.
+
+---
+
+## 12. Orquestração de Prioridade (Ranking de Intents)
+
+- **Tier 1 (Críticos):** Cancelamento, Pagamento, Reclamação grave, Problema de sistema.
+- **Tier 2 (Relevantes):** Renovação, Negociação, Atraso de entrega, Sugestões.
+- **Tier 3 (Contextuais):** Elogio, Insight, Tendência de mercado.
+
+👉 Quando múltiplas intents são detectadas, o sistema executa todas mas prioriza notificação e workflow pelos **tiers**.
+
+---
+
+## 13. Camada de Contexto Temporal
+
+- O que foi dito **antes** altera a interpretação do agora.
+- Exemplo:
+    - Mensagem 1: “não vou renovar esse mês” → {cancelamento}.
+    - Mensagem 2 (5 dias depois): “me manda a proposta da renovação” → {renovacao}.
+    - Estratégia: o cancelamento vira “intenção vencida” → prevalece a renovação.
+
+O documento está assim. Reorganize e transcreva de forma inteligente, logica, organizada, estruturada e formatada em .md sem tirar nenhum conteúdo. Reorganize as seções de forma inteligente para que não haja conteúdos como 3. Síntese Final
+
+A Biblioteca Semântica ZapTrack une ontologia de negócio + intents + taxonomia funcional em uma só camada, permitindo:
+
+✅ Clareza → cada termo, ação e objeto é conectado a valor de negócio
+✅ Escalabilidade → expansível para novos contextos, indústrias e integrações
+✅ Game Changer → transforma dados em decisões inteligentes, simplifica complexidade e garante adoção radical
+✅ Integração → serve como núcleo semântico para IA, APIs, dashboards e automações 
+
+no meio do documento quando não faz sentido.
+
+Crie a versão final completa em .md em uma nova lousa própria
+Biblioteca Semantica Zaptrack
+Biblioteca Semântica ZapTrack
+
+Versão: 1.0
+Status: Final Draft
+Autor: Gustavo Rocha
+Equipe: ZapTrack
+
+A Biblioteca Semântica ZapTrack é o dicionário vivo, organizador de significados e ponte para decisões de negócio. É a camada que garante que nenhuma conversa se perca — do “manda pix” ao “preciso renegociar contrato urgente”.
+
+1. Fundação Conceitual
+Objetivo: Transformar linguagem natural em entendimento estruturado, capaz de alimentar gestão, indicadores, insights e automações.
+Camadas:
+Intents: intenções explícitas e implícitas do usuário.
+Entidades: objetos concretos (valores, prazos, produtos, clientes, contratos).
+Clusters Semânticos: agrupamentos de intents e entidades relacionados.
+Centroides: formas canônicas de cada conceito.
+Variações Linguísticas: sinônimos, gírias, abreviações, erros ortográficos, emojis, ironia.
+Mapeamento para Objetos de Gestão: Financeiro, Comercial, Operacional, Relacionamento, Governança, Estratégia.
+Fluxo Conceitual: Intenção → Entidade → Objeto de Gestão → Ação.
+Cada frase processada gera um caminho semântico completo, desde o que foi dito até a execução de uma ação concreta.
+2. Camadas Inteligentes
+2.1 Camada Estratégica (Visão de Negócio e Valor)
+Crescimento → expansão, aquisição de clientes, engajamento, upsell/cross-sell.
+Retenção → churn, satisfação, suporte, pós-venda.
+Eficiência → produtividade, otimização de recursos, automação.
+Governança → compliance, políticas, auditoria, segurança.
+Valor ao Cliente → experiência, NPS, jornada, impacto.
+2.2 Camada Funcional (Áreas e Processos)
+Marketing e Aquisição → campanhas, funil, canais, leads, conversão.
+Vendas e Relacionamento → CRM, follow-up, negociações, fechamento.
+Produto e Experiência → UX, features, feedback, roadmap.
+Operações e Suporte → tickets, SLAs, autosserviço, satisfação.
+Finanças e Receita → DRE, faturamento, inadimplência, margem.
+Pessoas e Cultura → onboarding, engajamento, clima, desempenho.
+2.3 Camada de Intents (Ações e Necessidades)
+Monitorar → status, progresso, indicadores.
+Analisar → causas, padrões, correlações.
+Prever → tendências, riscos, oportunidades.
+Recomendar → planos, melhorias, alertas.
+Executar → ativar fluxos, automatizar, corrigir.
+Validar → compliance, consistência, confiabilidade.
+2.4 Camada de Interação (Forma de Engajamento)
+Consulta → busca, dúvida, exploração.
+Exploração → drill-down, comparativo, histórico.
+Ação Rápida → atalhos, botões, fluxos curtos.
+Automação → integrações, execuções recorrentes.
+Colaboração → comentários, anotações, compartilhamentos.
+Decisão → aprovar, priorizar, delegar.
+2.5 Camada de Artefatos (Objetos de Conhecimento)
+Indicadores → métricas, KPIs, OKRs, benchmarks.
+Relatórios → dashboards, snapshots, análises customizadas.
+Alertas → notificações, insights, exceções.
+Planos → estratégias, cronogramas, tarefas.
+Registros → logs, auditoria, histórico.
+Modelos → preditivos, prescritivos, simulações.
+2.6 Camada Temporal (Contexto de Tempo)
+Tempo Real → monitoramento instantâneo, eventos live.
+Histórico → análises passadas, registros, evolução.
+Projeção → cenários futuros, tendências, predições.
+Ciclo → diário, semanal, mensal, trimestral.
+2.7 Camada Cognitiva (Nível de Inteligência)
+Descritivo → o que aconteceu.
+Diagnóstico → por que aconteceu.
+Preditivo → o que vai acontecer.
+Prescritivo → o que fazer a seguir.
+Adaptativo → aprendizado contínuo, ajuste dinâmico.
+2.8 Camada de Usuário (Perfis e Jornadas)
+Executivo → visão macro, resultados, risco.
+Gestor → coordenação, equipe, performance.
+Analista → detalhe, operação, relatórios.
+Colaborador → execução, suporte, interação.
+Cliente → jornada, feedback, experiência.
+3. Biblioteca de Intents (Núcleo Semântico)
+Financeiro: cobrança, pagamento, inadimplência, nota fiscal, reembolso, boleto, desconto, aumento de preço, negociação.
+Comercial: pedido, orçamento, proposta, follow-up, interesse, objeção, contrato, renovação, cancelamento.
+Operacional: entrega, logística, suporte técnico, falha, manutenção, prazo, estoque, indisponibilidade.
+Relacionamento: elogio, reclamação, sugestão, satisfação, insatisfação, urgência, feedback espontâneo.
+Governança: compliance, política interna, aprovação, autorização, acesso, responsabilidade, risco.
+Estratégia & Conhecimento: insights, aprendizado de mercado, concorrência, inovação, tendências, relatórios.
+4. Clusters Semânticos e Centroides
+Pagamento → ["paguei", "quitado", "boleto pago", "depósito feito", "já mandei o pix", "💸", "✔️"] → Centróide: Pagamento Efetuado.
+Cobrança → ["preciso da nota", "não recebi boleto", "ainda não caiu", "cobrança indevida", "🙄"] → Centróide: Pendência Financeira.
+Prazo → ["até amanhã", "pra ontem", "semana que vem", "em 15 dias", "qnd chega?", "⌛"] → Centróide: Gestão de Prazos.
+Reclamação → ["horrível", "péssimo serviço", "não funciona", "me arrependi", "😡", "nunca mais compro"] → Centróide: Problema Relatado.
+Elogio → ["ótimo", "excelente", "parabéns", "maravilhoso", "top demais", "👏"] → Centróide: Feedback Positivo.
+Sugestão → ["podia ser melhor se...", "já pensaram em...", "se tivesse tal função", "🤔"] → Centróide: Ideia de Melhoria.
+Interesse Comercial → ["quanto custa?", "me manda proposta", "tem desconto?", "quero assinar"] → Centróide: Lead Quente.
+Cancelamento → ["não quero mais", "cancelem", "vou desistir", "quero meu dinheiro de volta"] → Centróide: Risco de Churn.
+5. Biblioteca de Entidades
+Numéricas: valores monetários (R$, $, €), datas, prazos, quantidades.
+Contextuais: nome do cliente, ID de pedido, produto, serviço, região.
+Temporais: hoje, amanhã, daqui a pouco, imediatamente, já, nunca.
+Linguagem Digital: emojis, hashtags, links, prints de boleto ou nota.
+Negação & Ironia: "até parece", "só que não", "claro que não", "imagina".
+6. Variações Linguísticas
+Regionais: boleto = carnê, nota = fatura, transporte = frete.
+Erros ortográficos: "pagemento", "boléto", "conserto".
+Abreviações: "vc", "pq", "qnd", "blz", "mt".
+Code-switching: "payment done", "ticket aberto", "deal fechado".
+Emoji-only: "💔📦" = cancelamento por falha de entrega.
+7. Mapeamento para Objetos de Gestão
+Financeiro → Pagamento, Cobrança, Nota Fiscal, Reembolso.
+Comercial → Orçamento, Proposta, Interesse, Renovação, Cancelamento
+
+Aqui está a versão reorganizada e final da Biblioteca Semântica ZapTrack em formato Markdown, estruturada de forma lógica, clara e modular, pronta para uso:
+
+# Biblioteca Semântica ZapTrack
+
+**Versão:** 1.0  
+**Status:** Draft  
+**Autor:** Gustavo Rocha  
+**Equipe:** ZapTrack  
+
+A Biblioteca Semântica ZapTrack é o dicionário vivo, organizador de significados e ponte para decisões de negócio. É a camada que garante que nenhuma conversa se perca — do “manda pix” ao “preciso renegociar contrato urgente”.
+
+---
+
+## 1. Fundação Conceitual
+
+- **Objetivo:** Transformar linguagem natural em **entendimento estruturado**, capaz de alimentar gestão, indicadores, insights e automações.
+- **Camadas:**
+  1. **Intents:** intenções explícitas e implícitas do usuário.
+  2. **Entidades:** objetos concretos como valores, prazos, produtos, clientes, contratos.
+  3. **Clusters Semânticos:** agrupamentos de intents e entidades relacionadas.
+  4. **Centroides:** formas canônicas de cada conceito.
+  5. **Variações Linguísticas:** sinônimos, gírias, abreviações, erros ortográficos, emojis, ironia.
+  6. **Mapeamento para Objetos de Gestão:** Financeiro, Comercial, Operacional, Relacionamento, Governança, Estratégia.
+- **Fluxo de Processamento:**  
+  **Intenção → Entidade → Objeto de Gestão → Ação**  
+  Cada frase processada gera um **caminho semântico completo**, desde o que foi dito até a execução de uma ação concreta.
+
+---
+
+## 2. Camadas Inteligentes
+
+### 2.1 Camada Estratégica (Visão de Negócio e Valor)
+
+- **Crescimento:** expansão, aquisição de clientes, engajamento, upsell/cross-sell.  
+- **Retenção:** churn, satisfação, suporte, pós-venda.  
+- **Eficiência:** produtividade, otimização de recursos, automação.  
+- **Governança:** compliance, políticas, auditoria, segurança.  
+- **Valor ao Cliente:** experiência, NPS, jornada, impacto.
+
+### 2.2 Camada Funcional (Áreas e Processos)
+
+- **Marketing e Aquisição:** campanhas, funil, canais, leads, conversão.  
+- **Vendas e Relacionamento:** CRM, follow-up, negociações, fechamento.  
+- **Produto e Experiência:** UX, features, feedback, roadmap.  
+- **Operações e Suporte:** tickets, SLAs, autosserviço, satisfação.  
+- **Finanças e Receita:** DRE, faturamento, inadimplência, margem.  
+- **Pessoas e Cultura:** onboarding, engajamento, clima, desempenho.
+
+### 2.3 Camada de Intents (Ações e Necessidades)
+
+- **Monitorar:** status, progresso, indicadores.  
+- **Analisar:** causas, padrões, correlações.  
+- **Prever:** tendências, riscos, oportunidades.  
+- **Recomendar:** planos, melhorias, alertas.  
+- **Executar:** ativar fluxos, automatizar, corrigir.  
+- **Validar:** compliance, consistência, confiabilidade.
+
+### 2.4 Camada de Interação (Forma de Engajamento)
+
+- **Consulta:** busca, dúvida, exploração.  
+- **Exploração:** drill-down, comparativo, histórico.  
+- **Ação Rápida:** atalhos, botões, fluxos curtos.  
+- **Automação:** integrações, execuções recorrentes.  
+- **Colaboração:** comentários, anotações, compartilhamentos.  
+- **Decisão:** aprovar, priorizar, delegar.
+
+### 2.5 Camada de Artefatos (Objetos de Conhecimento)
+
+- **Indicadores:** métricas, KPIs, OKRs, benchmarks.  
+- **Relatórios:** dashboards, snapshots, análises customizadas.  
+- **Alertas:** notificações, insights, exceções.  
+- **Planos:** estratégias, cronogramas, tarefas.  
+- **Registros:** logs, auditoria, histórico.  
+- **Modelos:** preditivos, prescritivos, simulações.
+
+### 2.6 Camada Temporal (Contexto de Tempo)
+
+- **Tempo Real:** monitoramento instantâneo, eventos live.  
+- **Histórico:** análises passadas, registros, evolução.  
+- **Projeção:** cenários futuros, tendências, predições.  
+- **Ciclo:** diário, semanal, mensal, trimestral.
+
+### 2.7 Camada Cognitiva (Nível de Inteligência)
+
+- **Descritivo:** o que aconteceu.  
+- **Diagnóstico:** por que aconteceu.  
+- **Preditivo:** o que vai acontecer.  
+- **Prescritivo:** o que fazer a seguir.  
+- **Adaptativo:** aprendizado contínuo, ajuste dinâmico.
+
+### 2.8 Camada de Usuário (Perfis e Jornadas)
+
+- **Executivo:** visão macro, resultados, risco.  
+- **Gestor:** coordenação, equipe, performance.  
+- **Analista:** detalhe, operação, relatórios.  
+- **Colaborador:** execução, suporte, interação.  
+- **Cliente:** jornada, feedback, experiência.
+
+---
+
+## 3. Biblioteca de Intents (Núcleo da Semântica)
+
+### Financeiro
+- **Pagamento:** cobrança, pagamento, inadimplência, nota fiscal, reembolso, boleto, desconto, aumento de preço, negociação.
+- **Comercial:** pedido, orçamento, proposta, follow-up, interesse, objeção, contrato, renovação, cancelamento.
+- **Operacional:** entrega, logística, suporte técnico, falha, manutenção, prazo, estoque, indisponibilidade.
+- **Relacionamento:** elogio, reclamação, sugestão, satisfação, insatisfação, urgência, feedback espontâneo.
+- **Governança:** compliance, política interna, aprovação, autorização, acesso, responsabilidade, risco.
+- **Estratégia & Conhecimento:** insights, aprendizado de mercado, concorrência, inovação, tendências, relatórios.
+
+---
+
+## 4. Clusters Semânticos e Centroides
+
+| Cluster | Exemplos | Centróide |
+|---------|----------|-----------|
+| Pagamento | "paguei", "quitado", "boleto pago", "depósito feito", "já mandei o pix", "💸", "✔️" | Pagamento Efetuado |
+| Cobrança | "preciso da nota", "não recebi boleto", "ainda não caiu", "cobrança indevida", "🙄" | Pendência Financeira |
+| Prazo | "até amanhã", "pra ontem", "semana que vem", "em 15 dias", "qnd chega?", "⌛" | Gestão de Prazos |
+| Reclamação | "horrível", "péssimo serviço", "não funciona", "me arrependi", "😡", "nunca mais compro" | Problema Relatado |
+| Elogio | "ótimo", "excelente", "parabéns", "maravilhoso", "top demais", "👏" | Feedback Positivo |
+| Sugestão | "podia ser melhor se...", "já pensaram em...", "se tivesse tal função", "🤔" | Ideia de Melhoria |
+| Interesse Comercial | "quanto custa?", "me manda proposta", "tem desconto?", "quero assinar" | Lead Quente |
+| Cancelamento | "não quero mais", "cancelem", "vou desistir", "quero meu dinheiro de volta" | Risco de Churn |
+
+---
+
+## 5. Exemplos Expandidos por Cluster
+
+### Financeiro
+- **Pagamento Efetuado:**  
+  Ex.: “já mandei o pix 👍”, “boleto quitado”, “💸✔️”  
+  Estrutura: `{intent: pagamento_efetuado, entidade: método=PIX, status=quitado, objeto=Financeiro}`  
+  Ação: atualizar DRE, marcar fatura como paga, enviar recibo automático.
+
+- **Cobrança/Pendência:**  
+  Ex.: “ainda não recebi o boleto”, “cobrança errada”, “🙄 cadê a nota?”  
+  Estrutura: `{intent: pendencia_financeira, entidade: documento=nota, status=pendente, objeto=Financeiro}`  
+  Ação: disparar lembrete financeiro, abrir ticket de cobrança.
+
+- **Negociação de Valor:**  
+  Ex.: “consigo desconto se pagar à vista?”, “muito caro”  
+  Estrutura: `{intent: negociacao_preco, entidade: valor=aberto, condição=pagamento, objeto=Financeiro/Comercial}`  
+  Ação: alertar vendedor, sugerir condição especial.
+
+### Comercial
+- **Interesse/Lead Quente:**  
+  Ex.: “me manda a proposta”, “quanto custa?”  
+  Estrutura: `{intent: interesse_comercial, entidade: produto=planoX, status=lead_quente, objeto=Comercial}`  
+  Ação: criar oportunidade no CRM, notificar equipe de vendas.
+
+- **Cancelamento:**  
+  Ex.: “quero cancelar”, “não quero mais”, “💔📦”  
+  Estrutura: `{intent: cancelamento, entidade: contrato=ativo, status=cancelar, objeto=Comercial/Relacionamento}`  
+  Ação: acionar time de retenção, gerar alerta de churn.
+
+- **Renovação:**  
+  Ex.: “quero renovar minha assinatura”, “preciso estender o contrato”  
+  Estrutura: `{intent: renovacao, entidade: contrato=expirando, status=renovar, objeto=Comercial}`  
+  Ação: abrir fluxo de renovação, atualizar CRM.
+
+### Operacional
+- **Problema de Entrega:**  
+  Ex.: “não chegou ainda”, “a entrega atrasou”, “📦❌”  
+  Estrutura: `{intent: atraso_entrega, entidade: pedido=123, prazo=atrasado, objeto=Operacional}`  
+  Ação: abrir ocorrência logística, informar cliente, recalcular SLA.
+
+- **Suporte Técnico:**  
+  Ex.: “o sistema caiu”, “não consigo acessar minha conta”, “erro 500”  
+  Estrutura: `{intent: suporte_tecnico, entidade: sistema=app_web, status=indisponível, objeto=Operacional}`  
+  Ação: criar ticket automático, alertar time de TI.
+
+- **Estoque/Disponibilidade:**  
+  Ex.: “tem disponível?”, “acabou o produto?”, “⚠️ sem estoque”  
+  Estrutura: `{intent: consulta_estoque, entidade: produto=ABC, status=indisponível, objeto=Operacional}`  
+  Ação: disparar integração com ERP, informar previsão de reposição.
+
+### Relacionamento
+- **Reclamação:**  
+  Ex.: “péssimo atendimento”, “não funciona nada”, “😡”  
+  Estrutura: `{intent: reclamacao, entidade: produto=XYZ, sentimento=negativo, objeto=Relacionamento}`  
+  Ação: abrir ticket de CS, notificar gestor, registrar NPS detrator.
+
+- **Elogio:**  
+  Ex.: “ótimo serviço”, “parabéns equipe”, “👏👏👏”  
+  Estrutura: `{intent: elogio, entidade: atendimento=satisfatório, sentimento=positivo, objeto=Relacionamento}`  
+  Ação: logar indicador de CSAT positivo, compartilhar no time.
+
+- **Sugestão de Melhoria:**  
+  Ex.: “podiam ter mais relatórios”, “seria ótimo se integrasse ao WhatsApp”  
+  Estrutura: `{intent: sugestao, entidade: funcionalidade=integração_whatsapp, objeto=Relacionamento/Estratégia}`  
+  Ação: registrar no backlog de produto, atribuir prioridade.
+
+### Governança
+- **Aprovação/Regras Internas:**  
+  Ex.: “preciso da aprovação do diretor”, “isso passa pelo compliance?”  
+  Estrutura: `{intent: aprovacao, entidade: responsável=diretor, status=pending, objeto=Governança}`  
+  Ação: acionar workflow de aprovação, registrar auditoria.
+
+- **Responsabilidade/Erro Interno:**  
+  Ex.: “foi o time de vendas que errou”, “a responsabilidade é do fornecedor”  
+  Estrutura: `{intent: atribuicao_responsabilidade, entidade: equipe=vendas, objeto=Governança}`  
+  Ação: logar ocorrência, enviar para auditoria interna.
+
+### Estratégia & Conhecimento
+- **Insight de Mercado:**  
+  Ex.: “o concorrente baixou preço”, “nova lei vai impactar nosso setor”  
+  Estrutura: `{intent: insight_mercado, entidade: concorrente/lei, objeto=Estratégia}`  
+  Ação: registrar insight, abrir discussão estratégica.
+
+- **Tendência/Aprendizado:**  
+  Ex.: “os clientes estão pedindo mais integrações”  
+  Estrutura: `{intent: tendencia, entidade: demanda=integrações, objeto=Estratégia}`  
+  Ação: registrar indicador, gerar sugestão de roadmap.
+
+---
+
+## 6. Biblioteca de Entidades
+
+- **Numéricas:** valores monetários (R$, $, €), datas, prazos, quantidades.  
+- **Contextuais:** nome do cliente, ID de pedido, produto, serviço, região.  
+- **Temporais:** hoje, amanhã, daqui a pouco, imediatamente, já, nunca.  
+- **Linguagem Digital:** emojis, hashtags, links, prints de boleto ou nota.  
+- **Negação & Ironia:** "até parece", "só que não", "claro que não", "imagina".
+
+---
+
+## 7. Variações Linguísticas
+
+- **Regionais:** boleto = carnê, nota = fatura, transporte = frete.  
+- **Erros ortográficos:** "pagemento", "boléto", "conserto" vs "conserto".  
+- **Abreviações:** "vc", "pq", "qnd", "blz", "mt".  
+- **Code-switching:** "payment done", "ticket aberto", "deal fechado".  
+- **Emoji-only:** "💔📦" = cancelamento por falha de entrega.
+
+---
+
+## 8. Mapeamento para Objetos de Gestão
+
+- **Financeiro:** Pagamento, Cobrança, Nota Fiscal, Reembolso.  
+- **Comercial:** Orçamento, Proposta, Interesse, Renovação, Cancelamento.  
+- **Operacional:** Entrega, Logística, Suporte, Estoque, Falha.  
+- **Relacionamento:** Elogio, Reclamação, Sugestão, Satisfação, Urgência.  
+- **Governança:** Aprovação, Política, Compliance, Responsabilidade.  
+- **Estratégia:** Tendências, Insights de Mercado, Concorrência.
+
+---
+
+## 9. Aplicações ML/NLP
+
+- **Clusterização:** K-means/UMAP para agrupar intents emergentes.  
+- **Classificação Supervisionada:** modelos híbridos → zero-shot + dataset sintético.  
+- **Detecção de
+
+Ironia:** redes neurais treinadas com gírias e sarcasmo.
+
+Enriquecimento Léxico: embeddings + expansão semântica (faiss, milvus).
+Normalização: transformar variação → centróide → objeto de gestão.
+Explicabilidade: cada decisão gera log de → frase detectada → intent → objeto → ação.
+10. Camada de Evolução Contínua
+Feedback Loop: cada interação real do usuário retroalimenta a biblioteca.
+Aprendizado Contínuo: termos emergentes são detectados e incorporados.
+Ciclos de Validação: testes de estresse trimestrais para garantir recall e precisão.
+11. Multi-Intenção na Prática
+Exemplo 1: Financeiro + Operacional
+Frase: “já paguei o boleto mas ainda não recebi o produto 😡”
+Detecção:
+{intent: pagamento_efetuado, objeto: Financeiro}
+{intent: atraso_entrega, objeto: Operacional}
+Ação Composta:
+Fluxo Financeiro: marcar pagamento como confirmado.
+Fluxo Operacional: abrir ocorrência de atraso e notificar logística.
+Insight de risco: cliente já pagou e está insatisfeito.
+Exemplo 2: Comercial + Relacionamento
+Frase: “quero cancelar meu contrato mas o suporte foi ótimo 👏”
+Detecção:
+{intent: cancelamento, objeto: Comercial}
+{intent: elogio, objeto: Relacionamento}
+Ação Composta:
+Cancelamento é prioritário (impacta receita).
+Elogio é registrado como contexto positivo.
+Disparar retenção, marcar NPS positivo no CS.
+Exemplo 3: Estratégia + Financeiro
+Frase: “se o concorrente baixar preço, não vou renovar”
+Detecção:
+{intent: insight_mercado, objeto: Estratégia}
+{intent: renovacao_condicional, objeto: Comercial/Financeiro}
+Ação Composta:
+Insight estratégico vai para backlog.
+Renovação condicional gera alerta de churn.
+Criar risco de churn atrelado a evento de mercado.
+12. Resolução de Conflitos
+Contradição direta:
+Ex.: “já paguei” + “não paguei ainda”
+Estratégia: usar timestamp/contexto → última declaração sobrepõe a anterior.
+Intenções opostas simultâneas:
+Ex.: “quero cancelar e também renovar com desconto”
+Estratégia: aplicar árvore de decisão de prioridade:
+Retenção > Cancelamento > Renovação > Negociação.
+Ruído semântico:
+Ex.: “🔥 esse preço tá matando” (pode ser elogio ou crítica)
+Estratégia: resolução contextual → olhar mensagens anteriores e polaridade de sentimento.
+13. Orquestração de Prioridade (Ranking de Intents)
+Tier 1 (Críticos): Cancelamento, Pagamento, Reclamação grave, Problema de sistema.
+Tier 2 (Relevantes): Renovação, Negociação, Atraso de entrega, Sugestões.
+Tier 3 (Contextuais): Elogio, Insight, Tendência de mercado.
+
+Quando múltiplas intents são detectadas, o sistema executa todas mas prioriza notificação e workflow pelos tiers.
+
+14. Camada de Contexto Temporal
+O que foi dito antes altera a interpretação do agora.
+Ex.:
+Mensagem 1: “não vou renovar esse mês” → {cancelamento}
+Mensagem 2 (5 dias depois): “me manda a proposta da renovação” → {renovacao}
+Estratégia: o cancelamento vira “intenção vencida” → prevalece a renovação.
+
+---
+
+Se você quiser, posso criar **uma versão ainda mais visual**, com diagramas de fluxo semântico e tabelas interativas de intents vs objetos de gestão, que seria praticamente um manual executivo pronto para times e dashboards.  
+
+Quer que eu faça isso?
+camada de contexto temporal está completa?
+
+A Camada de Contexto Temporal que está no seu documento atual é funcional, mas ainda não está completa se você quer que seja totalmente operacional para o ZapTrack. Ela cobre basicamente:
+
+Histórico de mensagens para interpretar intenções atuais (ex.: cancelamento vs renovação).
+Valorização do último evento para sobrepor intenções anteriores.
+
+O que falta para torná-la completa e robusta:
+
+Granularidade de tempo: diferenciar entre minutos, horas, dias, semanas, meses, para ajustar prioridade e urgência de ações.
+Eventos recorrentes: lidar com padrões de comportamento repetidos (ex.: “sempre cancela e depois retorna”).
+Depreciação de intenções: definir regras de expiração de intents antigas que não são mais relevantes.
+Interações cruzadas com objetos de gestão: entender que o contexto de tempo pode alterar o fluxo de Financeiro, Comercial, Operacional, etc.
+Timeline multi-intenção: se uma mesma entidade recebe intents diferentes em momentos distintos, o sistema deve construir uma linha do tempo coerente para ações combinadas.
+Trigger de alertas contextuais: por exemplo, se um cliente demorou mais de X dias sem responder após um aviso de atraso de pagamento, disparar ação automática.
+Análise de tendência temporal: não só interpretar o agora, mas prever riscos e oportunidades com base no histórico.
+
+Se você quiser, posso reescrever a Camada de Contexto Temporal do jeito profissional, completo e integrado ao restante da biblioteca, incluindo essas melhorias, pronta para uso no ZapTrack.
+
+Quer que eu faça isso agora?

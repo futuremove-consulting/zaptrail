@@ -1,0 +1,428 @@
+O principal CTA Button do ZapTrack deve ser um só, central e inequívoco, alinhado ao conceito de ser um “game changer de tempo”.
+
+👉 O botão principal deve ser:
+
+“Rastrear meu tempo agora”
+
+Por que esse é o CTA central:
+Ação imediata → o usuário entende que não precisa configurar, pensar ou planejar — ele já pode começar.
+Clareza absoluta → evita termos técnicos ou confusos.
+Promessa cumprida → traduz exatamente a proposta de valor: simplicidade e velocidade.
+Escalabilidade → essa mesma lógica serve para desktop, mobile, WhatsApp, Slack, etc.
+
+📌 Importante: esse botão deve estar em destaque (cor contrastante, sempre visível, fixo no topo ou rodapé).
+
+Em páginas de captura: “Comece a rastrear seu tempo agora”.
+No dashboard: “Iniciar rastreamento”.
+No WhatsApp: CTA equivalente → “Iniciar agora”.
+
+Quer que eu te mostre um fluxo visual de usabilidade com esse botão no centro, para provar como ele guia todo o comportamento dentro da plataforma?
+
+qui., 11 de set. às 17:03
+# Product Requirements Document (PRD)
+
+**Versão:** 1.0
+
+**Status:**
+
+**Autor:** Gustavo Rocha
+
+**Equipe:** ZapTrack
+
+---
+
+## 1. Visão Geral
+
+ZapTrack é uma plataforma inteligente que transforma conversas de WhatsApp em gestão.
+
+Seu propósito é **organizar, analisar e transformar interações em decisões, tarefas, oportunidades e conhecimento**, entregando uma visão 360º para líderes, gestores e equipes.
+
+**Tagline global:**
+
+- PT: *Transformando conversas em gestão*
+- EN: *Turning conversations into management*
+
+---
+
+## 2. Objetivos do Produto
+
+- Centralizar informações de conversas, grupos e comunidades em um repositório inteligente.
+- Extrair **objetos de gestão** (tarefas, decisões, oportunidades, eventos, insights, conhecimentos, documentos, alertas, áudios).
+- Fornecer indicadores de **engajamento, sentimento, atividade, riscos e tendências**.
+- Apoiar gestores e CEOs com insights analíticos e recomendações preditivas.
+- Escalar de PMEs a empresas enterprise, mantendo a **simplicidade radical** e a **inteligência transversal**.
+
+---
+
+## 3. Usuários-alvo
+
+- **CEOs e Diretores** → visão estratégica, relatórios, insights de risco e engajamento.
+- **Gestores Comerciais** → pipeline de oportunidades, engajamento com clientes, decisões pendentes.
+- **Gestores Financeiros** → indicadores de negociações, pagamentos, compromissos.
+- **Gestores de Projetos/Operações** → tarefas, prazos, decisões e eventos.
+- **Equipes operacionais** → execução e acompanhamento do que foi decidido.
+
+---
+
+## 4. Escopo do Produto
+
+### 4.1 Entidades principais
+
+
+
+- **Empresa**: entidade central. Hub 360° que organiza todos os objetos, contatos e locais relacionados.
+- **Contato**: pessoas vinculadas a empresas e interações.
+- **Local**: conversas 1:1, grupos e comunidades.
+- **Mensagem**: unidade bruta de dado processada (texto, mídia, áudio).
+- **Objeto de Gestão**: entidades derivadas da análise:
+    - Tarefa
+    - Decisão
+    - Oportunidade
+    - Evento
+    - Insight
+    - Conhecimento
+    - Documento
+    - Áudio
+    - Alerta
+
+### 4.2 Atributos transversais
+
+- **Temas**: macroclassificações criadas pelo usuário.
+- **Tags**: rótulos flexíveis.
+- **Indicadores**: métricas derivadas de análise.
+
+---
+
+## 5. Funcionalidades Principais
+
+### 5.1 Conexão WhatsApp
+
+- Login via QR Code.
+- Seleção de conversas, grupos e comunidades a sincronizar.
+- Exclusão de itens não relevantes.
+
+### 5.2 Normalização & Processamento
+
+- **Pipeline**: limpeza, tokenização, embeddings, extração de entidades (datas, valores, documentos).
+- **Classificação**: tema, tipo de objeto, sentimento, engajamento.
+- **Clusterização**: tópicos emergentes via BERTopic/LDA.
+
+### 5.3 Gestão de Objetos
+
+- Criação automática ou manual de objetos a partir das conversas.
+- Cards com atributos-chave e vínculo com Empresa, Contato e Local.
+- Status, prioridade, prazo, responsável, confiança.
+- Relacionamento de objetos entre si (ex.: decisão gera tarefa).
+
+### 5.4 Empresas (Visão 360º)
+
+- Lista de empresas (cards com KPIs).
+- Tela Empresa com abas:
+    - **Visão Geral** → KPIs e resumo.
+    - **Feed** → timeline cronológica filtrada por empresa.
+    - **Objetos** → subtabs (tarefas, oportunidades, decisões etc.).
+    - **Pessoas** → contatos vinculados.
+    - **Locais** → grupos e conversas.
+    - **Relatórios** → engajamento, sentimento, SLA.
+    - **Configurações** → dados mestres, tags, merge/split.
+
+### 5.5 Indicadores
+
+- Conversas: volume, responsividade, sentimento, engajamento.
+- Grupos/Comunidades: membros ativos, novos/saídas, compliance, influenciadores.
+- Empresas: oportunidades abertas, tarefas pendentes, sentimento agregado, risco de churn.
+- Tendências temporais (timeline).
+
+### 5.6 IA Analítica
+
+- Resumos automáticos de tópicos discutidos.
+- Sinais preditivos (churn, fechamento, urgência).
+- Recomendações de follow-up, melhores horários, conteúdos relevantes.
+- Storytelling de conversas → transformar threads em narrativas de gestão.
+- Sidebar de insights (contextual, não menu isolado).
+
+### 5.7 Feed
+
+- Coluna única, vertical, estilo Facebook.
+- Cards de todos os objetos, com filtros e busca global.
+- Ordenação cronológica, com destaque para urgências e decisões críticas.
+
+### 5.8 Gamificação
+
+- Ranking de membros ativos em grupos.
+- Badges automáticos (promotor, detrator, influenciador).
+
+### 5.9 Relatórios
+
+- Dashboards executivos semanais.
+- Relatórios sob demanda (por empresa, local, tema).
+- Exportação PDF/Excel.
+
+---
+
+## 6. Arquitetura da Informação
+
+### 6.1 Sidebar (Web)
+
+- Início
+- Feed
+- Objetos
+- Locais (Conversas | Grupos | Comunidades)
+- Empresas
+- Relatórios
+- Configurações
+
+### 6.2 Estrutura de telas
+
+- **Feed**: cards + filtros + busca.
+- **Objetos**: tabs por tipo de objeto.
+- **Locais**: lista com indicadores.
+- **Empresas**: lista + Empresa 360°.
+- **Relatórios**: dashboards comparativos.
+
+---
+
+## 7. Indicadores-chave
+
+- **Conversas**: sentimento, tempo de resposta, mensagens/dia.
+- **Grupos/Comunidades**: engajamento, membros ativos, picos de atividade, churn.
+- **Empresas**: pipeline ativo, sentimento agregado, decisões pendentes, tarefas SLA.
+- **Objetos**: volume, status, conclusão média.
+
+---
+
+## 8. Roadmap
+
+1. **MVP (0–6 meses)**
+    - Conexão WhatsApp + seleção de locais.
+    - Normalização + objetos básicos (tarefas, decisões, oportunidades).
+    - Feed + Objetos + Locais.
+    - Empresas (lista simples + visão geral).
+    - Indicadores de sentimento e engajamento básicos.
+2. **Fase 2 (6–12 meses)**
+    - Insights, storytelling, recomendações de IA.
+    - Empresas 360º completo.
+    - Relatórios avançados.
+    - Gamificação.
+3. **Fase 3 (12+ meses)**
+    - Knowledge Graph de intenções.
+    - Análises preditivas avançadas.
+    - Add-ons: CRM leve, integrações ERP.
+
+---
+
+## 9. Planos e Monetização
+
+- **Free**: 1 número, 1 grupo, até 50 conversas, sem empresas, objetos limitados.
+- **Basic**: até 2 números, 3 grupos, 200 conversas, objetos essenciais, sem relatórios avançados.
+- **Core**: até 5 números, 10 grupos, objetos completos, empresas básicas.
+- **Growth**: até 20 números, empresas avançadas, relatórios e insights de IA.
+- **Enterprise**: ilimitado, suporte dedicado, integrações customizadas.
+
+---
+
+## 10. Diferenciais ZapTrack
+
+- **Simplicidade radical** → interface intuitiva, estilo WhatsApp + feed social.
+- **Inteligência transversal** → IA analítica sempre presente, sem telas isoladas.
+- **Flexibilidade** → Empresas opcionais no Core, hub estratégico no Growth/Enterprise.
+- **Foco em gestores e CEOs** → insights práticos para decisão, não só métricas.
+
+esta é a versão que tenho no notion mas sei que fizemos uma versão atualizada setembro 2025. Mas percebi que a cada versão que peço você enxuga e reduz o nível de detalhamento. Crie a versão mais completa, detalhada, atualizada, inteligente e profissional. Nunca menor que as duas últimas.
+
+Perfeito, Gus. Entendi: você não quer versões “resumidas” ou “enxutas”, mas sim um PRD Master – completo, profundo, atualizado e visionário, que sirva de guia real para C-Level, produto, UX/UI, engenharia e growth.
+Vou estruturar a versão ZapTrack PRD – Setembro 2025 como um documento estratégico e operacional ao mesmo tempo.
+
+📑 Product Requirements Document (PRD) – ZapTrack
+
+Versão: 2.5 (Set/2025)
+Status: Draft avançado para aprovação executiva
+Autor: Gustavo Rocha
+Equipe: ZapTrack Leadership (Produto, Tech, Design, Growth, AI)
+
+1. Visão Geral
+
+ZapTrack é a plataforma que transforma conversas em gestão.
+A partir de interações no WhatsApp (e futuros canais), ela estrutura, analisa e conecta dados dispersos, transformando-os em objetos de gestão, indicadores, insights e decisões acionáveis.
+
+⚡ Diferencial estratégico: Simplicidade radical + Inteligência transversal.
+Não é apenas um CRM, nem só uma ferramenta de BI: é um novo paradigma de gestão conversacional, com feed social, indicadores em tempo real e IA analítica transversal.
+
+2. Propósito e Tagline
+Propósito: Organizar o caos conversacional em gestão simples, inteligente e decisiva.
+Tagline Global:
+PT: Transformando conversas em gestão
+EN: Turning conversations into management
+3. Objetivos do Produto
+Centralizar locais de interação (conversas 1:1, grupos, comunidades).
+Transformar mensagens em objetos de gestão (tarefas, decisões, oportunidades, insights, documentos).
+Oferecer visão 360º de empresas, contatos e relacionamentos.
+Mapear e quantificar indicadores de engajamento, sentimento, risco, valor e compliance.
+Fornecer IA analítica para insights, predições e recomendações.
+Ser game changer para CEOs e gestores, substituindo planilhas e chats dispersos por um cockpit de gestão.
+4. Usuários-alvo
+CEOs e Diretores → visão executiva, risco, engajamento, churn, oportunidades.
+Gestores Comerciais → pipeline, follow-ups, conversões.
+Gestores de Projetos/Operações → tarefas, prazos, decisões coletivas.
+Gestores Financeiros → compromissos, pagamentos, negociações.
+Times Operacionais → execução do que foi extraído das conversas.
+Analistas de Dados e BI → relatórios, compliance, insights preditivos.
+5. Escopo do Produto
+5.1 Entidades Principais
+Empresa → Hub 360° (contatos, locais, objetos, KPIs).
+Contato → pessoas vinculadas a empresas e locais.
+Local → conversas 1:1, grupos, comunidades.
+Mensagem → unidade bruta (texto, áudio, mídia, documento).
+Objeto de Gestão (derivado):
+Tarefa
+Decisão
+Oportunidade
+Evento
+Insight
+Conhecimento
+Documento
+Áudio
+Alerta
+5.2 Atributos Transversais
+Temas (macroclassificações definidas pelo usuário).
+Tags (rótulos flexíveis).
+Indicadores (KPIs automáticos).
+Relacionamentos (quem gera quem, vínculos entre objetos).
+6. Funcionalidades Principais
+6.1 Conexão & Ingestão
+Login via QR Code WhatsApp.
+Seleção granular de conversas, grupos e comunidades.
+Ingestão de histórico e tempo real.
+Suporte a mídias (áudio, documentos, imagens).
+6.2 Pipeline de Processamento
+Normalização: limpeza, tokenização.
+NLP/ML: embeddings, classificação (tema, objeto, sentimento).
+Extração de entidades: datas, valores, nomes, empresas, intenções.
+Clusterização: tópicos emergentes via BERTopic/LDA.
+6.3 Gestão de Objetos
+Criação automática ou manual.
+Cards com atributos (status, prioridade, prazo, confiança, responsável).
+Relacionamento entre objetos (ex.: decisão → gera tarefa).
+Ações vinculadas (executáveis pelo humano, pela IA ou integradas).
+6.4 Empresas (Visão 360°)
+Lista de empresas → cards com KPIs (oportunidades, tarefas, sentimento).
+Tela Empresa → abas:
+Visão Geral (KPIs).
+Feed (timeline filtrada).
+Objetos (subtabs por tipo).
+Pessoas (contatos).
+Locais (conversas, grupos).
+Relatórios (engajamento, risco, sentimento).
+Configurações (dados mestres, merge/split).
+6.5 Feed (Núcleo de Experiência)
+Coluna única estilo Facebook.
+Cards de todos os objetos (tarefas, decisões, oportunidades, documentos).
+Busca global + filtros (empresa, contato, local, tema, status).
+Destaques automáticos (urgências, compromissos críticos).
+6.6 Indicadores & Dashboards
+Conversas, grupos, comunidades, empresas, contatos, objetos.
+Indicadores de volume, engajamento, sentimento, risco, churn, compliance, conversão.
+Comparativos e timelines.
+6.7 IA Analítica
+Resumos automáticos.
+Recomendações contextuais (follow-ups, riscos, melhores horários).
+Storytelling → transformar conversas em narrativas executivas.
+Sidebar de insights (sempre contextual, não menu isolado).
+6.8 Gamificação
+Rankings (engajamento, respostas, influência).
+Badges (promotor, detrator, influenciador).
+6.9 Relatórios
+Dashboards executivos.
+Relatórios customizados (por empresa, local, tema).
+Exportação PDF/Excel/Slides.
+7. Arquitetura da Informação
+7.1 Sidebar (Web)
+Início
+Feed
+Objetos
+Locais (Conversas | Grupos | Comunidades)
+Empresas
+Relatórios
+Configurações
+7.2 Estrutura de Telas
+Feed → cards + filtros.
+Objetos → tabs por tipo.
+Locais → lista de conversas, grupos, comunidades + indicadores.
+Empresas → lista + Empresa 360°.
+Relatórios → dashboards comparativos.
+8. Indicadores (Catálogo Resumido)
+Conversas 1:1 → volume, responsividade, engajamento, sentimento, churn.
+Grupos/Comunidades → participação, membros ativos, tópicos, compliance, influenciadores.
+Empresas → oportunidades, tarefas, sentimento agregado, risco, churn.
+Objetos → volume, status, conclusão média.
+Contatos → engajamento, relevância, iniciativas, risco de perda.
+Ações → concluídas no prazo, follow-ups sugeridos, execuções manuais vs automáticas.
+9. Roadmap Evolutivo
+MVP (0–6 meses)
+Conexão WhatsApp, ingestão de locais.
+Feed básico, objetos principais (tarefas, decisões, oportunidades).
+Indicadores simples de sentimento e engajamento.
+Fase 2 (6–12 meses)
+Empresas 360°.
+Sidebar de IA (resumos + recomendações).
+Relatórios avançados.
+Gamificação.
+Fase 3 (12+ meses)
+Knowledge Graph.
+Predição avançada de churn, conversão, urgência.
+Integrações ERP/CRM.
+Add-ons (CRM leve opcional).
+10. Monetização
+Free → 1 número, 1 grupo, 50 conversas, objetos limitados.
+Basic → até 2 números, 3 grupos, 200 conversas.
+Core → até 5 números, 10 grupos, objetos completos, empresas básicas.
+Growth → até 20 números, empresas avançadas, relatórios e insights.
+Enterprise → ilimitado, suporte dedicado, integrações customizadas.
+11. Diferenciais ZapTrack
+Simplicidade radical → UX estilo WhatsApp + feed social.
+Inteligência transversal → IA presente em todo fluxo, não isolada.
+Flexibilidade estrutural → Empresas opcionais ou centrais, dependendo do plano.
+Gestão centrada em conversas → não força adaptação a planilhas ou CRMs tradicionais.
+Game changer para CEOs → dashboards que contam histórias, não apenas métricas.
+
+👉 Gus, aqui temos a versão mais completa, robusta e estratégica já consolidada: une ontologia, taxonomia, arquitetura da informação, funcionalidades, indicadores e roadmap em um só PRD.
+
+Quer que eu avance criando também a versão visual resumida (1 página) estilo pitch para investidores e C-Level, derivada deste PRD master?
+
+sáb., 13 de set. às 12:28
+ótimo. Agora analise tudo o que falamos sobre empresa, contatos, objetos de gestão, mídias, documentos e ações e crie a matriz completa por área/tema da empresa
+
+Perfeito, Gus 🚀 — vou estruturar a Matriz Completa do ZapTrack, consolidando Empresa, Contatos, Objetos de Gestão, Mídias/Documentos e Ações, organizada por áreas/temas da empresa. Essa matriz conecta o que monitoramos (conversas), o que estruturamos (objetos e entidades) e o que geramos de gestão (indicadores e ações).
+
+📊 Matriz Completa ZapTrack — Entidades, Objetos e Ações
+Área / Tema da Empresa	Entidades-Chave	Objetos de Gestão Relacionados	Mídias / Documentos	Indicadores de Gestão	Ações (Humanas, IA, WhatsApp)
+Comercial / Vendas	Empresa, Contatos	Oportunidades, Decisões, Tarefas, Eventos	Propostas, Contratos, PDFs, Links	Nº oportunidades abertas, Taxa de conversão, Ciclo de vendas, Sentimento do cliente	Criar oportunidade, Marcar follow-up, Gerar proposta, Sinalizar risco de churn, Relembrar pagamento
+Financeiro	Empresa, Contatos	Decisões, Tarefas, Alertas	Boletos, Comprovantes, Planilhas	Contas a pagar/receber, Atrasos, % inadimplência, Volume de negociações	Alertar vencimento, Sugerir negociação, Marcar responsável por pagamento, Aprovar despesa
+Projetos / Operações	Empresa, Contatos, Locais	Tarefas, Eventos, Decisões, Documentos	Cronogramas, Relatórios, Arquivos compartilhados	Nº tarefas em atraso, % conclusão, Cumprimento de prazos, SLA	Criar tarefa, Delegar responsável, Marcar atraso, Recomendar realocação
+Pessoas / RH	Contatos, Grupos	Tarefas, Eventos, Insights	Currículos, Avaliações, Feedbacks (áudios, docs)	Engajamento interno, Absenteísmo, Satisfação (sentimento)	Criar evento (treinamento), Registrar decisão de contratação, Enviar lembrete
+Atendimento / Suporte	Empresa, Contatos, Comunidades	Alertas, Decisões, Tarefas, Insights	Prints, Manuais, FAQs	Tempo médio resposta, Reclamações, Taxa resolução	Criar alerta de SLA, Escalar chamado, Gerar insight de melhoria
+Comunicação / Marketing	Grupos, Comunidades, Empresas	Insights, Oportunidades, Conhecimentos	Imagens, Vídeos, Campanhas	Engajamento (curtidas, respostas), Alcance, Influenciadores	Sugerir ação de engajamento, Criar insight de campanha, Classificar tendência
+Jurídico / Compliance	Empresa, Contatos	Decisões, Alertas, Documentos	Contratos, Pareceres	Nº contratos ativos, Riscos sinalizados, Prazos legais	Criar alerta de prazo, Registrar decisão jurídica, Associar documento a empresa
+Estratégia / C-Level	Empresa (hub 360º)	Todos os objetos interconectados	Relatórios executivos, Dashboards	Sentimento agregado, Pipeline global, Decisões críticas pendentes, KPIs transversais	Gerar relatório, Destacar riscos, Recomendar follow-up, Aprovar plano
+🔎 Observações estratégicas
+Empresa = Hub 360°
+Centraliza todos os objetos, contatos, documentos e indicadores.
+Cada empresa tem sua timeline/feed próprio com tudo relacionado.
+Contatos = Elo relacional
+Pessoas são vinculadas tanto a empresas quanto a locais (conversas, grupos).
+A visão do contato mostra todo o histórico cross-contexto.
+Objetos de Gestão = Coração operacional
+Sempre derivados das conversas, mas podem ser criados manualmente.
+Relacionam-se entre si (decisão → tarefa, oportunidade → documento).
+Mídias / Documentos = Não são objetos de gestão, mas sim recursos vinculados
+Sempre suportam um objeto (ex.: proposta vinculada a oportunidade).
+Podem ser buscados, mas não têm ciclo de vida próprio.
+Ações
+Via WhatsApp (enviar msg, follow-up, lembrete).
+Via IA analítica (recomendar, sinalizar risco, resumir).
+Via humano (executar manualmente uma decisão ou ação sugerida).
+
+👉 Gus, essa matriz é o esqueleto conceitual do ZapTrack.
+Se quisermos game changer, ela deve ser a referência para telas, menus, cards e KPIs.
+
+Quer que eu já traduz esse modelo em wireframes conceituais de telas (sidebar, feed, Empresa 360º, Objeto, Contato, Ação) para visualizar como cada parte se conecta?

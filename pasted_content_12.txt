@@ -1,0 +1,528 @@
+seg., 27 de out. às 16:02
+# Product Requirements Document (PRD)
+
+**Versão:** 1.0
+
+**Status:**
+
+**Autor:** Gustavo Rocha
+
+**Equipe:** ZapTrack
+
+---
+
+## 1. Visão Geral
+
+ZapTrack é uma plataforma inteligente que transforma conversas de WhatsApp em gestão.
+
+Seu propósito é **organizar, analisar e transformar interações em decisões, tarefas, oportunidades e conhecimento**, entregando uma visão 360º para líderes, gestores e equipes.
+
+**Tagline global:**
+
+- PT: *Transformando conversas em gestão*
+- EN: *Turning conversations into management*
+
+---
+
+## 2. Objetivos do Produto
+
+- Centralizar informações de conversas, grupos e comunidades em um repositório inteligente.
+- Extrair **objetos de gestão** (tarefas, decisões, oportunidades, eventos, insights, conhecimentos, documentos, alertas, áudios).
+- Fornecer indicadores de **engajamento, sentimento, atividade, riscos e tendências**.
+- Apoiar gestores e CEOs com insights analíticos e recomendações preditivas.
+- Escalar de PMEs a empresas enterprise, mantendo a **simplicidade radical** e a **inteligência transversal**.
+
+---
+
+## 3. Usuários-alvo
+
+- **CEOs e Diretores** → visão estratégica, relatórios, insights de risco e engajamento.
+- **Gestores Comerciais** → pipeline de oportunidades, engajamento com clientes, decisões pendentes.
+- **Gestores Financeiros** → indicadores de negociações, pagamentos, compromissos.
+- **Gestores de Projetos/Operações** → tarefas, prazos, decisões e eventos.
+- **Equipes operacionais** → execução e acompanhamento do que foi decidido.
+
+---
+
+## 4. Escopo do Produto
+
+### 4.1 Entidades principais
+
+- **Empresa**: entidade central. Hub 360° que organiza todos os objetos, contatos e locais relacionados.
+- **Contato**: pessoas vinculadas a empresas e interações.
+- **Local**: conversas 1:1, grupos e comunidades.
+- **Mensagem**: unidade bruta de dado processada (texto, mídia, áudio).
+- **Objeto de Gestão**: entidades derivadas da análise:
+    - Tarefa
+    - Decisão
+    - Oportunidade
+    - Evento
+    - Insight
+    - Conhecimento
+    - Documento
+    - Áudio
+    - Alerta
+
+### 4.2 Atributos transversais
+
+- **Temas**: macroclassificações criadas pelo usuário.
+- **Tags**: rótulos flexíveis.
+- **Indicadores**: métricas derivadas de análise.
+
+---
+
+## 5. Funcionalidades Principais
+
+### 5.1 Conexão WhatsApp
+
+- Login via QR Code.
+- Seleção de conversas, grupos e comunidades a sincronizar.
+- Exclusão de itens não relevantes.
+
+### 5.2 Normalização & Processamento
+
+- **Pipeline**: limpeza, tokenização, embeddings, extração de entidades (datas, valores, documentos).
+- **Classificação**: tema, tipo de objeto, sentimento, engajamento.
+- **Clusterização**: tópicos emergentes via BERTopic/LDA.
+
+### 5.3 Gestão de Objetos
+
+- Criação automática ou manual de objetos a partir das conversas.
+- Cards com atributos-chave e vínculo com Empresa, Contato e Local.
+- Status, prioridade, prazo, responsável, confiança.
+- Relacionamento de objetos entre si (ex.: decisão gera tarefa).
+
+### 5.4 Empresas (Visão 360º)
+
+- Lista de empresas (cards com KPIs).
+- Tela Empresa com abas:
+    - **Visão Geral** → KPIs e resumo.
+    - **Feed** → timeline cronológica filtrada por empresa.
+    - **Objetos** → subtabs (tarefas, oportunidades, decisões etc.).
+    - **Pessoas** → contatos vinculados.
+    - **Locais** → grupos e conversas.
+    - **Relatórios** → engajamento, sentimento, SLA.
+    - **Configurações** → dados mestres, tags, merge/split.
+
+### 5.5 Indicadores
+
+- Conversas: volume, responsividade, sentimento, engajamento.
+- Grupos/Comunidades: membros ativos, novos/saídas, compliance, influenciadores.
+- Empresas: oportunidades abertas, tarefas pendentes, sentimento agregado, risco de churn.
+- Tendências temporais (timeline).
+
+### 5.6 IA Analítica
+
+- Resumos automáticos de tópicos discutidos.
+- Sinais preditivos (churn, fechamento, urgência).
+- Recomendações de follow-up, melhores horários, conteúdos relevantes.
+- Storytelling de conversas → transformar threads em narrativas de gestão.
+- Sidebar de insights (contextual, não menu isolado).
+
+### 5.7 Feed
+
+- Coluna única, vertical, estilo Facebook.
+- Cards de todos os objetos, com filtros e busca global.
+- Ordenação cronológica, com destaque para urgências e decisões críticas.
+
+### 5.8 Gamificação
+
+- Ranking de membros ativos em grupos.
+- Badges automáticos (promotor, detrator, influenciador).
+
+### 5.9 Relatórios
+
+- Dashboards executivos semanais.
+- Relatórios sob demanda (por empresa, local, tema).
+- Exportação PDF/Excel.
+
+---
+
+## 6. Arquitetura da Informação
+
+### 6.1 Sidebar (Web)
+
+- Início
+- Feed
+- Objetos
+- Locais (Conversas | Grupos | Comunidades)
+- Empresas
+- Relatórios
+- Configurações
+
+### 6.2 Estrutura de telas
+
+- **Feed**: cards + filtros + busca.
+- **Objetos**: tabs por tipo de objeto.
+- **Locais**: lista com indicadores.
+- **Empresas**: lista + Empresa 360°.
+- **Relatórios**: dashboards comparativos.
+
+---
+
+## 7. Indicadores-chave
+
+- **Conversas**: sentimento, tempo de resposta, mensagens/dia.
+- **Grupos/Comunidades**: engajamento, membros ativos, picos de atividade, churn.
+- **Empresas**: pipeline ativo, sentimento agregado, decisões pendentes, tarefas SLA.
+- **Objetos**: volume, status, conclusão média.
+
+---
+
+## 8. Roadmap
+
+1. **MVP (0–6 meses)**
+    - Conexão WhatsApp + seleção de locais.
+    - Normalização + objetos básicos (tarefas, decisões, oportunidades).
+    - Feed + Objetos + Locais.
+    - Empresas (lista simples + visão geral).
+    - Indicadores de sentimento e engajamento básicos.
+2. **Fase 2 (6–12 meses)**
+    - Insights, storytelling, recomendações de IA.
+    - Empresas 360º completo.
+    - Relatórios avançados.
+    - Gamificação.
+3. **Fase 3 (12+ meses)**
+    - Knowledge Graph de intenções.
+    - Análises preditivas avançadas.
+    - Add-ons: CRM leve, integrações ERP.
+
+---
+
+## 9. Planos e Monetização
+
+- **Free**: 1 número, 1 grupo, até 50 conversas, sem empresas, objetos limitados.
+- **Basic**: até 2 números, 3 grupos, 200 conversas, objetos essenciais, sem relatórios avançados.
+- **Core**: até 5 números, 10 grupos, objetos completos, empresas básicas.
+- **Growth**: até 20 números, empresas avançadas, relatórios e insights de IA.
+- **Enterprise**: ilimitado, suporte dedicado, integrações customizadas.
+
+---
+
+## 10. Diferenciais ZapTrack
+
+- **Simplicidade radical** → interface intuitiva, estilo WhatsApp + feed social.
+- **Inteligência transversal** → IA analítica sempre presente, sem telas isoladas.
+- **Flexibilidade** → Empresas opcionais no Core, hub estratégico no Growth/Enterprise.
+- **Foco em gestores e CEOs** → insights práticos para decisão, não só métricas.
+
+---
+
+## 11. Indicadores do ZapTrack por Domínio
+
+## 1. **Empresas**
+
+### **Relacionamento & Engajamento**
+
+- Nº de contatos vinculados ativos
+- Nº de locais associados (conversas, grupos, comunidades)
+- Volume total de mensagens relacionadas
+- Tempo médio de resposta da empresa
+- Engajamento médio por contato (mensagens / período)
+- Sentimento agregado da empresa (score + tendência)
+
+### **Pipeline & Gestão**
+
+- Nº de oportunidades abertas
+- Valor total de oportunidades ativas
+- % de oportunidades em risco (probabilidade de churn > x%)
+- Nº de tarefas abertas e concluídas no prazo
+- Nº de decisões pendentes
+- SLA médio de decisões (tempo até decidir)
+- Última interação relevante (timestamp)
+- Frequência de interações (semanal/mensal)
+
+---
+
+## 2. **Objetos de Gestão**
+
+*(Tarefas, Decisões, Oportunidades, Eventos, Insights, Conhecimentos, Documentos, Áudios, Alertas)*
+
+### **Volume & Status**
+
+- Total por tipo de objeto
+- % concluído x pendente (tarefas, decisões, alertas)
+- Nº de objetos criados / período
+- Nº de cancelamentos
+
+### **Performance**
+
+- Tempo médio de conclusão (tarefas, decisões, oportunidades)
+- Taxa de conversão (oportunidades → ganhos)
+- Valor agregado por oportunidades concluídas
+- SLA médio de resposta para alertas e eventos
+
+### **Inteligência**
+
+- Objetos por tema (área/assunto)
+- Objetos com múltiplos vínculos (empresa, contato, grupo)
+- Objetos gerados automaticamente vs criados manualmente
+
+---
+
+## 3. **Grupos**
+
+### **Engajamento**
+
+- Nº de mensagens / período
+- Nº de membros ativos (mensagens enviadas)
+- % de membros silenciosos
+- Distribuição de participação (% por usuário)
+
+### **Dinâmica**
+
+- Entradas de participantes (fluxo de entrada)
+- Saídas de participantes (fluxo de saída)
+- Tempo médio de resposta no grupo
+- Picos de atividade (dias/horários)
+- Interações por tema detectado
+
+### **Sentimento & Compliance**
+
+- Sentimento médio do grupo
+- Sentimento por participante (mapa de polaridade)
+- Nº de violações de compliance (auto-promoções, desrespeito, spam)
+
+### **Influência**
+
+- Identificação de influenciadores (formadores de opinião, promotores, detratores, haters)
+- Grau de centralidade (grafo de interações: quem fala com quem)
+
+---
+
+## 4. **Conversas 1:1**
+
+### **Engajamento**
+
+- Nº de mensagens trocadas
+- Tempo médio de resposta
+- Frequência de contato (diária, semanal, mensal)
+
+### **Sentimento**
+
+- Polaridade média (positivo, neutro, negativo)
+- Variação de sentimento por período
+
+### **Gestão**
+
+- Nº de promessas feitas (pagamento, agendamento, entrega)
+- % de promessas cumpridas vs não cumpridas
+- Nº de objetos gerados a partir da conversa
+
+---
+
+## 5. **Comunidades**
+
+*(estrutura maior que grupos, ex.: grupos interconectados ou hubs de interação)*
+
+### **Engajamento**
+
+- Volume total de mensagens na comunidade
+- Volume médio por grupo vinculado
+- Fluxo de crescimento (novos membros x saídas)
+- Taxa de retenção de membros
+
+### **Comportamento**
+
+- Padrões de atividade (picos, silêncio, abandono)
+- Heatmap de interações (dias/horários ativos)
+
+### **Risco & Sentimento**
+
+- Sinais de churn coletivo (“vou sair”, “não faz sentido”)
+- Interações negativas (% mensagens críticas)
+- Sentimento agregado da comunidade
+
+---
+
+## 6. **Contatos (pessoas)**
+
+### **Atividade**
+
+- Nº de mensagens enviadas e recebidas
+- Participação em grupos/comunidades
+- % de mensagens iniciadas vs respondidas
+
+### **Influência**
+
+- Grau de interação (quantas pessoas responde/interage)
+- Classificação (formador de opinião, promotor, detrator, hater)
+- Score de influência (baseado em engajamento + respostas geradas)
+
+### **Gestão**
+
+- Objetos de gestão relacionados ao contato (tarefas, oportunidades etc.)
+- Sentimento médio nas interações
+- Última atividade relevante
+
+---
+
+## 7. **Ações & Preditivos**
+
+### **Follow-up & Próximos Passos**
+
+- Nº de follow-ups sugeridos pela IA
+- Melhor horário/dia de resposta (histórico)
+- Sugestões de conteúdos ou contra-argumentos (ex.: citação de concorrente)
+
+### **Risco & Saúde da relação**
+
+- Probabilidade de fechamento de negócio
+- Probabilidade de churn (empresa ou contato)
+- Sinais de risco jurídico (termos proibidos, LGPD, spam, fake news)
+
+### **Gamificação**
+
+- Ranking de membros mais ativos
+- Badges de participação (promotor, resolvedor, colaborador, influente)
+
+---
+
+# Conclusão
+
+O ZapTrack pode oferecer **+80 indicadores diferentes**, organizados por domínio, cobrindo:
+
+- **Volume** (mensagens, objetos, pessoas)
+- **Engajamento** (participação, responsividade, centralidade)
+- **Sentimento** (polaridade, tendências, variações)
+- **Gestão** (tarefas, oportunidades, decisões, promessas)
+- **Risco & Preditivos** (churn, compliance, follow-up)
+
+Isso transforma o produto em um **painel de inteligência conversacional e organizacional**, indo além de um CRM ou monitor de WhatsApp.
+
+Excelente base, Gus — esse PRD do ZapTrack v1.0 está com estrutura clara, propósito bem articulado e escopo sólido.
+A seguir, listo críticas construtivas, sugestões cirúrgicas e complementos estratégicos que podem elevar o documento a nível de referência para roadmap, desenvolvimento e captação.
+
+🔍 ANÁLISE E RECOMENDAÇÕES ESTRATÉGICAS
+1. Clareza de Produto e Posicionamento
+
+O ZapTrack está muito bem descrito como uma plataforma que transforma conversas em gestão, mas para um PRD de referência, convém incluir:
+
+Frase de posicionamento ampliada (tipo manifesto):
+
+“ZapTrack é o primeiro painel de inteligência conversacional para empresas que usam o WhatsApp como base de operação. Ele transforma interações caóticas em dados acionáveis, permitindo decisões mais rápidas e alinhadas à realidade.”
+
+Proposição de valor direta por persona:
+CEO → “Saiba o que está realmente acontecendo nos bastidores da sua empresa.”
+Gestor → “Veja o que foi decidido, quem prometeu o quê e o que está pendente.”
+Equipe → “Tenha clareza sobre suas tarefas, prazos e responsabilidades — direto do WhatsApp.”
+2. Mapa de Produto (Estrutura Lógica)
+
+Hoje as seções são lineares. Recomendo adicionar um bloco visual ou textual resumindo o modelo de dados central:
+
+Mensagens → Entidades → Objetos de Gestão → Indicadores → Insights → Ações
+
+Isso ajuda o time técnico e de design a compreender o fluxo cognitivo da IA.
+
+3. Camada de Inteligência (AI Layer)
+
+A seção “IA Analítica” é ótima, mas poderia ser dividida em 3 níveis para clareza de arquitetura e priorização:
+
+Nível	Nome	Função	Exemplo
+1	IA Operacional	Extração de entidades e objetos	tarefa, decisão, oportunidade
+2	IA Analítica	Identificação de padrões e sentimentos	engajamento, risco, humor
+3	IA Estratégica	Recomendação e predição	follow-ups, churn, oportunidades perdidas
+
+Isso ajuda no roadmap técnico (o que vai para MVP, o que entra na Fase 2).
+
+4. Arquitetura do MVP
+
+O MVP está bem traçado, mas falta um escopo técnico mínimo — o que exatamente será entregue.
+Sugestão de detalhamento (essencial para desenvolvimento ou Lovable):
+
+Backend: Supabase ou Convex (para mensagens, empresas, objetos)
+Frontend: React + Tailwind (com feed e cards)
+IA Layer: N8N + OpenAI + Pinecone (pipeline e embeddings)
+Autenticação: Clerk ou Auth.js (para multiusuário simples)
+Integração WhatsApp: API Meta ou bridge via WebSocket local (Browser Automation MVP)
+5. Experiência do Usuário
+
+Sugestão de jornada resumida para alinhar UX com valor imediato:
+
+Onboarding: conectar WhatsApp → selecionar grupos → processar.
+Primeira Análise: IA entrega resumo e tarefas detectadas.
+Primeiro Insight: usuário recebe “3 descobertas-chave”.
+Ação: criar tarefa, marcar decisão, gerar relatório.
+Loop: IA envia resumo diário/semanal via feed.
+
+Isso cria um efeito “wow” rápido — essencial para retenção.
+
+6. Modelo de Dados (conceitual mínimo)
+Empresa (id, nome, sentimento, score)
+Contato (id, nome, empresa_id, score_influencia)
+Local (id, tipo, nome, empresa_id)
+Mensagem (id, local_id, contato_id, conteúdo, timestamp, sentimento)
+ObjetoGestao (id, tipo, origem_msg, empresa_id, status, prazo)
+Indicador (id, tipo, valor, referência)
+Insight (id, tipo, origem, recomendação)
+
+Esse esquema simplificado já orienta Dev e IA.
+
+7. Painéis e Indicadores
+
+Excelente a divisão em domínios, mas recomendo sinalizar:
+
+Quais indicadores são disponíveis no MVP (≈15–20).
+Quais são gerados automaticamente pela IA (ex.: sentimento, engajamento).
+Quais serão calculados manualmente ou derivados (ex.: SLA, churn).
+
+Isso facilita priorização e evita escopo inchado no início.
+
+8. Gamificação
+
+Boa inclusão — mas vale definir objetivo (retenção, engajamento ou cultura?).
+Sugestão:
+
+MVP: apenas ranking e selos (influente, colaborador, resolvedor).
+Fase 2: reputação acumulativa + leaderboard interno da empresa.
+9. Relatórios e Storytelling
+
+O storytelling é uma joia do ZapTrack.
+Vale explicitar o diferencial:
+
+“O ZapTrack não mostra apenas métricas — ele narra a história da empresa através das conversas, revelando padrões, viradas e riscos emergentes.”
+
+Sugestão de funcionalidade futura:
+
+“Modo Narrativo” → IA cria storytelling automático mensal (resumo estilo board meeting).
+10. Monetização e GTM
+
+O modelo está coerente, mas pode incluir:
+
+Free → ativador de curiosidade
+Gatilho: entregar “3 insights gratuitos da sua empresa”.
+Upgrade automático ao tentar acessar relatórios ou IA avançada.
+Add-ons pagos: exportação de relatórios, IA preditiva, multiusuário.
+11. KPIs Internos de Sucesso do Produto
+
+Incluir para medir o sucesso do ZapTrack (além dos indicadores dos usuários):
+
+% de usuários que conectam com sucesso o WhatsApp
+% que visualizam o primeiro insight
+% que criam um objeto de gestão manualmente
+Retenção 7d / 30d
+Conversão Free → Core → Growth
+12. Identidade Visual e UX DNA
+
+Sugestão para registrar no PRD (útil para UI/UX team):
+
+Estilo: interface “familiar como o WhatsApp, poderosa como o Notion”.
+Tom visual: verde menta + cinza escuro + branco (inteligência e confiança).
+Arquitetura visual: feed vertical, cards modulares, IA contextual flutuante.
+13. Próximos Passos Recomendados
+Criar PRD Técnico do MVP (v1.1) → com integrações, stack e endpoints.
+Criar UX Flow e Wireframes → Onboarding, Feed, Empresa 360°.
+Definir modelo de dados lógico e físico (para Supabase).
+Escrever spec da IA Pipeline (pré-processamento, classificação, embeddings).
+Preparar MVP Lovable Sequence → onboarding → feed → insights.
+💡 Síntese Conclusiva
+
+O PRD v1.0 do ZapTrack já é forte o bastante para:
+
+validar com stakeholders e investidores,
+guiar design de arquitetura e UX, e
+iniciar implementação do MVP com clareza de valor.
+
+Com as melhorias acima, você terá um PRD nível A+, que equilibra visão estratégica, estrutura técnica e viabilidade prática — pronto para o sprint de design e build.
+
+Se quiser, posso agora gerar a versão revisada (v1.1) incorporando todas essas melhorias — no mesmo formato textual do PRD, já pronto para colar no Notion. Deseja que eu faça isso?

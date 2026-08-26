@@ -1,0 +1,34 @@
+flowchart LR
+  U[Usuário / Gestor] --> UI[Web App\nNext.js + React]
+  W[WhatsApp Business Platform\nWebhooks oficiais] --> API[API / Webhook\nRoute Handler]
+  I[Importação controlada\nPiloto] --> API
+  E[Sistemas externos\nCRM / ERP / Delivery] --> API
+
+  API --> RAW[(Postgres\nDados brutos + outbox)]
+  RAW --> JOB[Inngest\nJobs, retries, steps]
+
+  JOB --> N[Normalização\nTimezone, dedupe, threads]
+  N --> X[Extração semântica\nLLM estruturado + regras]
+  X --> C[Contexto\nConversa, contato, empresa]
+  C --> S[Busca híbrida\nFTS + pgvector]
+  X --> O[Objetos de gestão\nTarefa, decisão, oportunidade,\ncompromisso, alerta]
+  O --> F[Feed de atenção\nO que mudou / exige ação]
+  F --> UI
+  UI --> R[Revisão humana\nAceitar / editar / rejeitar]
+  R --> A[Policy Gate\nPermissão + risco + idempotência]
+  A --> ACT[Ações\nTarefa, lembrete, integração]
+  ACT --> AUD[(Audit log\nFeedback + resultado)]
+  AUD --> EVAL[Avaliação\nQualidade, custo, retenção]
+  EVAL --> X
+
+  M[(Object Storage)] -. mídia, áudio, docs .-> JOB
+  JOB -. transcrição / OCR .-> M
+
+  classDef core fill:#0f766e,stroke:#064e3b,color:#fff;
+  classDef data fill:#e0f2fe,stroke:#0369a1,color:#0c4a6e;
+  classDef ai fill:#fef3c7,stroke:#b45309,color:#78350f;
+  classDef ui fill:#ede9fe,stroke:#6d28d9,color:#4c1d95;
+  class API,JOB,N,C,X,O,A,ACT,EVAL core;
+  class RAW,S,M,AUD data;
+  class X,N,EVAL ai;
+  class U,UI,F,R ui;

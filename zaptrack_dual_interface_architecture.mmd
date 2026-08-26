@@ -1,0 +1,46 @@
+flowchart LR
+  U[Gestor] --> WA[WhatsApp\nAgente ZapTrack]
+  U --> APP[Aplicação externa\nPainel de controle]
+
+  WA --> WAH[Webhook do\nnúmero do agente]
+  APP --> API[API de produto\npareamento e gestão]
+  SRC[WhatsApp Business\nfontes autorizadas] --> SRCWH[Webhooks / importação]
+  EXT[CRM / ERP / arquivos\nfontes externas] --> SRCWH
+
+  WAH --> GATE[Identity + Scope +\nPermission Gate]
+  API --> GATE
+  SRCWH --> ING[Ingestão\npayload bruto + dedupe]
+  ING --> DB[(Postgres\nfonte de verdade)]
+
+  DB --> JOB[Jobs duráveis\neventos + retries]
+  JOB --> SEM[Contexto + Semântica\nLLM estruturado + regras]
+  SEM --> OBJ[Objetos de gestão\ntarefa, decisão, oportunidade,\ncompromisso, alerta]
+  SEM --> IDX[Busca híbrida\nFTS + pgvector]
+  OBJ --> FEED[Feed de atenção]
+  IDX --> TOOLS[Tools de domínio\nconsulta tipada]
+  OBJ --> TOOLS
+  DB --> TOOLS
+  FILES[(Object Storage\náudio, imagem, PDF)] --> TOOLS
+
+  GATE --> ROUTER[Roteador do agente\nconsulta / comando / confirmação]
+  ROUTER --> TOOLS
+  TOOLS --> RESP[Resposta com\nfrescor + evidência]
+  RESP --> WA
+
+  TOOLS --> POLICY[Policy Gate de ação\nrisco + autorização + idempotência]
+  POLICY --> ACTIONS[Ações\ncriar, atualizar, lembrar,\nintegrar, exportar]
+  ACTIONS --> AUD[(Auditoria + feedback\nresultado + versões)]
+  AUD --> APP
+  AUD --> EVAL[Avaliação\nqualidade + custo + retenção]
+  EVAL --> JOB
+  OBJ --> APP
+  FEED --> APP
+
+  classDef interface fill:#ede9fe,stroke:#6d28d9,color:#4c1d95;
+  classDef core fill:#0f766e,stroke:#064e3b,color:#fff;
+  classDef data fill:#e0f2fe,stroke:#0369a1,color:#0c4a6e;
+  classDef ai fill:#fef3c7,stroke:#b45309,color:#78350f;
+  class U,WA,APP,RESP,FEED interface;
+  class WAH,API,GATE,ING,OBJ,TOOLS,ROUTER,POLICY,ACTIONS,EVAL core;
+  class DB,FILES,AUD data;
+  class JOB,SEM,IDX ai;

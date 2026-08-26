@@ -1,0 +1,70 @@
+flowchart TB
+  Z[ZapTrack]
+  Z --> APP[Aplicação externa]
+  Z --> WA[Agente no WhatsApp]
+
+  APP --> NOW[Agora]
+  APP --> AREAS[Áreas da empresa]
+  APP --> KNOW[Conhecimento]
+  APP --> ANALYSIS[Análise]
+  APP --> CONTROL[Controle]
+  APP --> ASSIST[Assistente]
+
+  NOW --> NOW1[Visão geral]
+  NOW --> NOW2[Agenda e pendências]
+  NOW --> NOW3[Atenção e atividade]
+
+  subgraph AREAS_MAP[Áreas — mesmas entidades, recortes por contexto]
+    SALES[Comercial]
+    SERVICE[Atendimento]
+    FIN[Financeiro]
+    OPS[Operações]
+    SUP[Suprimentos]
+    PEOPLE[Pessoas]
+    PROJECTS[Projetos]
+    BOARD[Diretoria]
+  end
+  AREAS --> AREAS_MAP
+
+  KNOW --> K1[Conversas]
+  KNOW --> K2[Objetos de gestão]
+  KNOW --> K3[Pessoas e organizações]
+  KNOW --> K4[Arquivos e documentos]
+  KNOW --> K5[Busca global]
+
+  ANALYSIS --> A1[Indicadores]
+  ANALYSIS --> A2[Relatórios e tendências]
+  ANALYSIS --> A3[Histórico de decisões]
+
+  CONTROL --> C1[Revisão da IA]
+  CONTROL --> C2[Aprovações e automações]
+  CONTROL --> C3[Fontes e integrações]
+  CONTROL --> C4[Permissões, privacidade e auditoria]
+
+  ASSIST --> AS1[Chat na aplicação]
+  ASSIST --> AS2[Abrir no WhatsApp]
+
+  WA --> W1[Consultar]
+  WA --> W2[Registrar]
+  WA --> W3[Revisar e confirmar]
+  WA --> W4[Agir e receber atenção]
+
+  NOW -.-> CORE[Núcleo semântico compartilhado]
+  AREAS -.-> CORE
+  KNOW -.-> CORE
+  ANALYSIS -.-> CORE
+  CONTROL -.-> CORE
+  WA -.-> CORE
+
+  classDef root fill:#0f172a,stroke:#0f172a,color:#ffffff,font-size:20px;
+  classDef surface fill:#1d4ed8,stroke:#1e40af,color:#ffffff,font-size:16px;
+  classDef nav fill:#e0f2fe,stroke:#0284c7,color:#0c4a6e,font-size:15px;
+  classDef area fill:#dcfce7,stroke:#16a34a,color:#14532d,font-size:13px;
+  classDef leaf fill:#f8fafc,stroke:#94a3b8,color:#334155,font-size:12px;
+  classDef core fill:#fef3c7,stroke:#d97706,color:#78350f,font-size:15px;
+  class Z root;
+  class APP,WA surface;
+  class NOW,AREAS,KNOW,ANALYSIS,CONTROL,ASSIST nav;
+  class SALES,SERVICE,FIN,OPS,SUP,PEOPLE,PROJECTS,BOARD area;
+  class NOW1,NOW2,NOW3,K1,K2,K3,K4,K5,A1,A2,A3,C1,C2,C3,C4,AS1,AS2,W1,W2,W3,W4 leaf;
+  class CORE core;

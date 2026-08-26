@@ -1,0 +1,842 @@
+Perfeito.
+A seguir está o Backlog Técnico de Execução — ZapTrack v4.1.2 (MÓDULO 2/4), cobrindo integralmente os Temas 4 e 5, com User Stories por extenso, Acceptance Criteria (AC), Definition of Done (DoD) e Prioridade.
+Este módulo representa o núcleo de visão e controle do gestor — onde o ZapTrack deixa de ser apenas uma ferramenta de captura e passa a oferecer uma visão 360° das empresas, contatos e resultados.
+
+ZAPTRACK — BACKLOG TÉCNICO DE EXECUÇÃO v4.1.2
+
+MÓDULO 2 — Organização e Visão 360°
+Temas 4 e 5: Empresas, Contatos, Locais, Feed, Dashboards e Impacto Organizacional
+
+TEMA 4 — Empresas, Contatos e Locais 360°
+
+O ZapTrack deve consolidar todos os dados e interações em uma visão integrada por empresa, contato e grupo, permitindo análise contextual, gestão relacional e acompanhamento de indicadores de desempenho.
+
+ÉPICO 4.1 — Gestão de Empresas
+Feature 4.1.1 — Empresa 360° (ZAP-4.1.1)
+
+User Story:
+Como gestor, quero visualizar todas as informações de uma empresa em uma única tela (mensagens, tarefas, decisões, oportunidades, contatos e sentimento), para compreender rapidamente o status do relacionamento e tomar decisões assertivas.
+
+Acceptance Criteria:
+
+Tela única com abas: Visão Geral, Feed, Objetos, Pessoas, Locais e Relatórios.
+Indicadores principais (sentimento, tarefas abertas, oportunidades, engajamento).
+Navegação entre abas sem recarregar a página.
+Tempo de carregamento ≤ 2 segundos.
+
+Definition of Done:
+
+Dados consolidados e atualizados em tempo real.
+Empty states explicativos e úteis.
+Testes de responsividade e UX aprovados.
+
+Prioridade: Core
+
+Feature 4.1.2 — Lista e Cards de Empresas (ZAP-4.1.2)
+
+User Story:
+Como gestor, quero visualizar todas as empresas em formato de lista ou cards, com indicadores resumidos (tarefas, oportunidades, sentimento), para priorizar onde concentrar minha atenção.
+
+Acceptance Criteria:
+
+Cards com nome, sentimento médio, nº de tarefas e oportunidades.
+Filtros por sentimento, status e atividade recente.
+Ordenação por engajamento, volume de mensagens e risco.
+
+Definition of Done:
+
+KPIs calculados corretamente.
+Filtros funcionais e persistentes por usuário.
+
+Prioridade: Core
+
+Feature 4.1.3 — Relatórios de Empresa (ZAP-4.1.3)
+
+User Story:
+Como gestor, quero gerar relatórios específicos por empresa, contendo principais conversas, oportunidades, tarefas e decisões, para acompanhar desempenho e evolução do relacionamento.
+
+Acceptance Criteria:
+
+Relatório com filtros de período e tipo de objeto.
+Exportação em PDF e Excel.
+Tempo de geração ≤ 10 segundos.
+
+Definition of Done:
+
+Relatório completo, com gráficos e legendas.
+Layout responsivo e compatível com impressão.
+
+Prioridade: Growth
+
+ÉPICO 4.2 — Contatos, Grupos e Comunidades
+Feature 4.2.1 — Contatos Inteligentes (ZAP-4.2.1)
+
+User Story:
+Como gestor, quero visualizar todos os contatos com seus indicadores de engajamento, sentimento e influência, para identificar quem são os principais atores dentro das empresas e comunidades.
+
+Acceptance Criteria:
+
+Ficha de contato com foto, função, empresa e sentimento médio.
+Indicadores: nº de mensagens, tempo de resposta e influência.
+Ranking de contatos mais ativos e influentes.
+
+Definition of Done:
+
+Dados agregados em tempo real.
+Possibilidade de mesclar contatos duplicados.
+
+Prioridade: Growth
+
+Feature 4.2.2 — Locais (Conversas, Grupos, Comunidades) (ZAP-4.2.2)
+
+User Story:
+Como usuário, quero visualizar todas as conversas e grupos em que participo, com indicadores de atividade, engajamento e sentimento, para entender a saúde de cada canal de comunicação.
+
+Acceptance Criteria:
+
+Hierarquia 1:1 → Grupo → Comunidade.
+Indicadores: mensagens/dia, membros ativos, sentimento, picos de atividade.
+Heatmap de engajamento (dias/horários ativos).
+
+Definition of Done:
+
+KPIs consistentes entre níveis.
+Interface validada em UX tests.
+
+Prioridade: Core
+
+Feature 4.2.3 — Mapa de Interações (ZAP-4.2.3)
+
+User Story:
+Como gestor, quero visualizar um mapa de conexões entre contatos e grupos (quem fala com quem e com que frequência), para identificar influenciadores e gargalos de comunicação.
+
+Acceptance Criteria:
+
+Grafo de interações dinâmico e filtrável por período.
+Tamanho do nó proporcional à atividade.
+Cores distintas por polaridade de sentimento.
+
+Definition of Done:
+
+Visualização interativa validada em protótipo.
+Cálculo de centralidade verificado.
+
+Prioridade: Game Changer
+
+ÉPICO 4.3 — Relacionamentos e Engajamento
+Feature 4.3.1 — Histórico Relacional (ZAP-4.3.1)
+
+User Story:
+Como gestor, quero visualizar o histórico completo de interações entre minha empresa e um cliente (tarefas, decisões, alertas e oportunidades), para entender a trajetória do relacionamento.
+
+Acceptance Criteria:
+
+Linha do tempo consolidada com eventos.
+Filtros por tipo de objeto e data.
+Link direto para mensagens de origem.
+
+Definition of Done:
+
+Timeline testada com datasets reais.
+Consistência entre histórico e entidades.
+
+Prioridade: Core
+
+Feature 4.3.2 — Pontuação de Engajamento (ZAP-4.3.2)
+
+User Story:
+Como gestor, quero que o sistema calcule uma pontuação de engajamento por empresa e contato, considerando frequência, sentimento e tempo de resposta, para priorizar relacionamentos estratégicos.
+
+Acceptance Criteria:
+
+Score entre 0–100 visível em cards e relatórios.
+Atualização automática diária.
+Fórmula de cálculo documentada e auditável.
+
+Definition of Done:
+
+Validação estatística de correlação entre score e resultados.
+Exibição consistente em todos os painéis.
+
+Prioridade: Growth
+
+TEMA 5 — Feed, Dashboards e Impacto Organizacional
+
+O ZapTrack deve transformar dados em visão. O gestor precisa ver tudo que importa em um só lugar — o que aconteceu, o que mudou e o que precisa de atenção.
+
+ÉPICO 5.1 — Feed Unificado
+Feature 5.1.1 — Feed Cronológico (ZAP-5.1.1)
+
+User Story:
+Como usuário, quero visualizar todas as ações e objetos do sistema (tarefas, decisões, oportunidades, alertas) em uma linha do tempo única, ordenada cronologicamente, para acompanhar facilmente tudo o que está acontecendo.
+
+Acceptance Criteria:
+
+Cards diferenciados por tipo de objeto.
+Filtros por empresa, tipo e prioridade.
+Paginação ou scroll infinito.
+Busca global por palavra-chave.
+
+Definition of Done:
+
+Performance ≤ 500ms p95 por página.
+Testes de usabilidade e contraste aprovados.
+
+Prioridade: Core
+
+Feature 5.1.2 — Feed de Relevância (Conversas que Importam) (ZAP-5.1.2)
+
+User Story:
+Como gestor, quero que o feed destaque automaticamente as conversas e decisões mais relevantes (por impacto, urgência e sentimento), para que eu saiba onde agir primeiro.
+
+Acceptance Criteria:
+
+Algoritmo de relevância combinando 4 fatores: impacto, urgência, sentimento e recência.
+Explicação curta (“por que este item é relevante”).
+Seção “O que mudou desde sua última visita”.
+
+Definition of Done:
+
+Modelo de relevância testado e calibrado com dados reais.
+Feedback de usuário integrado para refinar ranking.
+
+Prioridade: Game Changer
+
+ÉPICO 5.2 — Dashboards e Relatórios
+Feature 5.2.1 — Painel Operacional (ZAP-5.2.1)
+
+User Story:
+Como gestor, quero acessar um painel com métricas de desempenho geral (volume de mensagens, tarefas, decisões, sentimento, SLA), para acompanhar a produtividade e a saúde das interações.
+
+Acceptance Criteria:
+
+Gráficos dinâmicos por período e tipo de objeto.
+Filtros por empresa, contato e grupo.
+Exportação para PDF e Excel.
+
+Definition of Done:
+
+Dados consistentes com o banco principal.
+Atualização em tempo real validada.
+
+Prioridade: Core
+
+Feature 5.2.2 — Painel de Impacto Organizacional (ZAP-5.2.2)
+
+User Story:
+Como CEO, quero ver quantas decisões, tarefas e oportunidades surgiram a partir das conversas, e qual valor de negócio isso gerou, para entender o impacto real da comunicação na gestão.
+
+Acceptance Criteria:
+
+KPIs: nº de decisões, tarefas e oportunidades criadas, % concluídas, valor agregado.
+Comparativos semanais e mensais.
+Destaques automáticos (“Esta semana: +12 decisões tomadas”).
+
+Definition of Done:
+
+Painel validado com dados reais de 3 empresas piloto.
+Exportação e compartilhamento funcionando.
+
+Prioridade: Game Changer
+
+Feature 5.2.3 — Monday Mode (Resumo Semanal de Gestão) (ZAP-5.2.3)
+
+User Story:
+Como gestor, quero receber automaticamente toda segunda-feira um resumo com as principais ações, decisões, pendências e oportunidades da semana anterior, para planejar minhas prioridades.
+
+Acceptance Criteria:
+
+Envio automático configurável (horário e canal).
+Estrutura: destaques, alertas, oportunidades e tarefas.
+Opção de visualização no painel e e-mail.
+
+Definition of Done:
+
+Envio validado e rastreável.
+Logs e status de entrega acessíveis.
+
+Prioridade: Growth
+
+ÉPICO 5.3 — Gamificação e Reconhecimento
+Feature 5.3.1 — Ranking de Membros Ativos (ZAP-5.3.1)
+
+User Story:
+Como gestor, quero visualizar quem são os membros mais ativos e engajados nos grupos e comunidades, para reconhecer contribuições e estimular boas práticas.
+
+Acceptance Criteria:
+
+Ranking atualizado semanalmente.
+Critérios de pontuação configuráveis.
+Exibição em painel e no perfil do contato.
+
+Definition of Done:
+
+Métricas auditáveis e replicáveis.
+Testes de UX e feedback positivo.
+
+Prioridade: Growth
+
+Feature 5.3.2 — Badges e Recompensas (ZAP-5.3.2)
+
+User Story:
+Como usuário, quero receber badges automáticos (Promotor, Colaborador, Influente, Resolvedor), para reconhecer meu engajamento e incentivar minha participação.
+
+Acceptance Criteria:
+
+Regras de atribuição claras e automáticas.
+Badges visíveis no perfil e no ranking.
+Recalculo semanal das pontuações.
+
+Definition of Done:
+
+Implementação testada e consistente.
+Regras revisadas pelo time de produto.
+
+Prioridade: Growth
+
+Resumo do Módulo 2
+Categoria	Quantidade
+Temas	2
+Épicos	6
+Features	14
+User Stories	14
+Acceptance Criteria e DoD completos	Sim
+
+Conclusão do Módulo 2:
+Este módulo estabelece o núcleo organizacional e de visão do ZapTrack.
+Agora o gestor passa a enxergar o todo, navegar pelas relações, medir impacto e criar hábito de acompanhamento.
+A partir deste ponto, o produto evolui para decisão inteligente e ação assistida pela IA, cobertas no Módulo 3.
+
+Deseja que eu prossiga agora com o Módulo 3 (Temas 6 e 7: Alertas, Preditivos, Decisão e Copiloto Conversacional), mantendo o mesmo nível de completude e profissionalismo?
+
+sim
+
+Perfeito.
+A seguir está o Backlog Técnico de Execução — ZapTrack v4.1.2 (MÓDULO 3/4), cobrindo integralmente os Temas 6 e 7, com User Stories por extenso, Acceptance Criteria (AC), Definition of Done (DoD) e Prioridade.
+Este módulo é o cérebro ativo e preditivo do ZapTrack — onde a plataforma deixa de ser apenas observadora e passa a atuar como um copiloto de gestão e tomada de decisão.
+
+ZAPTRACK — BACKLOG TÉCNICO DE EXECUÇÃO v4.1.2
+
+MÓDULO 3 — Ação, Decisão e Copilotagem
+Temas 6 e 7: Alertas, Preditivos, Decisão e IA Coach
+
+TEMA 6 — Alertas, Preditivos e Decisão
+
+O ZapTrack deve antecipar riscos, destacar oportunidades e apoiar decisões gerenciais. Ele transforma o “aconteceu” em “o que fazer agora”.
+
+ÉPICO 6.1 — Alertas Inteligentes e Riscos Preditivos
+Feature 6.1.1 — Detecção de Oportunidades (ZAP-6.1.1)
+
+User Story:
+Como gestor comercial, quero receber um alerta sempre que o sistema identificar uma possível oportunidade em uma conversa ou grupo, baseada em menções a interesse, necessidade ou follow-up, para agir rapidamente e aumentar minhas chances de fechamento.
+
+Acceptance Criteria:
+
+O sistema detecta expressões de intenção (“precisamos”, “vamos conversar”, “pode me mandar proposta”).
+Notificações configuráveis por canal (e-mail, painel, WhatsApp).
+Cada alerta contém o link direto para a conversa original.
+Precisão mínima de 80% nos casos de detecção de intenção.
+
+Definition of Done:
+
+Modelo de NLP treinado e validado com dataset rotulado.
+Painel de alertas integrado ao feed principal.
+
+Prioridade: Core
+
+Feature 6.1.2 — Alerta de Risco de Churn (ZAP-6.1.2)
+
+User Story:
+Como gestor de relacionamento, quero receber alertas automáticos quando um cliente demonstrar insatisfação ou desinteresse nas conversas, para agir antes que ele cancele ou deixe de comprar.
+
+Acceptance Criteria:
+
+Identificação de expressões negativas (“não vale a pena”, “vou parar”, “caro demais”).
+Cálculo de probabilidade de churn com base em sentimento + frequência de resposta.
+Notificação de prioridade alta exibida no painel e enviada por e-mail.
+
+Definition of Done:
+
+Modelo de churn testado e calibrado (precisão ≥ 75%).
+Logs de alertas e ações geradas armazenados.
+
+Prioridade: Growth
+
+Feature 6.1.3 — Alerta de Problemas de Alto Impacto (ZAP-6.1.3)
+
+User Story:
+Como gestor operacional, quero ser notificado quando o sistema detectar conversas sobre falhas, atrasos ou reclamações críticas, para intervir imediatamente e evitar danos à reputação da empresa.
+
+Acceptance Criteria:
+
+Palavras-chave e padrões predefinidos (falha, erro, insatisfeito, cancelamento).
+Alertas de alta prioridade destacados em vermelho.
+Histórico de ações tomadas vinculado ao alerta.
+
+Definition of Done:
+
+Regras e dicionário de termos sensíveis validados.
+Painel de alertas categorizado por tipo de risco.
+
+Prioridade: Core
+
+Feature 6.1.4 — Aprendizado Contínuo de Alertas (ZAP-6.1.4)
+
+User Story:
+Como gestor, quero que o sistema aprenda com meus feedbacks sobre alertas úteis ou irrelevantes, para que as futuras notificações sejam cada vez mais precisas e personalizadas.
+
+Acceptance Criteria:
+
+Opções “Útil” e “Não relevante” em cada alerta.
+Modelo ajusta pesos automaticamente com base no feedback.
+Estatísticas de acerto exibidas no painel de configuração.
+
+Definition of Done:
+
+Logs de feedback armazenados por usuário.
+Validação de melhoria progressiva em 3 ciclos de teste.
+
+Prioridade: Growth
+
+ÉPICO 6.2 — Decisão Assistida e Gestão do Dia
+Feature 6.2.1 — Painel “Decida Agora” (ZAP-6.2.1)
+
+User Story:
+Como gestor, quero visualizar todas as decisões pendentes detectadas nas conversas, com contexto e opções rápidas de ação, para resolver assuntos diretamente pelo painel e manter a empresa ágil.
+
+Acceptance Criteria:
+
+Lista de decisões pendentes com status e responsáveis.
+Botões de ação rápida (Aprovar, Rejeitar, Aguardar).
+Registro automático de decisão tomada e quem decidiu.
+
+Definition of Done:
+
+Fluxo validado com 3 perfis de gestor.
+Registro de decisão persistente e auditável.
+
+Prioridade: Game Changer
+
+Feature 6.2.2 — Painel “Gestão do Dia” (ZAP-6.2.2)
+
+User Story:
+Como gestor, quero iniciar meu dia com uma visão consolidada de tudo que preciso fazer — tarefas, decisões, oportunidades e alertas — para planejar minhas prioridades de forma clara e objetiva.
+
+Acceptance Criteria:
+
+Painel diário com data e status de pendências.
+Seções: tarefas, decisões, oportunidades, alertas.
+Destaques automáticos de urgência e impacto.
+
+Definition of Done:
+
+Atualização automática ao iniciar o dia.
+Exportação em PDF e notificação por e-mail.
+
+Prioridade: Game Changer
+
+Feature 6.2.3 — IA de Recomendações de Ação (ZAP-6.2.3)
+
+User Story:
+Como gestor, quero que o sistema recomende ações concretas com base nas conversas e indicadores (ex: “mande um follow-up”, “reagende reunião”, “parabenize o cliente”), para aumentar minha efetividade diária.
+
+Acceptance Criteria:
+
+Recomendações contextuais em cards ou sidebar.
+Cada recomendação vinculada à origem (mensagem/objeto).
+Taxa de adoção e feedback medidos.
+
+Definition of Done:
+
+Regras de geração documentadas.
+Logs de ações tomadas via recomendação.
+
+Prioridade: Growth
+
+ÉPICO 6.3 — IA Analítica e Sinais Preditivos
+Feature 6.3.1 — Sinais de Urgência (ZAP-6.3.1)
+
+User Story:
+Como gestor, quero que o sistema identifique conversas urgentes (com prazos, entregas ou insatisfação iminente), para priorizar meu tempo e evitar crises.
+
+Acceptance Criteria:
+
+Detecção de expressões com datas, prazos e termos críticos.
+Classificação automática de prioridade (Alta, Média, Baixa).
+Filtro de urgências no painel principal.
+
+Definition of Done:
+
+Modelo de priorização calibrado.
+Alertas exibidos e filtráveis.
+
+Prioridade: Growth
+
+Feature 6.3.2 — Sinais de Oportunidade de Upsell (ZAP-6.3.2)
+
+User Story:
+Como gestor comercial, quero identificar clientes satisfeitos e engajados para oferecer novos produtos ou serviços, aumentando o faturamento sem precisar prospectar novos contatos.
+
+Acceptance Criteria:
+
+Detecção de sentimento positivo e alta frequência de interação.
+Sugestões automáticas de “Oportunidade de Upsell”.
+Métrica de conversão acompanhada.
+
+Definition of Done:
+
+Logs de recomendações armazenados.
+Teste A/B com 2 grupos piloto concluído.
+
+Prioridade: Growth
+
+TEMA 7 — Copiloto Conversacional e IA Coach
+
+O ZapTrack deve atuar como um copiloto de gestão que pensa junto com o gestor, explicando, sugerindo e acompanhando ações de forma proativa e natural.
+
+ÉPICO 7.1 — Copiloto Conversacional
+Feature 7.1.1 — Chat Contextual (ZAP-7.1.1)
+
+User Story:
+Como gestor, quero conversar diretamente com o ZapTrack em linguagem natural, perguntando sobre conversas, empresas ou indicadores, para obter respostas rápidas e contextualizadas sem precisar navegar manualmente.
+
+Acceptance Criteria:
+
+O chat entende contexto (empresa, data, tema).
+Respostas citam dados reais do sistema.
+Histórico da conversa mantido na sessão.
+
+Definition of Done:
+
+Contexto preservado por 5 interações consecutivas.
+Logs de queries e respostas salvos.
+
+Prioridade: Core
+
+Feature 7.1.2 — IA Coach Proativa (ZAP-7.1.2)
+
+User Story:
+Como gestor, quero que a IA me envie insights espontâneos com base nos meus padrões de uso e resultados (“Você costuma decidir rápido, mas atrasou 3 decisões esta semana”), para desenvolver minha consciência e performance gerencial.
+
+Acceptance Criteria:
+
+Sistema identifica padrões de comportamento.
+Envia até 3 notificações semanais personalizadas.
+Usuário pode ativar/desativar recomendações.
+
+Definition of Done:
+
+Algoritmo de perfil gerencial validado.
+Feedback de utilidade coletado.
+
+Prioridade: Game Changer
+
+ÉPICO 7.2 — Assistente de Acompanhamento
+Feature 7.2.1 — Follow-up Automático (ZAP-7.2.1)
+
+User Story:
+Como gestor, quero que o sistema acompanhe automaticamente decisões e tarefas abertas, enviando lembretes e follow-ups inteligentes, para garantir que nada fique esquecido.
+
+Acceptance Criteria:
+
+Notificações automáticas baseadas em prazos.
+Opção de reagendar e marcar como resolvido.
+Histórico de follow-ups enviados.
+
+Definition of Done:
+
+Lógica de recorrência configurável.
+Logs de envio e resposta registrados.
+
+Prioridade: Core
+
+Feature 7.2.2 — Acompanhamento de Resultados (ZAP-7.2.2)
+
+User Story:
+Como CEO, quero receber um resumo das metas e resultados alcançados a partir das conversas (ex: número de oportunidades geradas, decisões tomadas), para avaliar o progresso da equipe.
+
+Acceptance Criteria:
+
+KPIs exibidos: decisões tomadas, tarefas concluídas, oportunidades convertidas.
+Comparativo semanal e mensal.
+Relatório automático entregue ao gestor principal.
+
+Definition of Done:
+
+Relatório auditável e testado com datasets reais.
+Painel validado em UX test.
+
+Prioridade: Growth
+
+Feature 7.2.3 — Memória Executiva (ZAP-7.2.3)
+
+User Story:
+Como gestor, quero que o sistema mantenha uma memória das decisões e padrões de comportamento da empresa, para que as futuras recomendações e análises considerem histórico e contexto.
+
+Acceptance Criteria:
+
+Histórico armazenado em estrutura de conhecimento (Knowledge Graph).
+IA acessa dados passados para novas recomendações.
+Retenção mínima de 12 meses de histórico.
+
+Definition of Done:
+
+Infraestrutura de dados validada (consultas e performance).
+Política de retenção configurada.
+
+Prioridade: Game Changer
+
+Resumo do Módulo 3
+Categoria	Quantidade
+Temas	2
+Épicos	6
+Features	15
+User Stories	15
+AC e DoD detalhados	Sim
+
+Conclusão do Módulo 3:
+Este é o módulo transformacional do ZapTrack — onde a IA deixa de apenas interpretar e passa a agir, sugerir e aprender.
+Com alertas inteligentes, painéis de decisão e um coach proativo, o ZapTrack se torna um verdadeiro assistente gerencial contínuo, capaz de antecipar riscos, recomendar ações e moldar hábitos de liderança.
+
+Posso seguir agora com o Módulo 4 (Temas 8 a 13: Experiência, Segurança, Sustentação e Monetização) — o último bloco, que fecha o backlog completo e transforma o produto em uma plataforma escalável, confiável e pronta para o mercado?
+
+agora o roadmap estrategico dos primeiros 12 meses com releases trimestrais
+
+Perfeito.
+A seguir está o Roadmap Estratégico de Produto – ZapTrack 12 Meses, estruturado em releases trimestrais, com visão estratégica, técnica e de produto.
+Ele foi elaborado com base nos backlogs v4.1.2 (Módulos 1 a 3 já entregues e Módulo 4 previsto), e reflete uma progressão inteligente, incremental e validável — garantindo valor real a cada release, com complexidade crescente e risco controlado.
+
+ZAPTRACK — ROADMAP ESTRATÉGICO 12 MESES
+
+Versão: 1.0
+Horizonte: 0–12 meses
+Ciclos: 4 trimestres
+Pilares: Inteligência, Gestão, Ação e Escala
+
+VISÃO GERAL DO ROADMAP
+
+O roadmap do ZapTrack foi planejado para evoluir de um MVP centrado em captura e estruturação para uma plataforma de inteligência gerencial completa.
+
+A lógica estratégica segue a trilha:
+
+Capturar → Entender → Agir → Escalar
+
+TRIMESTRE 1 (0–3 meses) — MVP INTELIGENTE
+
+Objetivo estratégico:
+Validar a captura, estruturação e compreensão das conversas de WhatsApp, provando o valor central do ZapTrack: transformar mensagens em objetos de gestão.
+
+Foco:
+“Ver o que antes era invisível.”
+
+Resultados esperados:
+Usuário já visualiza tarefas, decisões e oportunidades extraídas de conversas reais.
+
+Principais Entregas
+
+1. Conexão e Estruturação
+
+Login via QR Code e sincronização de conversas.
+Importação e atualização em tempo real.
+Estruturação em Empresa, Contato, Local e Mensagem.
+
+2. Processamento e Classificação
+
+Tokenização e embeddings básicos.
+Extração de entidades (nomes, datas, valores, compromissos).
+Classificação automática de mensagens por tipo (tarefa, decisão, oportunidade).
+
+3. Gestão de Objetos
+
+Cards interativos de Tarefas, Decisões e Oportunidades.
+Criação manual e automática.
+Vínculos com Empresa e Contato.
+
+4. UX e Feed Base
+
+Feed cronológico com cards de objetos.
+Filtros básicos e busca global.
+Marcos de validação
+10 empresas e 100 grupos conectados.
+90% de sucesso na importação.
+80% de precisão nas classificações iniciais.
+1° feedback qualitativo com gestores.
+Release interno:
+
+v0.9 – MVP Fechado (Beta Técnico)
+v1.0 – MVP Público Controlado (10 clientes piloto)
+
+TRIMESTRE 2 (4–6 meses) — VISÃO 360° E RESUMOS AUTOMÁTICOS
+
+Objetivo estratégico:
+Consolidar a visão gerencial completa por empresa e iniciar a automação de síntese — permitindo que o gestor entenda o contexto sem precisar ler tudo.
+
+Foco:
+“Entender rápido. Decidir melhor.”
+
+Resultados esperados:
+Gestor visualiza empresas com visão 360°, tem resumos automáticos e primeiros insights de engajamento e sentimento.
+
+Principais Entregas
+
+1. Empresa 360° e Contatos Inteligentes
+
+Tela Empresa com abas (Visão Geral, Feed, Objetos, Pessoas, Locais, Relatórios).
+Cards de empresa e contato com indicadores.
+Relatórios individuais e exportação.
+
+2. Resumos e Storytelling
+
+Resumos automáticos de conversas (contexto, decisões, próximos passos).
+Storytelling gerencial básico.
+Programação de envio de resumos diários e semanais.
+
+3. Sentimento e Engajamento
+
+Detecção de sentimento nas conversas.
+Métricas de engajamento por contato, grupo e empresa.
+
+4. UX e Dashboard Operacional
+
+Painel com métricas básicas de mensagens, tarefas e sentimento.
+“Monday Mode” – resumo semanal de gestão.
+Marcos de validação
+85% de precisão nos resumos automáticos.
+90% de satisfação em usabilidade.
+1.000 conversas analisadas.
+Primeiras renovações e recomendações orgânicas.
+Release:
+
+v1.5 – “Ver e Entender”
+
+TRIMESTRE 3 (7–9 meses) — AÇÃO E DECISÃO ASSISTIDA
+
+Objetivo estratégico:
+Transformar o ZapTrack em um copiloto de gestão: prever, alertar e orientar decisões.
+A IA deixa de observar e passa a atuar proativamente.
+
+Foco:
+“Não só ver o que aconteceu, mas o que fazer a seguir.”
+
+Resultados esperados:
+O gestor é avisado de riscos, oportunidades e decisões pendentes, com recomendações de ação e apoio à rotina diária.
+
+Principais Entregas
+
+1. Alertas Inteligentes
+
+Detecção automática de oportunidades, churn e riscos críticos.
+Notificações configuráveis e painel de alertas.
+Feedback de relevância (“Útil” / “Não relevante”).
+
+2. Decisão e Gestão do Dia
+
+Painel “Decida Agora” com decisões pendentes.
+Painel “Gestão do Dia” com tarefas, alertas e oportunidades.
+Recomendação de ação (“envie follow-up”, “confirme prazo”).
+
+3. IA Coach Proativo
+
+Envio de insights personalizados (“você adiou 3 decisões esta semana”).
+Recomendações de melhoria de performance.
+
+4. Copiloto Conversacional
+
+Chat com compreensão contextual.
+Consultas sobre empresas, decisões e resultados.
+Marcos de validação
+75% de precisão nos alertas de oportunidade e risco.
+90% de taxa de uso do painel “Gestão do Dia” entre gestores ativos.
+Tempo médio de decisão reduzido em 30%.
+Primeiros dados preditivos para evolução do modelo.
+Release:
+
+v2.0 – “Decida e Aja”
+
+TRIMESTRE 4 (10–12 meses) — ESCALA, APRENDIZADO E PLATAFORMA
+
+Objetivo estratégico:
+Escalar o produto para múltiplas empresas, consolidar aprendizado e monetização.
+O ZapTrack se torna uma plataforma de gestão conversacional inteligente, pronta para crescimento acelerado.
+
+Foco:
+“Aprender, crescer e gerar impacto contínuo.”
+
+Resultados esperados:
+Produto robusto, autônomo e com modelo de monetização validado.
+
+Principais Entregas
+
+1. Aprendizado Contínuo e Memória Executiva
+
+Feedback ativo em alertas, resumos e decisões.
+Knowledge Graph com histórico de decisões e padrões.
+Painel de aprendizado pessoal e organizacional.
+
+2. Dashboards Avançados e Impacto
+
+Painel de impacto organizacional (decisões, tarefas, valor gerado).
+Comparativos semanais, mensais e por área.
+Exportações profissionais e relatórios executivos.
+
+3. Gamificação e Engajamento
+
+Ranking de membros ativos e influentes.
+Badges automáticos e reputação.
+
+4. Infraestrutura, Monetização e Segurança
+
+Planos (Free, Basic, Core, Growth, Enterprise).
+Painel de administração multiempresa.
+Logs, permissões e trilhas de auditoria.
+Marcos de validação
+3.000 usuários ativos mensais.
+20 empresas B2B em operação contínua.
+Retenção > 80% em 3 meses.
+Receita validada e escalável.
+Release:
+
+v3.0 – “Aprenda e Cresça”
+
+MAPA DE EVOLUÇÃO DE VALOR
+Trimestre	Foco Principal	Benefício Direto para o Gestor
+T1	Capturar e Estruturar	Ver o que acontece nas conversas
+T2	Entender e Sintetizar	Entender rápido, decidir melhor
+T3	Agir e Decidir	Saber o que fazer e quando agir
+T4	Escalar e Aprender	Aprender continuamente e crescer
+MÉTRICAS-CHAVE DE SUCESSO (OKRs)
+
+Objetivo 1 — Entregar valor visível em 90 dias
+
+KR1: 90% de sucesso em conexão e importação.
+KR2: 80% de precisão nas classificações.
+KR3: 50% dos gestores usando painéis semanais.
+
+Objetivo 2 — Gerar clareza e autonomia em 180 dias
+
+KR1: 85% de satisfação com resumos automáticos.
+KR2: 70% dos usuários usando Empresa 360°.
+KR3: 20 empresas pagantes no plano Core.
+
+Objetivo 3 — Atuar como copiloto em 270 dias
+
+KR1: 75% de precisão em alertas preditivos.
+KR2: 90% de uso do Painel Gestão do Dia.
+KR3: 50% de decisões registradas via ZapTrack.
+
+Objetivo 4 — Escalar e consolidar a base em 360 dias
+
+KR1: 3.000 usuários ativos mensais.
+KR2: 80% de retenção após 3 meses.
+KR3: Receita MRR > R$ 200 mil.
+RESUMO ESTRATÉGICO
+
+O ZapTrack nasce como uma ferramenta de observação e evolui em 12 meses para um copiloto de gestão conversacional.
+Cada trimestre entrega valor tangível e novo comportamento de uso, gerando um ciclo de crescimento sustentável:
+
+T1: Estrutura → dados e clareza.
+T2: Inteligência → entendimento e síntese.
+T3: Ação → decisão e execução guiada.
+T4: Escala → aprendizado e modelo de negócio.
+
+Deseja que eu gere agora a versão visual do Roadmap (linha do tempo trimestral em formato estruturado de texto) — ideal para apresentação a stakeholders e investidores?
