@@ -1,16 +1,21 @@
 /**
- * ZT-004/005 — WhatsAppProvider factory
- * Ponytail: factory pattern reading APP_MODE from .env.local, English identifiers only
+ * ZT-004/005/013 — WhatsAppProvider factory
+ * Ponytail: factory pattern reading WHATSAPP_PROVIDER_TYPE from .env.local, English identifiers only
  * createWhatsAppProvider(type, config) returns the appropriate provider instance
- * Provider adapter pattern: substituiível; MockProvider primeiro; spike UAZAPI depois
+ * Provider adapter pattern: substituiível; MockProvider primeiro; spike UAZAPI depois; alternativa se falhar
+ * Build-first: MockProvider always available; real provider integration when configured
  */
 
 import { WhatsAppProvider } from './provider';
 import { MockWhatsAppProvider } from './mockProvider';
+import { UAZAPIMockProvider } from './uazapiProvider';
+
+// Read provider type from environment, default to 'mock' for safety
+const WHATSAPP_PROVIDER_TYPE = process.env.WHATSAPP_PROVIDER_TYPE || 'mock';
 
 // Factory function that creates the appropriate provider based on type
 export function createWhatsAppProvider(
-  type: 'mock' | 'uazapi' | 'evolution' | 'waha',
+  type: string = WHATSAPP_PROVIDER_TYPE,
   config: Record<string, unknown> = {}
 ): WhatsAppProvider {
   switch (type) {
@@ -20,8 +25,10 @@ export function createWhatsAppProvider(
       return mockProvider;
 
     case 'uazapi':
-      // TODO: Implement real UAZAPI provider when available
-      throw new Error('UAZAPI provider not yet implemented. See ZT-012 spike.');
+      // UAZAPI spike provider — uses mock fallback since no real account configured
+      const uazapiProvider = new UAZAPIMockProvider();
+      uazapiProvider.initialize();
+      return uazapiProvider;
 
     case 'evolution':
       // TODO: Implement Evolution API provider when available
@@ -32,6 +39,6 @@ export function createWhatsAppProvider(
       throw new Error('WABA provider not yet implemented.');
 
     default:
-      throw new Error(`Unknown WhatsApp provider type: ${type}. Use 'mock', 'uazapi', 'evolution', or 'waha'.`);
+      throw new Error(`Unknown WhatsApp provider type: ${type}. Use 'mock', 'uazapi', 'evolution', or 'waha'. Set WHATSAPP_PROVIDER_TYPE in .env.local.`);
   }
 }
