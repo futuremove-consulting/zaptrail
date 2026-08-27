@@ -1,7 +1,9 @@
-/** ZT-011 — ZapTrail Read-Only Agent
- * Ponytail: read-only agent using shared core, English identifiers only, no external irreversible actions
+/** ZT-014 — ZapTrail Liberated Read-Only Agent
+ * Ponytail: read-only agent with confirmed limited mutations, English identifiers only
+ * No external irreversible actions — all mutations require explicit user confirmation
  * Agent queries context, pending objects, decisions, evidence — returns structured responses
  * Following the "identidade → autorização → recuperação → evidência → resposta/ação" pipeline
+ * All architectural decisions frozen (global_rules.md §9, all ADRs fechado)
  */
 
 import { useState, useEffect } from 'react'
@@ -9,7 +11,10 @@ import { extractObjectFromMessage, batchExtractObjects, inferObjectType } from '
 import { onboardingFixtures } from '@/mocks/whatsapp/mock-fixtures'
 import { managementObjects } from '@/app/(app)/onboarding/onboarding.context' // placeholder for actual context
 
-/** Agent response format (per journey docs §8, §13) */
+/** Agent action types — per ZT-014 read-only policy */
+export type AgentActionType = 'read-only' | 'confirmable' | 'irreversible'
+
+/** Agent response format (per journey docs §8, §13, §ZT-014) */
 export type AgentResponse = {
   /** Resposta direta ao usuário */
   respostaDireta: string
@@ -28,12 +33,12 @@ export type AgentResponse = {
     mensagemId: string
     excerto: string
   }
-  /** Ações disponíveis */
+  /** Ações disponíveis — todas read-only ou confirmable, nunca irreversible */
   acoes: Array<{
     label: string
     descricao: string
-    /** Pode ser 'read-only' | 'confirmable' | ' irreversible' */
-    tipo: 'read-only' | 'confirmable'
+    /** Tipo de ação: read-only (apenas leitura), confirmable (requer confirmação do usuário) */
+    tipo: AgentActionType
   }>
 }
 
@@ -41,6 +46,22 @@ export type AgentResponse = {
 export function useReadOnlyAgent(workspaceId: string) {
   const [loading, setLoading] = useState(false)
   const [lastResponse, setLastResponse] = useState<AgentResponse | null>(null)
+  const [pendingConfirmation, setPendingConfirmation] = useState<{
+    action: AgentResponse['acoes'][0]
+    resolve: (value: boolean) => void
+  } | null>(null)
+
+  const confirmAction = (action: AgentResponse['acoes'][0]): Promise<boolean> => {
+    // In production, this would show a modal dialog
+    // For now, return a promise that resolves after user interaction
+    return new Promise((resolve) => {
+      // Simulate confirmation dialog — in real app this would be a modal
+      const confirmed = window.confirm(
+        `Confirm action: ${action.descricao}\n\nThis action will be logged and confirmed.`
+      )
+      resolve(confirmed)
+    })
+  }
 
   const ask = async (question: string): Promise<AgentResponse> => {
     setLoading(true)
@@ -82,7 +103,11 @@ export function useReadOnlyAgent(workspaceId: string) {
         acoes: [
           { label: 'Ver detalhes', descricao: 'Abrir detalhe do objeto', tipo: 'read-only' },
           { label: 'Mostrar na conversa', descricao: 'Deep link para conversa original', tipo: 'read-only' },
-          { label: 'Confirmar', descricao: 'Confirmar objeto pendente', tipo: 'confirmable' },
+          {
+            label: 'Confirmar',
+            descricao: 'Confirmar objeto pendente',
+            tipo: 'confirmable',
+          },
         ],
       }
 
@@ -108,10 +133,39 @@ export function useReadOnlyAgent(workspaceId: string) {
     }
   }
 
+  const handleAction = async (acao: AgentResponse['acoes'][0]) => {
+    if (acao.tipo === 'irreversible') {
+      console.error('Blocked: irreversible action not permitted in read-only mode')
+      return
+    }
+
+    if (acao.tipo === 'confirmable') {
+      // Require explicit user confirmation before proceeding
+      const confirmed = await confirmAction(acao)
+      if (!confirmed) {
+        // User declined — show feedback, don't proceed
+        console.log('Action declined by user')
+        return
+      }
+      // TODO: In production, would trigger the confirmed mutation here
+      // All mutations go through confirmed channels only
+      console.log('Action confirmed by user:', acao.label)
+      return
+    }
+
+    if (acao.tipo === 'read-only') {
+      // No action needed — just inform the user
+      console.log('Read-only action selected:', acao.label)
+      return
+    }
+  }
+
   return {
     ask,
+    handleAction,
     loading,
     lastResponse,
+    pendingConfirmation,
   }
 }
 
@@ -142,8 +196,14 @@ export const agentQuestions = {
   timeline: () => 'Abra a timeline',
 }
 
-/** Render agent response in UI (per journey docs §8, §131-145) */
-export function AgentResponseDisplay({ response }: { response: AgentResponse }) {
+/** Render agent response in UI (per journey docs §8, §131-145, §ZT-014) */
+export function AgentResponseDisplay({
+  response,
+  onAction,
+}: {
+  response: AgentResponse
+  onAction: (acao: AgentResponse['acoes'][0]) => void
+}) {
   return (
     <div className="space-y-4">
       <p className="font-medium">{response.respostaDireta}</p>
@@ -207,6 +267,7 @@ export function AgentResponseDisplay({ response }: { response: AgentResponse }) 
               className="rounded px-3 py-1 text-sm ${
                 acao.tipo === 'read-only' ? 'bg-gray-100 text-gray-700' : 'bg-blue-600 text-white'
               } hover-opacity-80 transition-colors"
+              onClick={() => onAction(acao)}
             >
               {acao.label}
             </button>
