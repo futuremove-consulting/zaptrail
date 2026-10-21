@@ -18,7 +18,7 @@ ZapTrail adheres to three fundamental testing tenets:
 
 ## 2. Test Suite Distribution
 
-As of Milestone **v1.0.0**, the test suite comprises **14 test suites** containing **214 passing tests** with 0 failures:
+As of Milestone **v1.0.0**, the test suite comprises **15 test suites** containing **228 passing tests** with 0 failures:
 
 | Test File | Tests | Package / Layer | Primary Focus |
 |---|:---:|---|---|
@@ -35,8 +35,9 @@ As of Milestone **v1.0.0**, the test suite comprises **14 test suites** containi
 | `tests/domain-real-estate/golden-cases.test.ts` | 24 | Domain / E2E / QA | All 20 canonical golden cases (`CT-01` to `CT-20`), boundary isolation assertion, 350-line file ceiling check |
 | `src/app/api/management-objects/management-objects.test.ts` | 17 | REST API | Management objects CRUD, strict workspace scope enforcement, human review audit metadata persistence |
 | `tests/api/ingest-whatsapp.test.ts` | 15 | REST API | `POST /api/v1/ingest/whatsapp`, header fallback (`x-zaptrail-tenant-id`), turn deduplication, 201/200 responses |
+| `tests/domain-real-estate/grammar-variations-multiproperty.test.ts` | 14 | Real Estate Domain | pt-BR colloquial currency, area/bedroom metrics, multi-property alternatives, contact & condition variations |
 | `tests/mcp/mcp-server.test.ts` | 20 | MCP Protocol | JSON-RPC 2.0 handshake, tool schema validation, `analyze_conversation`, `get_entity_memory`, `resolve_review_item`, stdio stream |
-| **Total** | **214** | **All Layers** | **100% Passing** |
+| **Total** | **228** | **All Layers** | **100% Passing** |
 
 ---
 
