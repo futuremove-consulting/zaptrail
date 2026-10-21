@@ -22,7 +22,7 @@ function extractTenantId(body: any, request: Request): string | undefined {
   const authHeader =
     request.headers.get('authorization') || request.headers.get('Authorization');
   if (authHeader && authHeader.startsWith('Bearer ')) {
-    const token = authHeader.slice(7).trim();
+    const token = authHeader.slice(7).trim().replace(/^["']|["']$/g, '').trim();
     if (token.length > 0) {
       return token;
     }

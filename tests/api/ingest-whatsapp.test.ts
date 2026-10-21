@@ -348,6 +348,33 @@ describe('WhatsApp Ingest Pipeline (API-01)', () => {
       expect(json.data.tenant_id).toBe('tenant-bearer-token-123');
     });
 
+    test('extracts tenant_id from quoted Bearer token in Authorization header', async () => {
+      const request = new Request('http://localhost/api/v1/ingest/whatsapp', {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+          authorization: 'Bearer "tenant-quoted-token-456"',
+        },
+        body: JSON.stringify({
+          provider: 'whatsapp',
+          conversation_id: 'conv-bearer-quoted',
+          messages: [
+            {
+              external_message_id: 'msg-bearer-quoted-1',
+              sender_id: '5511999990000',
+              body: 'Olá, quero informações.',
+            },
+          ],
+        }),
+      });
+
+      const response = await POST(request);
+      expect(response.status).toBe(201);
+      const json = await response.json();
+      expect(json.success).toBe(true);
+      expect(json.data.tenant_id).toBe('tenant-quoted-token-456');
+    });
+
     test('processes valid turn with HTTP 201 on new turn and HTTP 200 on duplicate turn', async () => {
       const makeRequest = () =>
         new Request('http://localhost/api/v1/ingest/whatsapp', {
