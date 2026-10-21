@@ -342,18 +342,37 @@ describe('ZapTrail 20 Mandatory Golden Cases (CT-01..CT-20)', () => {
     }
   });
 
-  it('QA-01 Architectural Boundary: src/packages/core contains zero real estate domain tokens (D-02)', () => {
+  it('QA-01 Architectural Boundary: src/packages/core contains zero real estate domain tokens and zero imports from domain packages (D-02)', () => {
     const coreDir = path.resolve(process.cwd(), 'src/packages/core');
     const files = fs.readdirSync(coreDir).filter((f) => f.endsWith('.ts'));
-    const prohibitedTokens = ['iptu', 'condo_fee', 'bedrooms', 'property_type', 'matricula'];
+    const prohibitedTokens = [
+      'iptu',
+      'condo_fee',
+      'bedrooms',
+      'property_type',
+      'matricula',
+      'aluguel',
+      'venda',
+      'alugar',
+      'vender',
+      'locacao',
+      'locação',
+      'quartos',
+      'inquilino',
+      'corretor',
+      'real_estate',
+    ];
 
     for (const file of files) {
       const content = fs.readFileSync(path.join(coreDir, file), 'utf-8');
+      // 1. Prohibited domain tokens
       for (const token of prohibitedTokens) {
         const regex = new RegExp(`\\b${token}\\b`, 'i');
         const match = regex.test(content);
         expect(match, `Found prohibited domain token "${token}" in core file: ${file}`).toBe(false);
       }
+      // 2. Prohibited imports from domain packages
+      expect(content).not.toMatch(/from\s+['"].*domain-real-estate/);
     }
   });
 
