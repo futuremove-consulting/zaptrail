@@ -31,9 +31,9 @@ Requirements for initial release (`spec.md v1.0.0`). Each maps to roadmap phases
 
 ### Hybrid LLM Stage 2 & Context Seeding
 
-- [ ] **LLM-01**: Orquestrador aciona o Estágio 2 (LLM Structured Outputs via Zod JSON Schema) somente quando o Estágio 1 determinístico sinalizar ambiguidade (`unknown` / `ambiguous_or_open`), múltiplos imóveis complexos ou contradição semântica.
-- [ ] **LLM-02**: Resposta do LLM retorna `exact_quote` literal validada contra a mensagem original; citações alucinadas que não existem no texto original são rejeitadas ou rebaixadas para `review_required=true`.
-- [ ] **ING-01**: Debouncer/Coalescer de `TurnWindow` agrupa mensagens rápidas do mesmo remetente e injeta `seeded_property_candidates` vindos de campanhas outbound de captação.
+- [x] **LLM-01**: Orquestrador aciona o Estágio 2 (LLM Structured Outputs via Zod JSON Schema) somente quando o Estágio 1 determinístico sinalizar ambiguidade (`unknown` / `ambiguous_or_open`), múltiplos imóveis complexos ou contradição semântica.
+- [x] **LLM-02**: Resposta do LLM retorna `exact_quote` literal validada contra a mensagem original; citações alucinadas que não existem no texto original são rejeitadas ou rebaixadas para `review_required=true`.
+- [x] **ING-01**: Debouncer/Coalescer de `TurnWindow` agrupa mensagens rápidas do mesmo remetente e injeta `seeded_property_candidates` vindos de campanhas outbound de captação.
 
 ### Persistence, Security & Human Review Inbox
 
@@ -79,9 +79,9 @@ Deferred to future release. Tracked but not in current roadmap.
 | RE-06 | Phase 1 | Complete |
 | CRM-01 | Phase 1 | Complete |
 | QA-01 | Phase 1 | Complete |
-| LLM-01 | Phase 2 | Pending |
-| LLM-02 | Phase 2 | Pending |
-| ING-01 | Phase 2 | Pending |
+| LLM-01 | Phase 2 | Complete |
+| LLM-02 | Phase 2 | Complete |
+| ING-01 | Phase 2 | Complete |
 | DB-01 | Phase 3 | Pending |
 | REV-01 | Phase 3 | Pending |
 | API-01 | Phase 4 | Pending |

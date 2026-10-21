@@ -11,7 +11,7 @@ Implementação do motor **ZapTrail** segundo a especificação técnica `docs/s
 - Decimal phases (1.1, 2.1): Urgent insertions (marked with INSERTED)
 
 - [x] **Phase 1: Core Contracts, Real Estate Domain Pack & Deterministic Engine** - Núcleo universal `@futuremove/zaptrail-core`, pacote `@futuremove/zaptrail-domain-real-estate`, `PilotCRMAdapter` e 20 Casos-Ouro (`CT-01`..`CT-20`) (completed 2026-10-21)
-- [ ] **Phase 2: Hybrid Stage 2 Structured LLM Fallback & Outbound Context** - Extração estruturada LLM com validação de `exact_quote`, coalescência de turnos e seed de campanhas outbound
+- [x] **Phase 2: Hybrid Stage 2 Structured LLM Fallback & Outbound Context** - Extração estruturada LLM com validação de `exact_quote`, coalescência de turnos e seed de campanhas outbound (completed 2026-10-21)
 - [ ] **Phase 3: Supabase RLS Persistence, Audit Trail & Review Inbox** - Migrações PostgreSQL/RLS corrigidas, trilha de auditoria imutável e Inbox de Revisão Humana + Timeline Dual
 - [ ] **Phase 4: Standalone Spin-Out Surface (REST API & MCP Server)** - Endpoint `/api/v1/ingest/whatsapp` e servidor MCP `@futuremove/zaptrail-mcp` para operação multi-CRM e multi-domínio
 
@@ -50,14 +50,14 @@ Plans:
   2. Qualquer `exact_quote` retornada pelo LLM que não seja substring exata da mensagem original é rejeitada ou rebaixada para `review_required: true`.
   3. Mensagens rápidas consecutivas do mesmo contato e seeds de campanha outbound (`seeded_property_candidates`) são consolidados na `TurnWindow` antes da interpretação.
 
-**Plans**: 2 plans
+**Plans**: 2/2 plans complete
 
 Plans:
 **Wave 1**
-- [ ] 02-01-PLAN.md — Core Agnostic Contracts, Exact Quote Validator & Hybrid Engine (`LLM-01`, `LLM-02`)
+- [x] 02-01-PLAN.md — Core Agnostic Contracts, Exact Quote Validator & Hybrid Engine (`LLM-01`, `LLM-02`)
 
 **Wave 2** *(blocked on Wave 1 completion)*
-- [ ] 02-02-PLAN.md — Domain Real Estate LLM Structured Pack, Outbound Seeding & Turn Coalescing (`LLM-01`, `LLM-02`, `ING-01`)
+- [x] 02-02-PLAN.md — Domain Real Estate LLM Structured Pack, Outbound Seeding & Turn Coalescing (`LLM-01`, `LLM-02`, `ING-01`)
 
 ### Phase 3: Supabase RLS Persistence, Audit Trail & Review Inbox
 
@@ -96,6 +96,6 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 1. Core Contracts, Real Estate Domain Pack & Deterministic Engine | 3/3 | Complete    | 2026-10-21 |
-| 2. Hybrid Stage 2 Structured LLM Fallback & Outbound Context | 0/2 | Not started | - |
+| 2. Hybrid Stage 2 Structured LLM Fallback & Outbound Context | 2/2 | Complete    | 2026-10-21 |
 | 3. Supabase RLS Persistence, Audit Trail & Review Inbox | 0/2 | Not started | - |
 | 4. Standalone Spin-Out Surface (REST API & MCP Server) | 0/1 | Not started | - |
