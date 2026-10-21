@@ -101,6 +101,80 @@ describe('TurnWindow Coalescing with Debounce (ING-01, E-02-04, T-02-04)', () =>
     expect(window.messages[1].attachments[0].attachment_id).toBe('att-planta-2');
   });
 
+  it('populates consolidated_text from attachment caption when raw_text is empty (media-only message)', () => {
+    const rawMessages: CoalescerMessageInput[] = [
+      {
+        message_id: 'msg-media-only-1',
+        conversation_id: 'conv-media-caption',
+        raw_text: '',
+        timestamp: '2026-10-21T10:00:00.000Z',
+        attachments: [
+          {
+            attachment_id: 'att-cap-1',
+            media_kind: 'image',
+            mime_type: 'image/jpeg',
+            caption: 'Foto do meu apartamento 3 dorms à venda',
+          },
+        ],
+      },
+    ];
+
+    const window = coalesceTurnWindowWithDebounce(rawMessages, 120);
+
+    expect(window.consolidated_text).toBe('Foto do meu apartamento 3 dorms à venda');
+    expect(window.messages[0].normalized_text).toBe('Foto do meu apartamento 3 dorms à venda');
+  });
+
+  it('deterministically sorts concurrent messages with identical timestamps', () => {
+    const ts = '2026-10-21T10:00:00.000Z';
+    const rawMessages: CoalescerMessageInput[] = [
+      {
+        message_id: 'msg-z-last',
+        conversation_id: 'conv-tie',
+        raw_text: 'mensagem z',
+        timestamp: ts,
+      },
+      {
+        message_id: 'msg-a-first',
+        conversation_id: 'conv-tie',
+        raw_text: 'mensagem a',
+        timestamp: ts,
+      },
+    ];
+
+    const window = coalesceTurnWindowWithDebounce(rawMessages, 120);
+
+    expect(window.messages[0].message_id).toBe('msg-a-first');
+    expect(window.messages[1].message_id).toBe('msg-z-last');
+  });
+
+  it('automatically extracts prior outbound message when preceding inbound cluster', () => {
+    const baseTime = 1700000000000;
+    const rawMessages: CoalescerMessageInput[] = [
+      {
+        message_id: 'msg-out-1',
+        conversation_id: 'conv-flow',
+        direction: 'outbound',
+        raw_text: 'Olá, você tem interesse em vender seu apartamento no Condomínio Solar?',
+        timestamp: new Date(baseTime).toISOString(),
+      },
+      {
+        message_id: 'msg-in-1',
+        conversation_id: 'conv-flow',
+        direction: 'inbound',
+        raw_text: 'Sim, tenho interesse',
+        timestamp: new Date(baseTime + 10000).toISOString(),
+      },
+    ];
+
+    const window = coalesceTurnWindowWithDebounce(rawMessages, 120);
+
+    expect(window.prior_outbound_message).toBeDefined();
+    expect(window.prior_outbound_message?.raw_text).toContain('Condomínio Solar');
+    expect(window.messages).toHaveLength(1);
+    expect(window.messages[0].message_id).toBe('msg-in-1');
+  });
+
   it('separates messages sent across a gap > 120s into distinct TurnWindows (T-02-04)', () => {
     const baseTime = 1700000000000;
     const rawMessages: CoalescerMessageInput[] = [

@@ -255,11 +255,11 @@ describe('HybridInterpretationEngine & Stage 2 Smart Routing (LLM-01)', () => {
         review_required: true,
         review_items: [
           {
-            item_id: 'rev-01',
+            review_id: 'rev-01',
             reason: 'spousal_or_family_conflict',
-            severity: 'critical',
-            suggested_action: 'review_manually',
-            review_required: true,
+            severity: 'high',
+            target_id: 'part-01',
+            evidence_refs: baseEnvelope.participants[0].evidence_refs,
           },
         ],
       };

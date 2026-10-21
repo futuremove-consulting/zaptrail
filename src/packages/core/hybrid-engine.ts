@@ -41,7 +41,7 @@ export function shouldTriggerStage2(
   }
 
   // 2. Explicit contradiction or review required from Stage 1 triggers Stage 2
-  if (envelope.review_required || envelope.review_items.some((r) => r.review_required)) {
+  if (envelope.review_required || envelope.review_items.length > 0) {
     return true;
   }
 

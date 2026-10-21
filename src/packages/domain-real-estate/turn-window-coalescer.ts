@@ -61,6 +61,12 @@ export function toConversationMessage(
       ? m.timestamp
       : new Date(tsNumber).toISOString();
 
+  const captionFallback = m.attachments?.find(
+    (a) => a.caption && a.caption.trim().length > 0
+  )?.caption;
+  const effectiveRaw =
+    m.raw_text && m.raw_text.trim().length > 0 ? m.raw_text : captionFallback ?? '';
+
   return {
     message_id: m.message_id,
     external_message_id: m.external_message_id ?? m.message_id,
@@ -70,8 +76,8 @@ export function toConversationMessage(
     direction: m.direction ?? 'inbound',
     sender_id: m.sender_id ?? 'user',
     sender_name: m.sender_name,
-    raw_text: m.raw_text ?? '',
-    normalized_text: m.normalized_text ?? normalizeMessageText(m.raw_text ?? ''),
+    raw_text: effectiveRaw,
+    normalized_text: m.normalized_text ?? normalizeMessageText(effectiveRaw),
     timestamp: isoTimestamp,
     attachments: m.attachments ?? [],
   };
@@ -82,9 +88,11 @@ export function partitionMessagesByDebounce<T extends Message>(
   debounceSeconds = 120
 ): T[][] {
   if (messages.length === 0) return [];
-  const sorted = [...messages].sort(
-    (a, b) => parseTimestamp(a.timestamp) - parseTimestamp(b.timestamp)
-  );
+  const sorted = [...messages].sort((a, b) => {
+    const diff = parseTimestamp(a.timestamp) - parseTimestamp(b.timestamp);
+    if (diff !== 0) return diff;
+    return (a.message_id || '').localeCompare(b.message_id || '');
+  });
 
   const clusters: T[][] = [];
   let currentCluster: T[] = [sorted[0]];
@@ -142,6 +150,7 @@ function buildTurnWindowFromCluster(
 /**
  * Coalesces consecutive messages into a single TurnWindow if within the debounce window.
  * If messages contain gaps > debounceSeconds, separates them and returns the latest active TurnWindow.
+ * Automatically extracts the preceding outbound message as prior_outbound_message if not provided.
  */
 export function coalesceTurnWindowWithDebounce(
   messages: Message[],
@@ -151,9 +160,42 @@ export function coalesceTurnWindowWithDebounce(
   if (!messages || messages.length === 0) {
     throw new Error('coalesceTurnWindowWithDebounce requires at least one message.');
   }
-  const clusters = partitionMessagesByDebounce(messages, debounceSeconds);
+
+  const sorted = [...messages].sort((a, b) => {
+    const diff = parseTimestamp(a.timestamp) - parseTimestamp(b.timestamp);
+    if (diff !== 0) return diff;
+    return (a.message_id || '').localeCompare(b.message_id || '');
+  });
+
+  const clusters = partitionMessagesByDebounce(sorted, debounceSeconds);
   const activeCluster = clusters[clusters.length - 1];
-  return buildTurnWindowFromCluster(activeCluster, defaults);
+
+  let priorOutbound = defaults?.prior_outbound_message;
+  let inboundMessages = activeCluster;
+
+  if (!priorOutbound) {
+    const outboundInCluster = activeCluster.filter((m) => m.direction === 'outbound');
+    const inboundInCluster = activeCluster.filter((m) => (m.direction ?? 'inbound') === 'inbound');
+
+    if (outboundInCluster.length > 0 && inboundInCluster.length > 0) {
+      priorOutbound = toConversationMessage(outboundInCluster[outboundInCluster.length - 1]);
+      inboundMessages = inboundInCluster;
+    } else {
+      const earlierOutbounds = sorted.filter(
+        (m) =>
+          m.direction === 'outbound' &&
+          parseTimestamp(m.timestamp) < parseTimestamp(activeCluster[0].timestamp)
+      );
+      if (earlierOutbounds.length > 0) {
+        priorOutbound = toConversationMessage(earlierOutbounds[earlierOutbounds.length - 1]);
+      }
+    }
+  }
+
+  return buildTurnWindowFromCluster(inboundMessages, {
+    ...defaults,
+    prior_outbound_message: priorOutbound,
+  });
 }
 
 /**
