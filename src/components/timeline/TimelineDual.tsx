@@ -80,15 +80,11 @@ export function buildTimelineHighlightSegments(
   };
 }
 
-export async function getConversationMessages(
-  _conversationId: string
-): Promise<Message[]> {
+export async function getConversationMessages(_conversationId: string): Promise<Message[]> {
   return [];
 }
 
-export async function getExtractedObjects(
-  _conversationId: string
-): Promise<DetectedObject[]> {
+export async function getExtractedObjects(_conversationId: string): Promise<DetectedObject[]> {
   return [];
 }
 
@@ -108,11 +104,7 @@ export function ManagementObjectCard({
   onEdit?: (fields: Record<string, unknown>) => void;
 }) {
   return (
-    <div
-      className={`p-3 rounded-lg border border-border/40 bg-card ${
-        compact ? "text-xs" : "text-sm"
-      }`}
-    >
+    <div className={`p-3 rounded-lg border border-border/40 bg-card ${compact ? "text-xs" : "text-sm"}`}>
       <div className="flex items-center justify-between mb-1">
         <span className="font-semibold text-primary">{object.title}</span>
         {showStatusBadge && (
@@ -125,18 +117,12 @@ export function ManagementObjectCard({
       {!compact && (
         <div className="flex gap-2 mt-2">
           {onConfirm && (
-            <button
-              onClick={onConfirm}
-              className="px-2 py-1 bg-green-600 text-white rounded text-xs hover:bg-green-700"
-            >
+            <button onClick={onConfirm} className="px-2 py-1 bg-green-600 text-white rounded text-xs hover:bg-green-700">
               Confirmar
             </button>
           )}
           {onReject && (
-            <button
-              onClick={onReject}
-              className="px-2 py-1 bg-red-600 text-white rounded text-xs hover:bg-red-700"
-            >
+            <button onClick={onReject} className="px-2 py-1 bg-red-600 text-white rounded text-xs hover:bg-red-700">
               Rejeitar
             </button>
           )}
