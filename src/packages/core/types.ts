@@ -18,12 +18,13 @@ export const EvidenceRefSchema = z.object({
   message_id: z.string(),
   conversation_id: z.string(),
   exact_quote: z.string().min(1),
-  char_start: z.number().int().nonnegative(),
-  char_end: z.number().int().nonnegative(),
+  char_start: z.number().int().nonnegative().optional(),
+  char_end: z.number().int().nonnegative().optional(),
   timestamp: z.string(),
   extractor_type: ExtractorTypeSchema,
   parser_version: z.string(),
   confidence: z.number().min(0).max(1),
+  hallucination_detected: z.boolean().optional(),
 });
 export type EvidenceRef = z.infer<typeof EvidenceRefSchema>;
 
@@ -259,3 +260,43 @@ export interface StoragePort {
   saveEnvelope(envelope: UniversalInterpretationEnvelope): Promise<void>;
   getHistoricalValues(tenantId: string, conversationId: string): Promise<ValueObservation[]>;
 }
+
+export interface LLMExtractionRequest<T = unknown> {
+  systemPrompt?: string;
+  prompt: string;
+  schema?: z.ZodType<T> | Record<string, unknown>;
+  temperature?: number;
+  maxTokens?: number;
+}
+
+export interface LLMExtractionResponse<T = unknown> {
+  data: T;
+  rawText?: string;
+  model: string;
+  usage?: {
+    promptTokens: number;
+    completionTokens: number;
+    totalTokens: number;
+  };
+}
+
+export interface LLMProvider {
+  readonly name: string;
+  extractStructured<T>(req: LLMExtractionRequest<T>): Promise<LLMExtractionResponse<T>>;
+}
+
+export interface QuoteValidationResult {
+  quote: string;
+  valid: boolean;
+  normalized_quote: string;
+  char_start?: number;
+  char_end?: number;
+  hallucination_detected?: boolean;
+}
+
+export interface HybridRouterOptions {
+  minStage1Confidence?: number;
+  forceStage2?: boolean;
+  skipStage2?: boolean;
+}
+
