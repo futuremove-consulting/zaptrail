@@ -3,35 +3,69 @@
  */
 
 import { NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
+import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-);
+export function validateWorkspaceScope(workspace?: string | null): string {
+  if (!workspace || typeof workspace !== "string" || !workspace.trim()) {
+    throw new Error("Workspace scope required");
+  }
+  return workspace.trim();
+}
+
+let testClientOverride: SupabaseClient | any = null;
+
+export function setTestSupabaseClient(client: SupabaseClient | any): void {
+  testClientOverride = client;
+}
+
+export function getSupabaseClient(_request?: Request): SupabaseClient | any {
+  if (testClientOverride) {
+    return testClientOverride;
+  }
+  const supabaseUrl =
+    process.env.NEXT_PUBLIC_SUPABASE_URL || "http://localhost:54321";
+  const supabaseKey =
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
+    process.env.SUPABASE_ANON_KEY ||
+    "anon-key";
+  return createClient(supabaseUrl, supabaseKey);
+}
 
 export async function GET(
   request: Request,
   { params }: { params: { workspace: string } }
 ) {
+  let workspaceId: string;
+  try {
+    workspaceId = validateWorkspaceScope(params?.workspace);
+  } catch (err: any) {
+    return NextResponse.json({ error: err.message }, { status: 400 });
+  }
+
   const { searchParams } = new URL(request.url);
   const type = searchParams.get("type") as
     | "task"
     | "decision"
     | "opportunity"
     | "commitment"
-    | "alert" | null;
-  const status = searchParams.get("status") as "pending" | "confirmed" | "rejected" | null;
+    | "alert"
+    | null;
+  const status = searchParams.get("status") as
+    | "pending"
+    | "confirmed"
+    | "rejected"
+    | null;
   const assignedTo = searchParams.get("assignedTo") || null;
 
+  const supabase = getSupabaseClient(request);
   const { data, error } = await supabase
     .from("management_objects")
     .select(`
       *,
-      workspaces!inner(name, plan),
-      origin_messages!inner(body, from, timestamp)
+      workspaces(name, plan),
+      messages(body, from_number, timestamp)
     `)
-    .eq("workspace_id", params.workspace)
+    .eq("workspace_id", workspaceId)
     .order("created_at", { ascending: false });
 
   if (error) {
@@ -62,6 +96,13 @@ export async function POST(
   request: Request,
   { params }: { params: { workspace: string } }
 ) {
+  let workspaceId: string;
+  try {
+    workspaceId = validateWorkspaceScope(params?.workspace);
+  } catch (err: any) {
+    return NextResponse.json({ error: err.message }, { status: 400 });
+  }
+
   try {
     const body = await request.json();
 
@@ -80,12 +121,13 @@ export async function POST(
       );
     }
 
+    const supabase = getSupabaseClient(request);
     const { data: existing } = await supabase
       .from("management_objects")
       .select("id")
-      .eq("workspace_id", params.workspace)
+      .eq("workspace_id", workspaceId)
       .eq("origin_message_id", body.origin_message_id)
-      .single();
+      .maybeSingle();
 
     if (existing) {
       return NextResponse.json(
@@ -94,23 +136,30 @@ export async function POST(
       );
     }
 
-    const { data, error } = await supabase.from("management_objects").insert({
-      workspace_id: params.workspace,
+    const insertPayload = {
+      workspace_id: workspaceId,
       object_type: body.object_type,
       title: body.title,
       origin_message_id: body.origin_message_id,
-      status: "pending",
+      status: body.status ?? "pending",
       confidence: body.confidence ?? 0.5,
       deadline: body.deadline ?? null,
       metadata: body.metadata ?? {},
       assigned_to: body.assigned_to ?? null,
-    });
+      epistemic_status: body.epistemic_status ?? "inferred",
+    };
+
+    const { data, error } = await supabase
+      .from("management_objects")
+      .insert(insertPayload)
+      .select()
+      .single();
 
     if (error) {
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
 
-    return NextResponse.json({ data }, { status: 201 });
+    return NextResponse.json({ data: data || insertPayload }, { status: 201 });
   } catch (err: any) {
     return NextResponse.json({ error: err.message }, { status: 500 });
   }
@@ -120,6 +169,13 @@ export async function PUT(
   request: Request,
   { params }: { params: { workspace: string } }
 ) {
+  let workspaceId: string;
+  try {
+    workspaceId = validateWorkspaceScope(params?.workspace);
+  } catch (err: any) {
+    return NextResponse.json({ error: err.message }, { status: 400 });
+  }
+
   try {
     const body = await request.json();
     const objectId = body.id;
@@ -131,10 +187,33 @@ export async function PUT(
       );
     }
 
-    const updateData: any = { updated_at: new Date().toISOString() };
+    const supabase = getSupabaseClient(request);
+
+    // Fetch existing object to avoid wiping original metadata
+    const { data: existing, error: fetchErr } = await supabase
+      .from("management_objects")
+      .select("*")
+      .eq("id", objectId)
+      .eq("workspace_id", workspaceId)
+      .single();
+
+    if (fetchErr || !existing) {
+      return NextResponse.json(
+        { error: "Management object not found" },
+        { status: 404 }
+      );
+    }
+
+    const updateData: Record<string, unknown> = {
+      updated_at: new Date().toISOString(),
+    };
 
     if (body.status && /^(pending|confirmed|rejected)$/.test(body.status)) {
       updateData.status = body.status;
+    }
+
+    if (body.title !== undefined) {
+      updateData.title = body.title;
     }
 
     if (body.confidence !== undefined) {
@@ -145,19 +224,47 @@ export async function PUT(
       updateData.deadline = body.deadline;
     }
 
-    if (body.metadata !== undefined) {
-      updateData.metadata = body.metadata;
-    }
-
     if (body.assigned_to !== undefined) {
       updateData.assigned_to = body.assigned_to;
+    }
+
+    // Review audit trail metadata
+    if (body.reviewed_by !== undefined) {
+      updateData.reviewed_by = body.reviewed_by;
+    }
+
+    if (body.review_notes !== undefined) {
+      updateData.review_notes = body.review_notes;
+    }
+
+    if (body.status === "confirmed" || body.epistemic_status === "validated_human") {
+      updateData.epistemic_status = "validated_human";
+      updateData.reviewed_at = body.reviewed_at || new Date().toISOString();
+    } else if (body.status === "rejected" || body.epistemic_status === "rejected") {
+      updateData.epistemic_status = "rejected";
+      updateData.reviewed_at = body.reviewed_at || new Date().toISOString();
+    } else if (body.epistemic_status !== undefined) {
+      updateData.epistemic_status = body.epistemic_status;
+    }
+
+    // Preserve original metadata without wiping
+    const existingMeta =
+      existing.metadata && typeof existing.metadata === "object"
+        ? existing.metadata
+        : {};
+    if (body.metadata !== undefined) {
+      updateData.metadata = {
+        ...existingMeta,
+        ...body.metadata,
+        original_metadata: existingMeta.original_metadata || existingMeta,
+      };
     }
 
     const { data, error } = await supabase
       .from("management_objects")
       .update(updateData)
       .eq("id", objectId)
-      .eq("workspace_id", params.workspace)
+      .eq("workspace_id", workspaceId)
       .select()
       .single();
 
@@ -165,7 +272,7 @@ export async function PUT(
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
 
-    return NextResponse.json({ data });
+    return NextResponse.json({ data: data || { ...existing, ...updateData } });
   } catch (err: any) {
     return NextResponse.json({ error: err.message }, { status: 500 });
   }
@@ -175,6 +282,13 @@ export async function DELETE(
   request: Request,
   { params }: { params: { workspace: string } }
 ) {
+  let workspaceId: string;
+  try {
+    workspaceId = validateWorkspaceScope(params?.workspace);
+  } catch (err: any) {
+    return NextResponse.json({ error: err.message }, { status: 400 });
+  }
+
   try {
     const { searchParams } = new URL(request.url);
     const id = searchParams.get("id");
@@ -186,11 +300,12 @@ export async function DELETE(
       );
     }
 
+    const supabase = getSupabaseClient(request);
     const { error } = await supabase
       .from("management_objects")
       .delete()
       .eq("id", id)
-      .eq("workspace_id", params.workspace);
+      .eq("workspace_id", workspaceId);
 
     if (error) {
       return NextResponse.json({ error: error.message }, { status: 500 });

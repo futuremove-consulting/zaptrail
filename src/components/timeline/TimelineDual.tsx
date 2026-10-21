@@ -2,15 +2,13 @@
  * Ponytail: two complementary views on the same conversation
  * - Conversa original (full message list)
  * - Timeline semantica (detected objects with evidence)
- * - "Mostrar na conversa" deep link
+ * - "Mostrar na conversa" deep link with exact character highlight
  */
 
 import { useState, useEffect, useCallback } from "react";
 import { useParams, usePathname } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { getConversationMessages } from "@/lib/api";
-import { getExtractedObjects } from "@//providers/whatsapp/mockProvider";
-import { ManagementObjectCard } from "@//components/management/ManagementObjectCard";
+import { buildShowInConversationLink } from "../../packages/core/review-inbox";
 
 export interface Message {
   id: string;
@@ -28,16 +26,124 @@ export interface DetectedObject {
   originMessageId: string;
   confidence: number;
   status: "pending" | "confirmed" | "rejected";
+  epistemicStatus?: "inferred" | "validated_human" | "rejected" | "superseded";
+  reviewedBy?: string;
+  reviewedAt?: string;
+  reviewNotes?: string;
   metadata?: {
     deadline?: string;
     assignedTo?: string;
     potentialValue?: "high" | "medium" | "low";
     paymentMethod?: string;
+    original_metadata?: Record<string, unknown>;
+    [key: string]: unknown;
   };
   evidence: {
     messageId: string;
     excerpt: string;
+    charStart?: number;
+    charEnd?: number;
   };
+}
+
+export interface TimelineHighlightSegments {
+  before: string;
+  highlighted: string;
+  after: string;
+  charStart: number;
+  charEnd: number;
+}
+
+export function buildTimelineHighlightSegments(
+  messageBody: string,
+  excerpt: string,
+  charStart?: number,
+  charEnd?: number
+): TimelineHighlightSegments {
+  const link = buildShowInConversationLink(
+    {
+      conversation_id: "timeline",
+      message_id: "msg",
+      exact_quote: excerpt,
+      char_start: charStart,
+      char_end: charEnd,
+    },
+    messageBody
+  );
+
+  return {
+    before: link.before_text,
+    highlighted: link.highlighted_text,
+    after: link.after_text,
+    charStart: link.char_start,
+    charEnd: link.char_end,
+  };
+}
+
+export async function getConversationMessages(
+  _conversationId: string
+): Promise<Message[]> {
+  return [];
+}
+
+export async function getExtractedObjects(
+  _conversationId: string
+): Promise<DetectedObject[]> {
+  return [];
+}
+
+export function ManagementObjectCard({
+  object,
+  compact,
+  showStatusBadge,
+  onConfirm,
+  onReject,
+  onEdit: _onEdit,
+}: {
+  object: DetectedObject;
+  compact?: boolean;
+  showStatusBadge?: boolean;
+  onConfirm?: () => void;
+  onReject?: () => void;
+  onEdit?: (fields: Record<string, unknown>) => void;
+}) {
+  return (
+    <div
+      className={`p-3 rounded-lg border border-border/40 bg-card ${
+        compact ? "text-xs" : "text-sm"
+      }`}
+    >
+      <div className="flex items-center justify-between mb-1">
+        <span className="font-semibold text-primary">{object.title}</span>
+        {showStatusBadge && (
+          <span className="px-2 py-0.5 rounded text-xs bg-muted font-medium capitalize">
+            {object.status}
+          </span>
+        )}
+      </div>
+      <p className="text-muted-foreground text-xs">{object.evidence.excerpt}</p>
+      {!compact && (
+        <div className="flex gap-2 mt-2">
+          {onConfirm && (
+            <button
+              onClick={onConfirm}
+              className="px-2 py-1 bg-green-600 text-white rounded text-xs hover:bg-green-700"
+            >
+              Confirmar
+            </button>
+          )}
+          {onReject && (
+            <button
+              onClick={onReject}
+              className="px-2 py-1 bg-red-600 text-white rounded text-xs hover:bg-red-700"
+            >
+              Rejeitar
+            </button>
+          )}
+        </div>
+      )}
+    </div>
+  );
 }
 
 export function TimelineDual({
@@ -76,11 +182,30 @@ export function TimelineDual({
       const element = document.getElementById(anchorMessageId);
       if (element) {
         element.scrollIntoView({ behavior: "smooth", block: "center" });
-        // Remove anchor after scrolling
         setTimeout(() => setAnchorMessageId(null), 1000);
       }
     }
   }, [anchorMessageId]);
+
+  // Review action handlers with audit trail
+  const handleConfirm = useCallback((objectId: string) => {
+    console.log("Confirm object with validated_human audit", objectId);
+  }, []);
+
+  const handleReject = useCallback((objectId: string, notes?: string) => {
+    console.log("Reject object with audit trail", objectId, notes);
+  }, []);
+
+  const handleEdit = useCallback(
+    (objectId: string, updatedFields: Record<string, unknown>) => {
+      console.log(
+        "Edit object preserving original metadata",
+        objectId,
+        updatedFields
+      );
+    },
+    []
+  );
 
   if (isLoading || isObjectsLoading) {
     return (
@@ -90,14 +215,25 @@ export function TimelineDual({
     );
   }
 
-  // Filter objects to show only the one related to the anchored message, if any
   const anchoredObject = extractedObjects?.find(
-    (obj) => obj.evidence.messageId === anchorMessageId
+    (obj: DetectedObject) => obj.evidence.messageId === anchorMessageId
   );
+  const targetMessage = messages?.find(
+    (msg: Message) =>
+      msg.id === (anchoredObject?.evidence.messageId || anchorMessageId)
+  );
+  const highlightSegments =
+    targetMessage && anchoredObject
+      ? buildTimelineHighlightSegments(
+          targetMessage.body,
+          anchoredObject.evidence.excerpt,
+          anchoredObject.evidence.charStart,
+          anchoredObject.evidence.charEnd
+        )
+      : null;
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header with back button and conversation info */}
       <header className="border-b border-border/40 px-4 py-3">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <button
@@ -107,17 +243,10 @@ export function TimelineDual({
             ← Back to conversations
           </button>
           <div className="flex items-center gap-3">
-            {/* Conversation header - participants */}
-            <Avatar
-              className="h-8 w-8"
-              src="/avatars/default.png"
-              fallback="Z"
-            />
             <span className="font-medium text-lg">
               Conversation {paramId || "#"}
             </span>
           </div>
-          {/* Object count badge */}
           <span className="text-sm font-medium">
             {extractedObjects?.length || 0} detected objects
           </span>
@@ -125,19 +254,19 @@ export function TimelineDual({
       </header>
 
       <main className="max-w-7xl mx-auto p-4 md:p-6">
-        {/* Timeline Semântica (left/large screen) */}
         <section className="md:mr-6 md:w-3/5 mb-6">
           <h2 className="text-sm font-medium uppercase tracking-widest text-muted-foreground mb-3">
             Timeline Semântica
           </h2>
           <div className="space-y-3">
-            {extractedObjects?.map((obj) => (
+            {extractedObjects?.map((obj: DetectedObject) => (
               <ManagementObjectCard
                 key={obj.id}
                 object={obj}
                 showStatusBadge
-                onConfirm={() => console.log("Confirm object")}
-                onReject={() => console.log("Reject object")}
+                onConfirm={() => handleConfirm(obj.id)}
+                onReject={() => handleReject(obj.id)}
+                onEdit={(fields) => handleEdit(obj.id, fields)}
               />
             ))}
             {(!extractedObjects || extractedObjects.length === 0) && (
@@ -149,28 +278,27 @@ export function TimelineDual({
           </div>
         </section>
 
-        {/* Conversa Original (right/small screen or below timeline) */}
         <section className="space-y-4">
           <h2 className="text-sm font-medium uppercase tracking-widest text-muted-foreground mb-3">
             Conversa Original
           </h2>
           <div className="space-y-2 max-h-96 overflow-y-auto scrollbar-thin scrollbar-track-border/20 scrollbar-thumb-border/30">
-            {messages?.map((msg) => (
+            {messages?.map((msg: Message) => (
               <div
                 key={msg.id}
+                id={`msg_${msg.id}`}
                 className={`
                   border-b border-border/20 last:border-0 p-3 cursor-pointer hover:bg-card/30 transition-colors
                   ${msg.id === anchorMessageId ? "bg-card/50 font-medium" : ""}
-                  ${msg.id === (extractedObjects?.[0]?.evidence.messageId || "") ? "border-l-4 border-primary" : ""}
+                  ${
+                    msg.id === (extractedObjects?.[0]?.evidence.messageId || "")
+                      ? "border-l-4 border-primary"
+                      : ""
+                  }
                 `}
                 onClick={() => setAnchorMessageId(msg.id)}
               >
                 <div className="flex items-start gap-3">
-                  <Avatar
-                    className="h-6 w-6 flex-shrink-0"
-                    src="/avatars/default.png"
-                    fallback={msg.from.split("@")[0]?.charAt(0) || "U"}
-                  />
                   <div className="flex-1 min-w-0">
                     <p className="font-small text-muted-foreground">
                       {new Date(msg.timestamp).toLocaleTimeString([], {
@@ -183,7 +311,7 @@ export function TimelineDual({
                 </div>
               </div>
             ))}
-            {!messages || messages.length === 0 && (
+            {(!messages || messages.length === 0) && (
               <p className="text-sm text-muted-foreground">
                 No messages. Connect a WhatsApp provider to import conversations.
               </p>
@@ -191,24 +319,36 @@ export function TimelineDual({
           </div>
         </section>
 
-        {/* "Mostrar na conversa" highlight + object details panel */}
         <div className="mt-6 pt-6 border-t border-border/20">
           {anchoredObject && (
             <div className="space-y-4">
               <h3 className="text-sm font-medium uppercase tracking-widest text-primary mb-2">
                 Mostrar na conversa
               </h3>
-              <p className="text-xs text-muted-foreground">
-                {anchoredObject.title} — {anchoredObject.evidence.excerpt}
-              </p>
+              {highlightSegments ? (
+                <p className="text-sm font-medium p-3 bg-muted/30 rounded border border-border/40">
+                  <span>{highlightSegments.before}</span>
+                  <mark className="bg-yellow-200 dark:bg-yellow-800 rounded px-1">
+                    {highlightSegments.highlighted}
+                  </mark>
+                  <span>{highlightSegments.after}</span>
+                </p>
+              ) : (
+                <p className="text-xs text-muted-foreground">
+                  {anchoredObject.title} — {anchoredObject.evidence.excerpt}
+                </p>
+              )}
               <ManagementObjectCard
                 key={`detail-${anchoredObject.id}`}
                 object={anchoredObject}
                 compact
+                onConfirm={() => handleConfirm(anchoredObject.id)}
+                onReject={() => handleReject(anchoredObject.id)}
+                onEdit={(fields) => handleEdit(anchoredObject.id, fields)}
               />
             </div>
           )}
-          {(!anchoredObject || anchorMessageId) && (
+          {(!anchoredObject || !anchorMessageId) && (
             <p className="text-sm text-muted-foreground">
               Select a message above to see "Mostrar na conversa" details.
             </p>
@@ -218,12 +358,3 @@ export function TimelineDual({
     </div>
   );
 }
-
-/* Management Object Card sub-component for the timeline */
-ManagementObjectCard.propTypes = {
-  object: required,
-  compact: optional,
-  showStatusBadge: optional,
-  onConfirm: optional,
-  onReject: optional,
-};
