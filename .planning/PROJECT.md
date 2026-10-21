@@ -15,6 +15,16 @@ Transformar qualquer turno de conversa de WhatsApp em registros de negócio audi
 - **Success metric**: 100% de aprovação nos 20 Casos-Ouro imobiliários (`docs/spec.md §21.2`), latência <10ms no Estágio 1 determinístico para turnos inequívocos, zero chamadas desnecessárias de LLM, e 0 duplicações em reprocessamento
 - **Strategy notes**: `docs/spec.md`, `.planning/DECISIONS.md` e `.planning/milestones/v1.0.0-MILESTONE-AUDIT.md`
 
+## Current Milestone: v1.1.0 PilotCRM Native Integration & Marketplace
+
+**Goal:** Integrar nativamente o ZapTrail ao PilotCRM via Card no Marketplace de Módulos, conexão aos 3 gatilhos de sincronização (webhook realtime, crons 4x/dia e botão 'Sincronizar Conversas') e loop de retorno de propostas validadas.
+
+**Target features:**
+- Module Registry & Marketplace Card no PilotCRM para ativar ZapTrail por workspace com chaves/webhook configuráveis.
+- Integração dos 3 gatilhos de disparo (webhook realtime, crons 4x/dia e CTA 'Sincronizar Conversas' no Inbox e Radar).
+- Webhook outbound de retorno do ZapTrail para registrar `enrichment_proposals` no PilotCRM.
+- Testes E2E de integração cruzada entre os dois repositórios com idempotência e conformidade com `enrichment_action_ck`.
+
 ## Requirements
 
 ### Validated
@@ -40,11 +50,12 @@ Transformar qualquer turno de conversa de WhatsApp em registros de negócio audi
 - ✓ **API-01**: Rota REST `/api/v1/ingest/whatsapp` com deduplicação de webhooks e suporte a cabeçalhos de autenticação/tenant — v1.0.0
 - ✓ **MCP-01**: Servidor MCP (`@futuremove/zaptrail-mcp`) com stdio runner e ferramentas `analyze_conversation`, `get_entity_memory`, `resolve_review_item` — v1.0.0
 
-### Active (Próximo Milestone: v1.1.0)
+### Active (Milestone v1.1.0)
 
-- [ ] **DOM-01**: Segundo `DomainPack` completo e plugável (ex.: Saúde/Clínicas ou Consultoria B2B)
-- [ ] **AGT-01**: Disparo assistido de mensagens outbound aprovadas na fila de revisão com 1 clique via WhatsApp Cloud API
-- [ ] **ADM-01**: Dashboard administrativo avançado para gestão multi-tenant de regras e auditoria analítica
+- [ ] **PCRM-01**: PilotCRM Marketplace Module & Flags (Card em `/crm/settings/modules`, chaves e toggle de ativação por tenant)
+- [ ] **PCRM-02**: Conexão dos 3 Gatilhos no PilotCRM (redirecionamento do webhook realtime, crons 4x/dia e CTA 'Sincronizar Conversas' para o ZapTrail)
+- [ ] **PCRM-03**: Webhook Outbound & Gravação de Propostas no PilotCRM (despacho de envelope e gravação em `enrichment_proposals` compatível com `enrichment_action_ck`)
+- [ ] **PCRM-04**: Testes de Integração Cruzada E2E (fluxo completo entre PilotCRM e ZapTrail com simulação dos 3 gatilhos, deduplicação e conversão de proposta em Deal)
 
 ### Out of Scope
 
@@ -55,6 +66,7 @@ Transformar qualquer turno de conversa de WhatsApp em registros de negócio audi
 ## Context
 
 - **Milestone v1.0.0 Shipped**: Entregue com 9 planos, 18 tasks, 90 arquivos criados/modificados e 214 testes automatizados em 14 suítes Vitest.
+- **Milestone v1.1.0 In Progress**: Foco em fechar o elo completo com o PilotCRM em produção, dando visibilidade no Marketplace e plugando os 3 pontos de entrada e a saída de propostas.
 - **Tech Stack consolidada**: TypeScript 5.8, Node.js 20+, Vitest 2.1, Zod 3.24, Next.js 14 App Router, Supabase (PostgreSQL 15 + RLS).
 - **Arquitetura comprovada**: Package-First com desacoplamento modular estrito:
   - `@futuremove/zaptrail-core`: 100% agnóstico de domínio e banco
@@ -81,5 +93,22 @@ Transformar qualquer turno de conversa de WhatsApp em registros de negócio audi
 | Correção estrutural de RLS nas migrações SQL 001-004 | Garante isolamento multi-tenant real e audit trail imutável no Supabase | ✓ Good |
 | Protocolo MCP via stdio e JSON-RPC 2.0 | Integração direta com IDEs e agentes de IA modernos sem infraestrutura extra de rede | ✓ Good |
 
+## Evolution
+
+This document evolves at phase transitions and milestone boundaries.
+
+**After each phase transition** (via `/gsd-transition`):
+1. Requirements invalidated? → Move to Out of Scope with reason
+2. Requirements validated? → Move to Validated with phase reference
+3. New requirements emerged? → Add to Active
+4. Decisions to log? → Add to Key Decisions
+5. "What This Is" still accurate? → Update if drifted
+
+**After each milestone** (via `/gsd-complete-milestone`):
+1. Full review of all sections
+2. Core Value check — still the right priority?
+3. Audit Out of Scope — reasons still valid?
+4. Update Context with current state
+
 ---
-*Last updated: 2026-10-21 after v1.0.0 milestone*
+*Last updated: 2026-10-21 for Milestone v1.1.0*
