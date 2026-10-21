@@ -6,7 +6,16 @@
     "strict": true,
     "noEmit": true,
     "esModuleInterop": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "next/server": ["tests/shims/next-server.ts"],
+      "@/*": ["src/*"]
+    }
   },
-  "include": ["src/packages/**/*.ts", "tests/**/*.ts"]
+  "include": [
+    "src/packages/**/*.ts",
+    "src/app/api/v1/**/*.ts",
+    "tests/**/*.ts"
+  ]
 }

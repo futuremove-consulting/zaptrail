@@ -8,6 +8,7 @@ import {
 } from '../../src/packages/api/ingest-handler';
 import { SupabaseStoragePort, InMemorySupabaseTableClient } from '../../src/packages/core/supabase-storage';
 import { RealEstateDomainPack } from '../../src/packages/domain-real-estate/opportunity-orchestrator';
+import { POST } from '../../src/app/api/v1/ingest/whatsapp/route';
 
 describe('WhatsApp Ingest Pipeline (API-01)', () => {
   let inMemoryClient: InMemorySupabaseTableClient;
@@ -249,6 +250,139 @@ describe('WhatsApp Ingest Pipeline (API-01)', () => {
       const fallbackPack = resolveDomainPack('unknown_vertical');
       expect(fallbackPack).toBeInstanceOf(RealEstateDomainPack);
       expect(fallbackPack.domain_key).toBe('real_estate');
+    });
+  });
+
+  describe('HTTP Route POST /api/v1/ingest/whatsapp (API-01)', () => {
+    test('rejects malformed JSON with HTTP 400', async () => {
+      const request = new Request('http://localhost/api/v1/ingest/whatsapp', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: 'invalid-json{{{',
+      });
+
+      const response = await POST(request);
+      expect(response.status).toBe(400);
+      const json = await response.json();
+      expect(json.success).toBe(false);
+      expect(json.error).toBeDefined();
+    });
+
+    test('rejects request when tenant_id is missing in both body and headers with HTTP 400', async () => {
+      const request = new Request('http://localhost/api/v1/ingest/whatsapp', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({
+          provider: 'whatsapp',
+          conversation_id: 'conv-no-tenant',
+          messages: [
+            {
+              external_message_id: 'msg-notenant',
+              sender_id: '5511999999999',
+              body: 'Quero vender por 500 mil',
+            },
+          ],
+        }),
+      });
+
+      const response = await POST(request);
+      expect(response.status).toBe(400);
+      const json = await response.json();
+      expect(json.success).toBe(false);
+      expect(json.error).toContain('tenant_id');
+    });
+
+    test('extracts tenant_id from header x-zaptrail-tenant-id when missing in body', async () => {
+      const request = new Request('http://localhost/api/v1/ingest/whatsapp', {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+          'x-zaptrail-tenant-id': 'tenant-from-header-1',
+        },
+        body: JSON.stringify({
+          provider: 'whatsapp',
+          conversation_id: 'conv-header-01',
+          messages: [
+            {
+              external_message_id: 'msg-hdr-01',
+              sender_id: '5511999999999',
+              body: 'Sou proprietário e quero vender por 750 mil',
+            },
+          ],
+        }),
+      });
+
+      const response = await POST(request);
+      expect(response.status).toBe(201);
+      const json = await response.json();
+      expect(json.success).toBe(true);
+      expect(json.duplicate).toBe(false);
+      expect(json.data.tenant_id).toBe('tenant-from-header-1');
+      expect(json.data.conversation_id).toBe('conv-header-01');
+    });
+
+    test('extracts tenant_id from Authorization Bearer header when missing in body', async () => {
+      const request = new Request('http://localhost/api/v1/ingest/whatsapp', {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+          'Authorization': 'Bearer tenant-bearer-token-123',
+        },
+        body: JSON.stringify({
+          provider: 'whatsapp',
+          conversation_id: 'conv-bearer-01',
+          messages: [
+            {
+              external_message_id: 'msg-bearer-01',
+              sender_id: '5511999999999',
+              body: 'Sou o dono do imóvel e vendo por 1.1 mi',
+            },
+          ],
+        }),
+      });
+
+      const response = await POST(request);
+      expect(response.status).toBe(201);
+      const json = await response.json();
+      expect(json.success).toBe(true);
+      expect(json.data.tenant_id).toBe('tenant-bearer-token-123');
+    });
+
+    test('processes valid turn with HTTP 201 on new turn and HTTP 200 on duplicate turn', async () => {
+      const makeRequest = () =>
+        new Request('http://localhost/api/v1/ingest/whatsapp', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({
+            tenant_id: 'tenant-route-200',
+            provider: 'whatsapp',
+            conversation_id: 'conv-route-200',
+            messages: [
+              {
+                external_message_id: 'msg-route-200',
+                sender_id: '5511988887777',
+                body: 'Sou o proprietário sim, estou vendendo por 1,2 milhão.',
+              },
+            ],
+          }),
+        });
+
+      // First call -> 201 Created
+      const firstResponse = await POST(makeRequest());
+      expect(firstResponse.status).toBe(201);
+      const firstJson = await firstResponse.json();
+      expect(firstJson.success).toBe(true);
+      expect(firstJson.duplicate).toBe(false);
+      expect(firstJson.data.opportunities.some((o: any) => o.opportunity_type === 'real_estate.capture_sale')).toBe(true);
+
+      // Second call -> 200 OK duplicate
+      const secondResponse = await POST(makeRequest());
+      expect(secondResponse.status).toBe(200);
+      const secondJson = await secondResponse.json();
+      expect(secondJson.success).toBe(true);
+      expect(secondJson.duplicate).toBe(true);
+      expect(secondJson.data.duplicate).toBe(true);
+      expect(secondJson.data.envelope_id).toBe(firstJson.data.envelope_id);
     });
   });
 });
