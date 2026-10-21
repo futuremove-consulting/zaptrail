@@ -1,9 +1,11 @@
 import { describe, it, expect, beforeEach } from 'vitest';
+import { PassThrough } from 'stream';
 import {
   createMcpServer,
   ZapTrailMcpServer,
   MCP_TOOLS,
 } from '../../src/packages/mcp/server';
+import { runMcpStdio } from '../../src/packages/mcp/index';
 import { SupabaseStoragePort } from '../../src/packages/core/supabase-storage';
 import { ReviewInboxService } from '../../src/packages/core/review-inbox';
 import { UniversalInterpretationEnvelopeSchema } from '../../src/packages/core/types';
@@ -393,4 +395,79 @@ describe('ZapTrailMcpServer (MCP-01)', () => {
       expect(res.error.code).toBe(-32602);
     });
   });
+
+  describe('runMcpStdio', () => {
+    it('processes line-delimited JSON-RPC requests over stdio streams', async () => {
+      const input = new PassThrough();
+      const output = new PassThrough();
+
+      const stop = runMcpStdio(server, input, output);
+
+      const responses: string[] = [];
+      output.on('data', (chunk) => {
+        responses.push(chunk.toString());
+      });
+
+      const pingReq = JSON.stringify({ jsonrpc: '2.0', id: 99, method: 'ping' }) + '\n';
+      input.write(pingReq);
+
+      await new Promise((resolve) => setTimeout(resolve, 50));
+
+      expect(responses.length).toBe(1);
+      const parsed = JSON.parse(responses[0]);
+      expect(parsed).toEqual({ jsonrpc: '2.0', id: 99, result: {} });
+
+      stop();
+    });
+
+    it('ignores empty lines and notifications without outputting null', async () => {
+      const input = new PassThrough();
+      const output = new PassThrough();
+
+      const stop = runMcpStdio(server, input, output);
+
+      const responses: string[] = [];
+      output.on('data', (chunk) => {
+        responses.push(chunk.toString());
+      });
+
+      input.write('\n   \n');
+      input.write(JSON.stringify({ jsonrpc: '2.0', method: 'notifications/initialized' }) + '\n');
+
+      await new Promise((resolve) => setTimeout(resolve, 50));
+      expect(responses.length).toBe(0);
+
+      stop();
+    });
+
+    it('recovers from malformed JSON lines writing JSON-RPC error without terminating', async () => {
+      const input = new PassThrough();
+      const output = new PassThrough();
+
+      const stop = runMcpStdio(server, input, output);
+
+      const responses: string[] = [];
+      output.on('data', (chunk) => {
+        responses.push(chunk.toString());
+      });
+
+      input.write('not-valid-json\n');
+      await new Promise((resolve) => setTimeout(resolve, 50));
+
+      expect(responses.length).toBe(1);
+      const parsedErr = JSON.parse(responses[0]);
+      expect(parsedErr.error.code).toBe(-32700);
+
+      // Verify stream is still functioning for next request
+      input.write(JSON.stringify({ jsonrpc: '2.0', id: 100, method: 'ping' }) + '\n');
+      await new Promise((resolve) => setTimeout(resolve, 50));
+
+      expect(responses.length).toBe(2);
+      const parsedPing = JSON.parse(responses[1]);
+      expect(parsedPing.id).toBe(100);
+
+      stop();
+    });
+  });
 });
+
