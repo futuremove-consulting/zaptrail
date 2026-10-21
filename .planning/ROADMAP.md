@@ -69,10 +69,14 @@ Plans:
   2. Nenhum endpoint da aplicação usa `SUPABASE_SERVICE_ROLE_KEY` sem filtro explícito de tenant/workspace, e a rota `/api/management-objects` consulta as tabelas reais do schema.
   3. Operadores humanos conseguem listar itens `review_required`, inspecionar o trecho exato da mensagem ("Mostrar na conversa") e aprovar/editar/rejeitar a decisão registrando auditoria.
 
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 03-01: TBD
+**Wave 1**
+- [ ] 03-01-PLAN.md — SQL/RLS Migration Repair (`001`..`004`), Audit Schema (`origin_messages`, `extraction_runs`, `evidence_spans`, `review_queue`) & `SupabaseStoragePort` (`DB-01`)
+
+**Wave 2** *(blocked on Wave 1 completion)*
+- [ ] 03-02-PLAN.md — Human Review Inbox (`ReviewInboxService`), Dual Timeline "Mostrar na conversa" Highlight & Tenant-Guarded `/api/management-objects` (`DB-01`, `REV-01`)
 
 ### Phase 4: Standalone Spin-Out Surface (REST API & MCP Server)
 
@@ -97,5 +101,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 |-------|----------------|--------|-----------|
 | 1. Core Contracts, Real Estate Domain Pack & Deterministic Engine | 3/3 | Complete    | 2026-10-21 |
 | 2. Hybrid Stage 2 Structured LLM Fallback & Outbound Context | 2/2 | Complete    | 2026-10-21 |
-| 3. Supabase RLS Persistence, Audit Trail & Review Inbox | 0/2 | Not started | - |
+| 3. Supabase RLS Persistence, Audit Trail & Review Inbox | 0/2 | Planned | - |
 | 4. Standalone Spin-Out Surface (REST API & MCP Server) | 0/1 | Not started | - |
