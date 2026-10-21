@@ -9,25 +9,25 @@ Requirements for initial release (`spec.md v1.0.0`). Each maps to roadmap phases
 
 ### Universal Semantic Core (`@futuremove/zaptrail-core`)
 
-- [ ] **CORE-01**: Sistema fornece `UniversalInterpretationEnvelope` (Zod + TypeScript) contendo `participants`, `intents`, `facts`, `values`, `relationships`, `conditions`, `opportunities`, `actions`, `evidence_refs` e `review_items` sem nenhum atributo exclusivo de imóvel.
-- [ ] **CORE-02**: Sistema define as interfaces plugáveis `DomainPack<TDomainEntities>`, `CRMAdapter` e `StoragePort` permitindo trocar o domínio (ex.: `real_estate`) ou o CRM alvo (ex.: `PilotCRMAdapter`) sem alterar o core.
-- [ ] **CORE-03**: Sistema constrói `EvidenceRef` obrigatório para toda observação/decisão, calculando `char_start` e `char_end` deterministicamente em TypeScript a partir de `exact_quote` sobre `normalized_text`.
-- [ ] **CORE-04**: Sistema aplica separação epistêmica (`declared`, `inferred`, `validated_external`, `validated_human`, `superseded`, `rejected`) e preserva evolução histórica de valores (ex.: atualização de preço marca o valor anterior como `superseded` sem apagá-lo).
-- [ ] **CORE-05**: Sistema aplica faixas de confiança (`>= 0.85` auto-update seguro, `0.65–0.84` `pending_confirmation` + `ReviewItem`, `< 0.65` observação/hipótese sem sobrescrita) e bloqueia execução autônoma de ações externas (`send_whatsapp_followup`).
+- [x] **CORE-01**: Sistema fornece `UniversalInterpretationEnvelope` (Zod + TypeScript) contendo `participants`, `intents`, `facts`, `values`, `relationships`, `conditions`, `opportunities`, `actions`, `evidence_refs` e `review_items` sem nenhum atributo exclusivo de imóvel.
+- [x] **CORE-02**: Sistema define as interfaces plugáveis `DomainPack<TDomainEntities>`, `CRMAdapter` e `StoragePort` permitindo trocar o domínio (ex.: `real_estate`) ou o CRM alvo (ex.: `PilotCRMAdapter`) sem alterar o core.
+- [x] **CORE-03**: Sistema constrói `EvidenceRef` obrigatório para toda observação/decisão, calculando `char_start` e `char_end` deterministicamente em TypeScript a partir de `exact_quote` sobre `normalized_text`.
+- [x] **CORE-04**: Sistema aplica separação epistêmica (`declared`, `inferred`, `validated_external`, `validated_human`, `superseded`, `rejected`) e preserva evolução histórica de valores (ex.: atualização de preço marca o valor anterior como `superseded` sem apagá-lo).
+- [x] **CORE-05**: Sistema aplica faixas de confiança (`>= 0.85` auto-update seguro, `0.65–0.84` `pending_confirmation` + `ReviewItem`, `< 0.65` observação/hipótese sem sobrescrita) e bloqueia execução autônoma de ações externas (`send_whatsapp_followup`).
 
 ### Real Estate Domain Pack & Deterministic Engine (`@futuremove/zaptrail-domain-real-estate`)
 
-- [ ] **RE-01**: Motor identifica o papel do contato em relação ao imóvel (`owner`, `co_owner`, `spouse_or_partner`, `family_member`, `friend_or_acquaintance`, `representative_or_advisor`, `broker_or_intermediary`, `tenant_or_occupant`, `unrelated_third_party`, `unknown`) e extrai contato de terceiro indicado (`refer_third_party` -> `real_estate.owner_discovery` + `request_owner_contact`).
-- [ ] **RE-02**: Motor classifica intenções comerciais (`capture_for_sale`, `capture_for_rent`, `capture_for_sale_and_rent`, `not_interested_property`, `not_interested_general`, `do_not_contact`, `future_interest`, `conditional_interest`, `ambiguous_or_open`, `noise_or_ack`) interpretando respostas curtas ("Sim", "Depende") em função da pergunta outbound da `TurnWindow`.
-- [ ] **RE-03**: Motor detecta oferta de segundo imóvel na mesma conversa (`CAPTURE_OTHER_PROPERTY`: recusa do imóvel perguntado + oferta de outro imóvel), criando um segundo `RealEstatePropertyCandidate` independente e oportunidade `real_estate.capture_sale` / `real_estate.capture_rent`.
-- [ ] **RE-04**: Motor detecta demandas (`buy_demand`, `rent_demand`, `investment_demand`) e condicionantes (`sale_before_purchase`, `family_approval`, `exclusivity_constraint`, `broker_commission_condition`, `tenant_vacating`, `date_or_timeframe`), vinculando oportunidades dependentes via `link_conditional_opportunities`.
-- [ ] **RE-05**: Motor extrai e normaliza valores monetários coloquiais em pt-BR (`1,2 milhão`, `850 mil`, `3.5k`, condomínio, IPTU), áreas (`m²`), quartos/vagas e anexos de mídia (`MediaUnderstandingResult` vinculado ao `PropertyCandidate`).
-- [ ] **RE-06**: Motor garante idempotência por `(tenant_id, provider, external_message_id)` e consolida mensagens fragmentadas consecutivas na mesma `TurnWindow` sem duplicar oportunidades ou ações.
+- [x] **RE-01**: Motor identifica o papel do contato em relação ao imóvel (`owner`, `co_owner`, `spouse_or_partner`, `family_member`, `friend_or_acquaintance`, `representative_or_advisor`, `broker_or_intermediary`, `tenant_or_occupant`, `unrelated_third_party`, `unknown`) e extrai contato de terceiro indicado (`refer_third_party` -> `real_estate.owner_discovery` + `request_owner_contact`).
+- [x] **RE-02**: Motor classifica intenções comerciais (`capture_for_sale`, `capture_for_rent`, `capture_for_sale_and_rent`, `not_interested_property`, `not_interested_general`, `do_not_contact`, `future_interest`, `conditional_interest`, `ambiguous_or_open`, `noise_or_ack`) interpretando respostas curtas ("Sim", "Depende") em função da pergunta outbound da `TurnWindow`.
+- [x] **RE-03**: Motor detecta oferta de segundo imóvel na mesma conversa (`CAPTURE_OTHER_PROPERTY`: recusa do imóvel perguntado + oferta de outro imóvel), criando um segundo `RealEstatePropertyCandidate` independente e oportunidade `real_estate.capture_sale` / `real_estate.capture_rent`.
+- [x] **RE-04**: Motor detecta demandas (`buy_demand`, `rent_demand`, `investment_demand`) e condicionantes (`sale_before_purchase`, `family_approval`, `exclusivity_constraint`, `broker_commission_condition`, `tenant_vacating`, `date_or_timeframe`), vinculando oportunidades dependentes via `link_conditional_opportunities`.
+- [x] **RE-05**: Motor extrai e normaliza valores monetários coloquiais em pt-BR (`1,2 milhão`, `850 mil`, `3.5k`, condomínio, IPTU), áreas (`m²`), quartos/vagas e anexos de mídia (`MediaUnderstandingResult` vinculado ao `PropertyCandidate`).
+- [x] **RE-06**: Motor garante idempotência por `(tenant_id, provider, external_message_id)` e consolida mensagens fragmentadas consecutivas na mesma `TurnWindow` sem duplicar oportunidades ou ações.
 
 ### CRM Compatibility & Golden Verification
 
-- [ ] **CRM-01**: `PilotCRMAdapter` traduz decisões do ZapTrail para propostas compatíveis com a constraint `enrichment_action_ck` do PilotCRM (`NO_CHANGE|CONFIRM|UPDATE|ADD|RELATE|CONTRADICT|INVALIDATE|SUPPRESS|DEFER|REVIEW`), corrigindo o erro P0 `action_type: "create_deal"`.
-- [ ] **QA-01**: Suíte de testes automatizados Vitest valida 100% dos 20 Casos-Ouro obrigatórios (`CT-01` a `CT-20` de `docs/spec.md §21.2`) mais verificação arquitetural de zero vazamento de termos imobiliários em `@futuremove/zaptrail-core`.
+- [x] **CRM-01**: `PilotCRMAdapter` traduz decisões do ZapTrail para propostas compatíveis com a constraint `enrichment_action_ck` do PilotCRM (`NO_CHANGE|CONFIRM|UPDATE|ADD|RELATE|CONTRADICT|INVALIDATE|SUPPRESS|DEFER|REVIEW`), corrigindo o erro P0 `action_type: "create_deal"`.
+- [x] **QA-01**: Suíte de testes automatizados Vitest valida 100% dos 20 Casos-Ouro obrigatórios (`CT-01` a `CT-20` de `docs/spec.md §21.2`) mais verificação arquitetural de zero vazamento de termos imobiliários em `@futuremove/zaptrail-core`.
 
 ### Hybrid LLM Stage 2 & Context Seeding
 
@@ -66,19 +66,19 @@ Deferred to future release. Tracked but not in current roadmap.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| CORE-01 | Phase 1 | Pending |
-| CORE-02 | Phase 1 | Pending |
-| CORE-03 | Phase 1 | Pending |
-| CORE-04 | Phase 1 | Pending |
-| CORE-05 | Phase 1 | Pending |
-| RE-01 | Phase 1 | Pending |
-| RE-02 | Phase 1 | Pending |
-| RE-03 | Phase 1 | Pending |
-| RE-04 | Phase 1 | Pending |
-| RE-05 | Phase 1 | Pending |
-| RE-06 | Phase 1 | Pending |
-| CRM-01 | Phase 1 | Pending |
-| QA-01 | Phase 1 | Pending |
+| CORE-01 | Phase 1 | Complete |
+| CORE-02 | Phase 1 | Complete |
+| CORE-03 | Phase 1 | Complete |
+| CORE-04 | Phase 1 | Complete |
+| CORE-05 | Phase 1 | Complete |
+| RE-01 | Phase 1 | Complete |
+| RE-02 | Phase 1 | Complete |
+| RE-03 | Phase 1 | Complete |
+| RE-04 | Phase 1 | Complete |
+| RE-05 | Phase 1 | Complete |
+| RE-06 | Phase 1 | Complete |
+| CRM-01 | Phase 1 | Complete |
+| QA-01 | Phase 1 | Complete |
 | LLM-01 | Phase 2 | Pending |
 | LLM-02 | Phase 2 | Pending |
 | ING-01 | Phase 2 | Pending |

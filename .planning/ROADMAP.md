@@ -10,7 +10,7 @@ Implementação do motor **ZapTrail** segundo a especificação técnica `docs/s
 - Integer phases (1, 2, 3, 4): Planned milestone work
 - Decimal phases (1.1, 2.1): Urgent insertions (marked with INSERTED)
 
-- [ ] **Phase 1: Core Contracts, Real Estate Domain Pack & Deterministic Engine** - Núcleo universal `@futuremove/zaptrail-core`, pacote `@futuremove/zaptrail-domain-real-estate`, `PilotCRMAdapter` e 20 Casos-Ouro (`CT-01`..`CT-20`)
+- [x] **Phase 1: Core Contracts, Real Estate Domain Pack & Deterministic Engine** - Núcleo universal `@futuremove/zaptrail-core`, pacote `@futuremove/zaptrail-domain-real-estate`, `PilotCRMAdapter` e 20 Casos-Ouro (`CT-01`..`CT-20`) (completed 2026-10-21)
 - [ ] **Phase 2: Hybrid Stage 2 Structured LLM Fallback & Outbound Context** - Extração estruturada LLM com validação de `exact_quote`, coalescência de turnos e seed de campanhas outbound
 - [ ] **Phase 3: Supabase RLS Persistence, Audit Trail & Review Inbox** - Migrações PostgreSQL/RLS corrigidas, trilha de auditoria imutável e Inbox de Revisão Humana + Timeline Dual
 - [ ] **Phase 4: Standalone Spin-Out Surface (REST API & MCP Server)** - Endpoint `/api/v1/ingest/whatsapp` e servidor MCP `@futuremove/zaptrail-mcp` para operação multi-CRM e multi-domínio
@@ -28,17 +28,17 @@ Implementação do motor **ZapTrail** segundo a especificação técnica `docs/s
   3. `src/packages/domain-real-estate` (`@futuremove/zaptrail-domain-real-estate`) resolve papéis (`owner`, `spouse_or_partner`, `family_member`, `broker_or_intermediary`, `unrelated_third_party`), intenções, normalização monetária pt-BR, segundo imóvel na mesma conversa (`CAPTURE_OTHER_PROPERTY`), demandas condicionadas (`sale_before_purchase`), evolução de preço (`superseded`), idempotência de webhook e consolidação de `TurnWindow`.
   4. `PilotCRMAdapter` mapeia oportunidades e recomendações para propostas compatíveis com `enrichment_action_ck` (`NO_CHANGE|CONFIRM|UPDATE|ADD|RELATE|CONTRADICT|INVALIDATE|SUPPRESS|DEFER|REVIEW`), nunca emitindo `action_type: "create_deal"`.
 
-**Plans**: 3 plans
+**Plans**: 3/3 plans complete
 
 Plans:
 **Wave 1**
-- [ ] 01-01-PLAN.md — Root TypeScript/Vitest toolchain & `@futuremove/zaptrail-core` (`CORE-01`..`CORE-05`)
+- [x] 01-01-PLAN.md — Root TypeScript/Vitest toolchain & `@futuremove/zaptrail-core` (`CORE-01`..`CORE-05`)
 
 **Wave 2** *(blocked on Wave 1 completion)*
-- [ ] 01-02-PLAN.md — `@futuremove/zaptrail-domain-real-estate` deterministic parser, pt-BR normalizer, multi-property & conditional orchestrator (`RE-01`..`RE-06`)
+- [x] 01-02-PLAN.md — `@futuremove/zaptrail-domain-real-estate` deterministic parser, pt-BR normalizer, multi-property & conditional orchestrator (`RE-01`..`RE-06`)
 
 **Wave 3** *(blocked on Wave 2 completion)*
-- [ ] 01-03-PLAN.md — `PilotCRMAdapter` (`enrichment_action_ck`) & 20 Mandatory Golden Cases (`CT-01`..`CT-20`) + boundary verification (`CRM-01`, `QA-01`)
+- [x] 01-03-PLAN.md — `PilotCRMAdapter` (`enrichment_action_ck`) & 20 Mandatory Golden Cases (`CT-01`..`CT-20`) + boundary verification (`CRM-01`, `QA-01`)
 
 ### Phase 2: Hybrid Stage 2 Structured LLM Fallback & Outbound Context
 
@@ -91,7 +91,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Core Contracts, Real Estate Domain Pack & Deterministic Engine | 0/3 | Not started | - |
+| 1. Core Contracts, Real Estate Domain Pack & Deterministic Engine | 3/3 | Complete    | 2026-10-21 |
 | 2. Hybrid Stage 2 Structured LLM Fallback & Outbound Context | 0/2 | Not started | - |
 | 3. Supabase RLS Persistence, Audit Trail & Review Inbox | 0/2 | Not started | - |
 | 4. Standalone Spin-Out Surface (REST API & MCP Server) | 0/1 | Not started | - |

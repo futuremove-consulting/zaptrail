@@ -6,7 +6,7 @@
     {
       "number": "1",
       "name": "Core Contracts, Real Estate Domain Pack & Deterministic Engine",
-      "status": "pending"
+      "status": "complete"
     },
     {
       "number": "2",
@@ -26,8 +26,8 @@
   ],
   "next": {
     "command": "/gsd-progress --next",
-    "label": "Advance to the next step",
-    "reason": "Phase 1 of 4 · executing"
+    "label": "Advance to the next step (plan phase 2)",
+    "reason": "Phase 2 of 4 — needs a plan"
   },
-  "updated_at": "2026-10-21T14:19:34.592Z"
+  "updated_at": "2026-10-21T15:14:47.368Z"
 }
