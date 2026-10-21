@@ -376,9 +376,43 @@ describe('ZapTrail 20 Mandatory Golden Cases (CT-01..CT-20)', () => {
     }
   });
 
-  it('QA-01 Quality Rule: all production files in src/packages/ have <= 350 lines (D-01)', () => {
-    const packagesDir = path.resolve(process.cwd(), 'src/packages');
+  it('QA-01 Architectural Boundary: src/packages/mcp contains zero real estate domain vocabulary and zero imports from domain packages', () => {
+    const mcpDir = path.resolve(process.cwd(), 'src/packages/mcp');
+    const files = fs.readdirSync(mcpDir).filter((f) => f.endsWith('.ts'));
+    const prohibitedTokens = [
+      'iptu',
+      'condo_fee',
+      'bedrooms',
+      'property_type',
+      'matricula',
+      'aluguel',
+      'alugar',
+      'locacao',
+      'locação',
+      'quartos',
+      'inquilino',
+      'corretor',
+    ];
+
+    for (const file of files) {
+      const content = fs.readFileSync(path.join(mcpDir, file), 'utf-8');
+      for (const token of prohibitedTokens) {
+        const regex = new RegExp(`\\b${token}\\b`, 'i');
+        const match = regex.test(content);
+        expect(match, `Found prohibited domain token "${token}" in MCP file: ${file}`).toBe(false);
+      }
+      expect(content).not.toMatch(/from\s+['"].*domain-real-estate/);
+    }
+  });
+
+  it('QA-01 Quality Rule: all production files in src/packages/, src/app/api/, src/components/ have <= 350 lines (D-01)', () => {
+    const roots = [
+      path.resolve(process.cwd(), 'src/packages'),
+      path.resolve(process.cwd(), 'src/app/api'),
+      path.resolve(process.cwd(), 'src/components'),
+    ];
     function getAllTsFiles(dir: string): string[] {
+      if (!fs.existsSync(dir)) return [];
       let results: string[] = [];
       const list = fs.readdirSync(dir);
       for (const item of list) {
@@ -386,15 +420,15 @@ describe('ZapTrail 20 Mandatory Golden Cases (CT-01..CT-20)', () => {
         const stat = fs.statSync(fullPath);
         if (stat.isDirectory()) {
           results = results.concat(getAllTsFiles(fullPath));
-        } else if (item.endsWith('.ts')) {
+        } else if ((item.endsWith('.ts') || item.endsWith('.tsx')) && !item.includes('.test.')) {
           results.push(fullPath);
         }
       }
       return results;
     }
 
-    const allTsFiles = getAllTsFiles(packagesDir);
-    expect(allTsFiles.length).toBeGreaterThanOrEqual(10);
+    const allTsFiles = roots.flatMap(getAllTsFiles);
+    expect(allTsFiles.length).toBeGreaterThanOrEqual(15);
 
     for (const filePath of allTsFiles) {
       const content = fs.readFileSync(filePath, 'utf-8');
