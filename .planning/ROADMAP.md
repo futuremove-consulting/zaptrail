@@ -13,7 +13,7 @@ Implementação do motor **ZapTrail** segundo a especificação técnica `docs/s
 - [x] **Phase 1: Core Contracts, Real Estate Domain Pack & Deterministic Engine** - Núcleo universal `@futuremove/zaptrail-core`, pacote `@futuremove/zaptrail-domain-real-estate`, `PilotCRMAdapter` e 20 Casos-Ouro (`CT-01`..`CT-20`) (completed 2026-10-21)
 - [x] **Phase 2: Hybrid Stage 2 Structured LLM Fallback & Outbound Context** - Extração estruturada LLM com validação de `exact_quote`, coalescência de turnos e seed de campanhas outbound (completed 2026-10-21)
 - [x] **Phase 3: Supabase RLS Persistence, Audit Trail & Review Inbox** - Migrações PostgreSQL/RLS corrigidas, trilha de auditoria imutável e Inbox de Revisão Humana + Timeline Dual (completed 2026-10-21)
-- [ ] **Phase 4: Standalone Spin-Out Surface (REST API & MCP Server)** - Endpoint `/api/v1/ingest/whatsapp` e servidor MCP `@futuremove/zaptrail-mcp` para operação multi-CRM e multi-domínio
+- [x] **Phase 4: Standalone Spin-Out Surface (REST API & MCP Server)** - Endpoint `/api/v1/ingest/whatsapp` e servidor MCP `@futuremove/zaptrail-mcp` para operação multi-CRM e multi-domínio (completed 2026-10-21)
 
 ## Phase Details
 
@@ -87,14 +87,14 @@ Plans:
   1. `POST /api/v1/ingest/whatsapp` processa payloads de conversa com idempotência e retorna `UniversalInterpretationEnvelope` validado.
   2. O servidor MCP expõe `analyze_conversation`, `get_entity_memory` e `resolve_review_item` operando sobre `@futuremove/zaptrail-core`.
 
-**Plans**: 2 plans
+**Plans**: 2/2 plans complete
 
 Plans:
 **Wave 1**
-- [ ] 04-01-PLAN.md — REST Webhook Ingest Pipeline & HTTP Route `/api/v1/ingest/whatsapp` (`API-01`)
+- [x] 04-01-PLAN.md — REST Webhook Ingest Pipeline & HTTP Route `/api/v1/ingest/whatsapp` (`API-01`)
 
 **Wave 2** *(blocked on Wave 1 completion)*
-- [ ] 04-02-PLAN.md — Model Context Protocol (MCP) Server & Tools (`analyze_conversation`, `get_entity_memory`, `resolve_review_item`) (`MCP-01`)
+- [x] 04-02-PLAN.md — Model Context Protocol (MCP) Server & Tools (`analyze_conversation`, `get_entity_memory`, `resolve_review_item`) (`MCP-01`)
 
 ## Progress
 
@@ -106,4 +106,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | 1. Core Contracts, Real Estate Domain Pack & Deterministic Engine | 3/3 | Complete    | 2026-10-21 |
 | 2. Hybrid Stage 2 Structured LLM Fallback & Outbound Context | 2/2 | Complete    | 2026-10-21 |
 | 3. Supabase RLS Persistence, Audit Trail & Review Inbox | 2/2 | Complete    | 2026-10-21 |
-| 4. Standalone Spin-Out Surface (REST API & MCP Server) | 0/2 | Planned | - |
+| 4. Standalone Spin-Out Surface (REST API & MCP Server) | 2/2 | Complete    | 2026-10-21 |

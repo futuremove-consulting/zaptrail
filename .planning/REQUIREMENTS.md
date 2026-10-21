@@ -42,8 +42,8 @@ Requirements for initial release (`spec.md v1.0.0`). Each maps to roadmap phases
 
 ### Standalone Spin-Out Surface (API & MCP)
 
-- [ ] **API-01**: Endpoint `/api/v1/ingest/whatsapp` processa webhooks/turnos de forma idempotente retornando `UniversalInterpretationEnvelope` auditável.
-- [ ] **MCP-01**: Servidor MCP expõe tools `analyze_conversation`, `get_entity_memory` e `resolve_review_item` para consumo por agentes externos e CRMs terceiros.
+- [x] **API-01**: Endpoint `/api/v1/ingest/whatsapp` processa webhooks/turnos de forma idempotente retornando `UniversalInterpretationEnvelope` auditável.
+- [x] **MCP-01**: Servidor MCP expõe tools `analyze_conversation`, `get_entity_memory` e `resolve_review_item` para consumo por agentes externos e CRMs terceiros.
 
 ## v2 Requirements
 
@@ -84,8 +84,8 @@ Deferred to future release. Tracked but not in current roadmap.
 | ING-01 | Phase 2 | Complete |
 | DB-01 | Phase 3 | Complete |
 | REV-01 | Phase 3 | Complete |
-| API-01 | Phase 4 | Pending |
-| MCP-01 | Phase 4 | Pending |
+| API-01 | Phase 4 | Complete |
+| MCP-01 | Phase 4 | Complete |
 
 **Coverage:**
 - v1 requirements: 20 total
