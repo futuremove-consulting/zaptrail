@@ -153,7 +153,7 @@ export class ZapTrailMcpServer {
     const id = req.id ?? null;
     const isNotification = req.id === undefined;
 
-    if (isNotification && req.method.startsWith('notifications/')) {
+    if (isNotification) {
       return null;
     }
 

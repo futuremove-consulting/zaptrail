@@ -57,13 +57,18 @@ describe('ZapTrailMcpServer (MCP-01)', () => {
       });
     });
 
-    it('returns null for notifications like "notifications/initialized"', async () => {
-      const res = await server.handleMessage({
+    it('returns null for notifications like "notifications/initialized" and "initialized"', async () => {
+      const res1 = await server.handleMessage({
         jsonrpc: '2.0',
         method: 'notifications/initialized',
       });
+      expect(res1).toBeNull();
 
-      expect(res).toBeNull();
+      const res2 = await server.handleMessage({
+        jsonrpc: '2.0',
+        method: 'initialized',
+      });
+      expect(res2).toBeNull();
     });
   });
 
