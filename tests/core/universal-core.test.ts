@@ -1,28 +1,29 @@
 import { describe, it, expect } from 'vitest';
+import * as fs from 'fs';
+import * as path from 'path';
 import {
   UniversalInterpretationEnvelopeSchema,
-  EpistemicStatusSchema,
-  EvidenceRefSchema,
-  ConversationMessageSchema,
-  TurnWindowSchema,
   ParticipantObservationSchema,
-  IntentObservationSchema,
-  FactObservationSchema,
-  ValueObservationSchema,
-  RelationshipObservationSchema,
-  ConditionObservationSchema,
-  OpportunityAssessmentSchema,
-  ActionRecommendationSchema,
-  ReviewItemSchema,
+  type ValueObservation,
+  type ActionRecommendation,
   type DomainPack,
   type CRMAdapter,
   type StoragePort,
   type CRMProposal,
+  type TurnWindow,
 } from '../../src/packages/core/types';
 import {
   buildEvidenceRef,
   normalizeMessageText,
 } from '../../src/packages/core/evidence';
+import {
+  evaluateConfidenceBand,
+  applyValueEvolution,
+  canAutoExecuteAction,
+  sanitizeActionRecommendation,
+  EXTERNAL_OUTBOUND_ACTIONS,
+} from '../../src/packages/core/confidence-policy';
+import { UniversalInterpretationEngine } from '../../src/packages/core/engine';
 
 describe('CORE-01 & CORE-02: Universal Semantic Contracts', () => {
   const baseEvidence = {
@@ -159,7 +160,7 @@ describe('CORE-01 & CORE-02: Universal Semantic Contracts', () => {
       role_label: 'owner',
       epistemic_status: 'declared',
       confidence: 0.9,
-      evidence_refs: [], // Empty evidence_refs must fail
+      evidence_refs: [],
     };
 
     expect(() => ParticipantObservationSchema.parse(invalidObservation)).toThrow();
@@ -171,7 +172,7 @@ describe('CORE-01 & CORE-02: Universal Semantic Contracts', () => {
     const testDomainPack: DomainPack<TestEntities> = {
       domain_key: 'logistics',
       parser_version: '1.0.0',
-      interpretTurnWindow: async (turnWindow) => {
+      interpretTurnWindow: async (_turnWindow) => {
         return {
           participants: [],
           intents: [],
@@ -191,7 +192,7 @@ describe('CORE-01 & CORE-02: Universal Semantic Contracts', () => {
 
     const testCrmAdapter: CRMAdapter = {
       adapter_id: 'mock_crm',
-      translateEnvelope: (envelope) => {
+      translateEnvelope: (_envelope) => {
         const proposals: CRMProposal[] = [
           {
             entity_type: 'contact',
@@ -286,5 +287,274 @@ describe('CORE-03: Deterministic EvidenceRef Offset Calculation (D-05)', () => {
         confidence: 0.9,
       })
     ).toThrowError(/EXACT_QUOTE_NOT_FOUND/);
+  });
+});
+
+describe('CORE-04: Epistemic Status & Value Evolution (D-06)', () => {
+  const dummyEvidence = {
+    evidence_id: 'ev-test',
+    message_id: 'msg-1',
+    conversation_id: 'conv-1',
+    exact_quote: 'valor',
+    char_start: 0,
+    char_end: 5,
+    timestamp: '2026-10-21T12:00:00Z',
+    extractor_type: 'rule' as const,
+    parser_version: '1.0.0',
+    confidence: 0.95,
+  };
+
+  it('marks prior active value observation as superseded while preserving it in history', () => {
+    const existing: ValueObservation[] = [
+      {
+        value_id: 'val-old',
+        field_key: 'asking_price',
+        amount: 1000000,
+        currency: 'BRL',
+        raw_expression: '1 milhão',
+        target_entity_key: 'prop-1',
+        epistemic_status: 'declared',
+        confidence: 0.95,
+        evidence_refs: [dummyEvidence],
+      },
+    ];
+
+    const incoming: ValueObservation[] = [
+      {
+        value_id: 'val-new',
+        field_key: 'asking_price',
+        amount: 1350000,
+        currency: 'BRL',
+        raw_expression: '1,35 milhão',
+        target_entity_key: 'prop-1',
+        epistemic_status: 'declared',
+        confidence: 0.95,
+        evidence_refs: [dummyEvidence],
+      },
+    ];
+
+    const evolved = applyValueEvolution(existing, incoming);
+    expect(evolved).toHaveLength(2);
+
+    const oldVal = evolved.find((v) => v.value_id === 'val-old');
+    const newVal = evolved.find((v) => v.value_id === 'val-new');
+
+    expect(oldVal?.epistemic_status).toBe('superseded');
+    expect(oldVal?.superseded_by_value_id).toBe('val-new');
+    expect(newVal?.epistemic_status).toBe('declared');
+    expect(newVal?.amount).toBe(1350000);
+  });
+
+  it('does not supersede when field_key or target_entity_key differ', () => {
+    const existing: ValueObservation[] = [
+      {
+        value_id: 'val-price',
+        field_key: 'asking_price',
+        amount: 1000000,
+        currency: 'BRL',
+        raw_expression: '1 milhão',
+        target_entity_key: 'prop-1',
+        epistemic_status: 'declared',
+        confidence: 0.95,
+        evidence_refs: [dummyEvidence],
+      },
+    ];
+
+    const incoming: ValueObservation[] = [
+      {
+        value_id: 'val-rent',
+        field_key: 'monthly_rate',
+        amount: 5000,
+        currency: 'BRL',
+        raw_expression: '5 mil',
+        target_entity_key: 'prop-1',
+        epistemic_status: 'declared',
+        confidence: 0.95,
+        evidence_refs: [dummyEvidence],
+      },
+    ];
+
+    const evolved = applyValueEvolution(existing, incoming);
+    expect(evolved).toHaveLength(2);
+    expect(evolved.find((v) => v.value_id === 'val-price')?.epistemic_status).toBe('declared');
+    expect(evolved.find((v) => v.value_id === 'val-rent')?.epistemic_status).toBe('declared');
+  });
+});
+
+describe('CORE-05: Confidence Policy & Action Guards (D-04)', () => {
+  it('categorizes confidence >= 0.85 into high band with autoUpdateAllowed', () => {
+    const result = evaluateConfidenceBand(0.92);
+    expect(result.band).toBe('high');
+    expect(result.autoUpdateAllowed).toBe(true);
+    expect(result.reviewRequired).toBe(false);
+    expect(result.recommendedEpistemicStatus).toBe('declared');
+  });
+
+  it('categorizes 0.65 <= confidence < 0.85 into medium band with reviewRequired', () => {
+    const result = evaluateConfidenceBand(0.75, true);
+    expect(result.band).toBe('medium');
+    expect(result.autoUpdateAllowed).toBe(false);
+    expect(result.reviewRequired).toBe(true);
+    expect(result.recommendedEpistemicStatus).toBe('inferred');
+  });
+
+  it('categorizes confidence < 0.65 into low band preserving confirmed data', () => {
+    const result = evaluateConfidenceBand(0.5);
+    expect(result.band).toBe('low');
+    expect(result.autoUpdateAllowed).toBe(false);
+    expect(result.preserveConfirmedData).toBe(true);
+    expect(result.reviewRequired).toBe(true);
+  });
+
+  it('blocks autonomous execution of external outbound actions even at high confidence', () => {
+    for (const action of EXTERNAL_OUTBOUND_ACTIONS) {
+      expect(canAutoExecuteAction(action, 'auto', 0.99)).toBe(false);
+    }
+  });
+
+  it('sanitizes external action recommendations to manual with human approval required', () => {
+    const unsafeAction: ActionRecommendation = {
+      action_id: 'act-outbound',
+      action_type: 'send_whatsapp_followup',
+      execution_mode: 'auto',
+      requires_human_approval: false,
+      epistemic_status: 'declared',
+      confidence: 0.95,
+      evidence_refs: [
+        {
+          evidence_id: 'ev-1',
+          message_id: 'msg-1',
+          conversation_id: 'conv-1',
+          exact_quote: 'ok',
+          char_start: 0,
+          char_end: 2,
+          timestamp: '2026-10-21T12:00:00Z',
+          extractor_type: 'rule',
+          parser_version: '1.0.0',
+          confidence: 0.95,
+        },
+      ],
+      payload: {},
+    };
+
+    const sanitized = sanitizeActionRecommendation(unsafeAction);
+    expect(sanitized.execution_mode).toBe('manual');
+    expect(sanitized.requires_human_approval).toBe(true);
+  });
+});
+
+describe('CORE-01 & CORE-04 & CORE-05: UniversalInterpretationEngine', () => {
+  const dummyEvidence = {
+    evidence_id: 'ev-engine',
+    message_id: 'ext-msg-1',
+    conversation_id: 'conv-100',
+    exact_quote: 'sim',
+    char_start: 0,
+    char_end: 3,
+    timestamp: '2026-10-21T12:00:00Z',
+    extractor_type: 'rule' as const,
+    parser_version: '1.0.0',
+    confidence: 0.95,
+  };
+
+  const sampleTurn: TurnWindow = {
+    turn_id: 'turn-100',
+    tenant_id: 'ten-1',
+    provider: 'whatsapp',
+    conversation_id: 'conv-100',
+    consolidated_text: 'sim',
+    messages: [
+      {
+        message_id: 'msg-int-1',
+        external_message_id: 'ext-msg-1',
+        tenant_id: 'ten-1',
+        provider: 'whatsapp',
+        conversation_id: 'conv-100',
+        direction: 'inbound',
+        sender_id: 'usr-1',
+        raw_text: 'sim',
+        normalized_text: 'sim',
+        timestamp: '2026-10-21T12:00:00Z',
+        attachments: [],
+      },
+    ],
+  };
+
+  const mockPack: DomainPack = {
+    domain_key: 'test_pack',
+    parser_version: '1.0.0',
+    interpretTurnWindow: async (_turn) => ({
+      participants: [],
+      intents: [
+        {
+          intent_id: 'int-medium',
+          intent_label: 'test_intent',
+          epistemic_status: 'inferred',
+          confidence: 0.72, // Medium confidence -> should trigger ReviewItem
+          evidence_refs: [dummyEvidence],
+        },
+      ],
+      facts: [],
+      values: [],
+      relationships: [],
+      conditions: [],
+      opportunities: [],
+      actions: [
+        {
+          action_id: 'act-followup',
+          action_type: 'send_whatsapp_followup',
+          execution_mode: 'auto',
+          requires_human_approval: false,
+          epistemic_status: 'declared',
+          confidence: 0.95,
+          evidence_refs: [dummyEvidence],
+          payload: {},
+        },
+      ],
+      media_results: [],
+      evidence_refs: [dummyEvidence],
+      review_items: [],
+    }),
+  };
+
+  it('interprets turn, creates review item for medium confidence, and sanitizes actions', async () => {
+    const engine = new UniversalInterpretationEngine(mockPack);
+    const envelope = await engine.interpretTurn(sampleTurn);
+
+    expect(envelope.duplicate).toBe(false);
+    expect(envelope.review_required).toBe(true);
+    expect(envelope.review_items.length).toBeGreaterThanOrEqual(1);
+    expect(envelope.actions[0].execution_mode).toBe('manual');
+    expect(envelope.actions[0].requires_human_approval).toBe(true);
+  });
+
+  it('enforces idempotency on reprocessed message id (CT-18)', async () => {
+    const engine = new UniversalInterpretationEngine(mockPack);
+    const firstResult = await engine.interpretTurn(sampleTurn);
+    expect(firstResult.duplicate).toBe(false);
+
+    const duplicateResult = await engine.interpretTurn(sampleTurn);
+    expect(duplicateResult.duplicate).toBe(true);
+    expect(duplicateResult.opportunities).toHaveLength(0);
+    expect(duplicateResult.actions).toHaveLength(0);
+  });
+});
+
+describe('Boundary Isolation: Zero Real-Estate Tokens in Core (CORE-01, CORE-02, D-02)', () => {
+  it('ensures src/packages/core/ contains zero real-estate-specific domain tokens', () => {
+    const coreDir = path.resolve(__dirname, '../../src/packages/core');
+    const files = fs.readdirSync(coreDir).filter((f) => f.endsWith('.ts'));
+
+    const forbiddenTokens = ['iptu', 'condo_fee', 'condominio', 'bedrooms', 'matricula'];
+
+    for (const file of files) {
+      const content = fs.readFileSync(path.join(coreDir, file), 'utf-8').toLowerCase();
+      for (const token of forbiddenTokens) {
+        expect(
+          content.includes(token),
+          `Found forbidden domain token "${token}" in core file "${file}"`
+        ).toBe(false);
+      }
+    }
   });
 });
