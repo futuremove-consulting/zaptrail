@@ -71,6 +71,39 @@ describe('QuoteValidator Anti-Hallucination Guard (LLM-02)', () => {
     it('rejects quote when message text is empty', () => {
       expect(validateExactQuote('', '1,2 milhão').valid).toBe(false);
     });
+
+    it('rejects adversarial word-boundary violations (partial word truncation)', () => {
+      // "interessado" should NOT match "desinteressado"
+      const result = validateExactQuote('estou desinteressado no momento', 'interessado');
+      expect(result.valid).toBe(false);
+      expect(result.char_start).toBeUndefined();
+
+      // "vendo" should NOT match "revendo"
+      const result2 = validateExactQuote('estou revendo o preço', 'vendo');
+      expect(result2.valid).toBe(false);
+    });
+
+    it('handles unicode NFD vs NFC and zero-width spaces without offset drift', () => {
+      const nfdMessage = 'São Paulo com vista panorâmica'.normalize('NFD');
+      const result = validateExactQuote(nfdMessage, 'São Paulo');
+      expect(result.valid).toBe(true);
+      expect(result.char_start).toBe(0);
+      expect(result.char_end).toBe(9);
+
+      // Zero-width space embedded in WhatsApp pasted text
+      const zwspMessage = 'estou vendendo\u200B por 1,2 milhão';
+      const zwspResult = validateExactQuote(zwspMessage, 'estou vendendo por 1,2 milhão');
+      expect(zwspResult.valid).toBe(true);
+    });
+
+    it('normalizes smart/curly quotes and dashes', () => {
+      const messageWithSmartQuotes = 'apartamento “alto padrão” — Moema';
+      const result = validateExactQuote(
+        messageWithSmartQuotes,
+        'apartamento "alto padrão" - Moema'
+      );
+      expect(result.valid).toBe(true);
+    });
   });
 
   describe('validateLlmQuotes', () => {
