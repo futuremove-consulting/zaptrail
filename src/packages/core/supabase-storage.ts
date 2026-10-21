@@ -272,6 +272,22 @@ export class SupabaseStoragePort implements StoragePort {
     return items;
   }
 
+  public async getReviewItem(tenantId: string, reviewId: string): Promise<ReviewQueueRecord | null> {
+    const validTenant = assertTenantScope(tenantId);
+    const key = `${validTenant}:${reviewId}`;
+    return this.client.reviewQueue.get(key) || null;
+  }
+
+  public async updateReviewItem(tenantId: string, item: ReviewQueueRecord): Promise<void> {
+    const validTenant = assertTenantScope(tenantId);
+    const key = `${validTenant}:${item.review_id}`;
+    this.client.reviewQueue.set(key, {
+      ...item,
+      tenant_id: validTenant,
+      updated_at: new Date().toISOString(),
+    });
+  }
+
   public async upsertOriginMessage(record: OriginMessageRecord): Promise<void> {
     const validTenant = assertTenantScope(record.tenant_id);
     const key = `${validTenant}:${record.provider}:${record.external_message_id}`;
