@@ -35,8 +35,11 @@
 **Success Criteria** (what must be TRUE):
   1. ZapTrail é registrado com chave, nome, categoria e flags em `apps/pilotcrm/src/lib/module-flags/types.ts`.
   2. O Card do ZapTrail é renderizado na tela de Módulos (`/crm/settings/modules`) com switches e campos de API URL e token.
-  3. A ativação do módulo e credenciais persistem por workspace no banco do PilotCRM sem regressão nos módulos existentes.
-**Plans**: TBD
+**Plans**: 2 plans
+
+Plans:
+- [ ] 05-01: Module Registry, Feature Flags e validação Zod no PilotCRM
+- [ ] 05-02: Card do ZapTrail e parâmetros de conexão na UI de Módulos
 
 ### Phase 6: PilotCRM 3 Ingest Triggers Integration
 **Goal**: Conectar os 3 pontos de entrada do PilotCRM (webhook realtime, crons 4x/dia e botão sob demanda) ao endpoint de ingestão do ZapTrail.
