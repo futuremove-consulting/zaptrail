@@ -3,16 +3,16 @@ gsd_state_version: "1.0"
 milestone: v1.0.0
 current_phase: 4
 current_phase_name: Standalone Spin-Out Surface (REST API & MCP Server)
-status: planning
-stopped_at: Phase 3 complete, ready to plan Phase 4
-last_updated: "2026-10-21T17:27:36.922Z"
+status: ready_to_execute
+stopped_at: Phase 4 planned (04-01-PLAN.md, 04-02-PLAN.md), ready to execute
+last_updated: "2026-10-21T18:23:00.000Z"
 last_activity: 2026-10-21
-last_activity_desc: Phase 3 complete, transitioned to Phase 4
-state_head: 99ea8d077670945b29503c164be29da2a6bf5883
+last_activity_desc: Phase 4 planned (2 waves: API-01, MCP-01)
+state_head: 25cade7
 progress:
   total_phases: 4
   completed_phases: 3
-  total_plans: 7
+  total_plans: 9
   completed_plans: 7
   percent: 75
 ---
@@ -24,14 +24,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-10-21)
 
 **Core value:** Transformar qualquer turno de conversa de WhatsApp em registros de negócio auditáveis, idempotentes e vinculados à evidência exata da mensagem — separando com precisão recusa, opt-out, múltiplos imóveis na mesma conversa e demandas condicionadas, sem nunca executar ações externas não autorizadas.
-**Current focus:** Phase 3 — Supabase RLS Persistence, Audit Trail & Review Inbox
+**Current focus:** Phase 4 — Standalone Spin-Out Surface (REST API & MCP Server)
 
 ## Current Position
 
 Phase: 4 — Standalone Spin-Out Surface (REST API & MCP Server)
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-10-21 — Phase 3 complete, transitioned to Phase 4
+Plan: 04-01, 04-02 (Planned)
+Status: Ready to execute
+Last activity: 2026-10-21 — Phase 4 planned (2 waves: API-01, MCP-01)
 
 Progress: [████████░░] 75%
 

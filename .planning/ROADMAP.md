@@ -87,10 +87,14 @@ Plans:
   1. `POST /api/v1/ingest/whatsapp` processa payloads de conversa com idempotência e retorna `UniversalInterpretationEnvelope` validado.
   2. O servidor MCP expõe `analyze_conversation`, `get_entity_memory` e `resolve_review_item` operando sobre `@futuremove/zaptrail-core`.
 
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 04-01: TBD
+**Wave 1**
+- [ ] 04-01-PLAN.md — REST Webhook Ingest Pipeline & HTTP Route `/api/v1/ingest/whatsapp` (`API-01`)
+
+**Wave 2** *(blocked on Wave 1 completion)*
+- [ ] 04-02-PLAN.md — Model Context Protocol (MCP) Server & Tools (`analyze_conversation`, `get_entity_memory`, `resolve_review_item`) (`MCP-01`)
 
 ## Progress
 
@@ -102,4 +106,4 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 | 1. Core Contracts, Real Estate Domain Pack & Deterministic Engine | 3/3 | Complete    | 2026-10-21 |
 | 2. Hybrid Stage 2 Structured LLM Fallback & Outbound Context | 2/2 | Complete    | 2026-10-21 |
 | 3. Supabase RLS Persistence, Audit Trail & Review Inbox | 2/2 | Complete    | 2026-10-21 |
-| 4. Standalone Spin-Out Surface (REST API & MCP Server) | 0/1 | Not started | - |
+| 4. Standalone Spin-Out Surface (REST API & MCP Server) | 0/2 | Planned | - |
