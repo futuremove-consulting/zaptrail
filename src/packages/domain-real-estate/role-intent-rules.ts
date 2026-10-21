@@ -243,7 +243,7 @@ export function classifyRealEstateIntents(turnWindow: TurnWindow): IntentObserva
   } else {
     // 8. Capture for sale (CT-01, CT-04, CT-10, CT-13, CT-17)
     if (!otherProp) {
-      const sale = findMatch(turnWindow, /(?:estou\s+vendendo|quero\s+vender|pensando\s+em\s+vender|vender\s+o\s+meu|subi\s+o\s+valor|se\s+chegar\s+em\s+.*?eu\s+conven[çc]o)/i);
+      const sale = findMatch(turnWindow, /(?:estou\s+vendendo|quero\s+vender|pensando\s+em\s+vender|vender\s+o\s+meu|subi\s+o\s+valor|se\s+chegar\s+em\s+.*?eu\s+conven[çc]o|(?<!n[ãa]o\s+)vendo\s+(?:por\s+)?)/i);
       if (sale) pushIntent(intents, tid, 'sale', 'intent.capture_for_sale', 'property_primary', sale.message, sale.match[0], 0.9);
     } else if (/vender\s+o\s+meu/i.test(text)) {
       const sale = findMatch(turnWindow, /vender\s+o\s+meu/i);

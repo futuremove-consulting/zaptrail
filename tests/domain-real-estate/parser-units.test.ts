@@ -18,7 +18,14 @@ import {
   RealEstatePropertyCandidateSchema,
   RealEstateDemandProfileSchema,
   RealEstateDomainEntitiesSchema,
+  type RealEstateDomainEntities,
 } from '../../src/packages/domain-real-estate/types';
+import {
+  coalesceTurnWindow,
+  RealEstateDomainPack,
+  interpretRealEstateTurn,
+} from '../../src/packages/domain-real-estate/opportunity-orchestrator';
+import { UniversalInterpretationEngine } from '../../src/packages/core/engine';
 import type { ConversationMessage, TurnWindow } from '../../src/packages/core/types';
 
 function createTestMessage(
@@ -436,5 +443,222 @@ describe('RE-02 & D-08: Condition Detection', () => {
     const conds = detectRealEstateConditions(turn);
     expect(conds.some((c) => c.condition_type === 'tenant_vacating')).toBe(true);
     expect(conds.some((c) => c.condition_type === 'date_or_timeframe')).toBe(true);
+  });
+});
+
+describe('RE-03 & D-07: Multi-Property Candidate Orchestration (CAPTURE_OTHER_PROPERTY)', () => {
+  it('creates two PropertyCandidates and binds opportunity to secondary property (CT-08)', async () => {
+    const turn = createTestTurn([
+      'Esse da Rua X eu não vendo porque moro nele, mas tenho uma sala comercial no Centro para vender por 380 mil.',
+    ]);
+    const envelope = await interpretRealEstateTurn(turn);
+
+    expect(envelope.duplicate).toBe(false);
+    expect(envelope.review_required).toBe(false);
+
+    const entities = envelope.domain_entities as RealEstateDomainEntities;
+    expect(entities).toBeDefined();
+    expect(entities.property_candidates).toHaveLength(2);
+
+    const primary = entities.property_candidates.find((p) => p.property_key === 'property_primary');
+    expect(primary).toBeDefined();
+    expect(primary?.occupancy_status).toBe('owner_occupied');
+
+    const secondary = entities.property_candidates.find((p) => p.property_key === 'property_secondary');
+    expect(secondary).toBeDefined();
+    expect(secondary?.origin_kind).toBe('offered_alternative');
+    expect(secondary?.property_type).toBe('commercial');
+    expect(secondary?.sale_asking_price).toBe(380000);
+
+    const saleOpp = envelope.opportunities.find((o) => o.opportunity_type === 'real_estate.capture_sale');
+    expect(saleOpp).toBeDefined();
+    expect(saleOpp?.entity_key).toBe('property_secondary');
+
+    const notPropIntent = envelope.intents.find(
+      (i) => i.intent_label === 'intent.not_interested_property' && i.target_entity_key === 'property_primary'
+    );
+    expect(notPropIntent).toBeDefined();
+  });
+});
+
+describe('RE-04 & D-08: Conditional Opportunities Linkage', () => {
+  it('creates capture_sale and demand_buy, linking them via sale_before_purchase (CT-10)', async () => {
+    const turn = createTestTurn([
+      'Quero comprar um de 3 quartos, mas só consigo se vender o meu atual de 2 quartos antes.',
+    ]);
+    const envelope = await interpretRealEstateTurn(turn);
+
+    const saleOpp = envelope.opportunities.find((o) => o.opportunity_type === 'real_estate.capture_sale');
+    const buyOpp = envelope.opportunities.find((o) => o.opportunity_type === 'real_estate.demand_buy');
+    expect(saleOpp).toBeDefined();
+    expect(buyOpp).toBeDefined();
+    expect(buyOpp?.stage).toBe('conditional');
+
+    const sbbCond = envelope.conditions.find((c) => c.condition_type === 'sale_before_purchase');
+    expect(sbbCond).toBeDefined();
+    expect(sbbCond?.source_opportunity_id).toBe(buyOpp?.opportunity_id);
+    expect(sbbCond?.prerequisite_opportunity_id).toBe(saleOpp?.opportunity_id);
+
+    expect(buyOpp?.linked_condition_ids).toContain(sbbCond?.condition_id);
+    expect(saleOpp?.linked_condition_ids).toContain(sbbCond?.condition_id);
+
+    const linkAction = envelope.actions.find((a) => a.action_type === 'link_conditional_opportunities');
+    expect(linkAction).toBeDefined();
+    expect(linkAction?.execution_mode).toBe('assist');
+    expect(linkAction?.requires_human_approval).toBe(true);
+
+    const entities = envelope.domain_entities as RealEstateDomainEntities;
+    expect(entities.property_candidates[0].bedrooms).toBe(2);
+    expect(entities.demand_profiles[0].bedrooms_min).toBe(3);
+  });
+});
+
+describe('RE-06 & D-06: TurnWindow Coalescing, Idempotency & Value Evolution', () => {
+  it('coalesces rapid consecutive inbound messages into one coherent TurnWindow (CT-17)', async () => {
+    const turn = coalesceTurnWindow({
+      tenant_id: 'tenant-beta',
+      provider: 'whatsapp',
+      conversation_id: 'conv-coalesce-1',
+      raw_messages: [
+        { message_id: 'm-1', external_message_id: 'ext-c-1', sender_id: '5511988881111', raw_text: 'Oi' },
+        { message_id: 'm-2', external_message_id: 'ext-c-2', sender_id: '5511988881111', raw_text: 'Sou proprietário sim' },
+        { message_id: 'm-3', external_message_id: 'ext-c-3', sender_id: '5511988881111', raw_text: 'Quero vender' },
+        { message_id: 'm-4', external_message_id: 'ext-c-4', sender_id: '5511988881111', raw_text: '980 mil' },
+      ],
+    });
+
+    expect(turn.messages).toHaveLength(4);
+    expect(turn.consolidated_text).toContain('Sou proprietário sim');
+    expect(turn.consolidated_text).toContain('980 mil');
+
+    const envelope = await interpretRealEstateTurn(turn);
+    expect(envelope.participants[0].role_label).toBe('owner');
+    const opp = envelope.opportunities.find((o) => o.opportunity_type === 'real_estate.capture_sale');
+    expect(opp).toBeDefined();
+    const val = envelope.values.find((v) => v.field_key === 'sale_asking_price');
+    expect(val?.amount).toBe(980000);
+  });
+
+  it('guarantees idempotency on duplicate webhook delivery (CT-18, T-01-04)', async () => {
+    const pack = new RealEstateDomainPack();
+    const engine = new UniversalInterpretationEngine(pack);
+
+    const turn1 = coalesceTurnWindow({
+      tenant_id: 'tenant-idem',
+      provider: 'whatsapp',
+      conversation_id: 'conv-idem-1',
+      raw_messages: [
+        { message_id: 'm-idem-1', external_message_id: 'ext-idem-999', sender_id: '5511977770000', raw_text: 'Sou o dono, vendo por 850 mil' },
+      ],
+    });
+
+    const env1 = await engine.interpretTurn(turn1);
+    expect(env1.duplicate).toBe(false);
+    expect(env1.opportunities).toHaveLength(1);
+
+    // Replay identical webhook with same tenant_id, provider, external_message_id
+    const turn2 = coalesceTurnWindow({
+      tenant_id: 'tenant-idem',
+      provider: 'whatsapp',
+      conversation_id: 'conv-idem-1',
+      raw_messages: [
+        { message_id: 'm-idem-2', external_message_id: 'ext-idem-999', sender_id: '5511977770000', raw_text: 'Sou o dono, vendo por 850 mil' },
+      ],
+    });
+
+    const env2 = await engine.interpretTurn(turn2);
+    expect(env2.duplicate).toBe(true);
+    expect(env2.opportunities).toHaveLength(0);
+    expect(env2.actions).toHaveLength(0);
+  });
+
+  it('evolves price history and supersedes older value on price update (CT-13, D-06)', async () => {
+    const pack = new RealEstateDomainPack();
+    const engine = new UniversalInterpretationEngine(pack);
+
+    const turn1 = coalesceTurnWindow({
+      tenant_id: 'tenant-evo',
+      provider: 'whatsapp',
+      conversation_id: 'conv-evo-1',
+      raw_messages: [
+        { message_id: 'm-evo-1', external_message_id: 'ext-evo-1', sender_id: '5511966661111', raw_text: 'Sou o dono, vendo por 1,2 milhão' },
+      ],
+    });
+    const env1 = await engine.interpretTurn(turn1);
+    expect(env1.values[0].amount).toBe(1200000);
+    expect(env1.values[0].epistemic_status).toBe('declared');
+
+    // Turn 2 with price increase and existing_values from Turn 1
+    const turn2 = coalesceTurnWindow({
+      tenant_id: 'tenant-evo',
+      provider: 'whatsapp',
+      conversation_id: 'conv-evo-1',
+      existing_values: env1.values,
+      raw_messages: [
+        { message_id: 'm-evo-2', external_message_id: 'ext-evo-2', sender_id: '5511966661111', raw_text: 'Subi o valor, agora não fecho por menos de 1,35 milhão.' },
+      ],
+    });
+
+    const env2 = await engine.interpretTurn(turn2);
+    expect(env2.values).toHaveLength(2);
+    const oldVal = env2.values.find((v) => v.amount === 1200000);
+    const newVal = env2.values.find((v) => v.amount === 1350000);
+    expect(oldVal?.epistemic_status).toBe('superseded');
+    expect(oldVal?.superseded_by_value_id).toBe(newVal?.value_id);
+    expect(newVal?.epistemic_status).toBe('declared');
+  });
+});
+
+describe('RE-05, CT-19, CT-20: Media Attachments and Review Routing', () => {
+  it('attaches MediaUnderstandingResult to property_primary (CT-19)', async () => {
+    const turn = coalesceTurnWindow({
+      tenant_id: 'tenant-media',
+      provider: 'whatsapp',
+      conversation_id: 'conv-media-1',
+      raw_messages: [
+        {
+          message_id: 'm-media-1',
+          external_message_id: 'ext-media-1',
+          sender_id: '5511955554444',
+          raw_text: 'Segue foto da sala',
+          attachments: [
+            {
+              attachment_id: 'att-foto-sala-1',
+              mime_type: 'image/jpeg',
+              media_kind: 'image',
+              caption: 'foto da sala',
+            },
+          ],
+        },
+      ],
+    });
+
+    const envelope = await interpretRealEstateTurn(turn);
+    expect(envelope.media_results).toHaveLength(1);
+    expect(envelope.media_results[0].attachment_id).toBe('att-foto-sala-1');
+    expect(envelope.media_results[0].linked_entity_key).toBe('property_primary');
+    const entities = envelope.domain_entities as RealEstateDomainEntities;
+    expect(entities.property_candidates[0].media_attachment_ids).toContain('att-foto-sala-1');
+  });
+
+  it('routes spousal conflict to human_review with review_required=true (CT-20)', async () => {
+    const turn = createTestTurn([
+      'Meu marido disse que não vende, mas se chegar em 1,5 mi eu convenço ele.',
+    ]);
+    const envelope = await interpretRealEstateTurn(turn);
+
+    expect(envelope.review_required).toBe(true);
+    expect(envelope.conditions.some((c) => c.condition_type === 'family_approval')).toBe(true);
+
+    const revItem = envelope.review_items.find((r) => r.severity === 'high');
+    expect(revItem).toBeDefined();
+
+    const humanAction = envelope.actions.find((a) => a.action_type === 'human_review');
+    expect(humanAction).toBeDefined();
+    expect(humanAction?.execution_mode).toBe('manual');
+    expect(humanAction?.requires_human_approval).toBe(true);
+
+    const saleOpp = envelope.opportunities.find((o) => o.opportunity_type === 'real_estate.capture_sale');
+    expect(saleOpp?.confidence).toBeLessThan(0.65);
   });
 });
