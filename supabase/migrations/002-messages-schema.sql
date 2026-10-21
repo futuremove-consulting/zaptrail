@@ -101,7 +101,10 @@ comment on column inbound_events.processed is 'Whether the event has been proces
 -- 5. Row Level Security policies (tenant isolation)
 -- --------------------------------------------------------
 
-alter table enable row level security;
+alter table messages enable row level security;
+alter table conversation_participants enable row level security;
+alter table message_attachments enable row level security;
+alter table inbound_events enable row level security;
 
 -- Messages: users can view messages in their workspaces via membership
 create policy "Users can view messages in their workspaces"
@@ -135,6 +138,18 @@ create policy "Users can view conversation participants in their workspaces"
     and status = 'active'
   ));
 
+-- Message attachments: users can view attachments in their workspaces via message link
+create policy "Users can view message attachments in their workspaces"
+  on message_attachments
+  for select
+  using (exists (
+    select 1 from messages
+    join memberships on memberships.workspace_id = messages.workspace_id
+    where messages.id = message_attachments.message_id
+    and memberships.user_id = auth.uid()
+    and memberships.status = 'active'
+  ));
+
 -- Inbound events: users can view unprocessed events in their workspaces
 create policy "Users can view unprocessed inbound events in their workspaces"
   on inbound_events
@@ -149,8 +164,13 @@ create policy "Users can view unprocessed inbound events in their workspaces"
 create policy "Users can mark inbound events as processed"
   on inbound_events
   for update
-  using (user_id = auth.uid())
-  with check (processed = true and user_id = auth.uid());
+  using (exists (
+    select 1 from memberships
+    where workspace_id = inbound_events.workspace_id
+    and user_id = auth.uid()
+    and status = 'active'
+  ))
+  with check (processed = true);
 
 -- --------------------------------------------------------
 -- 6. Indexes for performance

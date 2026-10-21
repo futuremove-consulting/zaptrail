@@ -34,7 +34,7 @@ comment on column management_objects.origin_message_id is 'Original message that
 -- 2. Row Level Security policies (tenant isolation)
 -- --------------------------------------------------------
 
-alter table enable row level security;
+alter table management_objects enable row level security;
 
 -- Users can view management objects in their workspace
 create policy "Users can view management objects in their workspace"
@@ -58,7 +58,7 @@ create policy "Users can create management objects in their workspace"
     and status = 'active'
   ));
 
--- Users can update their management objects (or if they're owner of workspace)
+-- Users can update their management objects (or if they're owner/admin of workspace)
 create policy "Users can update their management objects"
   on management_objects
   for update
@@ -66,7 +66,8 @@ create policy "Users can update their management objects"
     select 1 from memberships
     where workspace_id = management_objects.workspace_id
     and user_id = auth.uid()
-    and status = 'owner'
+    and role in ('owner', 'admin')
+    and status = 'active'
   ));
 
 -- --------------------------------------------------------

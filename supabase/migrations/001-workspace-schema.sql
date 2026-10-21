@@ -69,7 +69,8 @@ comment on column onboarding_state.completed_at is 'Timestamp when onboarding wa
 -- --------------------------------------------------------
 
 -- Workspaces: users can view their own workspaces via membership
-alter table enable row level security;
+alter table workspaces enable row level security;
+alter table memberships enable row level security;
 
 create policy "Users can view their workspaces"
   on workspaces
