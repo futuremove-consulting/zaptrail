@@ -1,20 +1,20 @@
 ---
 gsd_state_version: "1.0"
 milestone: v1.0.0
-current_phase: 3
-current_phase_name: Supabase RLS Persistence, Audit Trail & Review Inbox
-status: ready_to_execute
-stopped_at: Phase 3 planned (03-01-PLAN.md, 03-02-PLAN.md), ready to execute
-last_updated: "2026-10-21T16:59:30.000Z"
+current_phase: 4
+current_phase_name: Standalone Spin-Out Surface (REST API & MCP Server)
+status: planning
+stopped_at: Phase 3 complete, ready to plan Phase 4
+last_updated: "2026-10-21T17:27:36.922Z"
 last_activity: 2026-10-21
-last_activity_desc: Phase 3 planned (2 waves: DB-01, REV-01)
-state_head: c5c943f
+last_activity_desc: Phase 3 complete, transitioned to Phase 4
+state_head: 99ea8d077670945b29503c164be29da2a6bf5883
 progress:
   total_phases: 4
-  completed_phases: 2
+  completed_phases: 3
   total_plans: 7
-  completed_plans: 5
-  percent: 50
+  completed_plans: 7
+  percent: 75
 ---
 
 # Project State
@@ -28,17 +28,17 @@ See: .planning/PROJECT.md (updated 2026-10-21)
 
 ## Current Position
 
-Phase: 3 — Supabase RLS Persistence, Audit Trail & Review Inbox
-Plan: 03-01, 03-02 (Planned)
-Status: Ready to execute
-Last activity: 2026-10-21 — Phase 3 planned (2 waves: DB-01, REV-01)
+Phase: 4 — Standalone Spin-Out Surface (REST API & MCP Server)
+Plan: Not started
+Status: Ready to plan
+Last activity: 2026-10-21 — Phase 3 complete, transitioned to Phase 4
 
-Progress: [█████░░░░░] 50%
+Progress: [████████░░] 75%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 5
+- Total plans completed: 7
 - Average duration: - min
 - Total execution time: 0.0 hours
 
@@ -48,6 +48,7 @@ Progress: [█████░░░░░] 50%
 |-------|-------|-------|----------|
 | 1 | 3 | - | - |
 | 2 | 2 | - | - |
+| 3 | 2 | - | - |
 
 **Recent Trend:**
 - Last 5 plans: none
@@ -83,5 +84,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-10-21 10:52
-Stopped at: Phase 2 complete, ready to plan Phase 3
+Stopped at: Phase 3 complete, ready to plan Phase 4
 Resume file: None

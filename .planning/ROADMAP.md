@@ -12,7 +12,7 @@ Implementação do motor **ZapTrail** segundo a especificação técnica `docs/s
 
 - [x] **Phase 1: Core Contracts, Real Estate Domain Pack & Deterministic Engine** - Núcleo universal `@futuremove/zaptrail-core`, pacote `@futuremove/zaptrail-domain-real-estate`, `PilotCRMAdapter` e 20 Casos-Ouro (`CT-01`..`CT-20`) (completed 2026-10-21)
 - [x] **Phase 2: Hybrid Stage 2 Structured LLM Fallback & Outbound Context** - Extração estruturada LLM com validação de `exact_quote`, coalescência de turnos e seed de campanhas outbound (completed 2026-10-21)
-- [ ] **Phase 3: Supabase RLS Persistence, Audit Trail & Review Inbox** - Migrações PostgreSQL/RLS corrigidas, trilha de auditoria imutável e Inbox de Revisão Humana + Timeline Dual
+- [x] **Phase 3: Supabase RLS Persistence, Audit Trail & Review Inbox** - Migrações PostgreSQL/RLS corrigidas, trilha de auditoria imutável e Inbox de Revisão Humana + Timeline Dual (completed 2026-10-21)
 - [ ] **Phase 4: Standalone Spin-Out Surface (REST API & MCP Server)** - Endpoint `/api/v1/ingest/whatsapp` e servidor MCP `@futuremove/zaptrail-mcp` para operação multi-CRM e multi-domínio
 
 ## Phase Details
@@ -69,14 +69,14 @@ Plans:
   2. Nenhum endpoint da aplicação usa `SUPABASE_SERVICE_ROLE_KEY` sem filtro explícito de tenant/workspace, e a rota `/api/management-objects` consulta as tabelas reais do schema.
   3. Operadores humanos conseguem listar itens `review_required`, inspecionar o trecho exato da mensagem ("Mostrar na conversa") e aprovar/editar/rejeitar a decisão registrando auditoria.
 
-**Plans**: 2 plans
+**Plans**: 2/2 plans complete
 
 Plans:
 **Wave 1**
-- [ ] 03-01-PLAN.md — SQL/RLS Migration Repair (`001`..`004`), Audit Schema (`origin_messages`, `extraction_runs`, `evidence_spans`, `review_queue`) & `SupabaseStoragePort` (`DB-01`)
+- [x] 03-01-PLAN.md — SQL/RLS Migration Repair (`001`..`004`), Audit Schema (`origin_messages`, `extraction_runs`, `evidence_spans`, `review_queue`) & `SupabaseStoragePort` (`DB-01`)
 
 **Wave 2** *(blocked on Wave 1 completion)*
-- [ ] 03-02-PLAN.md — Human Review Inbox (`ReviewInboxService`), Dual Timeline "Mostrar na conversa" Highlight & Tenant-Guarded `/api/management-objects` (`DB-01`, `REV-01`)
+- [x] 03-02-PLAN.md — Human Review Inbox (`ReviewInboxService`), Dual Timeline "Mostrar na conversa" Highlight & Tenant-Guarded `/api/management-objects` (`DB-01`, `REV-01`)
 
 ### Phase 4: Standalone Spin-Out Surface (REST API & MCP Server)
 
@@ -101,5 +101,5 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 |-------|----------------|--------|-----------|
 | 1. Core Contracts, Real Estate Domain Pack & Deterministic Engine | 3/3 | Complete    | 2026-10-21 |
 | 2. Hybrid Stage 2 Structured LLM Fallback & Outbound Context | 2/2 | Complete    | 2026-10-21 |
-| 3. Supabase RLS Persistence, Audit Trail & Review Inbox | 0/2 | Planned | - |
+| 3. Supabase RLS Persistence, Audit Trail & Review Inbox | 2/2 | Complete    | 2026-10-21 |
 | 4. Standalone Spin-Out Surface (REST API & MCP Server) | 0/1 | Not started | - |

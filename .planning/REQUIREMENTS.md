@@ -37,8 +37,8 @@ Requirements for initial release (`spec.md v1.0.0`). Each maps to roadmap phases
 
 ### Persistence, Security & Human Review Inbox
 
-- [ ] **DB-01**: Migrações SQL Supabase corrigem o bug `alter table <name> enable row level security;`, criando `origin_messages`, `evidence_spans`, `extraction_runs`, `management_objects` e `review_queue` com RLS estrito por `workspace_id`/`tenant_id`.
-- [ ] **REV-01**: API e interface de Revisão Humana (`review_queue` + Timeline Dual) permitem aprovar, editar ou rejeitar extrações com `review_required=true` e navegar direto para a evidência ("Mostrar na conversa").
+- [x] **DB-01**: Migrações SQL Supabase corrigem o bug `alter table <name> enable row level security;`, criando `origin_messages`, `evidence_spans`, `extraction_runs`, `management_objects` e `review_queue` com RLS estrito por `workspace_id`/`tenant_id`.
+- [x] **REV-01**: API e interface de Revisão Humana (`review_queue` + Timeline Dual) permitem aprovar, editar ou rejeitar extrações com `review_required=true` e navegar direto para a evidência ("Mostrar na conversa").
 
 ### Standalone Spin-Out Surface (API & MCP)
 
@@ -82,8 +82,8 @@ Deferred to future release. Tracked but not in current roadmap.
 | LLM-01 | Phase 2 | Complete |
 | LLM-02 | Phase 2 | Complete |
 | ING-01 | Phase 2 | Complete |
-| DB-01 | Phase 3 | Pending |
-| REV-01 | Phase 3 | Pending |
+| DB-01 | Phase 3 | Complete |
+| REV-01 | Phase 3 | Complete |
 | API-01 | Phase 4 | Pending |
 | MCP-01 | Phase 4 | Pending |
 
