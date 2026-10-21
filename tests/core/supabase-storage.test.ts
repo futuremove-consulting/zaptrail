@@ -19,9 +19,7 @@ describe('SupabaseStoragePort & Tenant Isolation Test Suite (DB-01)', () => {
     it('should throw an error for empty, null, undefined or whitespace-only tenantId', () => {
       expect(() => assertTenantScope('')).toThrow(/tenantId is required/i);
       expect(() => assertTenantScope('   ')).toThrow(/tenantId is required/i);
-      // @ts-expect-error testing invalid inputs at runtime
       expect(() => assertTenantScope(null)).toThrow(/tenantId is required/i);
-      // @ts-expect-error testing invalid inputs at runtime
       expect(() => assertTenantScope(undefined)).toThrow(/tenantId is required/i);
     });
 

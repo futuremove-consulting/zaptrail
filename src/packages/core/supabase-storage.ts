@@ -5,7 +5,7 @@ import {
   EvidenceRef,
 } from './types';
 
-export function assertTenantScope(tenantId: string): string {
+export function assertTenantScope(tenantId?: string | null): string {
   if (typeof tenantId !== 'string' || !tenantId.trim()) {
     throw new Error('Invalid tenant scope: tenantId is required and cannot be empty.');
   }
