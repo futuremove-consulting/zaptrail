@@ -3,16 +3,16 @@ gsd_state_version: "1.0"
 milestone: v1.0.0
 current_phase: 2
 current_phase_name: Hybrid Stage 2 Structured LLM Fallback & Outbound Context
-status: planning
-stopped_at: Phase 1 complete, ready to plan Phase 2
-last_updated: "2026-10-21T15:14:47.313Z"
+status: planned
+stopped_at: Planned Phase 2 (2 plans: 02-01, 02-02)
+last_updated: "2026-10-21T15:43:00.000Z"
 last_activity: 2026-10-21
-last_activity_desc: Phase 1 complete, transitioned to Phase 2
-state_head: 2373f9b7b4ed936399b4a211ed8ced91b07273b1
+last_activity_desc: Phase 2 planning completed
+state_head: 9b1b1ee87f17bbf5103fa7ad3efd90519a7102e3
 progress:
   total_phases: 4
   completed_phases: 1
-  total_plans: 3
+  total_plans: 5
   completed_plans: 3
   percent: 25
 ---
@@ -24,14 +24,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-10-21)
 
 **Core value:** Transformar qualquer turno de conversa de WhatsApp em registros de negócio auditáveis, idempotentes e vinculados à evidência exata da mensagem — separando com precisão recusa, opt-out, múltiplos imóveis na mesma conversa e demandas condicionadas, sem nunca executar ações externas não autorizadas.
-**Current focus:** Phase 1 — Core Contracts, Real Estate Domain Pack & Deterministic Engine
+**Current focus:** Phase 2 — Hybrid Stage 2 Structured LLM Fallback & Outbound Context
 
 ## Current Position
 
 Phase: 2 — Hybrid Stage 2 Structured LLM Fallback & Outbound Context
-Plan: Not started
-Status: Ready to plan
-Last activity: 2026-10-21 — Phase 1 complete, transitioned to Phase 2
+Plan: Ready to execute (Plan 1 of 2: 02-01-PLAN.md)
+Status: Planned — ready for execution
+Last activity: 2026-10-21 — Phase 2 planning completed
 
 Progress: [███░░░░░░░] 25%
 

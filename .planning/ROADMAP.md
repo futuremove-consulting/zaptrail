@@ -50,10 +50,14 @@ Plans:
   2. Qualquer `exact_quote` retornada pelo LLM que não seja substring exata da mensagem original é rejeitada ou rebaixada para `review_required: true`.
   3. Mensagens rápidas consecutivas do mesmo contato e seeds de campanha outbound (`seeded_property_candidates`) são consolidados na `TurnWindow` antes da interpretação.
 
-**Plans**: TBD
+**Plans**: 2 plans
 
 Plans:
-- [ ] 02-01: TBD
+**Wave 1**
+- [ ] 02-01-PLAN.md — Core Agnostic Contracts, Exact Quote Validator & Hybrid Engine (`LLM-01`, `LLM-02`)
+
+**Wave 2** *(blocked on Wave 1 completion)*
+- [ ] 02-02-PLAN.md — Domain Real Estate LLM Structured Pack, Outbound Seeding & Turn Coalescing (`LLM-01`, `LLM-02`, `ING-01`)
 
 ### Phase 3: Supabase RLS Persistence, Audit Trail & Review Inbox
 
