@@ -6,11 +6,12 @@ status: planning
 last_updated: "2026-10-21T21:53:21.245Z"
 last_activity: 2026-10-21
 progress:
-  total_phases: 0
+  total_phases: 4
   completed_phases: 0
   total_plans: 0
   completed_plans: 0
   percent: 0
+current_phase: 5
 ---
 
 # Project State
@@ -20,14 +21,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-10-21)
 
 **Core value:** Transformar qualquer turno de conversa de WhatsApp em registros de negócio auditáveis, idempotentes e vinculados à evidência exata da mensagem — separando com precisão recusa, opt-out, múltiplos imóveis na mesma conversa e demandas condicionadas, sem nunca executar ações externas não autorizadas.
-**Current focus:** Planning next milestone (v1.1.0)
+**Current focus:** Phase 5 — PilotCRM Module Registry & Marketplace Card
 
 ## Current Position
 
-Phase: Not started (defining requirements)
+Phase: Phase 5: PilotCRM Module Registry & Marketplace Card
 Plan: —
-Status: Defining requirements
-Last activity: 2026-10-21 — Milestone v1.1.0 started
+Status: Ready to plan
+Last activity: 2026-10-21 — Milestone v1.1.0 roadmap created (Phases 5-8)
 
 ## Performance Metrics
 
