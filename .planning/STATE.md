@@ -22,7 +22,7 @@ current_phase: 4
 See: .planning/PROJECT.md (updated 2026-10-21)
 
 **Core value:** Transformar qualquer turno de conversa de WhatsApp em registros de negócio auditáveis, idempotentes e vinculados à evidência exata da mensagem — separando com precisão recusa, opt-out, múltiplos imóveis na mesma conversa e demandas condicionadas, sem nunca executar ações externas não autorizadas.
-**Current focus:** Phase 4 — Standalone Spin-Out Surface (REST API & MCP Server)
+**Current focus:** Planning next milestone (v1.1.0)
 
 ## Current Position
 
