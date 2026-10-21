@@ -9,9 +9,14 @@ import {
   ReviewItem,
   EvidenceRef,
   UniversalInterpretationEnvelope,
+  StoragePort,
+  LLMProvider,
+  LLMExtractionRequest,
+  LLMExtractionResponse,
 } from '../core/types';
 import { normalizeMessageText, buildEvidenceRef } from '../core/evidence';
 import { UniversalInterpretationEngine } from '../core/engine';
+import { HybridInterpretationEngine } from '../core/hybrid-engine';
 import {
   RealEstateDomainEntities,
   RealEstatePropertyCandidate,
@@ -33,6 +38,16 @@ import {
   CoalesceTurnWindowParams,
   coalesceTurnWindow,
 } from './turn-window-coalescer';
+import {
+  RealEstateLLMStructuredOutputSchema,
+  RealEstateLLMStructuredOutput,
+} from './llm/real-estate-llm-schema';
+import { convertRealEstateLlmOutputToCorePayload } from './llm/real-estate-llm-converter';
+import {
+  buildRealEstateLlmSystemPrompt,
+  buildRealEstateLlmUserPrompt,
+} from './llm/real-estate-prompt';
+import { MockLLMProvider } from './llm/mock-llm-provider';
 
 export { CoalesceTurnWindowParams, coalesceTurnWindow };
 
@@ -276,3 +291,56 @@ export async function interpretRealEstateTurn(
   const activeEngine = engine ?? new UniversalInterpretationEngine(pack);
   return activeEngine.interpretTurn(turnWindow);
 }
+
+/**
+ * Interprets a real estate TurnWindow through Stage 1 determinism, selectively escalating
+ * to Stage 2 structured LLM extraction when ambiguity or low confidence is detected.
+ */
+export async function interpretRealEstateTurnHybrid(
+  window: TurnWindow,
+  options?: { llmProvider?: LLMProvider; storage?: StoragePort }
+): Promise<UniversalInterpretationEnvelope> {
+  const pack = new RealEstateDomainPack();
+  const rawProvider = options?.llmProvider ?? new MockLLMProvider();
+
+  const adaptedProvider: LLMProvider = {
+    name: rawProvider.name,
+    async extractStructured<T>(req: LLMExtractionRequest<T>): Promise<LLMExtractionResponse<T>> {
+      const domainReq: LLMExtractionRequest<RealEstateLLMStructuredOutput> = {
+        systemPrompt: req.systemPrompt ?? buildRealEstateLlmSystemPrompt(),
+        prompt: req.prompt ?? buildRealEstateLlmUserPrompt(window),
+        schema: RealEstateLLMStructuredOutputSchema as any,
+        temperature: req.temperature,
+        maxTokens: req.maxTokens,
+      };
+
+      const resp = await rawProvider.extractStructured<any>(domainReq);
+      if (resp.data && Array.isArray(resp.data.intents) && resp.data.intents[0]?.intent_label) {
+        return resp;
+      }
+
+      const corePayload = convertRealEstateLlmOutputToCorePayload(
+        resp.data as RealEstateLLMStructuredOutput,
+        window
+      );
+
+      return {
+        ...resp,
+        data: corePayload as unknown as T,
+      };
+    },
+  };
+
+  const hybridEngine = new HybridInterpretationEngine<RealEstateDomainEntities>({
+    domainPack: pack,
+    storagePort: options?.storage,
+    llmProvider: adaptedProvider,
+  });
+
+  return hybridEngine.interpretTurnHybrid(window, (w) => ({
+    systemPrompt: buildRealEstateLlmSystemPrompt(),
+    prompt: buildRealEstateLlmUserPrompt(w),
+    schema: RealEstateLLMStructuredOutputSchema as any,
+  }));
+}
+
