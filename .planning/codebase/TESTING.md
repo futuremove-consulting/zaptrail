@@ -1,3 +1,7 @@
+---
+last_mapped_commit: d06d9de5054ef27c22c9de54b94404fea0708adb
+last_mapped_at: 2026-10-21
+---
 # Testing Patterns
 
 **Analysis Date:** 2026-10-21
@@ -9,17 +13,23 @@
 - TypeScript integration with native ESM support and zero build pre-compilation step.
 
 **Run Commands:**
+
 ```bash
+
 # Run all automated tests
+
 npx vitest run
 
 # Run specific test file
+
 npx vitest run tests/domain-real-estate/golden-cases.test.ts
 
 # Watch mode during TDD development
+
 npx vitest
 
 # Windows PowerShell equivalent
+
 npx.cmd vitest run
 ```
 
