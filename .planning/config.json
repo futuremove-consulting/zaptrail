@@ -1,0 +1,13 @@
+{
+  "graphify": {
+    "enabled": true
+  },
+  "response_language": "pt-BR",
+  "workflow": {
+    "research": true,
+    "plan_checker": true,
+    "nyquist_validation": true,
+    "tdd_mode": true,
+    "_auto_chain_active": false
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "contract": "1.0.0",
+  "flavor": "core",
+  "milestone": "v1.0.0",
+  "phases": [
+    {
+      "number": "1",
+      "name": "Core Contracts, Real Estate Domain Pack & Deterministic Engine",
+      "status": "pending"
+    },
+    {
+      "number": "2",
+      "name": "Hybrid Stage 2 Structured LLM Fallback & Outbound Context",
+      "status": "pending"
+    },
+    {
+      "number": "3",
+      "name": "Supabase RLS Persistence, Audit Trail & Review Inbox",
+      "status": "pending"
+    },
+    {
+      "number": "4",
+      "name": "Standalone Spin-Out Surface (REST API & MCP Server)",
+      "status": "pending"
+    }
+  ],
+  "next": {
+    "command": "/gsd-progress --next",
+    "label": "Advance to the next step",
+    "reason": "Phase 1 of 4 · executing"
+  },
+  "updated_at": "2026-10-21T14:19:34.592Z"
+}
