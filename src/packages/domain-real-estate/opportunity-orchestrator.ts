@@ -18,6 +18,7 @@ import {
   RealEstateDemandProfile,
   RealEstateOpportunityType,
   RealEstateActionType,
+  SeededPropertyCandidate,
 } from './types';
 import {
   extractMonetaryValuesPtBr,
@@ -28,64 +29,14 @@ import {
   classifyRealEstateIntents,
   detectRealEstateConditions,
 } from './role-intent-rules';
+import {
+  CoalesceTurnWindowParams,
+  coalesceTurnWindow,
+} from './turn-window-coalescer';
+
+export { CoalesceTurnWindowParams, coalesceTurnWindow };
 
 const PARSER_VERSION = '1.0.0';
-
-export interface CoalesceTurnWindowParams {
-  turn_id?: string;
-  tenant_id: string;
-  provider: string;
-  conversation_id: string;
-  raw_messages: Array<{
-    message_id: string;
-    external_message_id: string;
-    direction?: 'inbound' | 'outbound';
-    sender_id: string;
-    sender_name?: string;
-    raw_text: string;
-    timestamp?: string;
-    attachments?: ConversationMessage['attachments'];
-  }>;
-  prior_outbound_message?: ConversationMessage;
-  existing_values?: TurnWindow['existing_values'];
-  seeded_context?: Record<string, unknown>;
-}
-
-export function coalesceTurnWindow(params: CoalesceTurnWindowParams): TurnWindow {
-  const turnId = params.turn_id ?? `turn-${params.conversation_id}-${Date.now()}`;
-  const messages: ConversationMessage[] = params.raw_messages.map((m) => ({
-    message_id: m.message_id,
-    external_message_id: m.external_message_id,
-    tenant_id: params.tenant_id,
-    provider: params.provider,
-    conversation_id: params.conversation_id,
-    direction: m.direction ?? 'inbound',
-    sender_id: m.sender_id,
-    sender_name: m.sender_name,
-    raw_text: m.raw_text ?? '',
-    normalized_text: normalizeMessageText(m.raw_text ?? ''),
-    timestamp: m.timestamp ?? new Date().toISOString(),
-    attachments: m.attachments ?? [],
-  }));
-
-  const consolidated_text = messages
-    .filter((m) => m.direction === 'inbound')
-    .map((m) => m.normalized_text)
-    .filter(Boolean)
-    .join('\n');
-
-  return {
-    turn_id: turnId,
-    tenant_id: params.tenant_id,
-    provider: params.provider,
-    conversation_id: params.conversation_id,
-    messages,
-    prior_outbound_message: params.prior_outbound_message,
-    consolidated_text,
-    existing_values: params.existing_values,
-    seeded_context: params.seeded_context,
-  };
-}
 
 function makeOpp(id: string, type: RealEstateOpportunityType, entityKey: string, stage: OpportunityAssessment['stage'], conf: number, evidence: EvidenceRef[]): OpportunityAssessment {
   return { opportunity_id: id, opportunity_type: type, entity_key: entityKey, stage, epistemic_status: 'declared', confidence: conf, linked_condition_ids: [], attributes: {}, evidence_refs: evidence };
@@ -151,19 +102,21 @@ export class RealEstateDomainPack implements DomainPack<RealEstateDomainEntities
     const hasCaptureOther = intents.some((i) => i.intent_label === 'intent.capture_other_property');
     const property_candidates: RealEstatePropertyCandidate[] = [];
     const demand_profiles: RealEstateDemandProfile[] = [];
+    const seeds = (turnWindow.seeded_context?.seeded_property_candidates as SeededPropertyCandidate[]) || [];
+    const primarySeed = seeds[0];
     const defaultEv = participant.evidence_refs;
     const findVal = (k: string, t?: string) => values.find((v) => v.field_key === k && (!t || v.target_entity_key === t))?.amount;
 
     property_candidates.push({
       property_key: 'property_primary',
       origin_kind: 'seeded_primary',
-      label: 'Imóvel Principal',
+      label: primarySeed?.address_line ?? 'Imóvel Principal',
       property_type: property_type ?? 'apartment',
       occupancy_status: occupancy_status ?? 'unknown',
       bedrooms,
       area_m2,
-      sale_asking_price: findVal('sale_asking_price', 'property_primary'),
-      rent_asking_price: findVal('rent_asking_price', 'property_primary'),
+      sale_asking_price: findVal('sale_asking_price', 'property_primary') ?? (primarySeed?.listing_type !== 'rent' ? primarySeed?.expected_price : undefined),
+      rent_asking_price: findVal('rent_asking_price', 'property_primary') ?? (primarySeed?.listing_type === 'rent' ? primarySeed?.expected_price : undefined),
       condo_fee: findVal('condo_fee'),
       iptu_amount: findVal('iptu_amount'),
       media_attachment_ids: mediaIds,
@@ -214,7 +167,7 @@ export class RealEstateDomainPack implements DomainPack<RealEstateDomainEntities
       return {
         participants, intents, facts: [], values, relationships, conditions, opportunities: [],
         actions, media_results, evidence_refs: optOut.evidence_refs, review_items: [],
-        do_not_contact: true, domain_entities: { property_candidates, demand_profiles },
+        do_not_contact: true, domain_entities: { property_candidates, demand_profiles, seeded_candidates: seeds },
       };
     }
 
@@ -222,7 +175,7 @@ export class RealEstateDomainPack implements DomainPack<RealEstateDomainEntities
       return {
         participants, intents, facts: [], values, relationships, conditions, opportunities: [],
         actions: [], media_results, evidence_refs: participant.evidence_refs, review_items: [],
-        do_not_contact: false, domain_entities: { property_candidates, demand_profiles },
+        do_not_contact: false, domain_entities: { property_candidates, demand_profiles, seeded_candidates: seeds },
       };
     }
 
@@ -310,7 +263,7 @@ export class RealEstateDomainPack implements DomainPack<RealEstateDomainEntities
     return {
       participants, intents, facts: [], values, relationships, conditions,
       opportunities, actions, media_results, evidence_refs: allEv, review_items,
-      do_not_contact: false, domain_entities: { property_candidates, demand_profiles },
+      do_not_contact: false, domain_entities: { property_candidates, demand_profiles, seeded_candidates: seeds },
     };
   }
 }

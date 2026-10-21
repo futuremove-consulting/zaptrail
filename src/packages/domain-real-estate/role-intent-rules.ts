@@ -159,8 +159,8 @@ export function classifyPartyRole(turnWindow: TurnWindow): PartyRoleClassificati
     };
   }
 
-  // 5. Owner (CT-01, CT-02, CT-17)
-  const owner = findMatch(turnWindow, /(?:sou\s+(?:o\s+)?dono|sou\s+(?:a\s+)?dona|sou\s+propriet[áa]ri[oa]|o\s+im[oó]vel\s+[ée]\s+meu|quero\s+alugar|estou\s+alugando)/i);
+  // 5. Owner (CT-01, CT-02, CT-17, and outbound affirmations)
+  const owner = findMatch(turnWindow, /(?:sou\s+(?:o\s+)?dono|sou\s+(?:a\s+)?dona|sou\s+propriet[áa]ri[oa]|o\s+im[oó]vel\s+[ée]\s+meu|quero\s+alugar|estou\s+alugando|pode\s+anunciar|pode\s+trabalhar)/i);
   if (owner) {
     return {
       participant: {
@@ -169,6 +169,21 @@ export function classifyPartyRole(turnWindow: TurnWindow): PartyRoleClassificati
         epistemic_status: 'declared',
         confidence: 0.95,
         evidence_refs: [makeEv(owner.message, owner.match[0], 0.95)],
+      },
+    };
+  }
+
+  const rawSeeds = (turnWindow.seeded_context?.seeded_property_candidates as unknown[]) || [];
+  const isShortAff = /^(?:sim|tenho\s+sim|pode\s+ser|com\s+certeza)[.!]?$/i.test(turnWindow.consolidated_text.trim());
+  if (rawSeeds.length > 0 && isShortAff) {
+    const first = turnWindow.messages[0];
+    return {
+      participant: {
+        participant_id: `part-${tid}`,
+        role_label: 'owner',
+        epistemic_status: 'inferred',
+        confidence: 0.88,
+        evidence_refs: [makeEv(first, first.normalized_text, 0.88)],
       },
     };
   }
@@ -212,8 +227,8 @@ export function classifyRealEstateIntents(turnWindow: TurnWindow): IntentObserva
   const refer = findMatch(turnWindow, /(?:fala\s+com\s+ele|fala\s+com\s+ela|contato\s+dele|ligue\s+para)/i);
   if (refer) pushIntent(intents, tid, 'refer', 'intent.refer_third_party', 'property_primary', refer.message, refer.match[0], 0.92);
 
-  // 4. Capture other property (D-07, CT-08)
-  const otherProp = findMatch(turnWindow, /(?:esse\s+(?:da\s+.*?\s+)?eu\s+n[ãa]o\s+vendo|esse\s+eu\s+n[ãa]o\s+vendo|n[ãa]o\s+vendo\s+esse).*?(?:mas\s+tenho|tenho\s+(?:uma\s+sala|outro|um\s+outro))/i);
+  // 4. Capture other property (D-07, CT-08, E-02-06)
+  const otherProp = findMatch(turnWindow, /(?:esse\s+(?:da|do)?\s*.*?\s*(?:eu\s+)?n[ãa]o\s+vendo|esse\s+(?:da|do)?\s*.*?j[áa]\s+vendi|j[áa]\s+vendi\s+esse|n[ãa]o\s+vendo\s+esse).*?(?:mas\s+tenho|tenho\s+(?:uma\s+sala|outro|um\s+outro|um\s+nos|um\s+no))/i);
   if (otherProp) {
     pushIntent(intents, tid, 'notprop-prim', 'intent.not_interested_property', 'property_primary', otherProp.message, otherProp.match[0], 0.9);
     pushIntent(intents, tid, 'cap-other', 'intent.capture_other_property', 'property_secondary', otherProp.message, otherProp.match[0], 0.88);
@@ -243,7 +258,7 @@ export function classifyRealEstateIntents(turnWindow: TurnWindow): IntentObserva
   } else {
     // 8. Capture for sale (CT-01, CT-04, CT-10, CT-13, CT-17)
     if (!otherProp && !notSellBuy) {
-      const sale = findMatch(turnWindow, /(?:estou\s+vendendo|quero\s+vender|pensando\s+em\s+vender|(?<!n[ãa]o\s+quero\s+|n[ãa]o\s+)vender\s+o\s+meu|subi\s+o\s+valor|se\s+chegar\s+em\s+.*?eu\s+conven[çc]o|(?<!n[ãa]o\s+)vendo\s+(?:por\s+)?)/i);
+      const sale = findMatch(turnWindow, /(?:estou\s+vendendo|quero\s+vender|pensando\s+em\s+vender|(?<!n[ãa]o\s+quero\s+|n[ãa]o\s+)vender\s+o\s+meu|subi\s+o\s+valor|se\s+chegar\s+em\s+.*?eu\s+conven[çc]o|(?<!n[ãa]o\s+)vendo\s+(?:por\s+)?|pode\s+anunciar|pode\s+trabalhar|pode\s+colocar\s+a\s+venda)/i);
       if (sale) pushIntent(intents, tid, 'sale', 'intent.capture_for_sale', 'property_primary', sale.message, sale.match[0], 0.9);
     } else if (/vender\s+o\s+meu/i.test(text) && !notSellBuy) {
       const sale = findMatch(turnWindow, /vender\s+o\s+meu/i);
@@ -267,12 +282,18 @@ export function classifyRealEstateIntents(turnWindow: TurnWindow): IntentObserva
   const cond = findMatch(turnWindow, /(?:s[óo]\s+consigo\s+se|depende\s+da\s+proposta|quanto\s+est[ãa]o\s+pagando)/i);
   if (cond) pushIntent(intents, tid, 'cond', 'intent.conditional_interest', 'property_primary', cond.message, cond.match[0], 0.8);
 
-  // 13. Ambiguous / open answer (CT-15, CT-16, D-10)
+  // 13. Ambiguous / open answer (CT-15, CT-16, D-10, E-02-05)
   const isShortAff = /^(?:sim|tenho\s+sim|pode\s+ser|com\s+certeza)[.!]?$/i.test(turnWindow.consolidated_text.trim());
   const outboundIsDual = turnWindow.prior_outbound_message && /vender\s+ou\s+alugar/i.test(turnWindow.prior_outbound_message.normalized_text);
+  const rawSeeds = (turnWindow.seeded_context?.seeded_property_candidates as any[]) || [];
   if (isShortAff && outboundIsDual) {
     const first = turnWindow.messages[0];
     pushIntent(intents, tid, 'ambig', 'intent.ambiguous_or_open', 'property_primary', first, first.normalized_text, 0.65, 'inferred');
+  } else if (isShortAff && rawSeeds.length > 0) {
+    const first = turnWindow.messages[0];
+    const s0 = rawSeeds[0];
+    const label = s0?.listing_type === 'rent' ? 'intent.capture_for_rent' : 'intent.capture_for_sale';
+    pushIntent(intents, tid, 'seed-aff', label, 'property_primary', first, first.normalized_text, 0.9, 'inferred');
   } else if (/depende\s+da\s+proposta|quanto\s+est[ãa]o\s+pagando/i.test(text)) {
     const amb = findMatch(turnWindow, /depende\s+da\s+proposta|quanto\s+est[ãa]o\s+pagando/i);
     if (amb) pushIntent(intents, tid, 'ambig-probe', 'intent.ambiguous_or_open', 'property_primary', amb.message, amb.match[0], 0.65, 'inferred');

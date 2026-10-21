@@ -133,8 +133,23 @@ export const RealEstateDemandProfileSchema = z.object({
 });
 export type RealEstateDemandProfile = z.infer<typeof RealEstateDemandProfileSchema>;
 
+export const SeededPropertyCandidateSchema = z.object({
+  external_property_id: z.string().optional(),
+  address_line: z.string().optional(),
+  neighborhood: z.string().optional(),
+  city: z.string().optional(),
+  listing_type: z.enum(['sale', 'rent', 'both']).optional(),
+  expected_price: z.number().optional(),
+  campaign_id: z.string().optional(),
+  outbound_message_text: z.string().optional(),
+  outbound_timestamp: z.string().optional(),
+});
+export type SeededPropertyCandidate = z.infer<typeof SeededPropertyCandidateSchema>;
+
 export const RealEstateDomainEntitiesSchema = z.object({
   property_candidates: z.array(RealEstatePropertyCandidateSchema).default([]),
   demand_profiles: z.array(RealEstateDemandProfileSchema).default([]),
+  seeded_candidates: z.array(SeededPropertyCandidateSchema).default([]),
 });
 export type RealEstateDomainEntities = z.infer<typeof RealEstateDomainEntitiesSchema>;
+
