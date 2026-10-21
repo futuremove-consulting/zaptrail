@@ -160,7 +160,7 @@ export function classifyPartyRole(turnWindow: TurnWindow): PartyRoleClassificati
   }
 
   // 5. Owner (CT-01, CT-02, CT-17)
-  const owner = findMatch(turnWindow, /(?:sou\s+(?:o\s+)?dono|sou\s+(?:a\s+)?dona|sou\s+propriet[áa]ri[oa]|o\s+im[oó]vel\s+[ée]\s+meu)/i);
+  const owner = findMatch(turnWindow, /(?:sou\s+(?:o\s+)?dono|sou\s+(?:a\s+)?dona|sou\s+propriet[áa]ri[oa]|o\s+im[oó]vel\s+[ée]\s+meu|quero\s+alugar|estou\s+alugando)/i);
   if (owner) {
     return {
       participant: {
@@ -242,10 +242,10 @@ export function classifyRealEstateIntents(turnWindow: TurnWindow): IntentObserva
     pushIntent(intents, tid, 'sale-rent', 'intent.capture_for_sale_and_rent', 'property_primary', saleAndRent.message, saleAndRent.match[0], 0.92);
   } else {
     // 8. Capture for sale (CT-01, CT-04, CT-10, CT-13, CT-17)
-    if (!otherProp) {
-      const sale = findMatch(turnWindow, /(?:estou\s+vendendo|quero\s+vender|pensando\s+em\s+vender|vender\s+o\s+meu|subi\s+o\s+valor|se\s+chegar\s+em\s+.*?eu\s+conven[çc]o|(?<!n[ãa]o\s+)vendo\s+(?:por\s+)?)/i);
+    if (!otherProp && !notSellBuy) {
+      const sale = findMatch(turnWindow, /(?:estou\s+vendendo|quero\s+vender|pensando\s+em\s+vender|(?<!n[ãa]o\s+quero\s+|n[ãa]o\s+)vender\s+o\s+meu|subi\s+o\s+valor|se\s+chegar\s+em\s+.*?eu\s+conven[çc]o|(?<!n[ãa]o\s+)vendo\s+(?:por\s+)?)/i);
       if (sale) pushIntent(intents, tid, 'sale', 'intent.capture_for_sale', 'property_primary', sale.message, sale.match[0], 0.9);
-    } else if (/vender\s+o\s+meu/i.test(text)) {
+    } else if (/vender\s+o\s+meu/i.test(text) && !notSellBuy) {
       const sale = findMatch(turnWindow, /vender\s+o\s+meu/i);
       if (sale) pushIntent(intents, tid, 'sale-cond', 'intent.capture_for_sale', 'property_primary', sale.message, sale.match[0], 0.9);
     }

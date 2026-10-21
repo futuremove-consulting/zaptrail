@@ -90,24 +90,26 @@ export function extractMonetaryValuesPtBr(
   const isSec = (start: number) => secondarySplitIndex !== -1 && start >= secondarySplitIndex;
 
   // 1. Condo fees: "condomínio 900", "cond 900"
-  const condoRegex = /(?:condom[ií]nio|cond)\s*(?:de\s*)?(?:R\$\s*)?([\d.,]+)/gi;
+  const condoRegex = /(?:condom[ií]nio|cond)\s*(?:de\s*)?(?:R\$\s*)?(\d[\d.,]*)/gi;
   let match: RegExpExecArray | null;
   while ((match = condoRegex.exec(text)) !== null) {
     const rawQuote = match[0];
     const start = match.index;
-    claimedSpans.push({ start, end: start + rawQuote.length });
     const amount = parseFloat(match[1].replace(/\./g, '').replace(',', '.'));
+    if (isNaN(amount)) continue;
+    claimedSpans.push({ start, end: start + rawQuote.length });
     const target = isSec(start) ? 'property_secondary' : defaultTargetKey;
     results.push(makeVal(message, results.length + 1, 'condo_fee', amount, rawQuote, target, 'BRL/month'));
   }
 
   // 2. IPTU: "IPTU 250"
-  const iptuRegex = /\bIPTU\s*(?:de\s*)?(?:R\$\s*)?([\d.,]+)/gi;
+  const iptuRegex = /\bIPTU\s*(?:de\s*)?(?:R\$\s*)?(\d[\d.,]*)/gi;
   while ((match = iptuRegex.exec(text)) !== null) {
     const rawQuote = match[0];
     const start = match.index;
-    claimedSpans.push({ start, end: start + rawQuote.length });
     const amount = parseFloat(match[1].replace(/\./g, '').replace(',', '.'));
+    if (isNaN(amount)) continue;
+    claimedSpans.push({ start, end: start + rawQuote.length });
     const target = isSec(start) ? 'property_secondary' : defaultTargetKey;
     results.push(makeVal(message, results.length + 1, 'iptu_amount', amount, rawQuote, target, 'BRL/year'));
   }
