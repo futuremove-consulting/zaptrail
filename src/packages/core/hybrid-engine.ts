@@ -40,34 +40,24 @@ export function shouldTriggerStage2(
     return false;
   }
 
-  // 2. Decisive negative or noise with sufficient confidence
-  const hasDecisiveNegative = envelope.intents.some(
-    (i) =>
-      (i.intent_label === 'intent.not_interested_general' ||
-        i.intent_label === 'intent.not_interested_property' ||
-        i.intent_label === 'intent.noise_or_ack') &&
-      i.confidence >= minConfidence
-  );
-  if (hasDecisiveNegative) return false;
+  // 2. Explicit contradiction or review required from Stage 1 triggers Stage 2
+  if (envelope.review_required || envelope.review_items.some((r) => r.review_required)) {
+    return true;
+  }
 
-  // 3. Decisive positive capture: clear role and high confidence across observations
-  const hasDecisivePositive = envelope.intents.some(
-    (i) =>
-      (i.intent_label === 'intent.capture_for_sale' ||
-        i.intent_label === 'intent.capture_for_rent' ||
-        i.intent_label === 'intent.capture_for_sale_and_rent') &&
-      i.confidence >= minConfidence
-  );
-  const hasDecisiveRole = envelope.participants.some(
-    (p) => p.role_label !== 'unknown' && p.confidence >= minConfidence
-  );
+  // 3. Pure negative or noise: ALL intents must be negative/noise with high confidence
+  const isNegativeOrNoise = (label: string) =>
+    label === 'intent.not_interested_general' ||
+    label === 'intent.not_interested_property' ||
+    label === 'intent.noise_or_ack';
 
-  if (hasDecisivePositive && hasDecisiveRole) {
-    const hasLowConfValue = envelope.values.some((v) => v.confidence < minConfidence);
-    const hasLowConfOpp = envelope.opportunities.some((o) => o.confidence < minConfidence);
-    if (!hasLowConfValue && !hasLowConfOpp) {
-      return false;
-    }
+  const allIntentsAreNegativeOrNoise =
+    envelope.intents.length > 0 &&
+    envelope.intents.every((i) => isNegativeOrNoise(i.intent_label));
+
+  if (allIntentsAreNegativeOrNoise) {
+    const hasHighConfidence = envelope.intents.some((i) => i.confidence >= minConfidence);
+    if (hasHighConfidence) return false;
   }
 
   // 4. Positive triggers for Stage 2
@@ -76,7 +66,7 @@ export function shouldTriggerStage2(
     return true;
   }
 
-  // b) Unknown role or no participant detected (when not negative/noise)
+  // b) Unknown role or no participant detected (when not pure negative/noise)
   if (
     envelope.participants.length === 0 ||
     envelope.participants.some((p) => p.role_label === 'unknown')
@@ -91,6 +81,7 @@ export function shouldTriggerStage2(
   if (envelope.values.some((v) => v.confidence < minConfidence)) return true;
   if (envelope.opportunities.some((o) => o.confidence < minConfidence)) return true;
 
+  // 5. Decisive high-confidence resolution across all observations
   return false;
 }
 

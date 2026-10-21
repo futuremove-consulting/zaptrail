@@ -229,6 +229,43 @@ describe('HybridInterpretationEngine & Stage 2 Smart Routing (LLM-01)', () => {
       expect(shouldTriggerStage2(lowConfidenceEnvelope)).toBe(true);
     });
 
+    it('returns true for mixed intents when negative is accompanied by an ambiguous or positive intent', () => {
+      const mixedEnvelope: UniversalInterpretationEnvelope = {
+        ...baseEnvelope,
+        intents: [
+          {
+            ...baseEnvelope.intents[0],
+            intent_label: 'intent.not_interested_property',
+            confidence: 0.9,
+          },
+          {
+            ...baseEnvelope.intents[0],
+            intent_id: 'int-02',
+            intent_label: 'intent.capture_other_property',
+            confidence: 0.7,
+          },
+        ],
+      };
+      expect(shouldTriggerStage2(mixedEnvelope)).toBe(true);
+    });
+
+    it('returns true when review_required is true due to contradictions or low confidence', () => {
+      const reviewEnvelope: UniversalInterpretationEnvelope = {
+        ...baseEnvelope,
+        review_required: true,
+        review_items: [
+          {
+            item_id: 'rev-01',
+            reason: 'spousal_or_family_conflict',
+            severity: 'critical',
+            suggested_action: 'review_manually',
+            review_required: true,
+          },
+        ],
+      };
+      expect(shouldTriggerStage2(reviewEnvelope)).toBe(true);
+    });
+
     it('respects routerOptions: forceStage2 and skipStage2', () => {
       expect(shouldTriggerStage2(baseEnvelope, { forceStage2: true })).toBe(true);
 
