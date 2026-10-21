@@ -122,7 +122,8 @@ export function buildShowInConversationLink(
 }
 
 export interface ListReviewsFilter {
-  tenantId: string;
+  tenantId?: string;
+  tenant_id?: string;
   status?: 'pending' | 'approved' | 'edited' | 'rejected';
   severity?: 'low' | 'medium' | 'high';
   conversation_id?: string;
@@ -159,7 +160,9 @@ export class ReviewInboxService {
     options?: ListReviewsOptions
   ): Promise<ReviewQueueRecord[]> {
     const tenantId = assertTenantScope(
-      typeof filterOrTenant === 'string' ? filterOrTenant : filterOrTenant.tenantId
+      typeof filterOrTenant === 'string'
+        ? filterOrTenant
+        : filterOrTenant.tenantId || filterOrTenant.tenant_id
     );
     const filterStatus =
       typeof filterOrTenant === 'object' ? filterOrTenant.status : options?.status;

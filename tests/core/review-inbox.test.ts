@@ -195,6 +195,13 @@ describe('ReviewInboxService & Dual Timeline Link Generator (REV-01)', () => {
       });
       expect(convA).toHaveLength(1);
       expect(convA[0].conversation_id).toBe('conv-A');
+
+      const snakeTenant = await service.listReviews({
+        tenant_id: 'tenant-filter',
+        status: 'pending',
+      });
+      expect(snakeTenant).toHaveLength(1);
+      expect(snakeTenant[0].tenant_id).toBe('tenant-filter');
     });
   });
 
