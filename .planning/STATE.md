@@ -2,8 +2,8 @@
 gsd_state_version: "1.0"
 milestone: v1.1.0
 milestone_name: PilotCRM Native Integration & Marketplace
-status: ready_to_verify
-last_updated: "2026-10-22T10:08:00.000Z"
+status: ready_to_plan
+last_updated: "2026-10-22T10:21:00.000Z"
 last_activity: 2026-10-22
 progress:
   total_phases: 4
@@ -11,7 +11,7 @@ progress:
   total_plans: 3
   completed_plans: 3
   percent: 25
-current_phase: 5
+current_phase: 6
 ---
 
 # Project State
@@ -21,14 +21,14 @@ current_phase: 5
 See: .planning/PROJECT.md (updated 2026-10-21)
 
 **Core value:** Transformar qualquer turno de conversa de WhatsApp em registros de negócio auditáveis, idempotentes e vinculados à evidência exata da mensagem — separando com precisão recusa, opt-out, múltiplos imóveis na mesma conversa e demandas condicionadas, sem nunca executar ações externas não autorizadas.
-**Current focus:** Phase 5 — PilotCRM Module Registry & Marketplace Card
+**Current focus:** Phase 6 — PilotCRM 3 Ingest Triggers Integration
 
 ## Current Position
 
-Phase: Phase 5: PilotCRM Module Registry & Marketplace Card
-Plan: 05-03 complete (3/3 plans complete)
-Status: Phase 5 complete — ready for verification
-Last activity: 2026-10-22 — Plan 05-03 completed (encrypted server-side settings, zero localStorage)
+Phase: Phase 6: PilotCRM 3 Ingest Triggers Integration
+Plan: —
+Status: Ready to plan
+Last activity: 2026-10-22 — Phase 5 fully verified (05-VERIFICATION.md PASS, 41/41 PilotCRM tests, 228/228 ZapTrail tests)
 
 ## Performance Metrics
 
