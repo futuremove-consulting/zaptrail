@@ -51,7 +51,12 @@ Plans:
   1. Webhook realtime (`/api/crm/whatsapp/webhook`) envia mensagens assincronamente via `after()` para `POST /api/v1/ingest/whatsapp` quando o módulo estiver ativo.
   2. Crons `whatsapp-sync` e `whatsapp-analysis` enviam lotes de conversas pendentes para o ZapTrail.
   3. Os CTAs "Sincronizar Conversas" no Inbox e "Analisar agora" no Radar acionam a análise no ZapTrail com feedback na UI.
-**Plans**: TBD
+**Plans**: 3 plans
+
+Plans:
+- [ ] 06-01: Serviço ZapTrailClient com resiliência, validação de módulo e despacho seguro
+- [ ] 06-02: Integração do Webhook Realtime via after() no PilotCRM (PCRM-03)
+- [ ] 06-03: Integração dos Crons de sincronização/análise e CTAs do Inbox/Radar (PCRM-04, PCRM-05)
 
 ### Phase 7: Outbound Webhook & Proposal Persistence Loop
 **Goal**: Implementar o loop de retorno onde o ZapTrail despacha webhooks para o PilotCRM persistir propostas comerciais validadas.
@@ -81,7 +86,7 @@ Phases execute in numeric order: 5 → 6 → 7 → 8
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 5. PilotCRM Module Registry & Marketplace Card | 3/3 | Completed | 2026-10-22 |
-| 6. PilotCRM 3 Ingest Triggers Integration | 0/TBD | Not started | - |
+| 6. PilotCRM 3 Ingest Triggers Integration | 0/3 | Ready to execute | - |
 | 7. Outbound Webhook & Proposal Persistence Loop | 0/TBD | Not started | - |
 | 8. End-to-End Cross-Repo Integration & Verification | 0/TBD | Not started | - |
 

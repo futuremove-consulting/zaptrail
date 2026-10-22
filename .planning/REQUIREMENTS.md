@@ -9,8 +9,8 @@ Requirements for Milestone v1.1.0: PilotCRM Native Integration & Marketplace.
 
 ### Marketplace & Modules (PilotCRM)
 
-- [ ] **PCRM-01**: PilotCRM registra o módulo ZapTrail em `MODULE_REGISTRY` (`apps/pilotcrm/src/lib/module-flags/types.ts`) com flags de ativação por tenant.
-- [ ] **PCRM-02**: PilotCRM renderiza card do ZapTrail na página de módulos (`/crm/settings/modules`), permitindo configurar URL do ZapTrail, API Key/Token e status de ativação.
+- [x] **PCRM-01**: PilotCRM registra o módulo ZapTrail em `MODULE_REGISTRY` (`apps/pilotcrm/src/lib/module-flags/types.ts`) com flags de ativação por tenant.
+- [x] **PCRM-02**: PilotCRM renderiza card do ZapTrail na página de módulos (`/crm/settings/modules`), permitindo configurar URL do ZapTrail, API Key/Token e status de ativação.
 
 ### Trigger Integration (PilotCRM -> ZapTrail)
 
@@ -53,8 +53,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| PCRM-01 | Phase 5 | Pending |
-| PCRM-02 | Phase 5 | Pending |
+| PCRM-01 | Phase 5 | Satisfied |
+| PCRM-02 | Phase 5 | Satisfied |
 | PCRM-03 | Phase 6 | Pending |
 | PCRM-04 | Phase 6 | Pending |
 | PCRM-05 | Phase 6 | Pending |
