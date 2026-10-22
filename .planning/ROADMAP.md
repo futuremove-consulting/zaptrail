@@ -58,15 +58,20 @@ Plans:
 - [x] 06-02: Integração do Webhook Realtime via after() no PilotCRM (PCRM-03) — completed 2026-10-22
 - [x] 06-03: Integração dos Crons de sincronização/análise e CTAs do Inbox/Radar (PCRM-04, PCRM-05) — completed 2026-10-22
 
-### Phase 7: Outbound Webhook & Proposal Persistence Loop
-**Goal**: Implementar o loop de retorno onde o ZapTrail despacha webhooks para o PilotCRM persistir propostas comerciais validadas.
+### Phase 7: Outbound Webhook & AI Suggestions Loop
+**Goal**: Implementar o loop de retorno onde o ZapTrail despacha webhooks para o PilotCRM persistir sugestões de negócio (`ai_suggestions`) com conformidade estrita à constraint `enrichment_action_ck`, alimentando o Radar de Oportunidades para aprovação do corretor.
 **Depends on**: Phase 6
 **Requirements**: PCRM-06, PCRM-07
 **Success Criteria** (what must be TRUE):
-  1. ZapTrail despacha webhook com envelope e propostas formatadas via `PilotCRMAdapter` para a URL configurada do PilotCRM.
-  2. Endpoint receptor no PilotCRM autentica o webhook e grava registros em `enrichment_proposals`.
-  3. Todas as propostas gravadas atendem a constraint `enrichment_action_ck` e podem ser aceitas gerando Deals sem violação de schema.
-**Plans**: TBD
+  1. ZapTrail despacha webhook com envelope e sugestões formatadas via `PilotCRMAdapter` para a `callback_url` configurada do PilotCRM.
+  2. Endpoint receptor no PilotCRM autentica o webhook e grava registros em `enrichment_proposals` (alias `ai_suggestions`).
+  3. Todas as sugestões gravadas atendem à constraint `enrichment_action_ck` e podem ser aceitas gerando Deals no Kanban sem violação de schema.
+**Plans**: 3 plans
+
+Plans:
+- [ ] 07-01: Despachador outbound do ZapTrail com PilotCRMAdapter e resiliência (PCRM-06)
+- [ ] 07-02: Serviço de ingestão de sugestões da IA (ai_suggestions) e rotas no PilotCRM (PCRM-07)
+- [ ] 07-03: Conexão automática de callback, sincronização do Radar e teste de loop E2E (PCRM-06, PCRM-07)
 
 ### Phase 8: End-to-End Cross-Repo Integration & Verification
 **Goal**: Suíte E2E automatizada cobrindo o fluxo bidirecional completo entre PilotCRM e ZapTrail com garantias de idempotência e zero perda de dados.
@@ -87,7 +92,7 @@ Phases execute in numeric order: 5 → 6 → 7 → 8
 |-------|----------------|--------|-----------|
 | 5. PilotCRM Module Registry & Marketplace Card | 3/3 | Completed | 2026-10-22 |
 | 6. PilotCRM 3 Ingest Triggers Integration | 3/3 | Completed | 2026-10-22 |
-| 7. Outbound Webhook & Proposal Persistence Loop | 0/TBD | Not started | - |
+| 7. Outbound Webhook & Proposal Persistence Loop | 0/3 | Planning | - |
 | 8. End-to-End Cross-Repo Integration & Verification | 0/TBD | Not started | - |
 
 ---
