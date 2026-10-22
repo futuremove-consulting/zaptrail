@@ -15,6 +15,10 @@ import {
   bindSeededPropertyCandidates,
 } from '../domain-real-estate/turn-window-coalescer';
 import { SeededPropertyCandidate } from '../domain-real-estate/types';
+import {
+  dispatchOutboundSuggestions,
+  OutboundDispatcherResult,
+} from './outbound-dispatcher';
 
 export const IngestWhatsappMessageSchema = z
   .object({
@@ -56,6 +60,8 @@ export const IngestWhatsappPayloadSchema = z.object({
   prior_outbound_message: ConversationMessageSchema.optional(),
   seeded_context: z.record(z.unknown()).optional(),
   domain_key: z.string().optional().default('real_estate'),
+  callback_url: z.string().url().optional(),
+  callback_token: z.string().optional(),
 });
 
 export type IngestWhatsappPayload = z.infer<typeof IngestWhatsappPayloadSchema>;
@@ -64,12 +70,14 @@ export interface IngestTurnOptions {
   engine?: HybridInterpretationEngine;
   storage?: StoragePort;
   domainPack?: DomainPack;
+  fetchFn?: typeof fetch;
 }
 
 export interface IngestTurnResult {
   status: 200 | 201;
   envelope: UniversalInterpretationEnvelope;
   duplicate: boolean;
+  outboundResult?: OutboundDispatcherResult;
 }
 
 let activeStorageInstance: StoragePort = new SupabaseStoragePort();
@@ -222,9 +230,24 @@ export async function ingestWhatsappTurn(
   const duplicate = Boolean(envelope.duplicate);
   const status = duplicate ? 200 : 201;
 
+  let outboundResult: OutboundDispatcherResult | undefined;
+  if (status === 201 && !duplicate && payload.callback_url) {
+    try {
+      outboundResult = await dispatchOutboundSuggestions({
+        envelope,
+        callbackUrl: payload.callback_url,
+        callbackToken: payload.callback_token,
+        fetchFn: options?.fetchFn,
+      });
+    } catch {
+      // Outbound dispatch failures must not break the main ingestion response
+    }
+  }
+
   return {
     status,
     duplicate,
     envelope,
+    ...(outboundResult ? { outboundResult } : {}),
   };
 }

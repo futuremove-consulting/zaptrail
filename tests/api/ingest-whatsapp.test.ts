@@ -412,4 +412,71 @@ describe('WhatsApp Ingest Pipeline (API-01)', () => {
       expect(secondJson.data.envelope_id).toBe(firstJson.data.envelope_id);
     });
   });
+
+  describe('Outbound Callback Webhook Integration (PCRM-06)', () => {
+    test('triggers outbound dispatcher when callback_url is present on new turn', async () => {
+      let dispatched = false;
+      const fetchMock = async (url: string, init?: RequestInit) => {
+        dispatched = true;
+        expect(url).toBe('https://pilotcrm.example.com/api/v1/webhook');
+        const headers = init?.headers as Record<string, string>;
+        expect(headers['Authorization']).toBe('Bearer secret-token-crm');
+        expect(headers['x-zaptrail-tenant-id']).toBe('tenant-cb-01');
+        return {
+          ok: true,
+          status: 200,
+          json: async () => ({ ok: true }),
+        } as Response;
+      };
+
+      const payload = {
+        tenant_id: 'tenant-cb-01',
+        provider: 'whatsapp',
+        conversation_id: 'conv-cb-01',
+        callback_url: 'https://pilotcrm.example.com/api/v1/webhook',
+        callback_token: 'secret-token-crm',
+        messages: [
+          {
+            external_message_id: 'msg-cb-01',
+            sender_id: '5511999991111',
+            body: 'Sou proprietário e quero vender por 600 mil',
+          },
+        ],
+      };
+
+      const result = await ingestWhatsappTurn(payload, { storage, fetchFn: fetchMock as any });
+      expect(result.status).toBe(201);
+      expect(dispatched).toBe(true);
+      expect(result.outboundResult?.dispatched).toBe(true);
+      expect(result.outboundResult?.status).toBe(200);
+      expect(result.outboundResult?.count).toBeGreaterThan(0);
+    });
+
+    test('tolerates callback failure (500 or network error) without throwing or breaking ingest result', async () => {
+      const failingFetch = async () => {
+        throw new Error('Connection refused / timeout');
+      };
+
+      const payload = {
+        tenant_id: 'tenant-cb-fail',
+        provider: 'whatsapp',
+        conversation_id: 'conv-cb-fail',
+        callback_url: 'https://failing-crm.local/webhook',
+        messages: [
+          {
+            external_message_id: 'msg-cb-fail-1',
+            sender_id: '5511999992222',
+            body: 'Tenho interesse em vender por 1 milhão',
+          },
+        ],
+      };
+
+      const result = await ingestWhatsappTurn(payload, { storage, fetchFn: failingFetch as any });
+      expect(result.status).toBe(201);
+      expect(result.duplicate).toBe(false);
+      expect(result.outboundResult?.dispatched).toBe(false);
+      expect(result.outboundResult?.error).toContain('Connection refused');
+    });
+  });
 });
+

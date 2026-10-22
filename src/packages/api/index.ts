@@ -13,3 +13,13 @@ export type {
   IngestTurnOptions,
   IngestTurnResult,
 } from './ingest-handler';
+
+export {
+  dispatchOutboundSuggestions,
+} from './outbound-dispatcher';
+
+export type {
+  OutboundDispatcherInput,
+  OutboundDispatcherResult,
+  OutboundSuggestionsPayload,
+} from './outbound-dispatcher';
