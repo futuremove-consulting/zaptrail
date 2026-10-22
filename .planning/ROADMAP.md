@@ -19,7 +19,7 @@
 
 ### Milestone v1.1.0
 
-- [ ] **Phase 5: PilotCRM Module Registry & Marketplace Card** - Registro no MODULE_REGISTRY e Card de configuração na UI de módulos do PilotCRM
+- [x] **Phase 5: PilotCRM Module Registry & Marketplace Card** (3/3 plans) — completed 2026-10-22
 - [ ] **Phase 6: PilotCRM 3 Ingest Triggers Integration** - Conexão do webhook realtime, crons 4x/dia e botões CTA com o ZapTrail
 - [ ] **Phase 7: Outbound Webhook & Proposal Persistence Loop** - Despacho de webhooks e gravação de propostas no PilotCRM com conformidade estrita a enrichment_action_ck
 - [ ] **Phase 8: End-to-End Cross-Repo Integration & Verification** - Validação E2E com simulação de cenários reais, deduplicação e conversão de proposta em Deal
@@ -35,11 +35,13 @@
 **Success Criteria** (what must be TRUE):
   1. ZapTrail é registrado com chave, nome, categoria e flags em `apps/pilotcrm/src/lib/module-flags/types.ts`.
   2. O Card do ZapTrail é renderizado na tela de Módulos (`/crm/settings/modules`) com switches e campos de API URL e token.
-**Plans**: 2 plans
+  3. A ativação do módulo e credenciais persistem por workspace no banco do PilotCRM com token cifrado sem vazamento em localStorage.
+**Plans**: 3 plans
 
 Plans:
-- [ ] 05-01: Module Registry, Feature Flags e validação Zod no PilotCRM
-- [ ] 05-02: Card do ZapTrail e parâmetros de conexão na UI de Módulos
+- [x] 05-01: Module Registry, Feature Flags e validação Zod no PilotCRM — completed 2026-10-21
+- [x] 05-02: Card do ZapTrail e parâmetros de conexão na UI de Módulos — completed 2026-10-21
+- [x] 05-03: Persistência server-side com token cifrado e eliminação de localStorage — completed 2026-10-22
 
 ### Phase 6: PilotCRM 3 Ingest Triggers Integration
 **Goal**: Conectar os 3 pontos de entrada do PilotCRM (webhook realtime, crons 4x/dia e botão sob demanda) ao endpoint de ingestão do ZapTrail.
@@ -78,7 +80,7 @@ Phases execute in numeric order: 5 → 6 → 7 → 8
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 5. PilotCRM Module Registry & Marketplace Card | 0/TBD | Not started | - |
+| 5. PilotCRM Module Registry & Marketplace Card | 3/3 | Completed | 2026-10-22 |
 | 6. PilotCRM 3 Ingest Triggers Integration | 0/TBD | Not started | - |
 | 7. Outbound Webhook & Proposal Persistence Loop | 0/TBD | Not started | - |
 | 8. End-to-End Cross-Repo Integration & Verification | 0/TBD | Not started | - |
