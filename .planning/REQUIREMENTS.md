@@ -14,9 +14,9 @@ Requirements for Milestone v1.1.0: PilotCRM Native Integration & Marketplace.
 
 ### Trigger Integration (PilotCRM -> ZapTrail)
 
-- [ ] **PCRM-03**: Webhook realtime do PilotCRM (`/api/crm/whatsapp/webhook`) encaminha turnos de mensagens assincronamente via `after()` para `POST /api/v1/ingest/whatsapp` quando o módulo ZapTrail estiver ativo.
-- [ ] **PCRM-04**: Crons de sincronização do PilotCRM (`/api/cron/whatsapp-sync` e `whatsapp-analysis`) enviam filas de mensagens pendentes para processamento no ZapTrail.
-- [ ] **PCRM-05**: CTAs sob demanda no Inbox ("Sincronizar Conversas") e no Radar ("Analisar agora") disparam requisições ao ZapTrail e refletem o status na interface.
+- [x] **PCRM-03**: Webhook realtime do PilotCRM (`/api/crm/whatsapp/webhook`) encaminha turnos de mensagens assincronamente via `after()` para `POST /api/v1/ingest/whatsapp` quando o módulo ZapTrail estiver ativo.
+- [x] **PCRM-04**: Crons de sincronização do PilotCRM (`/api/cron/whatsapp-sync` e `whatsapp-analysis`) enviam filas de mensagens pendentes para processamento no ZapTrail.
+- [x] **PCRM-05**: CTAs sob demanda no Inbox ("Sincronizar Conversas") e no Radar ("Analisar agora") disparam requisições ao ZapTrail e refletem o status na interface.
 
 ### Proposal Sync & Outbound Callback (ZapTrail -> PilotCRM)
 
@@ -55,9 +55,9 @@ Which phases cover which requirements. Updated during roadmap creation.
 |-------------|-------|--------|
 | PCRM-01 | Phase 5 | Satisfied |
 | PCRM-02 | Phase 5 | Satisfied |
-| PCRM-03 | Phase 6 | Pending |
-| PCRM-04 | Phase 6 | Pending |
-| PCRM-05 | Phase 6 | Pending |
+| PCRM-03 | Phase 6 | Satisfied |
+| PCRM-04 | Phase 6 | Satisfied |
+| PCRM-05 | Phase 6 | Satisfied |
 | PCRM-06 | Phase 7 | Pending |
 | PCRM-07 | Phase 7 | Pending |
 | PCRM-08 | Phase 8 | Pending |

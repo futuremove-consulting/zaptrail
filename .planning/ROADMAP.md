@@ -20,7 +20,7 @@
 ### Milestone v1.1.0
 
 - [x] **Phase 5: PilotCRM Module Registry & Marketplace Card** (3/3 plans) — completed 2026-10-22
-- [ ] **Phase 6: PilotCRM 3 Ingest Triggers Integration** - Conexão do webhook realtime, crons 4x/dia e botões CTA com o ZapTrail
+- [x] **Phase 6: PilotCRM 3 Ingest Triggers Integration** (3/3 plans) — completed 2026-10-22
 - [ ] **Phase 7: Outbound Webhook & Proposal Persistence Loop** - Despacho de webhooks e gravação de propostas no PilotCRM com conformidade estrita a enrichment_action_ck
 - [ ] **Phase 8: End-to-End Cross-Repo Integration & Verification** - Validação E2E com simulação de cenários reais, deduplicação e conversão de proposta em Deal
 
@@ -54,9 +54,9 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 06-01: Serviço ZapTrailClient com resiliência, validação de módulo e despacho seguro
-- [ ] 06-02: Integração do Webhook Realtime via after() no PilotCRM (PCRM-03)
-- [ ] 06-03: Integração dos Crons de sincronização/análise e CTAs do Inbox/Radar (PCRM-04, PCRM-05)
+- [x] 06-01: Serviço ZapTrailClient com resiliência, validação de módulo e despacho seguro — completed 2026-10-22
+- [x] 06-02: Integração do Webhook Realtime via after() no PilotCRM (PCRM-03) — completed 2026-10-22
+- [x] 06-03: Integração dos Crons de sincronização/análise e CTAs do Inbox/Radar (PCRM-04, PCRM-05) — completed 2026-10-22
 
 ### Phase 7: Outbound Webhook & Proposal Persistence Loop
 **Goal**: Implementar o loop de retorno onde o ZapTrail despacha webhooks para o PilotCRM persistir propostas comerciais validadas.
@@ -86,7 +86,7 @@ Phases execute in numeric order: 5 → 6 → 7 → 8
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
 | 5. PilotCRM Module Registry & Marketplace Card | 3/3 | Completed | 2026-10-22 |
-| 6. PilotCRM 3 Ingest Triggers Integration | 0/3 | Ready to execute | - |
+| 6. PilotCRM 3 Ingest Triggers Integration | 3/3 | Completed | 2026-10-22 |
 | 7. Outbound Webhook & Proposal Persistence Loop | 0/TBD | Not started | - |
 | 8. End-to-End Cross-Repo Integration & Verification | 0/TBD | Not started | - |
 
