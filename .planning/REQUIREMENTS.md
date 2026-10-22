@@ -20,8 +20,8 @@ Requirements for Milestone v1.1.0: PilotCRM Native Integration & Marketplace.
 
 ### Proposal Sync & Outbound Callback (ZapTrail -> PilotCRM)
 
-- [ ] **PCRM-06**: ZapTrail envia webhook outbound após processamento para o PilotCRM com propostas comerciais formatadas via `PilotCRMAdapter`.
-- [ ] **PCRM-07**: PilotCRM recebe propostas via endpoint `/api/crm/whatsapp/proposals/ingest` e persiste em `enrichment_proposals` estritamente compatível com a constraint `enrichment_action_ck`.
+- [x] **PCRM-06**: ZapTrail envia webhook outbound após processamento para o PilotCRM com propostas comerciais formatadas via `PilotCRMAdapter`.
+- [x] **PCRM-07**: PilotCRM recebe propostas via endpoint `/api/crm/whatsapp/proposals/ingest` e persiste em `enrichment_proposals` estritamente compatível com a constraint `enrichment_action_ck`.
 
 ### E2E Live Integration & Quality
 
@@ -58,8 +58,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | PCRM-03 | Phase 6 | Satisfied |
 | PCRM-04 | Phase 6 | Satisfied |
 | PCRM-05 | Phase 6 | Satisfied |
-| PCRM-06 | Phase 7 | Pending |
-| PCRM-07 | Phase 7 | Pending |
+| PCRM-06 | Phase 7 | Satisfied |
+| PCRM-07 | Phase 7 | Satisfied |
 | PCRM-08 | Phase 8 | Pending |
 
 **Coverage:**

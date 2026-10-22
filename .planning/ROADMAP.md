@@ -81,7 +81,12 @@ Plans:
   1. Cenários de ponta a ponta simulam os 3 gatilhos e confirmam 100% de sucesso na ingestão no ZapTrail.
   2. Testes de estresse e deduplicação comprovam idempotência com 0 duplicações de propostas ou mensagens.
   3. Ciclo completo de aprovação de proposta na UI do PilotCRM gera Deal com todas as propriedades extraídas preenchidas.
-**Plans**: TBD
+**Plans**: 3 plans
+
+Plans:
+- [ ] 08-01: Simulação dos 3 gatilhos e fluxo live de ponta a ponta (PCRM-08)
+- [ ] 08-02: Hardening de idempotência, estresse e testes de concorrência (PCRM-08)
+- [ ] 08-03: Validação completa de atributos do Deal e harness unificado cross-repo (PCRM-08)
 
 ## Progress
 
@@ -93,7 +98,7 @@ Phases execute in numeric order: 5 → 6 → 7 → 8
 | 5. PilotCRM Module Registry & Marketplace Card | 3/3 | Completed | 2026-10-22 |
 | 6. PilotCRM 3 Ingest Triggers Integration | 3/3 | Completed | 2026-10-22 |
 | 7. Outbound Webhook & Proposal Persistence Loop | 3/3 | Completed | 2026-10-22 |
-| 8. End-to-End Cross-Repo Integration & Verification | 0/TBD | Not started | - |
+| 8. End-to-End Cross-Repo Integration & Verification | 0/3 | Planned | - |
 
 ---
 *See `.planning/milestones/v1.0.0-ROADMAP.md` for v1.0.0 phase details and task history.*
