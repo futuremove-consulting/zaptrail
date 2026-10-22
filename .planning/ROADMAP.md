@@ -69,8 +69,8 @@ Plans:
 **Plans**: 3 plans
 
 Plans:
-- [ ] 07-01: Despachador outbound do ZapTrail com PilotCRMAdapter e resiliência (PCRM-06)
-- [ ] 07-02: Serviço de ingestão de sugestões da IA (ai_suggestions) e rotas no PilotCRM (PCRM-07)
+- [x] 07-01: Despachador outbound do ZapTrail com PilotCRMAdapter e resiliência (PCRM-06) — completed 2026-10-22
+- [x] 07-02: Serviço de ingestão de sugestões da IA (ai_suggestions) e rotas no PilotCRM (PCRM-07) — completed 2026-10-22
 - [ ] 07-03: Conexão automática de callback, sincronização do Radar e teste de loop E2E (PCRM-06, PCRM-07)
 
 ### Phase 8: End-to-End Cross-Repo Integration & Verification
@@ -92,7 +92,7 @@ Phases execute in numeric order: 5 → 6 → 7 → 8
 |-------|----------------|--------|-----------|
 | 5. PilotCRM Module Registry & Marketplace Card | 3/3 | Completed | 2026-10-22 |
 | 6. PilotCRM 3 Ingest Triggers Integration | 3/3 | Completed | 2026-10-22 |
-| 7. Outbound Webhook & Proposal Persistence Loop | 0/3 | Planning | - |
+| 7. Outbound Webhook & Proposal Persistence Loop | 2/3 | In progress | - |
 | 8. End-to-End Cross-Repo Integration & Verification | 0/TBD | Not started | - |
 
 ---
