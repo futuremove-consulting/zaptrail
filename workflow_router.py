@@ -10,13 +10,23 @@ ACTION_SEND_PROPOSAL = "send_proposal"
 ACTION_SCHEDULE_VISIT = "schedule_visit"
 ACTION_QUALIFY_REVERSE = "qualify_reverse_demand"
 ACTION_NO_ACTION = "no_action"
+ACTION_SEND_LISTINGS = "send_listings"
+ACTION_ADD_SEARCH_CRITERIA = "add_search_criteria"
+ACTION_SCHEDULE_VIEWING = "schedule_viewing"
+
 
 TAG_TO_ACTION: Dict[str, str] = {
     "available_sale": ACTION_SEND_PROPOSAL,
-    "rent_property": ACTION_SCHEDULE_VISIT,
+    "available_for_rent": ACTION_SCHEDULE_VISIT,
     "sale_and_rent": ACTION_QUALIFY_REVERSE,
     "sem-intent": ACTION_NO_ACTION,
+    # Demand-side actions
+    "buying_for_housing": ACTION_SEND_LISTINGS,
+    "buying_for_investment": ACTION_ADD_SEARCH_CRITERIA,
+    "renting_for_housing": ACTION_SCHEDULE_VIEWING,
+    "renting_for_investment": ACTION_ADD_SEARCH_CRITERIA,
 }
+
 
 ACTION_TO_CRM_UPDATE = {
     ACTION_SEND_PROPOSAL: {
@@ -46,6 +56,28 @@ ACTION_TO_CRM_UPDATE = {
         "custom_value": "none",
         "tag_add": [],
         "tag_remove": [],
+    },
+    # Demand-side CRM updates
+    ACTION_SEND_LISTINGS: {
+        "crud_operation": "update_contact",
+        "custom_field": "last_action",
+        "custom_value": "send_listings",
+        "tag_add": ["buyer_interested", "demand_detected"],
+        "tag_remove": ["rental_interest_only"],
+    },
+    ACTION_ADD_SEARCH_CRITERIA: {
+        "crud_operation": "update_contact",
+        "custom_field": "last_action",
+        "custom_value": "add_search_criteria",
+        "tag_add": ["search_criteria_saved", "demand_detected"],
+        "tag_remove": [" buyer_interested"],
+    },
+    ACTION_SCHEDULE_VIEWING: {
+        "crud_operation": "update_contact",
+        "custom_field": "last_action",
+        "custom_value": "schedule_viewing",
+        "tag_add": ["viewing_scheduled", "demand_detected"],
+        "tag_remove": ["interest_sale_only"],
     },
 }
 
@@ -77,5 +109,8 @@ def get_action_description(tag: str) -> str:
         ACTION_SCHEDULE_VISIT: "Agendar visita de propriedades para aluguel",
         ACTION_QUALIFY_REVERSE: "Qualificar demanda reversa (opções de venda e aluguel)",
         ACTION_NO_ACTION: "Nenhuma ação comercial; recontato posterior",
+        ACTION_SEND_LISTINGS: "Enviar alertas de imóveis para compra/aluguel",
+        ACTION_ADD_SEARCH_CRITERIA: "Salvar critérios de busca do contato",
+        ACTION_SCHEDULE_VIEWING: "Agendar visita de propriedade",
     }
     return descriptions.get(action, "Ação desconhecida")
