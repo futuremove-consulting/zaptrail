@@ -8,6 +8,7 @@ Extend the multi-layer property classifier to detect **contact property demand**
 ### State of Implementation
 - ✅ **Complete**: Property classifier rewritten with 7 layers (was 5)
 - ✅ **Complete**: Demand detection layer (Layer 5) added with 4 demand types
+- ✅ **Complete**: Temporal factors layer (Layer 7) added with 7 regex patterns
 - ✅ **Complete**: Workflow router integrated with demand-based CRM actions
 - ✅ **Complete**: Test suite developed and running
 - 🟡 **In Progress**: Documentation finalization

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import json, sys, os, re, urllib.request, urllib.parse
 SUPABASE_URL="https://ipvfualdiesjykocgoqq.supabase.co"
-SUPABASE_SECRET_KEY="sb_secret_GZiZqbnB1PgKcB5HEZ68WQ_Lc2p7d-X"  # Service role key bypasses RLS
+SUPABASE_SECRET_KEY="sb_secret_REPLACE_ME"  # Service role key - replaced for GH protection
 def q(p=None):
     u=f"{SUPABASE_URL}/rest/v1/messages"
     if p:u+="?"+urllib.parse.urlencode(p) if "?" not in u else "&"+urllib.parse.urlencode(p)

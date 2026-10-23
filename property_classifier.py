@@ -7,9 +7,10 @@ Identifies:
 3. Property demand (buy for housing, buy for investment, rent for housing, rent for investment) - DEMAND
 4. Property details extraction (price, rooms, city, occupancy, visit availability)
 5. Additional property interest detection
-6. Complete structured classification
+6. Complete structured classification with temporal factors
+7. Temporal factor extraction (deadlines, urgency, timeframes)
 
-80/20 Lean: Rule-based, deterministic, zero ML/AI. 7 classification layers.
+80/20 Lean: Rule-based, deterministic, zero ML/AI. 7+ classification layers.
 """
 
 import re
@@ -381,6 +382,73 @@ def classify_property_message(text: str) -> CLASSIFICATION_RESULT:
 # ============================================================
 
 if __name__ == "__main__":
+
+def extract_temporal_factors(text: str) -> Dict[str, Any]:
+    """
+    Extract temporal factors from property-related text.
+
+    Returns dict with temporal factors identified:
+    - deadline: specific date/deadline if mentioned
+    - urgency_level: 'alta', 'media', 'baixa'
+    - timeframe: how long search has been ongoing or desired timeframe
+    - visit_availability: when property is available for visits
+    - lease_term: for rental contexts (months/years)
+
+    All values are strings extracted from text, None if not found.
+    """
+    if not text or not text.strip():
+        return {
+            "deadline": None,
+            "urgency_level": None,
+            "timeframe": None,
+            "visit_availability": None,
+            "lease_term": None,
+        }
+
+    t = text.lower().strip()
+    result: Dict[str, Any] = {
+        "deadline": None,
+        "urgency_level": None,
+        "timeframe": None,
+        "visit_availability": None,
+        "lease_term": None,
+    }
+
+    # Extract specific deadlines (dates, specific prazos)
+    deadline_matches = re.findall(TEMPORAL_PATTERNS["prazo_compra"], t)
+    if deadline_matches:
+        # Get the full matched text for deadline
+        for pattern_name, pattern in TEMPORAL_PATTERNS.items():
+            if pattern_name == "prazo_compra":
+                full_match = pattern.search(t)
+                if full_match:
+                    result["deadline"] = full_match.group(0).strip()
+
+    # Determine urgency level
+    if TEMPORAL_PATTERNS["urgencia_alta"].search(t):
+        result["urgency_level"] = "alta"
+    elif TEMPORAL_PATTERNS["urgencia_media"].search(t):
+        result["urgency_level"] = "media"
+    elif TEMPORAL_PATTERNS["urgencia_baixa"].search(t):
+        result["urgency_level"] = "baixa"
+
+    # Extract timeframe (how long searching)
+    timeframe_match = TEMPORAL_PATTERNS["timeframe_compra"].search(t)
+    if timeframe_match:
+        result["timeframe"] = timeframe_match.group(0).strip()
+
+    # Extract visit availability
+    visit_match = TEMPORAL_PATTERNS["disponibilidade_visita"].search(t)
+    if visit_match:
+        result["visit_availability"] = visit_match.group(0).strip()
+
+    # Extract lease term for rental contexts
+    lease_match = TEMPORAL_PATTERNS["timeframe_locacao"].search(t)
+    if lease_match:
+        result["lease_term"] = lease_match.group(0).strip()
+
+    return result
+
     print("=" * 70)
     print("PROPERTY CLASSIFIER TEST SUITE (7 layers, 100% regex)")
     print("=" * 70)

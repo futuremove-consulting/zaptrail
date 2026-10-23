@@ -8,7 +8,7 @@ ZapTrail's property classifier enables the CRM to identify both sides of a prope
 - **Demand detection** (property needs): contacts actively looking to buy/rent
 
 ### Version
-7.0.0 (7-layer architecture, was 5-layer before enhancement)
+7.1.0 (7-layer architecture + temporal factors enhancement in 7.1.0)
 
 ### Classification Layers
 
@@ -87,7 +87,7 @@ Returns structured result with ALL layers combined:
     "other_property": (False, {}),          # Layer 4
     "raw_text": "Sou o proprietario do apartamento",
     "matched_keywords": ["PROPRIETARIO", "NO_PROPERTY_KEYWORDS"],
-    "ocupado_status": None                  # Derived from details
+    "temporal_factors": {...}               # Layer 7 (NEW)
 }
 ```
 

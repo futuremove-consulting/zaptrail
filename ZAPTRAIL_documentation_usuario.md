@@ -7,6 +7,7 @@ ZapTrail helps your CRM identify both sides of property transactions - who's sel
 ### What's New
 - **7-layer property classification** (was 5 layers before)
 - **Demand detection** - identifies buying/renting needs in addition to supply detection
+- **Temporal factors** - detects urgency, timeframe, and deadlines from messages
 - **Portuguese-optimized patterns** for Brazilian WhatsApp messages
 - **Combined scenario support** - contacts who both sell AND buy
 
