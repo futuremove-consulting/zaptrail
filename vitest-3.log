@@ -1,0 +1,525 @@
+[33m(!) Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite:
+  - ESM syntax in a file loaded as CommonJS (vitest.config.ts:1:1). Use a `.mjs` extension or set `"type": "module"` in the closest package.json
+Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.[39m
+
+[1m[30m[46m RUN [49m[39m[22m [36mv4.1.11 [39m[90mC:/Users/Gustavo/.cline/data/workspaces/chat/pilotcrm/apps/pilotcrm[39m
+
+ [31m❯[39m src/lib/sprint-5/kanban-inbox-contract.test.ts [2m([22m[2m3 tests[22m[2m | [22m[31m1 failed[39m[2m)[22m[32m 51[2mms[22m[39m
+[31m     [31m×[31m oferece lista mobile do Pipeline com mudança de etapa nomeada[39m[32m 37[2mms[22m[39m
+     [32m✓[39m mantém o modo desktop horizontal e a ação de gerenciamento de etapas[32m 1[2mms[22m[39m
+     [32m✓[39m mantém Inbox em duas vistas e persiste a conversa na URL[32m 6[2mms[22m[39m
+ [31m❯[39m src/lib/sprint-5/responsive-tables-contract.test.ts [2m([22m[2m3 tests[22m[2m | [22m[31m1 failed[39m[2m)[22m[32m 75[2mms[22m[39m
+[31m     [31m×[31m oferece modo lista mobile e tabela desktop na DataTable compartilhada[39m[32m 49[2mms[22m[39m
+     [32m✓[39m preserva os critérios essenciais nas telas prioritárias[32m 14[2mms[22m[39m
+     [32m✓[39m mantém as entidades de propriedades e contatos na DataTable comum[32m 3[2mms[22m[39m
+ [32m✓[39m src/modules/__tests__/e2e_business_flows_certification.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 38[2mms[22m[39m
+
+[31m⎯⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Tests 2 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+
+[41m[1m FAIL [22m[49m src/lib/sprint-5/kanban-inbox-contract.test.ts[2m:12:3[22m[2m > [22mcontratos de Kanban e Inbox da Sprint 5[2m > [22moferece lista mobile do Pipeline com mudança de etapa nomeada
+[31m[1mAssertionError[22m: expected '"use client";\n\nimport React, { useE…' to contain 'handleMoveDeal(deal.id, event.target.…'[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- handleMoveDeal(deal.id, event.target.value)[39m
+[31m+ "use client";[39m
+[31m+[39m
+[31m+ import React, { useEffect, useState, useCallback } from "react";[39m
+[31m+ import KanbanColumn from "./KanbanColumn";[39m
+[31m+ import DealDialog from "./DealDialog";[39m
+[31m+ import StageEditor from "./StageEditor";[39m
+[31m+ import KanbanQuickActionDrawer from "./KanbanQuickActionDrawer";[39m
+[31m+ import InboxPropertyMatcherDialog from "./InboxPropertyMatcherDialog";[39m
+[31m+ import { toast } from "@/hooks/use-toast";[39m
+[31m+ import { EmptyState, Button, Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@repo/ui";[39m
+[31m+ import { sortDealsByPriority } from "@/lib/pipeline/deal-urgency";[39m
+[31m+ import { Zap } from "lucide-react";[39m
+[31m+[39m
+[31m+ interface Stage {[39m
+[31m+   id: string;[39m
+[31m+   name: string;[39m
+[31m+   order: number;[39m
+[31m+   color: string;[39m
+[31m+ }[39m
+[31m+[39m
+[31m+ interface Deal {[39m
+[31m+   id: string;[39m
+[31m+   title: string;[39m
+[31m+   value: string;[39m
+[31m+   stage_id: string;[39m
+[31m+   status: "open" | "won" | "lost";[39m
+[31m+   contact_id: string;[39m
+[31m+   updated_at: string;[39m
+[31m+   last_contact_at?: string | null;[39m
+[31m+   next_action?: string | null;[39m
+[31m+   next_action_due?: string | null;[39m
+[31m+   notes?: string | null;[39m
+[31m+ }[39m
+[31m+[39m
+[31m+ interface PendingMove {[39m
+[31m+   dealId: string;[39m
+[31m+   dealTitle: string;[39m
+[31m+   stageId: string;[39m
+[31m+   stageName: string;[39m
+[31m+   outcome: "won" | "lost";[39m
+[31m+ }[39m
+[31m+[39m
+[31m+ export default function KanbanBoard() {[39m
+[31m+   const [stages, setStages] = useState<Stage[]>([]);[39m
+[31m+   const [deals, setDeals] = useState<Deal[]>([]);[39m
+[31m+   const [dealDialogOpen, setDealDialogOpen] = useState(false);[39m
+[31m+   const [stageEditorOpen, setStageEditorOpen] = useState(false);[39m
+[31m+   const [pendingMove, setPendingMove] = useState<PendingMove | null>(null);[39m
+[31m+   const [selectedQuickDeal, setSelectedQuickDeal] = useState<Deal | null>(null);[39m
+[31m+   const [quickContactName, setQuickContactName] = useState<string | null>(null);[39m
+[31m+   const [matcherDeal, setMatcherDeal] = useState<Deal | null>(null);[39m
+[31m+   const [prioritizeUrgent, setPrioritizeUrgent] = useState(true);[39m
+[31m+   const [loading, setLoading] = useState(true);[39m
+[31m+   const [error, setError] = useState<string | null>(null);[39m
+[31m+[39m
+[31m+   const fetchData = useCallback(async () => {[39m
+[31m+     try {[39m
+[31m+       const [stagesRes, dealsRes] = await Promise.all([fetch("/api/crm/stages"), fetch("/api/crm/deals")]);[39m
+[31m+       if (!stagesRes.ok || !dealsRes.ok) throw new Error("Não foi possível carregar o funil de vendas.");[39m
+[31m+       setStages(await stagesRes.json());[39m
+[31m+       setDeals(await dealsRes.json());[39m
+[31m+       setError(null);[39m
+[31m+     } catch (cause) {[39m
+[31m+       setError(cause instanceof Error ? cause.message : "Não foi possível carregar o funil de vendas.");[39m
+[31m+     } finally {[39m
+[31m+       setLoading(false);[39m
+[31m+     }[39m
+[31m+   }, []);[39m
+[31m+[39m
+[31m+   useEffect(() => { Promise.resolve().then(fetchData); }, [fetchData]);[39m
+[31m+[39m
+[31m+   const commitMoveDeal = async (dealId: string, newStageId: string, outcome?: "won" | "lost") => {[39m
+[31m+     await fetch(`/api/crm/deals/${dealId}`, {[39m
+[31m+       method: "PUT",[39m
+[31m+       headers: { "Content-Type": "application/json" },[39m
+[31m+       body: JSON.stringify({ stage_id: newStageId, ...(outcome ? { status: outcome } : {}) }),[39m
+[31m+     });[39m
+[31m+     const targetStage = stages.find((s) => s.id === newStageId);[39m
+[31m+     if (targetStage && outcome) {[39m
+[31m+       toast({[39m
+[31m+         title: outcome === "won" ? "Negócio ganho" : "Negócio perdido",[39m
+[31m+         description: `${targetStage.name}: alteração salva para o negócio selecionado.`,[39m
+[31m+       });[39m
+[31m+     }[39m
+[31m+     fetchData();[39m
+[31m+   };[39m
+[31m+[39m
+[31m+   const handleMoveDeal = (dealId: string, newStageId: string) => {[39m
+[31m+     const targetStage = stages.find((stage) => stage.id === newStageId);[39m
+[31m+     const deal = deals.find((item) => item.id === dealId);[39m
+[31m+     if (!targetStage || !deal) return;[39m
+[31m+     const normalizedName = targetStage.name.toLowerCase();[39m
+[31m+     if (normalizedName.startsWith("fechado") || normalizedName.includes("ganho") || normalizedName.includes("perdido")) {[39m
+[31m+       setPendingMove({ dealId, dealTitle: deal.title, stageId: newStageId, stageName: targetStage.name, outcome: normalizedName.includes("perd") ? "lost" : "won" });[39m
+[31m+       return;[39m
+[31m+     }[39m
+[31m+     void commitMoveDeal(dealId, newStageId);[39m
+[31m+   };[39m
+[31m+[39m
+[31m+   const confirmPendingMove = async () => {[39m
+[31m+     if (!pendingMove) return;[39m
+[31m+     const move = pendingMove;[39m
+[31m+     setPendingMove(null);[39m
+[31m+     await commitMoveDeal(move.dealId, move.stageId, move.outcome);[39m
+[31m+   };[39m
+[31m+[39m
+[31m+   const handleDealCreated = () => {[39m
+[31m+     setDealDialogOpen(false);[39m
+[31m+     fetchData();[39m
+[31m+   };[39m
+[31m+[39m
+[31m+   const handleDealUpdated = (updatedDeal: Deal) => {[39m
+[31m+     setDeals((prev) => prev.map((d) => (d.id === updatedDeal.id ? { ...d, ...updatedDeal } : d)));[39m
+[31m+     setSelectedQuickDeal((prev) => (prev?.id === updatedDeal.id ? { ...prev, ...updatedDeal } : prev));[39m
+[31m+   };[39m
+[31m+[39m
+[31m+   const stagesSorted = [...stages].sort((a, b) => a.order - b.order);[39m
+[31m+[39m
+[31m+   const getDealsForStage = useCallback([39m
+[31m+     (stageId: string) => {[39m
+[31m+       const stageDeals = deals.filter((d) => d.stage_id === stageId);[39m
+[31m+       return prioritizeUrgent ? sortDealsByPriority(stageDeals) : stageDeals;[39m
+[31m+     },[39m
+[31m+     [deals, prioritizeUrgent][39m
+[31m+   );[39m
+[31m+[39m
+[31m+   return ([39m
+[31m+     <div className="space-y-4">[39m
+[31m+       <div className="flex flex-wrap items-center gap-2">[39m
+[31m+         <Button onClick={() => setDealDialogOpen(true)}>[39m
+[31m+           Adicionar Negócio[39m
+[31m+         </Button>[39m
+[31m+         <Button variant="outline" onClick={() => setStageEditorOpen(true)}>[39m
+[31m+           Gerenciar Etapas[39m
+[31m+         </Button>[39m
+[31m+         <Button[39m
+[31m+           type="button"[39m
+[31m+           variant="outline"[39m
+[31m+           size="sm"[39m
+[31m+           aria-pressed={prioritizeUrgent}[39m
+[31m+           onClick={() => setPrioritizeUrgent(!prioritizeUrgent)}[39m
+[31m+           className={prioritizeUrgent ? "bg-warning/10 text-warning border-warning/20" : ""}[39m
+[31m+         >[39m
+[31m+           <Zap className={`h-4 w-4 ${prioritizeUrgent ? "text-warning fill-warning" : "text-muted-foreground"}`} />[39m
+[31m+           Priorizar Urgentes[39m
+[31m+         </Button>[39m
+[31m+       </div>[39m
+[31m+[39m
+[31m+       {loading ? ([39m
+[31m+         <div role="status" className="rounded-xl border p-12 text-center text-muted-foreground">Carregando funil de vendas...</div>[39m
+[31m+       ) : error ? ([39m
+[31m+         <div role="alert" className="rounded-xl border border-destructive/20 bg-destructive/10 p-8 text-center text-destructive"><p>{error}</p><Button variant="outline" onClick={() => { setLoading(true); void fetchData(); }}>Tentar novamente</Button></div>[39m
+[31m+       ) : stages.length === 0 ? ([39m
+[31m+         <div className="text-center py-16 text-muted-foreground">[39m
+[31m+           <p className="text-lg">Nenhum negócio no funil de vendas</p>[39m
+[31m+           <p className="text-sm mt-1">Adicione etapas ao funil para começar</p>[39m
+[31m+         </div>[39m
+[31m+       ) : ([39m
+[31m+         <div className="flex flex-col lg:flex-row gap-4">[39m
+[31m+           {/* Mobile: lista com mudança de etapa explícita */}[39m
+[31m+           <div className="lg:hidden flex flex-col gap-3" aria-label="Lista mobile do pipeline">[39m
+[31m+             <p id="pipeline-mobile-help" className="sr-only">Use o seletor Etapa para mover um negócio. A alteração é salva imediatamente.</p>[39m
+[31m+             {deals.length === 0 ? <EmptyState icon={Zap} variant="no-data" title="Nenhum negócio encontrado" description="Crie seu primeiro negócio para começar." /> : deals.map((deal) => {[39m
+[31m+               const stage = stagesSorted.find((item) => item.id === deal.stage_id);[39m
+[31m+               return ([39m
+[31m+                 <article key={deal.id} className="rounded-xl border bg-background p-4 shadow-sm">[39m
+[31m+                   <div className="flex items-start justify-between gap-3">[39m
+[31m+                     <div className="min-w-0">[39m
+[31m+                       <h3 className="truncate font-medium">{deal.title}</h3>[39m
+[31m+                       <p className="mt-1 text-sm font-medium">R$ {Number(deal.value || 0).toLocaleString("pt-BR", { minimumFractionDigits: 2 })}</p>[39m
+[31m+                     </div>[39m
+[31m+                     <span className="shrink-0 rounded-full bg-muted px-2 py-1 text-xs text-muted-foreground">{stage?.name || "Sem etapa"}</span>[39m
+[31m+                   </div>[39m
+[31m+                   <label htmlFor={`pipeline-stage-${deal.id}`} className="mt-4 block text-xs font-medium text-muted-foreground">Etapa</label>[39m
+[31m+                   <Select value={deal.stage_id} onValueChange={(value) => void handleMoveDeal(deal.id, value)}>[39m
+[31m+                     <SelectTrigger id={`pipeline-stage-${deal.id}`} aria-describedby="pipeline-mobile-help" className="mt-1 w-full">[39m
+[31m+                       <SelectValue />[39m
+[31m+                     </SelectTrigger>[39m
+[31m+                     <SelectContent>[39m
+[31m+                       {stagesSorted.map((option) => <SelectItem key={option.id} value={option.id}>{option.name}</SelectItem>)}[39m
+[31m+                     </SelectContent>[39m
+[31m+                   </Select>[39m
+[31m+                 </article>[39m
+[31m+               );[39m
+[31m+             })}[39m
+[31m+           </div>[39m
+[31m+           [39m
+[31m+           {/* Desktop & Tablet: Grid horizontal */}[39m
+[31m+           <div className="hidden lg:flex gap-4 overflow-x-auto pb-4">[39m
+[31m+             {stagesSorted.map((stage) => ([39m
+[31m+               <KanbanColumn[39m
+[31m+                 key={stage.id}[39m
+[31m+                 stage={stage}[39m
+[31m+                 deals={getDealsForStage(stage.id)}[39m
+[31m+                 stages={stagesSorted}[39m
+[31m+                 onMoveDeal={handleMoveDeal}[39m
+[31m+                 onRefresh={fetchData}[39m
+[31m+                 onOpenQuickAction={(deal, contactName) => {[39m
+[31m+                   setSelectedQuickDeal(deal);[39m
+[31m+                   setQuickContactName(contactName || null);[39m
+[31m+                 }}[39m
+[31m+               />[39m
+[31m+             ))}[39m
+[31m+           </div>[39m
+[31m+         </div>[39m
+[31m+       )}[39m
+[31m+[39m
+[31m+       {dealDialogOpen ? <DealDialog[39m
+[31m+           open={dealDialogOpen}[39m
+[31m+           onClose={() => setDealDialogOpen(false)}[39m
+[31m+           stages={stagesSorted}[39m
+[31m+           onSave={handleDealCreated}[39m
+[31m+         /> : null}[39m
+[31m+[39m
+[31m+       {stageEditorOpen ? <StageEditor[39m
+[31m+           open={stageEditorOpen}[39m
+[31m+           onClose={() => setStageEditorOpen(false)}[39m
+[31m+           stages={stagesSorted}[39m
+[31m+           onRefresh={fetchData}[39m
+[31m+         /> : null}[39m
+[31m+[39m
+[31m+       {selectedQuickDeal ? ([39m
+[31m+         <KanbanQuickActionDrawer[39m
+[31m+           deal={selectedQuickDeal}[39m
+[31m+           contactName={quickContactName}[39m
+[31m+           onClose={() => setSelectedQuickDeal(null)}[39m
+[31m+           onDealUpdated={handleDealUpdated}[39m
+[31m+           onOpenMatcher={() => {[39m
+[31m+             setMatcherDeal(selectedQuickDeal);[39m
+[31m+           }}[39m
+[31m+         />[39m
+[31m+       ) : null}[39m
+[31m+[39m
+[31m+       {matcherDeal ? ([39m
+[31m+         <InboxPropertyMatcherDialog[39m
+[31m+           open={Boolean(matcherDeal)}[39m
+[31m+           onClose={() => setMatcherDeal(null)}[39m
+[31m+           deal={matcherDeal}[39m
+[31m+           contact={quickContactName ? { name: quickContactName } : null}[39m
+[31m+         />[39m
+[31m+       ) : null}[39m
+[31m+[39m
+[31m+       {pendingMove ? ([39m
+[31m+         <div role="alertdialog" aria-modal="true" aria-labelledby="pipeline-outcome-title" className="fixed inset-x-4 bottom-4 z-50 mx-auto max-w-lg rounded-xl border bg-background p-5 shadow-xl">[39m
+[31m+           <h2 id="pipeline-outcome-title" className="font-semibold">Confirmar {pendingMove.outcome === "won" ? "ganho" : "perda"}</h2>[39m
+[31m+           <p className="mt-1 text-sm text-muted-foreground">Mover “{pendingMove.dealTitle}” para “{pendingMove.stageName}”?</p>[39m
+[31m+           <div className="mt-4 flex justify-end gap-2"><Button variant="outline" onClick={() => setPendingMove(null)}>Cancelar</Button><Button onClick={() => void confirmPendingMove()}>Confirmar</Button></div>[39m
+[31m+         </div>[39m
+[31m+       ) : null}[39m
+[31m+     </div>[39m
+[31m+   );[39m
+[31m+ }[39m
+[31m+[39m
+
+[36m [2m❯[22m src/lib/sprint-5/kanban-inbox-contract.test.ts:[2m18:20[22m[39m
+    [90m 16|[39m     [34mexpect[39m(kanban)[33m.[39m[34mtoContain[39m([32m"pipeline-stage-"[39m)[33m;[39m
+    [90m 17|[39m     expect(kanban).toContain('aria-describedby="pipeline-mobile-help"'…
+    [90m 18|[39m     expect(kanban).toContain("handleMoveDeal(deal.id, event.target.val…
+    [90m   |[39m                    [31m^[39m
+    [90m 19|[39m     [34mexpect[39m(kanban)[33m.[39m[34mtoContain[39m([32m"A alteração é salva imediatamente."[39m)[33m;[39m
+    [90m 20|[39m   })[33m;[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m src/lib/sprint-5/responsive-tables-contract.test.ts[2m:17:3[22m[2m > [22mcontratos de tabelas responsivas da Sprint 5[2m > [22moferece modo lista mobile e tabela desktop na DataTable compartilhada
+[31m[1mAssertionError[22m: expected '"use client";\n\nimport React, { useE…' to contain 'Todos os campos essenciais e ações es…'[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- Todos os campos essenciais e ações estão disponíveis em cada cartão[39m
+[31m+ "use client";[39m
+[31m+[39m
+[31m+ import React, { useEffect, useId, useRef } from "react";[39m
+[31m+ import { cn } from "../lib/cn";[39m
+[31m+ import { Search } from "lucide-react";[39m
+[31m+ import { EmptyState } from "./empty-state";[39m
+[31m+ import { Pagination } from "./pagination";[39m
+[31m+ import type { LucideIcon } from "lucide-react";[39m
+[31m+[39m
+[31m+ export type ColumnDef<T> = {[39m
+[31m+   header: string;[39m
+[31m+   accessor?: (row: T) => React.ReactNode;[39m
+[31m+   sortable?: boolean;[39m
+[31m+   render?: (row: T) => React.ReactNode;[39m
+[31m+   className?: string;[39m
+[31m+ };[39m
+[31m+[39m
+[31m+ interface DataTableProps<T> {[39m
+[31m+   columns: ColumnDef<T>[];[39m
+[31m+   data: T[];[39m
+[31m+   search?: { value: string; onChange: (v: string) => void; placeholder?: string };[39m
+[31m+   selection?: {[39m
+[31m+     selected: Set<string>;[39m
+[31m+     onToggle: (id: string) => void;[39m
+[31m+     onToggleAll: () => void;[39m
+[31m+     isAllSelected: boolean;[39m
+[31m+     getRowId: (row: T) => string;[39m
+[31m+   };[39m
+[31m+   pagination?: {[39m
+[31m+     page: number;[39m
+[31m+     totalPages: number;[39m
+[31m+     total?: number;[39m
+[31m+     onPrev: () => void;[39m
+[31m+     onNext: () => void;[39m
+[31m+   };[39m
+[31m+   emptyState?: { icon: LucideIcon; title: string; description?: string; action?: React.ReactNode };[39m
+[31m+   sortBy?: string;[39m
+[31m+   sortDir?: "asc" | "desc";[39m
+[31m+   onSort?: (key: string) => void;[39m
+[31m+   getRowId?: (row: T) => string;[39m
+[31m+   selectedRowClass?: (row: T) => string;[39m
+[31m+   children?: React.ReactNode;[39m
+[31m+   ariaLabel?: string;[39m
+[31m+   "aria-labelledby"?: string;[39m
+[31m+ }[39m
+[31m+[39m
+[31m+ export function DataTable<T>({[39m
+[31m+   columns,[39m
+[31m+   data,[39m
+[31m+   search,[39m
+[31m+   selection,[39m
+[31m+   pagination,[39m
+[31m+   emptyState,[39m
+[31m+   sortBy,[39m
+[31m+   sortDir,[39m
+[31m+   onSort,[39m
+[31m+   getRowId,[39m
+[31m+   selectedRowClass,[39m
+[31m+   children,[39m
+[31m+   ariaLabel,[39m
+[31m+   "aria-labelledby": ariaLabelledby,[39m
+[31m+ }: DataTableProps<T>) {[39m
+[31m+   const searchId = useId();[39m
+[31m+   const tableRef = useRef<HTMLTableElement>(null);[39m
+[31m+   const selectAllRef = useRef<HTMLInputElement>(null);[39m
+[31m+[39m
+[31m+   useEffect(() => {[39m
+[31m+     if (selectAllRef.current && selection) {[39m
+[31m+       selectAllRef.current.indeterminate = !selection.isAllSelected && selection.selected.size > 0;[39m
+[31m+     }[39m
+[31m+   }, [selection]);[39m
+[31m+[39m
+[31m+   const handleKeyDown = (event: React.KeyboardEvent<HTMLTableRowElement>, rowId: string) => {[39m
+[31m+     if (!tableRef.current) return;[39m
+[31m+     const rows = Array.from(tableRef.current.querySelectorAll<HTMLTableRowElement>('[role="row"][data-row-id]'));[39m
+[31m+     const currentIndex = rows.findIndex((row) => row.getAttribute("data-row-id") === rowId);[39m
+[31m+[39m
+[31m+     switch (event.key) {[39m
+[31m+       case "ArrowDown":[39m
+[31m+         event.preventDefault();[39m
+[31m+         rows[currentIndex + 1]?.focus();[39m
+[31m+         break;[39m
+[31m+       case "ArrowUp":[39m
+[31m+         event.preventDefault();[39m
+[31m+         rows[currentIndex - 1]?.focus();[39m
+[31m+         break;[39m
+[31m+       case "Home":[39m
+[31m+         event.preventDefault();[39m
+[31m+         rows[0]?.focus();[39m
+[31m+         break;[39m
+[31m+       case "End":[39m
+[31m+         event.preventDefault();[39m
+[31m+         rows[rows.length - 1]?.focus();[39m
+[31m+         break;[39m
+[31m+       case "Enter":[39m
+[31m+       case " ":[39m
+[31m+         if (selection && event.target === event.currentTarget) {[39m
+[31m+           event.preventDefault();[39m
+[31m+           selection.onToggle(rowId);[39m
+[31m+         }[39m
+[31m+         break;[39m
+[31m+     }[39m
+[31m+   };[39m
+[31m+[39m
+[31m+   const renderCell = (column: ColumnDef<T>, row: T) =>[39m
+[31m+     column.render ? column.render(row) : column.accessor ? column.accessor(row) : null;[39m
+[31m+[39m
+[31m+   return ([39m
+[31m+     <div className="space-y-4">[39m
+[31m+       {search && ([39m
+[31m+         <div className="relative">[39m
+[31m+           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" aria-hidden="true" />[39m
+[31m+           <label htmlFor={searchId} className="sr-only">Buscar na tabela</label>[39m
+[31m+           <input[39m
+[31m+             id={searchId}[39m
+[31m+             value={search.value}[39m
+[31m+             onChange={(e) => search.onChange(e.target.value)}[39m
+[31m+             placeholder={search.placeholder ?? "Buscar..."}[39m
+[31m+             className="rounded-lg border border-input w-full pl-10 pr-4 py-2 text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"[39m
+[31m+           />[39m
+[31m+         </div>[39m
+[31m+       )}[39m
+[31m+       {data.length === 0 ? ([39m
+[31m+         emptyState ? ([39m
+[31m+           <EmptyState icon={emptyState.icon} title={emptyState.title} description={emptyState.description} action={emptyState.action} />[39m
+[31m+         ) : ([39m
+[31m+           <p className="text-sm text-muted-foreground text-center py-8" role="status">Nenhum registro encontrado.</p>[39m
+[31m+         )[39m
+[31m+       ) : ([39m
+[31m+         <>[39m
+[31m+           <div className="hidden sm:block rounded-xl border bg-card shadow-sm overflow-x-auto" tabIndex={0} aria-label="Tabela; deslize horizontalmente para ver mais colunas">[39m
+[31m+             <table[39m
+[31m+               ref={tableRef}[39m
+[31m+               className="w-full text-left text-xs"[39m
+[31m+               role="grid"[39m
+[31m+               aria-label={ariaLabel}[39m
+[31m+               aria-labelledby={ariaLabelledby}[39m
+[31m+               aria-rowcount={pagination?.total ?? data.length}[39m
+[31m+             >[39m
+[31m+               <thead className="bg-muted border-b font-bold text-muted-foreground uppercase tracking-wider">[39m
+[31m+                 <tr role="row">[39m
+[31m+                   {selection && ([39m
+[31m+                     <th scope="col" className="px-4 py-3 w-10" aria-label="Selecionar tudo">[39m
+[31m+                       <input ref={selectAllRef} type="checkbox" checked={selection.isAllSelected} onChange={selection.onToggleAll} className="rounded border-zinc-300 accent-primary" aria-label={selection.isAllSelected ? "Desselecionar tudo" : "Selecionar tudo"} />[39m
+[31m+                     </th>[39m
+[31m+                   )}[39m
+[31m+                   {columns.map((column) => ([39m
+[31m+                     <th key={column.header} scope="col" className={cn("px-4 py-3 min-h-11", column.className)} aria-sort={sortBy === column.header ? (sortDir === "asc" ? "ascending" : "descending") : "none"}>[39m
+[31m+                       {column.sortable ? ([39m
+[31m+                         <button type="button" onClick={() => onSort?.(column.header)} className="inline-flex min-h-11 items-center gap-1 text-left font-inherit hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring" aria-label={`Ordenar por ${column.header}`}>[39m
+[31m+                           {column.header}[39m
+[31m+                           {sortBy === column.header && <span className="text-[10px]" aria-hidden="true">{sortDir === "asc" ? "▲" : "▼"}</span>}[39m
+[31m+                         </button>[39m
+[31m+                       ) : column.header}[39m
+[31m+                     </th>[39m
+[31m+                   ))}[39m
+[31m+                 </tr>[39m
+[31m+               </thead>[39m
+[31m+               <tbody className="divide-y">[39m
+[31m+                 {data.map((row, index) => {[39m
+[31m+                   const id = getRowId?.(row) ?? String(index);[39m
+[31m+                   const isSelected = selection?.selected.has(id) ?? false;[39m
+[31m+                   return ([39m
+[31m+                     <tr key={id} ref={(element) => { if (element) element.dataset.rowId = id; }} data-row-id={id} role="row" aria-rowindex={index + 1} aria-selected={isSelected} tabIndex={0} onKeyDown={(event) => handleKeyDown(event, id)} className={cn("hover:bg-muted/50 transition-colors", isSelected && "bg-primary/5", selectedRowClass?.(row))}>[39m
+[31m+                       {selection && <td className="px-4 py-3" role="gridcell"><input type="checkbox" checked={isSelected} onChange={() => selection.onToggle(id)} className="rounded border-zinc-300 accent-primary" aria-label={isSelected ? "Desselecionar" : "Selecionar"} /></td>}[39m
+[31m+                       {columns.map((column) => <td key={column.header} role="gridcell" className={cn("px-4 py-3", column.className)}>{renderCell(column, row)}</td>)}[39m
+[31m+                     </tr>[39m
+[31m+                   );[39m
+[31m+                 })}[39m
+[31m+               </tbody>[39m
+[31m+             </table>[39m
+[31m+           </div>[39m
+[31m+[39m
+[31m+           <div className="sm:hidden space-y-3" aria-label={ariaLabel ?? "Lista de registros"}>[39m
+[31m+             <p className="sr-only">Modo lista para telas pequenas. Todos os campos essenciais estão disponíveis em cada cartão.</p>[39m
+[31m+             {data.map((row, index) => {[39m
+[31m+               const id = getRowId?.(row) ?? String(index);[39m
+[31m+               const isSelected = selection?.selected.has(id) ?? false;[39m
+[31m+               return ([39m
+[31m+                 <article key={id} className={cn("rounded-xl border bg-card p-4 shadow-sm", isSelected && "border-primary bg-primary/5", selectedRowClass?.(row))}>[39m
+[31m+                   <div className="flex items-start gap-3">[39m
+[31m+                     {selection && <input type="checkbox" checked={isSelected} onChange={() => selection.onToggle(id)} className="mt-1 h-5 w-5 shrink-0 rounded border-zinc-300 accent-primary" aria-label={isSelected ? "Desselecionar" : "Selecionar"} />}[39m
+[31m+                     <dl className="min-w-0 flex-1 space-y-3">[39m
+[31m+                       {columns.map((column) => ([39m
+[31m+                         <div key={column.header} className="grid grid-cols-[minmax(5rem,auto)_1fr] items-start gap-3 text-sm">[39m
+[31m+                           <dt className="font-medium text-muted-foreground">{column.header}</dt>[39m
+[31m+                           <dd className="min-w-0 break-words text-foreground">{renderCell(column, row)}</dd>[39m
+[31m+                         </div>[39m
+[31m+                       ))}[39m
+[31m+                     </dl>[39m
+[31m+                   </div>[39m
+[31m+                 </article>[39m
+[31m+               );[39m
+[31m+             })}[39m
+[31m+           </div>[39m
+[31m+         </>[39m
+[31m+       )}[39m
+[31m+       {children}[39m
+[31m+       {pagination && ([39m
+[31m+         <Pagination[39m
+[31m+           page={pagination.page}[39m
+[31m+           totalPages={pagination.totalPages}[39m
+[31m+           onPageChange={(p) => (p < pagination.page ? pagination.onPrev() : pagination.onNext())}[39m
+[31m+         />[39m
+[31m+       )}[39m
+[31m+     </div>[39m
+[31m+   );[39m
+[31m+ }[39m
+[31m+[39m
+
+[36m [2m❯[22m src/lib/sprint-5/responsive-tables-contract.test.ts:[2m22:19[22m[39m
+    [90m 20|[39m     expect(table).toContain('className="hidden sm:block rounded-xl bor…
+    [90m 21|[39m     [34mexpect[39m(table)[33m.[39m[34mtoContain[39m([32m'className="sm:hidden space-y-3"'[39m)[33m;[39m
+    [90m 22|[39m     expect(table).toContain("Todos os campos essenciais e ações estão …
+    [90m   |[39m                   [31m^[39m
+    [90m 23|[39m     [34mexpect[39m(table)[33m.[39m[34mtoContain[39m([32m"selection.onToggle(id)"[39m)[33m;[39m
+    [90m 24|[39m     expect(table).toContain("aria-label=\"Tabela; deslize horizontalme…
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯[22m[39m
+
+
+[2m Test Files [22m [1m[31m2 failed[39m[22m[2m | [22m[1m[32m1 passed[39m[22m[90m (3)[39m
+[2m      Tests [22m [1m[31m2 failed[39m[22m[2m | [22m[1m[32m11 passed[39m[22m[90m (13)[39m
+[2m   Start at [22m 15:10:04
+[2m   Duration [22m 2.58s[2m (transform 719ms, setup 2.49s, import 1.38s, tests 164ms, environment 1ms)[22m
+
+[1m[7m[35m HTML [39m[27m[22m [35mReport is generated[39m
+[2m       You can run [22m[1mnpx vite preview --outDir coverage[22m[2m to see the test results.[22m
+JUNIT report written to C:/Users/Gustavo/.cline/data/workspaces/chat/pilotcrm/apps/pilotcrm/coverage/junit.xml

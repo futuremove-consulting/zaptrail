@@ -1,0 +1,26 @@
+[33m(!) Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite:
+  - ESM syntax in a file loaded as CommonJS (vitest.config.ts:1:1). Use a `.mjs` extension or set `"type": "module"` in the closest package.json
+Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.[39m
+
+[1m[30m[46m RUN [49m[39m[22m [36mv4.1.11 [39m[90mC:/Users/Gustavo/.cline/data/workspaces/chat/pilotcrm/apps/pilotcrm[39m
+
+ [32m✓[39m src/lib/whatsapp/__tests__/turn-reporter.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 12[2mms[22m[39m
+ [32m✓[39m src/lib/whatsapp/__tests__/taxonomy-formatter.test.ts [2m([22m[2m9 tests[22m[2m)[22m[32m 19[2mms[22m[39m
+ [32m✓[39m src/lib/whatsapp/__tests__/contact-analyzer.test.ts [2m([22m[2m9 tests[22m[2m)[22m[32m 21[2mms[22m[39m
+ [32m✓[39m src/lib/whatsapp/__tests__/privacy-filter.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 12[2mms[22m[39m
+ [32m✓[39m src/lib/whatsapp/__tests__/deterministic-parser.test.ts [2m([22m[2m13 tests[22m[2m)[22m[32m 35[2mms[22m[39m
+[90mstdout[2m | src/lib/whatsapp/__tests__/openwa-service.test.ts[2m:76:3[22m[2m[2m > [22m[2mOpenWAService & OpenWAWhatsAppProvider[2m > [22m[2mgetConnectionStatus retorna DISCONNECTED em caso de falha de conexão com o servidor
+[22m[39m{"timestamp":"2026-10-14T17:14:10.377Z","level":"error","message":"[OpenWAService] Erro na requisição HTTP (status) na sessão business: Connection refused","context":{},"error":{"name":"Error","message":"Connection refused","stack":"Error: Connection refused\n    at C:/Users/Gustavo/.cline/data/workspaces/chat/pilotcrm/apps/pilotcrm/src/lib/whatsapp/__tests__/openwa-service.test.ts:77:49\n    at file:///C:/Users/Gustavo/.cline/data/workspaces/chat/pilotcrm/node_modules/.pnpm/@vitest+runner@4.1.11/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11\n    at file:///C:/Users/Gustavo/.cline/data/workspaces/chat/pilotcrm/node_modules/.pnpm/@vitest+runner@4.1.11/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26\n    at file:///C:/Users/Gustavo/.cline/data/workspaces/chat/pilotcrm/node_modules/.pnpm/@vitest+runner@4.1.11/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20\n    at new Promise (<anonymous>)\n    at runWithCancel (file:///C:/Users/Gustavo/.cline/data/workspaces/chat/pilotcrm/node_modules/.pnpm/@vitest+runner@4.1.11/node_modules/@vitest/runner/dist/chunk-artifact.js:2323:10)\n    at file:///C:/Users/Gustavo/.cline/data/workspaces/chat/pilotcrm/node_modules/.pnpm/@vitest+runner@4.1.11/node_modules/@vitest/runner/dist/chunk-artifact.js:2305:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///C:/Users/Gustavo/.cline/data/workspaces/chat/pilotcrm/node_modules/.pnpm/@vitest+runner@4.1.11/node_modules/@vitest/runner/dist/chunk-artifact.js:2272:10)\n    at file:///C:/Users/Gustavo/.cline/data/workspaces/chat/pilotcrm/node_modules/.pnpm/@vitest+runner@4.1.11/node_modules/@vitest/runner/dist/chunk-artifact.js:2956:64"}}
+
+ [32m✓[39m src/lib/whatsapp/__tests__/openwa-service.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 23[2mms[22m[39m
+ [32m✓[39m src/lib/whatsapp/__tests__/canonical-taxonomy.test.ts [2m([22m[2m16 tests[22m[2m)[22m[32m 58[2mms[22m[39m
+ [32m✓[39m src/lib/whatsapp/__tests__/qr-generator.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 42[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m8 passed[39m[22m[90m (8)[39m
+[2m      Tests [22m [1m[32m66 passed[39m[22m[90m (66)[39m
+[2m   Start at [22m 14:14:08
+[2m   Duration [22m 3.43s[2m (transform 1.64s, setup 6.26s, import 3.64s, tests 224ms, environment 2ms)[22m
+
+[1m[7m[35m HTML [39m[27m[22m [35mReport is generated[39m
+[2m       You can run [22m[1mnpx vite preview --outDir coverage[22m[2m to see the test results.[22m
+JUNIT report written to C:/Users/Gustavo/.cline/data/workspaces/chat/pilotcrm/apps/pilotcrm/coverage/junit.xml

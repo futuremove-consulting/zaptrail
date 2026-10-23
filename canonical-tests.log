@@ -1,0 +1,19 @@
+[33m(!) Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite:
+  - ESM syntax in a file loaded as CommonJS (vitest.config.ts:1:1). Use a `.mjs` extension or set `"type": "module"` in the closest package.json
+Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.[39m
+
+[1m[30m[46m RUN [49m[39m[22m [36mv4.1.11 [39m[90mC:/Users/Gustavo/.cline/data/workspaces/chat/pilotcrm/apps/pilotcrm[39m
+
+ [32m✓[39m src/lib/whatsapp/__tests__/taxonomy-formatter.test.ts [2m([22m[2m9 tests[22m[2m)[22m[32m 15[2mms[22m[39m
+ [32m✓[39m src/lib/whatsapp/__tests__/contact-analyzer.test.ts [2m([22m[2m9 tests[22m[2m)[22m[32m 17[2mms[22m[39m
+ [32m✓[39m src/lib/whatsapp/__tests__/privacy-filter.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 15[2mms[22m[39m
+ [32m✓[39m src/lib/whatsapp/__tests__/canonical-taxonomy.test.ts [2m([22m[2m16 tests[22m[2m)[22m[32m 32[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m4 passed[39m[22m[90m (4)[39m
+[2m      Tests [22m [1m[32m42 passed[39m[22m[90m (42)[39m
+[2m   Start at [22m 14:13:27
+[2m   Duration [22m 1.36s[2m (transform 475ms, setup 2.64s, import 366ms, tests 79ms, environment 1ms)[22m
+
+[1m[7m[35m HTML [39m[27m[22m [35mReport is generated[39m
+[2m       You can run [22m[1mnpx vite preview --outDir coverage[22m[2m to see the test results.[22m
+JUNIT report written to C:/Users/Gustavo/.cline/data/workspaces/chat/pilotcrm/apps/pilotcrm/coverage/junit.xml

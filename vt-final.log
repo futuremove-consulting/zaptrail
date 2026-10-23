@@ -1,0 +1,204 @@
+[33m(!) Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite:
+  - ESM syntax in a file loaded as CommonJS (vitest.config.ts:1:1). Use a `.mjs` extension or set `"type": "module"` in the closest package.json
+Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.[39m
+
+[1m[30m[46m RUN [49m[39m[22m [36mv4.1.11 [39m[90mC:/Users/Gustavo/.cline/data/workspaces/chat/pilotcrm/apps/pilotcrm[39m
+
+ [32m✓[39m src/lib/rate-limit.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 146[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-11/pageheader-landmarks-skiplink-contract.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 160[2mms[22m[39m
+ [32m✓[39m src/lib/parsers/property-link-parser.test.ts [2m([22m[2m4 tests[22m[2m)[22m[33m 482[2mms[22m[39m
+     [33m[2m✓[22m[39m trata fallback gracioso para links quebrados ou sem metadados [33m 302[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-4/interaction-targets-contract.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 152[2mms[22m[39m
+[90mstdout[2m | src/lib/mock-gateway/__tests__/request-deduplicator.test.ts[2m:18:3[22m[2m[2m > [22m[2mRequestDeduplicator & Telemetry (S11.5-T1)[2m > [22m[2mdeduplica requisições simultâneas com parâmetros idênticos
+[22m[39m{"timestamp":"2026-10-14T18:34:12.532Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 4)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":4}}
+{"timestamp":"2026-10-14T18:34:12.535Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 5)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":5}}
+{"timestamp":"2026-10-14T18:34:12.536Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 6)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":6}}
+{"timestamp":"2026-10-14T18:34:12.536Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 7)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":7}}
+{"timestamp":"2026-10-14T18:34:12.542Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 8)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":8}}
+{"timestamp":"2026-10-14T18:34:12.543Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 9)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":9}}
+{"timestamp":"2026-10-14T18:34:12.543Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 10)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":10}}
+{"timestamp":"2026-10-14T18:34:12.547Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 11)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":11}}
+{"timestamp":"2026-10-14T18:34:12.547Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 12)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":12}}
+{"timestamp":"2026-10-14T18:34:12.548Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 13)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":13}}
+{"timestamp":"2026-10-14T18:34:12.548Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 14)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":14}}
+{"timestamp":"2026-10-14T18:34:12.548Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 15)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":15}}
+{"timestamp":"2026-10-14T18:34:12.548Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 16)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":16}}
+{"timestamp":"2026-10-14T18:34:12.548Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 17)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":17}}
+{"timestamp":"2026-10-14T18:34:12.548Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 18)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":18}}
+{"timestamp":"2026-10-14T18:34:12.548Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 19)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":19}}
+{"timestamp":"2026-10-14T18:34:12.548Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 20)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":20}}
+{"timestamp":"2026-10-14T18:34:12.548Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 21)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":21}}
+{"timestamp":"2026-10-14T18:34:12.548Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 22)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":22}}
+{"timestamp":"2026-10-14T18:34:12.548Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 23)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":23}}
+{"timestamp":"2026-10-14T18:34:12.548Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 24)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":24}}
+{"timestamp":"2026-10-14T18:34:12.548Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 25)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":25}}
+{"timestamp":"2026-10-14T18:34:12.548Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 26)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":26}}
+{"timestamp":"2026-10-14T18:34:12.549Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 27)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":27}}
+{"timestamp":"2026-10-14T18:34:12.549Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 28)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":28}}
+{"timestamp":"2026-10-14T18:34:12.549Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 29)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":29}}
+{"timestamp":"2026-10-14T18:34:12.549Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 30)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":30}}
+{"timestamp":"2026-10-14T18:34:12.549Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 31)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":31}}
+{"timestamp":"2026-10-14T18:34:12.549Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 32)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":32}}
+{"timestamp":"2026-10-14T18:34:12.549Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 33)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":33}}
+{"timestamp":"2026-10-14T18:34:12.549Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 34)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":34}}
+{"timestamp":"2026-10-14T18:34:12.549Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 35)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":35}}
+{"timestamp":"2026-10-14T18:34:12.549Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 36)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":36}}
+{"timestamp":"2026-10-14T18:34:12.549Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 37)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":37}}
+{"timestamp":"2026-10-14T18:34:12.549Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 38)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":38}}
+{"timestamp":"2026-10-14T18:34:12.549Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 39)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":39}}
+{"timestamp":"2026-10-14T18:34:12.549Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 40)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":40}}
+{"timestamp":"2026-10-14T18:34:12.549Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 41)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":41}}
+{"timestamp":"2026-10-14T18:34:12.549Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 42)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":42}}
+{"timestamp":"2026-10-14T18:34:12.549Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 43)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":43}}
+{"timestamp":"2026-10-14T18:34:12.550Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 44)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":44}}
+{"timestamp":"2026-10-14T18:34:12.550Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 45)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":45}}
+{"timestamp":"2026-10-14T18:34:12.550Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 46)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":46}}
+{"timestamp":"2026-10-14T18:34:12.550Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 47)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":47}}
+{"timestamp":"2026-10-14T18:34:12.550Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 48)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":48}}
+{"timestamp":"2026-10-14T18:34:12.550Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 49)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":49}}
+{"timestamp":"2026-10-14T18:34:12.550Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 50)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":50}}
+
+[90mstdout[2m | src/lib/mock-gateway/__tests__/request-deduplicator.test.ts[2m:59:3[22m[2m[2m > [22m[2mRequestDeduplicator & Telemetry (S11.5-T1)[2m > [22m[2minstrumenta telemetria e emite alerta quando chamadas idênticas excedem 3 no ciclo
+[22m[39m{"timestamp":"2026-10-14T18:34:12.646Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/api/crm/scoring/evaluate?lead_id=123' excedeu 3 chamadas no ciclo de 5s (total: 4)","context":{"routeKey":"GET:/api/crm/scoring/evaluate?lead_id=123","count":4}}
+
+[90mstdout[2m | src/lib/mock-gateway/__tests__/request-deduplicator.test.ts[2m:75:3[22m[2m[2m > [22m[2mRequestDeduplicator & Telemetry (S11.5-T1)[2m > [22m[2mrastreia telemetria de 429 registrando ocorrência e mantendo contador sob controle
+[22m[39m{"timestamp":"2026-10-14T18:34:12.654Z","level":"error","message":"[Telemetry Critical] HTTP 429 detectado na rota test-rate-limit","context":{"routeKey":"test-rate-limit"}}
+
+[90mstdout[2m | src/lib/mock-gateway/__tests__/request-deduplicator.test.ts[2m:75:3[22m[2m[2m > [22m[2mRequestDeduplicator & Telemetry (S11.5-T1)[2m > [22m[2mrastreia telemetria de 429 registrando ocorrência e mantendo contador sob controle
+[22m[39m{"timestamp":"2026-10-14T18:34:12.689Z","level":"error","message":"[Telemetry Critical] HTTP 429 detectado na rota test-rate-limit","context":{"routeKey":"test-rate-limit"}}
+
+[90mstdout[2m | src/lib/mock-gateway/__tests__/request-deduplicator.test.ts[2m:75:3[22m[2m[2m > [22m[2mRequestDeduplicator & Telemetry (S11.5-T1)[2m > [22m[2mrastreia telemetria de 429 registrando ocorrência e mantendo contador sob controle
+[22m[39m{"timestamp":"2026-10-14T18:34:12.742Z","level":"error","message":"[Telemetry Critical] HTTP 429 detectado na rota test-rate-limit","context":{"routeKey":"test-rate-limit"}}
+
+[90mstdout[2m | src/lib/mock-gateway/__tests__/request-deduplicator.test.ts[2m:75:3[22m[2m[2m > [22m[2mRequestDeduplicator & Telemetry (S11.5-T1)[2m > [22m[2mrastreia telemetria de 429 registrando ocorrência e mantendo contador sob controle
+[22m[39m{"timestamp":"2026-10-14T18:34:12.789Z","level":"error","message":"[Telemetry Critical] HTTP 429 detectado na rota test-rate-limit","context":{"routeKey":"test-rate-limit"}}
+
+ [32m✓[39m src/lib/mock-gateway/__tests__/request-deduplicator.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 277[2mms[22m[39m
+ [32m✓[39m src/app/api/crm/captures/webhook/[source]/__tests__/webhook.test.ts [2m([22m[2m6 tests[22m[2m)[22m[33m 393[2mms[22m[39m
+     [33m[2m✓[22m[39m cria owner a partir de lead captei (mock mode) [33m 351[2mms[22m[39m
+ [32m✓[39m src/lib/__tests__/ui-jargon-hygiene.test.ts [2m([22m[2m5 tests[22m[2m)[22m[33m 2211[2mms[22m[39m
+     [33m[2m✓[22m[39m garante que nenhuma página TSX sob src/app/crm expõe 'pgvector' ou 'Row Level Security' aos usuários [33m 2156[2mms[22m[39m
+ [32m✓[39m src/lib/auth.service.test.ts [2m([22m[2m8 tests[22m[2m)[22m[33m 378[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-11/icon-button-a11y-contract.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 41[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-0/route-inventory.test.ts [2m([22m[2m4 tests[22m[2m)[22m[33m 315[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-4/dialogs-menus-contract.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 53[2mms[22m[39m
+ [32m✓[39m src/lib/kb/__tests__/kb-hybrid-rag.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 184[2mms[22m[39m
+ [32m✓[39m src/lib/extrator/__tests__/integration.service.test.ts [2m([22m[2m11 tests[22m[2m)[22m[32m 166[2mms[22m[39m
+ [32m✓[39m src/modules/captacao/extrator_provider.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 98[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-6/async-state-contract.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[32m 52[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-2/status-state-contract.test.tsx [2m([22m[2m5 tests[22m[2m)[22m[32m 123[2mms[22m[39m
+ [32m✓[39m src/modules/captacao/__tests__/p0_golden_path_e2e.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 37[2mms[22m[39m
+ [32m✓[39m src/modules/captacao/provider.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 43[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-6/empty-state-contract.test.tsx [2m([22m[2m4 tests[22m[2m)[22m[32m 92[2mms[22m[39m
+ [32m✓[39m src/lib/__tests__/tenancy.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 102[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-4/forms-errors-contract.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 30[2mms[22m[39m
+ [32m✓[39m src/lib/kb.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 146[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-15/copilot-contract.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 212[2mms[22m[39m
+ [32m✓[39m src/lib/hydration.test.tsx [2m([22m[2m7 tests[22m[2m)[22m[33m 2327[2mms[22m[39m
+       [33m[2m✓[22m[39m renders PropertyDetail SSR skeleton deterministically [33m 700[2mms[22m[39m
+       [33m[2m✓[22m[39m renders ContactDetail SSR skeleton deterministically without layout shift [33m 1566[2mms[22m[39m
+ [32m✓[39m src/modules/captacao/__tests__/loop_closure_webhook.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 48[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-6/error-recovery-contract.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 77[2mms[22m[39m
+[90mstderr[2m | src/lib/owners/campaign.test.ts[2m:136:3[22m[2m[2m > [22m[2menqueueCampaign[2m > [22m[2mmarks sends failed when sendText throws
+[22m[39m[owners campaign c-1] send to +5511988887777 failed: Error: whatsapp down
+    at C:/Users/Gustavo/.cline/data/workspaces/chat/pilotcrm/apps/pilotcrm/src/lib/owners/campaign.test.ts:140:48
+    at file:///C:/Users/Gustavo/.cline/data/workspaces/chat/pilotcrm/node_modules/[4m.pnpm[24m/@vitest+runner@4.1.11/node_modules/[4m@vitest/runner[24m/dist/chunk-artifact.js:1903:20
+
+ [32m✓[39m src/lib/owners/campaign.test.ts [2m([22m[2m9 tests[22m[2m)[22m[32m 81[2mms[22m[39m
+[90mstdout[2m | src/lib/logger.test.ts[2m:63:5[22m[2m[2m > [22m[2mLogger[2m > [22m[2mlogError[2m > [22m[2mlogs error with context
+[22m[39m{"timestamp":"2026-10-14T18:34:20.920Z","level":"error","message":"Something went wrong","context":{"service":"test","err":{"name":"Error","message":"Test error","stack":"Error: Test error\n    at test"},"userId":"123"}}
+
+[90mstdout[2m | src/lib/logger.test.ts[2m:85:5[22m[2m[2m > [22m[2mLogger[2m > [22m[2mcreateTimer[2m > [22m[2mmeasures operation duration
+[22m[39m{"timestamp":"2026-10-14T18:34:20.939Z","level":"info","message":"test-operation completed in 0ms","context":{"service":"test","operation":"test-operation","itemsProcessed":10}}
+
+[90mstdout[2m | src/lib/logger.test.ts[2m:106:5[22m[2m[2m > [22m[2mLogger[2m > [22m[2msetLogTransporter[2m > [22m[2mnotifies registered transporter when logs are emitted
+[22m[39m{"timestamp":"2026-10-14T18:34:20.956Z","level":"info","message":"Transporter audit test","context":{"test":true}}
+
+ [32m✓[39m src/lib/logger.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 65[2mms[22m[39m
+ [32m✓[39m src/lib/whatsapp/__tests__/qr-generator.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 100[2mms[22m[39m
+[90mstdout[2m | src/lib/owners/owners.service.test.ts[2m:76:3[22m[2m[2m > [22m[2mOwnersService.merge[2m > [22m[2munions fields, phones, emails, tags, properties and sends
+[22m[39mDEBUG keep.sends: [ { campaignId: [32m'c-1'[39m, phone: [32m'+5511982531234'[39m, status: [32m'pending'[39m } ]
+
+[90mstdout[2m | src/lib/owners/owners.service.test.ts[2m:76:3[22m[2m[2m > [22m[2mOwnersService.merge[2m > [22m[2munions fields, phones, emails, tags, properties and sends
+[22m[39mDEBUG drop.sends: [ { campaignId: [32m'c-2'[39m, phone: [32m'+551138251234'[39m, status: [32m'sent'[39m } ]
+
+[90mstdout[2m | src/lib/owners/owners.service.test.ts[2m:76:3[22m[2m[2m > [22m[2mOwnersService.merge[2m > [22m[2munions fields, phones, emails, tags, properties and sends
+[22m[39mDEBUG merged.sends: [
+  { campaignId: [32m'c-1'[39m, phone: [32m'+5511982531234'[39m, status: [32m'pending'[39m },
+  { campaignId: [32m'c-2'[39m, phone: [32m'+551138251234'[39m, status: [32m'sent'[39m }
+]
+
+ [32m✓[39m src/lib/owners/owners.service.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 51[2mms[22m[39m
+ [32m✓[39m src/lib/owners/supabase-repository.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 54[2mms[22m[39m
+ [32m✓[39m src/modules/captacao/__tests__/ui_writing_and_batch_dispatch.test.ts [2m([22m[2m12 tests[22m[2m)[22m[32m 101[2mms[22m[39m
+ [32m✓[39m src/lib/ai/router.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 27[2mms[22m[39m
+ [32m✓[39m src/lib/enrichment/identify.test.ts [2m([22m[2m41 tests[22m[2m)[22m[32m 131[2mms[22m[39m
+ [32m✓[39m src/app/api/crm/properties/__tests__/route.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 68[2mms[22m[39m
+ [32m✓[39m src/modules/captacao/__tests__/wave2_captacao_flow.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 151[2mms[22m[39m
+ [32m✓[39m src/modules/captacao/__tests__/capture_cases_schema.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 35[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-7/contacts-contract.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 35[2mms[22m[39m
+ [32m✓[39m src/lib/module-flags/__tests__/guards.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 123[2mms[22m[39m
+ [32m✓[39m src/modules/__tests__/e2e_business_flows_certification.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 106[2mms[22m[39m
+ [32m✓[39m src/lib/ai/__tests__/orchestrator-security.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 22[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-7/inbox-audio-receipts.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 26[2mms[22m[39m
+ [32m✓[39m src/modules/captacao/extrator_contract.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 26[2mms[22m[39m
+ [32m✓[39m src/lib/pipeline/__tests__/kanban-stale-radar.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 69[2mms[22m[39m
+[90mstdout[2m | src/lib/handoff/__tests__/concurrent-claim.test.ts[2m:32:3[22m[2m[2m > [22m[2mSprint 12 - Fila de Handoff com Atribuição Concorrente e SLA (Issue #122)[2m > [22m[2mbloqueia concorrência: dois corretores clicando simultaneamente no mesmo lead; exatamente um obtém sucesso
+[22m[39m[Mock WhatsApp] Sending message to conversation conv-race-01: [HANDOFF CLAIMED] Atendimento assumido por Carlos Corretor em 14/10/2026, 15:34:25. Tempo de espera: 0.0 min.
+
+[90mstdout[2m | src/lib/handoff/__tests__/concurrent-claim.test.ts[2m:80:3[22m[2m[2m > [22m[2mSprint 12 - Fila de Handoff com Atribuição Concorrente e SLA (Issue #122)[2m > [22m[2maudita a transição com carimbo de tempo e cronometra o tempo de espera
+[22m[39m[Mock WhatsApp] Sending message to conversation conv-audit-01: [HANDOFF CLAIMED] Atendimento assumido por Carlos em 14/10/2026, 15:34:25. Tempo de espera: 0.0 min.
+
+[90mstdout[2m | src/lib/handoff/__tests__/concurrent-claim.test.ts[2m:129:3[22m[2m[2m > [22m[2mSprint 12 - Fila de Handoff com Atribuição Concorrente e SLA (Issue #122)[2m > [22m[2mgerencia o ciclo de vida completo: pending -> claimed -> in_progress -> resolved
+[22m[39m[Mock WhatsApp] Sending message to conversation conv-cycle-01: [HANDOFF CLAIMED] Atendimento assumido por Pedro Corretor em 14/10/2026, 15:34:25. Tempo de espera: 0.0 min.
+
+ [32m✓[39m src/lib/handoff/__tests__/concurrent-claim.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 163[2mms[22m[39m
+ [32m✓[39m src/modules/captacao/__tests__/extrator_bidirectional_sync.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 53[2mms[22m[39m
+ [32m✓[39m src/lib/owners/crypto.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 61[2mms[22m[39m
+ [32m✓[39m src/lib/real-estate/validation.test.ts [2m([22m[2m16 tests[22m[2m)[22m[32m 68[2mms[22m[39m
+ [32m✓[39m src/lib/forms/__tests__/validation-schemas.test.ts [2m([22m[2m18 tests[22m[2m)[22m[32m 108[2mms[22m[39m
+ [32m✓[39m src/lib/owners/normalize.test.ts [2m([22m[2m10 tests[22m[2m)[22m[32m 56[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-2/admin-users-ui-contract.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 17[2mms[22m[39m
+ [32m✓[39m src/lib/__tests__/real-estate-catalog-consolidation.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 40[2mms[22m[39m
+ [32m✓[39m src/lib/scoring/__tests__/unified-scoring-engine.test.ts [2m([22m[2m13 tests[22m[2m)[22m[32m 98[2mms[22m[39m
+ [32m✓[39m src/app/api/crm/whatsapp/webhook/__tests__/openwa-webhook.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 74[2mms[22m[39m
+ [32m✓[39m src/lib/whatsapp/__tests__/canonical-taxonomy.test.ts [2m([22m[2m16 tests[22m[2m)[22m[32m 103[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-12/routes-consolidation-contract.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 30[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-8/captacao-contract.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 44[2mms[22m[39m
+ [32m✓[39m src/modules/captacao/dedupe.test.ts [2m([22m[2m13 tests[22m[2m)[22m[32m 27[2mms[22m[39m
+ [32m✓[39m src/lib/real-estate/repositories.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 23[2mms[22m[39m
+ [32m✓[39m src/lib/presentation/market-json.adapter.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 19[2mms[22m[39m
+ [32m✓[39m src/lib/dispatch/dispatch.service.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 35[2mms[22m[39m
+ [32m✓[39m src/lib/lifecycle/__tests__/promotion-engine.test.ts [2m([22m[2m11 tests[22m[2m)[22m[32m 33[2mms[22m[39m
+ [32m✓[39m src/lib/owners/identity.test.ts [2m([22m[2m9 tests[22m[2m)[22m[32m 58[2mms[22m[39m
+ [32m✓[39m src/modules/captacao/__tests__/e2e_lote.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 19[2mms[22m[39m
+ [32m✓[39m src/modules/captacao/extraction.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 35[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-7/inbox-contract.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 18[2mms[22m[39m
+ [32m✓[39m src/app/api/crm/properties/developments/__tests__/route.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 66[2mms[22m[39m
+ [32m✓[39m src/lib/properties/__tests__/auto-match.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 15[2mms[22m[39m
+ [32m✓[39m src/lib/whatsapp/__tests__/privacy-filter.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 22[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-5/responsive-tables-contract.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 35[2mms[22m[39m
+ [32m✓[39m src/lib/api/__tests__/response.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 31[2mms[22m[39m
+ [32m✓[39m src/modules/captacao/__tests__/navigation_and_ux_flows.test.ts [2m([22m[2m22 tests[22m[2m)[22m[32m 64[2mms[22m[39m
+ [32m✓[39m src/lib/properties/__tests__/catalog-repository.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 25[2mms[22m[39m
+ [32m✓[39m src/modules/captacao/__tests__/importer.test.ts [2m([22m[2m13 tests[22m[2m)[22m[32m 41[2mms[22m[39m
+ [32m✓[39m src/lib/owners/contactability.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 31[2mms[22m[39m
+ [32m✓[39m src/lib/whatsapp/__tests__/deterministic-parser.test.ts [2m([22m[2m13 tests[22m[2m)[22m[32m 37[2mms[22m[39m
+ [32m✓[39m src/modules/portais/__tests__/portais.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 37[2mms[22m[39m
+ [32m✓[39m src/lib/utils.test.ts [2m([22m[2m10 tests[22m[2m)[22m[32m 42[2mms[22m[39m
+ [32m✓[39m src/lib/__tests__/onboarding-cockpit-contract.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 25[2mms[22m[39m
+ [32m✓[39m src/lib/owners/import.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 66[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-4/semantic-focus-contract.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 35[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-9/automations-contract.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 25[2mms[22m[39m
+ [32m✓[39m src/modules/captacao/__tests__/smoke_corretor_journey.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 52[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-1/onboarding-token-contract.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 93[2mms[22m[39m
+ [32m✓[39m src/lib/module-flags/__tests__/module-flags.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 17[2mms[22m[39m
+ [32m✓[39m src/lib/integrations/google/__tests__/taxonomy-formatter.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 15[2mms[22m[39m
+ [32m✓[39m src/lib/custom-fields/__tests__/demo-custom-fields.test.ts [2m([22m[2m11 tests[22m[2m)[22m[32m 16[2mms[22m[39m
+ [32m✓[39m src/lib/scoring/evaluation-engine.test.ts [2m([22m[2m14 tests[22m[2m)[22m[32m 33[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-5/responsive-shell-contract.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 18[2mms[22m[39m
+ [32m✓[39m src/lib/routes-convention.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 31[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-15/copilot-settings-contract.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 47[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-7/pipeline-contract.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 46[2mms[22m[39m
+ [32m✓[39m src/lib/real-estate/units.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 34[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-3/navigation-registry-contract.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 14[2mms[22m[39m

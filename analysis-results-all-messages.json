@@ -1,0 +1,5015 @@
+{
+  "total": 1000,
+  "e09_byCode": {
+    "unknown": 864,
+    "sale_and_rent": 6,
+    "available_sale": 125,
+    "rent_property": 5
+  },
+  "e01_08_byCode": {
+    "unknown": 994,
+    "e07_both_options": 6
+  },
+  "results": [
+    {
+      "text": "Meu nome é *Gustavo*, sou partner da *imobiliária Jardim das Perdizes Broker* e estou com uma cliente buscando um apartamento no *Bosque Jequitibá*.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Boa tarde. \nPor enquanto não. \nObrigado",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Ah, ok. Obrigado pelo retorno.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Carlos, aproveitando o contato, por acaso você possui algum outro imóvel que tenha intenção de vender ou alugar?",
+      "e09_code": "sale_and_rent",
+      "e01_08_code": "e07_both_options"
+    },
+    {
+      "text": "Não está disponível.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Ah, ok. Obrigado pelo retorno.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Lourdes, aproveitando o contato, por acaso você possui algum outro imóvel que tenha intenção de vender ou alugar?",
+      "e09_code": "sale_and_rent",
+      "e01_08_code": "e07_both_options"
+    },
+    {
+      "text": "No momento não.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Entendido. Vou deixar meu contato aqui e, você decidindo vender ou querendo avaliar o imóvel, conte comigo, ok?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Um abraço e ótimo fds Lourdes!",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Olá, Gustavo, td bem? Vc sabe o valor da mensalidade de uma sala com 4 posições aí no We Work?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Olá Carlos, boa tarde! Tudo bem?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Então, falei hoje com o rapaz da recepção mas ele falou que quem trata o comercial é outra moça.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Ele me deu aquela estimativa entre 900-1.2k para a sala menor.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Vou ver se encontro ela na recepção e pergunto.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Estimo 2,5-3k.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Mas vou confirmar e te falo.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Ok, obrigado.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Também acho que seria uns 2,5 ou um pouco mais.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Assim que falar com ela te retorno.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Aproveitando, você poderia fazer a gentileza de intermediar uma conversa com o Valdir?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Gostaria de conhece-lo e eventualmente estabelecer uma parceria.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Temos esta praxe nos condomínios.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Claro, vejo sim.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Veja o que ele prefere. Podemos marcar um café aqui no escritório, ou o que preferir.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Muito obrigado.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Msg do Valdir.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Tranquilo. Depois eu dou um pulo aí e deixo meu cartão então.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Sobre a sala, falei com a moça aqui. 1.2k por posição. Sala de 4 posições 4.8k mas não tem disponível.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Muito concorrido. A menor que eles tem disponível hoje é a de 6 posições.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Vamos fortalecer a nossa parceria então. Você sabendo de algum proprietário querendo vender ou alugar, me avisa. Marcamos um café.",
+      "e09_code": "sale_and_rent",
+      "e01_08_code": "e07_both_options"
+    },
+    {
+      "text": "Oi Gustavo,\nObrigado pelo contato.\nNo momento não.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Boa noite Antônio, tudo bem?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Ah, ok. Obrigado pelo retorno.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Antônio, aproveitando o contato, por acaso você possui algum outro imóvel que tenha intenção de vender ou alugar?",
+      "e09_code": "sale_and_rent",
+      "e01_08_code": "e07_both_options"
+    },
+    {
+      "text": "Bom dia Wang, como vai? Tudo bem?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Desculpe a demora para responder... ontem não passei bem e fiquei de repouso.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Em que lugar vocês estão buscando?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Bom dia, Domingos! *Parabéns!*🥳🎉\n\nEm nome da imobiliária *Jardim das Perdizes Broker* quero te desejar um excelente aniversário! 🎂\n\nQue seja um ano de *muita saúde, alegria e novas conquistas*. Estare",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Bom dia, Domingos! *Parabéns!*🥳🎉\n\nEm nome da imobiliária *Jardim das Perdizes Broker* quero te desejar um excelente aniversário! 🎂\n\nQue seja um ano de *muita saúde, alegria e novas conquistas*. Estare",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Boa tarde Maxhellen, como vai? Tudo bem?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Meu nome é *Gustavo*, sou partner da *Imobiliária Cabral Silveira*. Estou retornando seu contato de interesse no apartamento do Alpha Vita em Alphaville.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "http://v.imo.bi/K4NPPqVihLmxFD",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Oii",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Sim",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Como está sua agenda essa semana? Vamos marcar uma visita para você conhecer?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Conseguimos ver daqui a pouco Gustavo?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Vim ver um aqui no bethavikke",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Já está finalizando",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Infelizmente não consigo, eu fico em São Paulo. Precisamos marcar com um pouco de antecedência.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Você está buscando até que valor?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Tô acessando o da Jdp, mas não vejo nenhum imóvel no catálogo...",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Bom dia Lucas, como vai?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Entendi",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Meus valores são \nAté 50m² R$400\nDe 51m² até 100m² R$700\nDe 101m² até 200m² R$1000",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Combinado, aguardo seu retorno.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Claro",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Achei muito interessante o que eles fazem.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "http://v.imo.bi/K4NPPqVihLmxFD",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "https://youtube.com/@peterdiamandis",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Bom dia Sr. Park, como vai?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Boa tarde André, como vai?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "acho q até dps do almoço consigo liberar seu usuário",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Pagamento confirmado! 🎉\n💡Dica importante:  \n1. Aumente o brilho do seu celular ao passar na catraca. \n2. Se precisar, ele também fica disponível no seu e-mail!",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Perfeito! Muito obrigado!",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "show",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Vou checar com um amigo se ele conseguiria",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Olá Gustavo! \n\nVi seu contato no *GetNinjas*, sou um *profissional cadastrado na plataforma*. Me chamo *Felipe Fernandes dos Santos* e você pode conferir o meu anúncio no link a seguir: \nhttps://www.g",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Aqui quem fala é o Gustavo, trabalho com o Leonardo Cabral da Cabral Silveira / Jd. das Perdizes.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Meu nome é Gustavo, sou consultor da imobiliária Cabral Silveira. Estou entrando em contato a respeito do seu interesse na locação do apartamento no Alpha Vita.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso o seu imóvel está *disponível* para venda?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Como funciona, formatos, agenda, valores, pacotes...",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Estamos com alguns clientes interessados aqui no empreendimento. Por acaso o imóvel de vocês ainda está disponível para venda?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Eu trabalho a uns 2 anos no ramo de fotografia imobiliária",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Obrigado! Estou encaminhando seu atendimento para um de nossos profissionais. Por favor, aguarde.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Meu nome é *Gustavo*, sou partner da *imobiliária Jardim das Perdizes Broker* e estou com um cliente buscando um apartamento para compra no Jequitibá.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "E atuamos em Moema tb",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "eu fiz um cadastro no Instagram para baixar o material.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Segunda é melhor pra mim. Pode ser entre 10:00 e 14:00",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Já conheço obrigado.  Recebi de outra pessoa a algum tempo",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Ah perfeito, fico à disposição.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Ótima semana!",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "tbm",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "e ae mermao.. td bem?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "O primeiro casal da manhã que estava com a mãe fechou lá no bairro onde já moram",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Vamos fazer, só precisamos esperar a chuva passar pra pegar uma luz e céu/vista melhores",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Você quer que eu encaminhe seu atendimento para qual departamento? Por favor, me informe a opção desejada.\n*1*: Fale com um vendedor\n*2*: Assistência técnica e outras informações",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Vou te ajudar com a religação da água.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Beleza. Deixa eu ver quando elas conseguem e volto contigo pra gente combinar.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Vamos participar?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Rapaz, nenhum daqueles que disseram gostar fez proposta",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Pode sim.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Boa tarde Regiane, como vai?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Ele está pronto para entrar e morar!",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Vou te ajudar a informar pagamentos.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "04289-020",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "aqui",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "posso ajudar sim",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Boa noite mestre Cabral! Como vai?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "A parte coberta já tá finalizada?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Perfeito! Vou te conectar com o time certo e você não vai precisar repetir nada.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Esse vídeo eu ando por todos os cômodos e mostro toda a propriedade",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Poderia mandar uma água pra gente pf?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Podemos dar sequência para falarmos do seu imóvel?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "ah legal. O Léo comentou que seu escritório fica aqui no WeWork tb... como está sua agenda para um café essa semana?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Boa tarde Cláudio, obrigado pelo contato.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "3 meses pra pintar um sobrado daquele? rs",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Para continuarmos, preciso localizar seu contrato.\nPode me informar seu CPF, por favor? 🪪",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Você receberá uma mensagem de confirmação aqui no Whatsapp após a confirmação do seu pagamento. ✅",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Faço captação de fotos e vídeos",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "O protocolo do seu atendimento é *2609100060666605*",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Não conheço",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "18977963826",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Quais as metragens dos apartamentos?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Qual garantia funciona melhor para você?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Meu nome é *Gustavo*, sou partner da *imobiliária Jardim das Perdizes Broker* e estou com um cliente buscando um apartamento para compra no Jequitibá.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Mas ok \nDesejo sucesso pra vc",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "D. Luana, aproveitando meu contato, nós trabalhamos também com lançamentos e imóveis com perfil para investimento. \n\nA sra. gostaria de receber informações do novo lançamento do Jd. das Perdizes, Sequ",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "deve ter sido a novinha que mandou pra mim...",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Boa tarde Maique, tudo bem e você?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Número de transação: 956014924",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Cabral nao lembro",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Eu sempre entrego com as fotos, um vídeo tour feito com o celular, como cortesia, não altera o valor",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Vou encerrar o contato por aqui e dentro de 30 dias retorno para verificar se houve alguma mudança",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "pode ser quinta ?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "🎁 *Acabamos de liberar o Curso Gratuito de Claude Code pra você.*\n\nVocê já viu um *Agente de IA autônomo* rodando sozinho, 24h no ar, executando tarefas reais com o Hermes.\n\nMas existe um segundo cami",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "1",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "94 e 144",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Tudo",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Ok",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Quando pode vir aqui?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Teste",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Teste",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Não por isso. Bom fds!",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Sai daí da garagem!",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Boa tarde Carlos Alberto, como vai?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Sim sim... é que eles só conseguem mudar em dezembro",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Show",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "abs",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Uma ótima semana para você. 🙏🏼",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Tenha uma ótima semana. 🙏🏼",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Você trabalha só aí?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Chama o Pedro pra sala!",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso o seu imóvel está *disponível* para venda?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Já vendeu. Ap",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Perfeito, muito obrigado pelo retorno. 🙏🏼",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Boa noite Gustavo.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Traz uma água",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "🤣🤣🤣🤣",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Valeu!",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Aí falamos melhor sobre valores e alinhamos.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Obrigado",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Ou busca algum perfil específico para investimento?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "não",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Precisando, estou à disposicao.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "11996660592",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Estou correndo pra resolver essa semana",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Uma ótima semana! Precisando, estou à disposição. 🙏🏼",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso o seu imóvel está *disponível* para venda?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Como ficaram as goteiras ontem que choveu?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Tudo dará certo Gustavo. \nFica tranquilo.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Vamos bater um papo e alinhar uma parceria?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Entendi",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Tenho clientes buscando imóveis para compra e locação no condomínio.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Vai ser sucesso de vendas!",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "O maior problema realmente está na parede de tijolinhos na garagem. \n\nSó resolverá, \"espero\" 🙏 quando terminar a laje da entrada da sua casa.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Entendido. Mais uma vez obrigado, uma ótima semana pra você! 🙏🏼",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Meu nome é Gustavo, sou consultor da Jardim das Perdizes Broker, boutique imobiliária especializada no empreendimento Jardim das Perdizes.\n\nSeu imóvel no Recanto Jacarandá está disponível para venda o",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Bom fds!",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso o seu imóvel está *disponível* para venda?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Você poderia me passar o contato da Paula? Prometo não ser inconveniente. 🙏🏼",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "valew, vc tbm",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Pra nós!",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Recebido",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Bem tb.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Oii Gustavo, tudo bem? Bom dia",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso o seu imóvel está *disponível* para venda?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Abraço e ótima semana.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "vou disponibilizar o link em 3 minutos pra vc!",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Opa! Aqui é o Renato, sócio do Founders ao lado do Mateus Gomes. \nNosso próximo Hackathon vai rolar nos dias 13 e 14 de novembro, em São Paulo, e promete ser daqueles que muda o jogo do seu negócio. N",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Tranquilo",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Estou bem e você?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "https://youtube.com/shorts/8FqRXpSZQRY?is=IqAWdVwQLtcmWdLd",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Combinado, fico no aguardo",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está disponível para venda ou locação?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Sequoia. Plantas de 121, 148 e 175m² e infraestrutura incomparável.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso *seu imóvel* está disponível para venda ou locação?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Combinado",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Tá ótimo!",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso *seu imóvel* está disponível para venda ou locação?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Tudo bem?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "O projeto está incrível.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "👍",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Abraço e boa semana!",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Perfeito. Muito obrigado pelo seu retorno, vou combinar com a Luana. Boa 6a feira e um excelente feriado! 🙏🏼",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "https://www.visualcapitalist.com/ranked-the-worlds-largest-oil-importers-in-2025/?mc_cid=c7bf55e9cd&mc_eid=daec6dd40a",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Valeu",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Ah, ok. Obribado pelo retorno.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Combinado",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Aproveitando meu contato, por acaso você tem algum outro imóvel que gostaria de vender ou alugar? Ou busca algum perfil específico para investimento?",
+      "e09_code": "sale_and_rent",
+      "e01_08_code": "e07_both_options"
+    },
+    {
+      "text": "Fechou, obrigado!",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Venda somente",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso o seu imóvel está *disponível* para venda?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Acho que aquele depósito lá perto vende",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Gustavo, boa tarde.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso você chegou a enviar os documentos?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Blz",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Bom dia Gustavo, estou bem e vc?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Obrigado pela ficha, não esquece de me mandar os documentos e comprovantes tb ok?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Não pode ser mais que isso.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Boa noite Lucy! Tudo bem?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "e preciso do endereço do pai, o comprovante de endereço não abre, exige senha",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Vamos olhar lá... Tem tinta nos batentes, precisa limpar",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Quem vai ser o fiador, e qual a garantia?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Ah blz",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "O proponente me perguntou aqui...",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Vamos fazer com aquele tijolinhos que estão lá mesmo",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Cara te entendo demais\nAqui também correria braba kkkk \nobrigado pelo retorno e felicidades a patroa 🙏",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Essa sujeira da janela você não vai tirar o plástico da janela não vai deixar o plástico é",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Valeu pelo cadastro!",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Sala",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Vi lá na no grupo",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Boa tarde Leandro, como vai? Tudo bem?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "ja esta",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Hoje vou trabalhar de casa...",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "A descrição é uma venda do produto, não apenas uma descrição...",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "da pra alongar o texto",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "claro",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "ok",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "sextou",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "ok",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Marcado às 10h.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Precisa melhorar aquela descrição usando os 1000 caracteres disponíveis",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Phyyynoooo",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Indo",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Nada disso é problema de reboco Igor",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Tenho clientes buscando imóveis para compra e locação no condomínio.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Bom dia Nathalya, tudo bem?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Bom dia Bruna, tudo bem?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Boa tarde, encontro o Nelson neste número?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Obrigado e uma ótima semana.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "É um assunto do seu interesse?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Um abraço e ótima semana.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Aproveitando o contato, por acaso você possui um imóvel para venda ou locação, ou busca algum imóvel para morar ou investir?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Boa noite!\nFavor enviar um print da solicitação de serviço",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso o seu imóvel está *disponível* para venda?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Ótima semana! 🙏🏼",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Vamos, que dia é melhor?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Florença é legal",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Seguindo a sugestão da Amanda, criei um grupo Jardim das Perdizes Broker + Tecnisa para centralizar e facilitar a nossa comunicação",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Só falar qdo funciona pra você e marcamos",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Enquanto isso vou buscar algumas opções na Mooca e te trago em breve.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso o seu imóvel está *disponível* para venda?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso o seu imóvel está *disponível* para venda?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Certo, agradeço o retorno.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso o seu imóvel está *disponível* para venda?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Nosso escritório fica na torre corporativa, Time Corporate.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Legal... era mais pra saber o perfil",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Gostaria de saber se o imóvel do Márcio está disponível para venda...",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Adriana, estamos com um novo lançamento aqui no Jd. das Perdizes, *Sequoia*. \n\nO projeto é bem diferenciado e uma excelente oportunidade de investimento.\n\nVocê tem interesse em receber mais informaçõe",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso o seu imóvel está *disponível* para venda?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Estamos com alguns clientes interessados aqui no empreendimento. Por acaso o seu imóvel ainda está disponível para venda?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Claro, deixa só eu falar com os inquilinos e volto contigo.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Acabei de enviar veja se recebeu.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Perfeito, obrigado!",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Estou dentro do metrô",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Beleza, encaminha pf os docs dele tb.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Esquece o reboco Igor. Tô falando de massa, lixa e acabamento",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "fica faltando a matrícula",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "P.U.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Tem PU branco lá pras janelas, não é massa",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Claro, vou precisar da sua ficha cadastral e documentos.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Claro",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Você já chegou a analisar a documentação? Está tudo ok?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "quando se fala em fiador, este apresenta um imóvel",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Claro, é que eu já mando todas as informações pra ele para facilitar e agilizar a análise.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "https://www.instagram.com/reel/DdfO_7mtOpj/?stkn=MWxtdXNjb3Bybnp2Zg==",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Beleza?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Essa geração Z é foda... kkk",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "https://imoveis.novovista.com.br/?v2=a2V5PTNhMGMyZGE3MDJjZDU3NmNiZmQ0YWUzODdhNDc1NjBiJmNvZD05MSZkPTEmY3M9MSZtYXBhPVNpbSZiYWlycm9fY29tZXJjaWFsPU5hbyZsb2dpbj1uYW8mc3RhdHVzPVZlbmRhJnB1cnBvc2U9JTVCJTIydmV",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "faltaram valores",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Coloquei de partida o valor de 1.58MM. É um valor acima do mercado... mas vamos sentir. Até porque quando baixamos o preço os portais promovem e notificam os clientes.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Bom dia Tiago, tudo bem?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Não está caindo pra mim aqui",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Tenho uma\nVista atual \n\nUm momento",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso você conseguiu ver o que aconteceu?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "sim",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "estão configurando",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Sinal ta ruim",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Igualmente!",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Entendido, obrigado! Abs",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "🎯 *[PilotCRM Teste Operacional]*\n\nOlá, Gustavo! Tudo bem?\n\nEsta é uma mensagem de teste enviada automaticamente pelo *PilotCRM* através do seu número profissional oficial (*Gustavo Jardim das Perdizes",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Estamos com alguns clientes interessados, por acaso o seu imóvel está disponível para venda?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está disponível para venda ou locação?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Nós trabalhamos com imóveis para investimento em toda a cidade, studios, salas comerciais, lojas...você tem interesse em algum perfil de imóvel específico para investimento?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Obrigado!",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "😩",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Sabendo de alguém que quer vender ou alugar o próprio imóvel, ou comprar/investir...me fala",
+      "e09_code": "sale_and_rent",
+      "e01_08_code": "e07_both_options"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "as vezes o cara tem imovel e quer vender pra reinvestir. Chama que dá negócio!",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Estou passando para saber se vocês já mudaram do Alpha Vita...",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Você tem interesse em conhecer o projeto e as condições de lançamento?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "https://meet.google.com/dzm-nzac-jue",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Ja se prepara",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Ou busca algum perfil de imóvel para investimento?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "*Aline Finoket*:\n\nIlze",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso o seu imóvel está *disponível* para venda?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Oi Gustavo, eu entendo! bom, estaremos realizando o fechamento das empresas que desejam participar deste ano no Top Empreendedor até o dia 30/09 - caso avalie e deseje participar, obter as informações",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Valeu meu amigo",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Obrigada :)",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso o seu imóvel está *disponível* para venda?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Vou encaminhar ao pp para análise. Assim que tiver resposta te aviso.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Maravilha",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Bom dia Gustavo, estou bem e voce?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Ah beleza. Me avisa qdo enviar pf.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Ah ok!",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Te envio",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Preciso ver os blocos tb",
+      "e09_code": "rent_property",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Pra vcs tb 🙏🏼",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Bjo Lucy",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Não hj não vão não Lucy",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Bom dia Lucy, tudo bem?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Ahaha",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Você não pode querer uma coisa 100% se seu reboco não tava 100%",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "O Igor deve fazer amanhã ou 6a.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "gustavo@jardimdasperdizesbroker.com.br",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Da pra você e o seu pai irem lá em casa amanhã?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Bom dia Gustavo\nconseguiu configurar e usar o ResumeGrupo?\nComo tá sendo as primeiras experiências?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Fernando, me confirma por favor a configuração do apartamento de vocês... 2 quartos, 1 suíte?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "pronto",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "show",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "ok",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "ok",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Esses entraram onde?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "A foto de capa, coloca a imagem 5 pf...",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "a galera responsável pelo mkt",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "lead sequoia",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "ja esta na descrição",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "ué",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Apartamento 108m² mobiliado 2 Suítes Andar Alto e Frente Parque",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Ah, o 108m²",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Jacarandá",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Se você não buscar se fortalecer, a tendência é ficar cada vez mais difícil.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Glicada em 5,8 e subindo!",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Encomendou os brigadeiros chocolate dark?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Bom dia Edvaldo, tudo bem?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Boa tarde, encontro o Nelson neste número?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Olá Gustavo! \n\nVi seu contato no *GetNinjas*, sou um *profissional cadastrado na plataforma*. Me chamo *Isabella Schaffer* e você pode conferir o meu anúncio no link a seguir: \nhttps://www.getninjas.c",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está disponível para venda ou locação?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Aviso sim, já te confirmo.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Perfeito, marcado então. Muito obrigado e até amanhã.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso o seu imóvel está *disponível* para venda?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Um abraço. 🙏🏼",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Vamos marcar uma visita para você conhecer melhor o projeto e validar a oportunidade?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso o seu imóvel está *disponível* para venda?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está disponível para venda ou locação?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Ou busca algum perfil específico para investimento? Studios, salas comerciais...",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Tem alguns minutos para falarmos?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso o imóvel está *disponível* para venda?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso o seu imóvel está *disponível* para venda?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "And your wife as well! 😘",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Ou marcamos e eu acompanho vocês, como preferir.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Você tem interesse em conhecer?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por nada.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Estou perguntando pq não chegaram pra mim ainda. Só pra saber se não foi o provedor.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Vou chegar depois das 14h.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Vou resolver isso hj e amanhã e te aviso pra fazermos na semana que vem.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Fiador",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Abs, boa noite!",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Acho que só amanhã",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "vou ver se consigo aqui",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Tranquilo, deixem tudo limpo e finalizado lá que depois eu passo o PU nas janelas",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Pq não dá pra devolver",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Pintura é só nas paredes",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Para fiador, é necessário que haja um imóvel quitado para garantia.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "https://www.instagram.com/reel/DdiBTlONBCW/?stkn=aXlzdXh4cmZiNHpo",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Excelente Fernando, já vou cadastrar aqui e salvar as fotos.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Bom dia meu aliado!",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Se puder falar me avisa que te ligo aí e conversamos. Te explico tudo...",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Consegue agora?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Quem?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Veja se consegue me mandar uma foto da vista da  varanda pf?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Mas e todos esses \"Olá! Tenho interesse...\"",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "aquilo no começo era pra ser o titulo ?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "entendi",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Mas não recebi nenhum aqui... Sabe pq?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Boa",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "bom dia",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Bota no Google aí \"neurocopy\"",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "e tals",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Oi filho, ainda melhorando aos pouquinhos. Dessa vez tá demorando mais.\nTudo bem com você?\nMe desculpe no sábado, eu estava me sentindo muito mal.\nBeijão",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Amanhã é aniversário da Dam e eu pensei em irmos almoçar no mineiro.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Alguma resposta?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Cubos?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Pqp",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "O ap já está livre ?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Entendi. Vou ver se encontro boas opções pra você e te retorno.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Quais que são o pitangueiras e o jacarandá mesmo?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Legal...",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Entendido Jong.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso o seu imóvel está *disponível* para venda?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Um abraço e ótima semana.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Aproveitando o contato, por acaso você possui um imóvel para venda ou locação, ou busca algum imóvel para morar ou investir?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está disponível para venda ou locação?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "E aqui como conversamos, segue o convite para o lançamento do EOS: 💻 \nhttps://marketing.eemovel.com.br/lancamento-eos-cvel",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Valeu!",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Olá! Tudo be⁠m?\n\nEstou entrando em contato porque estamos realizando uma Imersão Presencial IA 360º, um even​to exclusivo para em⁠presários,⁠ que acontecerá no dia 17/09, às 9h, em Alphaville.\n\nDurant",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Vamos marcar uma visita para você conhecer o projeto? Os decorados estão incríveis!",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Ok",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso o seu imóvel está *disponível* para venda?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Fiquei tranquila",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Imagina, não por isso",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Está confirmado a visita hoje?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Boa tarde Nathalya! Como vai? Tudo bem?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Foi um prazer te atender! Se precisar de mais alguma coisa, digite MENU para voltar.\r\nSenão, desejamos uma ótima viagem! 🚆\r\nAté mais!",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Que bom!",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "vero",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Beleza",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Me confirma quando puder se o seu apartamento é este mesmo?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso o seu imóvel está *disponível* para venda?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso o seu imóvel está *disponível* para venda?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Combinado",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso o seu imóvel está *disponível* para venda?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "https://youtube.com/@peterdiamandis",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso o seu imóvel está *disponível* para venda?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso o seu imóvel está *disponível* para venda?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Blz",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Affonso, a principio está aprovada condicionada à documentação.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Fala Igor, boa noite!",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Como está o timing de vocês para entrada no apto? Posso colocar o contrato para 05/10?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "ORÇAMENTO PRELIMINAR — COBERTURA ÁTICO\n\nProjeto: Planta EL 733,67 — Ático\nLocal: Santo Amaro — São Paulo/SP\nProjeto: Arquitetura BKF\nRevisão: 04 — 21/05/2026\nEscala: 1:50\n\n━━━━━━━━━━━━━━━━━━━━\n\n1. CAR",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Você vou se secou a lajinha? Da pra fazer a parede amanhã ou 6a feira?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Bom dia!",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Bom dia!",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Te aviso",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Estou em casa agora. \n\nSe possível avisa o pessoal, se vierem amanhã, 18 de setembro,   que sairei de casa às 8h e 30.\n\nSe chegarem depois disso, não estarei aqui. \n\nAbraço Gustavo.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Precisa, ele analisa a proposta condicionada aos documentos.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Deu certo o conserto do vazamento?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "beleza",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "O Alves me disse que ia voltar hoje aí",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Ok, mas o fiador precisa apresentar um imóvel de garantia, ou o locador concorda em não ter?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Ainda não tive tempo",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Você tem alguns minutos para falarmos?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Bom dia Fernando, como vai? Tudo bem?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "instagram",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "entrou 1 lead",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "o que é NGC?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Ok",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "negócio",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "e não foi seu",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Boa",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Sim",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Beleza... sem problemas. 👍🏼",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Luccão, coloca pf esse imóvel em destaque tb pf",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Aproveitando meu contato, nós trabalhamos com lançamentos e imóveis com perfil de investimento. \n\nA sra. gostaria de receber informações do novo lançamento do Jd. das Perdizes, Sequoia? Ou busca algum",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Obrigado. Quando ela reaparecer eu te aviso e combinamos.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Eles são diferentes mesmo.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Você gostaria de conhecer?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Olá, Gustavo! Tudo bem? Passando para saber se ainda consegue conversar hoje sobre a garantia do seu aluguel ou se prefere falar em outro momento.",
+      "e09_code": "rent_property",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso o seu imóvel está *disponível* para venda?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Olá!\nO seu atendimento foi encerrado por inatividade.\nCaso precise de ajuda é só chamar!\nAté mais 👋🏼",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Tenho um cliente que está buscando um apartamento no Jequitibá. Por acaso o seu imóvel está disponível para venda?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Sessão encerrada.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Entendido. Obrigado e uma ótima semana pra você! Abs",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Ok",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Tudo bem?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso o seu imóvel está *disponível* para venda?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "chama no 98383-8348",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "O projeto está incrivel, excelente oportunidade tanto para moradia quanto para investimento.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso o seu imóvel está *disponível* para venda?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Você gostaria de conhecer o projeto?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Preciso saber se ele aceita a proposta rs",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "assim que ele pegar lhe envio",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Já te ligo",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Bom dia Lucy! Tudo bem?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Qual garantia vocês pretendem dar?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Tranquilo Gustavo.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Fala Igor, beleza?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "por favor",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "pqp",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "O pai",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Depois me confirma pf os valores exatos de condomínio e IPTU, ok?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Opa, valeu!",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "qnd tiver outro só mandar pai",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "não",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "A primeira frase não precisa alongar, é a descrição resumo dos atributos para o cara memorizar.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Não, é a primeira linha da descrição",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "usamos só texto",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Esse é o pedido",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "se esta locado está gerando renda",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Aqui",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Oi mãe, estamos a caminho",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "tem a janela pra terminar que tem tinta e não chove.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "https://www.instagram.com/reel/DdSA_oYyVos/?stkn=MTA1aGUwc3hsOHp4cw==",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Quais os planos de vocês amanhã?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Não passaram fita em nenhuma porta nem janela... tá tudo manchado de tinta",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Sim",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Boa tarde",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Florença? Ou Perugia?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Aí é o prime do prime",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Meu nome é Gustavo, sou sócio do Leonardo Cabral da Jd. das Perdizes Broker...",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Mas faz uma leitura religiosa demais a meu ver",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Acho que você está falando do Bosque Araucária",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Você quer pronto para locação?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "157, 189, 336 e 377 (duplex)",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "sim... pois é",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "2 clientes...",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "mas toda semana temos procura...",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Outro mora no Manacá 241m² e quer um de 284m²",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Entendi",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "boa",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "tudo na santa paz!! e com vcs..",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "https://www.facebook.com/share/v/1EuGThWMyp/",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Quero saber do Hackathon do Matheus Gomes que vai acontecer em São Paulo no mês de novembro, me explica por favor",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Show, obrigado",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Poxa! Infelizmente, não há nenhum especialista disponível no momento.\n\nNosso *horário de atendimento* é de segunda à sexta-feira, das *08h00 às 17h45.* \n\nPor gentileza, entre em contato conosco dentro",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Um pouco de como foi o primeiro evento",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Você a conhece? Tem alguma relação? Este número consta aqui no cadastro dela...",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Bom dia, encontro o Sr. Yuzhen neste número?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Não tô falando de reboco Igor, tô falando desse tipo de coisa... de acabamento... de não ter buraco na parede",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Meu nome é *Gustavo*, sou partner da *imobiliária Jardim das Perdizes Broker* , o Bruno me passou seu contato. \n\nEstou responsável pela venda do apartamento e estamos com um cliente para visitar o imó",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Entendi. Vou confirmar com ela, qq coisa te aviso",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Algum retorno?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "E ai, como estão as coisas?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Boa tarde Gustavo!",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Se fecharmos em 1.9MM e dando 900k de entrada, você vai ter uma 1a parcela de financiamento de ~13k e a última de ~4.5k. (240 meses)",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Entendi. Até que valor de aluguel?",
+      "e09_code": "rent_property",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Ma avisa, ok?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Te chamo",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso o seu imóvel está *disponível* para venda?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Tenho um cliente que está buscando um apartamento no Jequitibá. Por acaso o seu imóvel está disponível para venda?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso o seu imóvel está *disponível* para venda?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Você está podendo falar?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Gustavo minha esposa gostaria de fazer mais uma visita eh possível, por favor?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Mas para nós ok entre 05 e 10",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Estou no aguardo se ele aceita a proposta por favor",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Aí era batente",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "PU...\n🤣",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Aqui pintaram o batente da porta",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "ou 7 e 3,5.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "obrigado, qualquer coisa me chama. Abs!",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Tem que terminar a pintura, passar fita em tudo pra fazer os cantos, depois tirar e limpar o que sujar.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "bem!",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "mas ele aceitou a proposta?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Te encaminhei ontem a documentação do proponente e fiador para a locação do apartamento 125 do Alpha Vita em Alphaville...",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "profissão, estado civil do fiador?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Time Life 79m² 2 vagas, 15º 152B",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Bom dia Affonso, como vai? Tudo bem?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Aqui quem fala é o Gustavo, amigo do Léo e corretor da Cabral Silveira, JdP e Arujá",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "blz",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "eae",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "são tentativas do iann de usar o ngc",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "No whatsapp estou falando com uma menina chamada Gleice que parecia estar tendo dificuldades internas para resolver com o setor responsável e depois parou de responder.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "O locado sim... Mas só falar que é locado não passa a mensagem.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Se quiser entra cmg mas conhece o ap depois que eu sair com o cliente",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "14º andar \nApartamento 141 - Gaivota",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Não",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Aproveitar que a chuva parou",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Melhoras pra ele",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Você falou que não dava pra terminar pq a tinta cinza tinha acabado e por causa da chuva",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Bom dia",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Top",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Sanduba",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Preciso ver opções de moradia em aluguel antes",
+      "e09_code": "rent_property",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Você está buscando só no Alpha Vita?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Boa tarde Áurea, como vai?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "https://filosofiadozero.com.br/filosofia-platao-c-meta",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Não conheci",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "No Araucária pode ser 156 ou só os maiores?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Tem o Cerejeiras tb com 293m²",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Olá, boa tarde.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Ou tem interesse em oportunidades para investimento?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Obrigado e fico à disposição.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Perfeito, salva meu contato se puder e me procura quando for oportuno. Estou à disposicao! 🙏🏼",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Putz",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Boa tarde Fernando, como vai? Tudo bem?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "E um casal buscando comprar um apartamento de 241m²",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Olá, Gustavo! Tudo bem? É a Giovana, da Flip CRM. Estou retornando o contato, para conversarmos e ver se é um bom momento para falar sobre a operação comercial da sua imobiliária, e também saber que p",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso o seu imóvel está *disponível* para venda?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Como não tivemos um retorno estou encerrando o contato, se precisar pode nos acionar, QuintoAndar agradece.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Obrigado",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está disponível para venda ou locação?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "obrigado",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Um abraço e ótima semana.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso o seu imóvel está *disponível* para venda?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Abs",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Ou algum perfil específico para investimento (studios, salas comerciais...)?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso o seu imóvel está *disponível* para venda?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Olá não",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Viuvo, aposentado",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Bom dia Affonso, como vai?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "🤣🤣🤣",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Aguardando os docs da minha esposa",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Tem parte do batente das portas que vocês pintaram o batente...",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Combinado!",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Gustavo, estava no dentista.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Viuvo, aposentado",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Amanhã cedo já encaminho ao proprietário para análise.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Blz",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Nessa você consegue editar o pdf...",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Quantos sacos?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Cara, fds foi todo trabalhando e aniversário da esposa",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Você poderia por gentileza me encaminhar os dados e documentos do imóvel do seu pai que entrará como garantia da locação?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Bom dia Leandro, tudo bem?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "dcEuR3BrkUwKJ3jcKZtJ!7",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Entrou por onde?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Obrigado",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Essa é do quarto de vcs?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Já mando",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "108 m² | Andar alto | Frente parque | 2 suítes | 2 vagas | Porteira fechada | Locado com renda\n\nNo Recanto Jacarandá, este apartamento de 108 m² combina andar alto, frente para o parque e vista privil",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "E você, descansou?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Entendi. De boa.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "tranquilo",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Mãe, para de repetir que o Pedro te passou.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Estou em casa esses dias. É resfriado que o Pedro me passou. Normalmente eu não pego, mas dessa vez...\nEspero que a Damaris tenha gostado do almoço e do bolo.\nBj",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Quanto menos músculos, mais difícil fica qualquer recuperação.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "https://www.instagram.com/reel/DZHQWnCOECx/?stkn=MXBtNG9rNHI4bG9hag==",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Ok . Obrigada",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Vem sanduba? Fatiado?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Você pensa em vender?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Talvez",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "esse é top",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Beleza",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Muito obrigado pelo retorno e gentileza, tenha uma ótima e abençoada semana. 🙏🏼",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Combinado então. Abraço e uma otima semana.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Boa tarde Rômulo, como vai? Tudo bem?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Ahhhhj",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Sua busca por locação em Alphaville ainda ficou sem os detalhes pra eu filtrar melhor. Se quiser retomar, me manda só a faixa de valor que você procura e eu sigo por aqui; se não for o momento, fico à",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Obrigado. Para vc também",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Gostaria de saber se o imóvel do Leandro está *disponível* para venda.",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Tenho um cliente que está buscando um apartamento no Jequitibá. Por acaso o seu imóvel está disponível para venda?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Abraço e ótima semana.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Ou só Perdizes e Higienópolis...",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Ok \nOBRIGADO",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Gostaria de saber se o imóvel do Leandro está *disponível* para venda.",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Me manda também pf a profissão, estado civil do fiador?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Bem, obg",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "se tiver faltando algo me avisa",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Deixa comigo",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Você acha que isso é problema de reboco ou de massa e lixa?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Entendi",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Ok",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "E mais uma vez me desculpe o transtorno.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Isso eu sei tem um pouco",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "precisa dos documentos antes?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Boa noite Affonso, tudo bem?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "por isso pedi",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Isso aí não tem como ficar melhor que isso aí não seu reboco tá todo errado aí ainda fiz milagre",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Vou ver se conecto hj a noite",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Sua senha temporária para acessar resumegrupo.com",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Você chegou a analisar?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "965374489 will",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Claro",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Otimo",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "tamo junto",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "bom dia",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Perdemos?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Sim, mas em anúncios e marketing você comunica, não deixa subentendido para o cliente deduzir.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Locado é só ocupado/travado",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Titulo",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "mas tô on",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Aí depois da 1a frase resumo pro cérebro do cara gravar, começa a descrição marketeira",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Vou sozinho",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Cliente asiático é chato",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Bom dia mãe, tudo bem?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Ok. Bj",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "https://www.instagram.com/reel/DdClZ4SBsXZ/?stkn=amw1dDZkemVjb2h1",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Vocês vão vir essa semana para terminar o serviço?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Oi mãe, tudo bem?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "https://www.instagram.com/reel/DcO56v-vx70/?stkn=NmM0aTZocm93bzA0",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Não carregou...",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Alguma resposta?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Esse apartamento está em processo de assinatura de contrato.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Aproveitem!",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Olha no google maps aí",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Em sua homenagem",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Se liga aí",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "não que eu concorde... mas a perspectiva é interessante",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Ok",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Andar alto, frente ao parque e bom estado valoriza mais esse valor?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Beleza, vou buscar algumas opções e te retorno em alguns dias, ok?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Olha, depende muito do andar, frente parque ou não, e estado do apartamento.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Reserva Flamboyant",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Sim",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Outro tem mais tempo...nos próximos 6 meses",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Peço desculpas. Por acaso você o conhece?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está disponível para venda ou locação?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Teria interesse?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Qual é o seu nome para eu salvar aqui corretamente?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Estamos transferindo seu atendimento para um especialista. Muito obrigado pelo interesse!",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Estou passando para confirmar as visitas ao apartamento às 11h e as 12h.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Pode ser as 10 horas",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Você tem interesse em receber mais informações sobre o projeto?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Ele está pronto para entrar e morar!",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "O muito obrigado",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Muito obrigado",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Atendimento encerrado.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Fernando, seguem os nomes da visita amanhã:\n\nIann Ferreira (corretor) + cliente \nGustavo Rocha (corretor)\nImob. Jardim das Perdizes Broker\n10:00h.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Entendido. Mais uma vez, obrigado. Uma ótima semana. 🙏🏼",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Fechado!",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Se quiser fechar, tenho agenda para domingo",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Assim que me mandar eu te mando",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Fica tranquilo",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso o seu imóvel está *disponível* para venda?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Meu pai voltou de viagem ontem e ja solicitei a ele para pegar a matricula atualizada no cartorio",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Oi Affonso, recebido.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Se fluir demais molha tudo rs 🥲",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Vou dar uma passada aí... Você está em casa?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Vamos marcar na 4a feira então?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Quando vc vier.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "O contrapiso é 8cm no lado mais alto e 4cm no mais baixo né",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Tem esta ficha em world para preenchimento direto nela",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Isso tem que ser Pu \nNois tem que ver direitinho pq para passar esse Pu não tá incluso no orçamento que você fez com o Zé não",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Boa noite Gustavo, segue ficha preenchida",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Já te envio, bom dia",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Mas vou ver se tenho a versão em . Word",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Obrigado Lucy!",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "me passa um email que eu envio por la por favor",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Claro, desculpe. Fiquei sabendo que não iam agora de manhã",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Fernando, já cadastrei no sistema e publiquei no nosso site e portais.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "1.58MM",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Bom dia Gustavo,\nTudo bem?\n\nEstamos com intenção de venda da nossa unidade \n\nGostaria de saber mais informações de qual seria o procedimento com você \n\nDocumentos\nValores \nEntre outros pontos",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "é uma abreviação",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Era teste",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Vi que o Iann mandou lá no grupo a entrada de leads do anúncio",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "ainda estamos configurando",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Faz um favor? Ajusta pf o valor do apto da poltrona azul para 2.4",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Beleza, vou contigo pra conhecer o imóvel tbm. Tudo bem?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Quando a gente está se sentindo muito mal, a gente se recolhe mãe.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Precisa colocar locado \"gerando renda\"",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Ela adorou. Obrigado por tudo!",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Um clássico",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "tem umas relojoarias tb",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Claro... vamos marcar na semana. Nosso escritório é na torre corporativa. Só me falar quando funciona pra você e vou com você.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "É um ponto de vista...",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Ok obrigado",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Posso conhecer mas agora não",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Cerejeiras é o grande em construção com a fachada em curva certo?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Você chegou a conhecer o projeto do novo lançamento, Sequoia?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Conhece apt para aluguel de 157 e 189 lá?",
+      "e09_code": "rent_property",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Qual o nome desse?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Ah ok.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Então depende de encontrar o maior e vender o dele.",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Faltou aquela informação de  imóvel locado com renda",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "opa",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Apartamento 108m² mobiliado completo 2 Suítes Andar Alto e Frente Parque",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Pode tirar os |",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Eles nem gosta de visitar ap com morador lá",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Beleza?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Vejo",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Bom dia Luccheta",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "nossas descrições não assim",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Obrigado por contribuir com a minha diabetes, mãe! Te amo! ❤️",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Tudo",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Eita",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Ela deve sair do salão lá pras 13h-13:30h",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Prime de \"primeiro\" 😏",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Ola.  Boa tarde",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Ele me passou seu contato, disse que você trabalhou lá no Jequitibá e poderia ter o contato de quem tá lá hoje...",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Em média 4.5",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Perfeito",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Pode ser 156 e 171",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Aliás quanto estão oferecendo pelo 241 no manacá?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Vai ser ao lado do Manacá e a planta de 175m² é excelente, e a infra de lazer está incomparável com outros condomínios.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "O condomínio do outro lado do manacá, do lado do que está construindo de 300M2+",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Falei com o Sr. Jong, é seu pai?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Para o 241m2",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "E para quando o cliente quer?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "geralmente 19:30",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "terça, quarta e quinta eu vou pro escritorio, ai saio de la 18h",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Olá, bom dia",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Fala Léo! Beleza?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Oie",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Aqui estamos bem !",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Combinado",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "https://maps.app.goo.gl/4UC5EfDodFE2tC7Y6\n\nNão. Nesse.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Diz que é o mesmo PP do contrato anterior que foi declinado",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Qual andar?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Compra",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Sim",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Boa tarde Adriana, como vai? Tudo bem?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Bom dia Enéas, como vai? Tudo bem?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Claro, seria ótimo tb! E aí obviamente a parceria se mantem, ok?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Claro, pode deixar. Vou falar com ele.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Esse na Copacabana",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Mas te retorno",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Não precisa ser no Alpha Vita.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Bom dia Rony, como vai? Tudo bem?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Salva meu contato e decidindo vender ou querendo uma avaliação, estou à disposição, ok?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Bom dia, encontro o Márcio neste número?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Ou busca algum perfil para investimento?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Bom dia Evandro, como vai?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Ah, bom dia!",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Vou ver com ela",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Putz...adoraria, mas hj tá impossível pra mim",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Tranquilo. Disponha!",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Meu nome é *Gustavo*, sou partner da *imobiliária Jardim das Perdizes Broker* e estou com um cliente buscando um apartamento para compra no *Reserva Manacá*.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Assim que tiver interessados te procuro ok?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "https://jardimdasperdizesbroker.com.br/imovel/apartamento-jardim-das-perdizes-sao-paulo-sp-4-quartos-241m2-78",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Eu vendendo meu faz",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Boa tarde Rilza, como vai?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Acho q esa",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Boa tarde Andrea, como vai?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Show",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Pode ser o CPF?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Boa tarde Odair, como vai?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Mas temos uma unidade de negócio em Arujá onde trabalhamos as casas de condomínio.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "O que fizeram lá? Deu pra arrumar?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Vou com você pegar o bolo na volta do restaurante, fica aberto lá na Sodiê até que horas? Pegar depois do restaurante seria melhor, mas você vê isso, indaga por favor, ok?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Fiquei com vontade de lambusar a espada",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Nenhum. Pedro tá ainda resfriado. Que horas vocês querem ir?\nVai querer bolo? Você encomenda com os brigadeiros e vamos buscar.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Ponte Vechia",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Bom dia Will, como vai? Tudo bem?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Tem que ir no Duomo e ver o Davi",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Sim...",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "estou com alguns clientes para compra e locação lá...",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Desculpe, entendi que você queria em construção",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Você mora no Manacá?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "O condomínio está lotado",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Entendi",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "consigo as 20h",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Fernando, meus clientes buscam apartamentos para compra no Reserva Manacá e Bosque Jequitibá",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Valeu! Qq coisa me chama",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Melhoras pra ela 🙏🏼",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "3. Consegue me dar um help de custo essa semana?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Sim",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Mando pra você msm ou quer me passar o contato do PP ou adv?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Boa!",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Vou ajustar",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Leandro",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "https://maps.app.goo.gl/4x29MHMsB1rbhsBE9",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Número de transação: 959193783",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Boa noite meu amigo, beleza",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "https://jardimdasperdizesbroker.com.br/imovel/apartamento-jardim-das-perdizes-sao-paulo-sp-4-quartos-283m2-46",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Te bem?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Falcão final 2",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Boa tarde tudo bem?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Tenho clientes buscando 241 e 284m²",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso você tem outras opções de 3d até 9k?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Puxa, hoje não tenho",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Meu nome é *Gustavo*, sou partner da *imobiliária Jardim das Perdizes Broker* e estou com um cliente buscando um apartamento para compra no *Reserva Manacá*.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Oi Gisele, obrigado pelo retorno.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Me confirma a unidade por favor?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Não precisa ser pra agora, eles só vão mudar em dezembro.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Neste momento, não.\nmas agradeço o contato",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Bom dia David, como vai?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Obrigada",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Nao todos apts quitado...",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Esse não interessou",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Cliente Bruno",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Vou tentar de novo lá",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Boa tarde David, como vai?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Também não.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Financiado ainda?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "consegue fazer 2k pra mim hj 0e conversamos amanhã ou 2a pra eu te explicar o cenário?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Boa noite Iann, beleza?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Ah perfeito, obrigado pelo retorno.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Ah, entendi. Achei que fosse proprietário no Jd. das Perdizes.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Deve ter ido com a entrega",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Feito! Valeu!",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Me desculpe, devo estar com o número errado.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Meu nome é *Gustavo*, sou partner da *imobiliária Jardim das Perdizes Broker* e estou com um cliente buscando um apartamento para compra no *Reserva Manacá*.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Meu nome é *Gustavo*, sou partner da *imobiliária Jardim das Perdizes Broker* e estou com um cliente buscando um apartamento para compra no *Reserva Manacá*.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Meu nome é *Gustavo*, sou partner da *imobiliária Jardim das Perdizes Broker* e estou com um cliente buscando um apartamento para compra no *Reserva Manacá*.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Estou no Time Corporate 3o andar.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Nosso escritório é aqui no Corporate, estou perto. Você tendo uma janela me fala e eu dou um pulo aí para conversarmos.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Boa tarde Renato, como vai?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Já pedi para as 16h amanhã.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Você está melhor?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "O salão é aí?\nChegariam aqui lá pelas 14 - 14.30 hrs?\nComo sou virginiana ( você me conhece ) semana passada comprei uma vela sem número, com happy Birthday escrito. O espumante você deixou aqui na ge",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Agora não consigo atender",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "isso é problema, mãe! O resto é brincadeira de criança.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Vou encomendar.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Toppp",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "🤤🤤🤤",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Fino do Disco Music",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "São plantas de 156 e 171m²",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Sim",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Qual a metragem lá?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Tá bom",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Tudo ótimo",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Valeu Flaviao!",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Eu consigo a tarde",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Que é o mesmo?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Toma várias por mim",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Nada a ver mas tem gente que diz que é gêmeo kkk",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Deixa comigo",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Número de transação: 959694802",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Compra",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "⌛ A Chave PIX tem validade de 30 minutos para pagamento.\n⚠️ Copie todo o texto abaixo!\n💰Abra o aplicativo ou internet banking do seu banco e cole o código na opção PIX Copia e Cola.\nO protocolo da sua",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Olá! Tudo bem?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Foi um prazer te atender! Se precisar de mais alguma coisa, digite MENU para voltar.\r\nSenão, desejamos uma ótima viagem! 🚆\r\nAté mais!",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Você está buscando algo maior ou menor pra vocês?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Olá, bom dia. Encontro o Rony neste número?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Ela me passou seu contato.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Como ele mora la",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Veja o melhor dia e horario",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Garcia",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Vou verificar \nQuestão os PPS demoram para confirmar",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Bom dia Hong, como vai? Tudo bem?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "14 andar \n\nApartamento 141 - Gaivota",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Quem é?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Melhor vcs tirar poto...pd tem poto da outro imovilisaria...ta na anuciado 5Andar....",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Não tem ninguém com esse nome",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Legal. Tenho um casal de clientes que está buscando 200-240m².",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Por acaso seu imóvel está *disponível para venda*?",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Fala Iann, beleza?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Gostaria de deixar o imóvel conosco para ofertarmos também?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Eita estranho",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "já entrei... mas não aparece",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Perfeito, vou conversar com ele.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Não vai dar tempo. Fica pruma próxima viagem.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "✅ *Chamado aberto*\n🔴 Solicitação: *Suporte - Reclamação*\n👤 Solicitante: *Gustavo Rocha* \n🆔 ID: *6001* \n👷 Responsável: *Fabiana Soares*\n🗄️ Setor: *Assitência técnica representantes*\n⏱ Prazo: *até 24h*\n",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Meu nome é *Gustavo*, sou partner da *imobiliária Jardim das Perdizes Broker* e estou com um cliente buscando um apartamento para compra no *Reserva Manacá*.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Já está anunciado também?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Aí é perrengue",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Vamos anunciar lá e em todos os portais imobiliários.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Aí marcamos para você me mostrar o apartamento e definirmos valores e próximos passos.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Apagando msg?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Ok",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Claro que eu perdoo meu amor 🫏❤️",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "22",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Pena que tava chovendo, eles tocaram 2h. Acho que teriam tocado mais.",
+      "e09_code": "available_sale",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Se não resolvermos hoje vou tomar outras medidas, fazer boletim de ocorrência e registrar no Procon e todas as redes sociais.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Boa noite Flávio, como vai?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Boa tarde Marina, como vai?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Olá, bom dia.",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Florenca",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Fatiado",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Bom dia! Um ótimo, alegre e abençoado dia pra você! 😘🙏🏼",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Claro q se trata de um estudioso sério",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Eu quero o do lado desse em construção",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "É o araucária",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Deixa eu ver aqui...",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Você investe no Jd. das Perdizes tb?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Entendi",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Os que estão prontos... 79m²",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Sim",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Entendi",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Certo",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Te aviso",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    },
+    {
+      "text": "Tá bem Flaviao?",
+      "e09_code": "unknown",
+      "e01_08_code": "unknown"
+    }
+  ]
+}

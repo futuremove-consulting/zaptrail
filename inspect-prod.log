@@ -1,0 +1,17 @@
+CONNECTED db=postgres user=postgres
+QUEUE_COLUMNS=11
+  col: id | uuid | null=NO
+  col: tenant_id | uuid | null=NO
+  col: conversation_id | uuid | null=NO
+  col: status | text | null=NO
+  col: run_after | timestamp with time zone | null=YES
+  col: locked_at | timestamp with time zone | null=YES
+  col: locked_until | timestamp with time zone | null=YES
+  col: locked_by | text | null=YES
+  col: last_error | text | null=YES
+  col: created_at | timestamp with time zone | null=NO
+  col: updated_at | timestamp with time zone | null=NO
+QUEUE_TABLE_EXISTS=yes
+QUEUE_INDEXES=conversation_engine_queue_pkey, conversation_engine_queue_conversation_unique, conversation_engine_queue_status_run_idx, conversation_engine_queue_tenant_id_idx
+CONVERSATIONS_ROWS=1834
+QUEUE_ROWS=632

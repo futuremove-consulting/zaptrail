@@ -1,0 +1,14 @@
+
+[1m[30m[46m RUN [49m[39m[22m [36mv4.1.11 [39m[90mC:/Users/Gustavo/.cline/data/workspaces/chat/pilotcrm[39m
+
+ [32m✓[39m [30m[42m pilotcrm [49m[39m src/lib/module-flags/__tests__/rollout.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 6[2mms[22m[39m
+ [32m✓[39m [30m[42m pilotcrm [49m[39m src/lib/module-flags/__tests__/feature-gate.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[32m 11[2mms[22m[39m
+ [32m✓[39m [30m[42m pilotcrm [49m[39m src/lib/module-flags/__tests__/guards.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 33[2mms[22m[39m
+ [32m✓[39m [30m[42m pilotcrm [49m[39m src/lib/module-flags/__tests__/module-flags.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 6[2mms[22m[39m
+ [32m✓[39m [30m[42m pilotcrm [49m[39m src/lib/module-flags/__tests__/module-flags-api.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 8[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m5 passed[39m[22m[90m (5)[39m
+[2m      Tests [22m [1m[32m27 passed[39m[22m[90m (27)[39m
+[2m   Start at [22m 19:05:47
+[2m   Duration [22m 1.98s[2m (transform 921ms, setup 2.10s, import 2.87s, tests 65ms, environment 1ms)[22m
+

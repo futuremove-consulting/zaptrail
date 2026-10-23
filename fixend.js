@@ -1,0 +1,14 @@
+const fs = require("fs");
+const p = "C:/Users/Gustavo/.cline/data/workspaces/chat/pilotcrm/apps/pilotcrm/src/app/crm/contacts/[id]/components/ContactDetail.tsx";
+const s = fs.readFileSync(p, "utf8");
+const lines = s.split("\n");
+while (lines.length > 0 && lines[lines.length - 1].trim() === "") lines.pop();
+if (lines[lines.length - 1] === "}") lines.pop();
+if (lines[lines.length - 1] === "  }") lines.pop();
+if (lines[lines.length - 1] === "    );") lines.pop();
+lines.push("    );");
+lines.push("  }");
+lines.push("}");
+lines.push("");
+fs.writeFileSync(p, lines.join("\n"), "utf8");
+console.log("Fixed end. Lines:", lines.length);

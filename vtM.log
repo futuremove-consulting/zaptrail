@@ -1,0 +1,591 @@
+[33m(!) Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite:
+  - ESM syntax in a file loaded as CommonJS (vitest.config.ts:1:1). Use a `.mjs` extension or set `"type": "module"` in the closest package.json
+Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.[39m
+
+[1m[30m[46m RUN [49m[39m[22m [36mv4.1.11 [39m[90mC:/Users/Gustavo/.cline/data/workspaces/chat/pilotcrm/apps/pilotcrm[39m
+
+ [32m✓[39m src/lib/sprint-4/interaction-targets-contract.test.ts [2m([22m[2m3 tests[22m[2m)[22m[33m 310[2mms[22m[39m
+ [32m✓[39m src/lib/parsers/property-link-parser.test.ts [2m([22m[2m4 tests[22m[2m)[22m[33m 358[2mms[22m[39m
+[90mstdout[2m | src/lib/mock-gateway/__tests__/request-deduplicator.test.ts[2m:18:3[22m[2m[2m > [22m[2mRequestDeduplicator & Telemetry (S11.5-T1)[2m > [22m[2mdeduplica requisições simultâneas com parâmetros idênticos
+[22m[39m{"timestamp":"2026-10-14T18:27:32.071Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 4)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":4}}
+{"timestamp":"2026-10-14T18:27:32.088Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 5)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":5}}
+{"timestamp":"2026-10-14T18:27:32.088Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 6)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":6}}
+{"timestamp":"2026-10-14T18:27:32.089Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 7)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":7}}
+{"timestamp":"2026-10-14T18:27:32.089Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 8)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":8}}
+{"timestamp":"2026-10-14T18:27:32.089Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 9)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":9}}
+{"timestamp":"2026-10-14T18:27:32.089Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 10)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":10}}
+{"timestamp":"2026-10-14T18:27:32.090Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 11)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":11}}
+{"timestamp":"2026-10-14T18:27:32.090Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 12)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":12}}
+{"timestamp":"2026-10-14T18:27:32.090Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 13)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":13}}
+{"timestamp":"2026-10-14T18:27:32.091Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 14)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":14}}
+{"timestamp":"2026-10-14T18:27:32.091Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 15)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":15}}
+{"timestamp":"2026-10-14T18:27:32.094Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 16)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":16}}
+{"timestamp":"2026-10-14T18:27:32.095Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 17)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":17}}
+{"timestamp":"2026-10-14T18:27:32.095Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 18)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":18}}
+{"timestamp":"2026-10-14T18:27:32.095Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 19)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":19}}
+{"timestamp":"2026-10-14T18:27:32.095Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 20)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":20}}
+{"timestamp":"2026-10-14T18:27:32.095Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 21)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":21}}
+{"timestamp":"2026-10-14T18:27:32.095Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 22)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":22}}
+{"timestamp":"2026-10-14T18:27:32.095Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 23)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":23}}
+{"timestamp":"2026-10-14T18:27:32.095Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 24)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":24}}
+{"timestamp":"2026-10-14T18:27:32.095Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 25)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":25}}
+{"timestamp":"2026-10-14T18:27:32.095Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 26)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":26}}
+{"timestamp":"2026-10-14T18:27:32.095Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 27)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":27}}
+{"timestamp":"2026-10-14T18:27:32.095Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 28)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":28}}
+{"timestamp":"2026-10-14T18:27:32.095Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 29)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":29}}
+{"timestamp":"2026-10-14T18:27:32.095Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 30)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":30}}
+{"timestamp":"2026-10-14T18:27:32.095Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 31)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":31}}
+{"timestamp":"2026-10-14T18:27:32.095Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 32)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":32}}
+{"timestamp":"2026-10-14T18:27:32.095Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 33)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":33}}
+{"timestamp":"2026-10-14T18:27:32.095Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 34)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":34}}
+{"timestamp":"2026-10-14T18:27:32.095Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 35)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":35}}
+{"timestamp":"2026-10-14T18:27:32.095Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 36)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":36}}
+{"timestamp":"2026-10-14T18:27:32.095Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 37)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":37}}
+{"timestamp":"2026-10-14T18:27:32.096Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 38)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":38}}
+{"timestamp":"2026-10-14T18:27:32.096Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 39)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":39}}
+{"timestamp":"2026-10-14T18:27:32.096Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 40)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":40}}
+{"timestamp":"2026-10-14T18:27:32.096Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 41)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":41}}
+{"timestamp":"2026-10-14T18:27:32.096Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 42)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":42}}
+{"timestamp":"2026-10-14T18:27:32.097Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 43)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":43}}
+{"timestamp":"2026-10-14T18:27:32.097Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 44)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":44}}
+{"timestamp":"2026-10-14T18:27:32.097Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 45)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":45}}
+{"timestamp":"2026-10-14T18:27:32.097Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 46)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":46}}
+{"timestamp":"2026-10-14T18:27:32.097Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 47)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":47}}
+{"timestamp":"2026-10-14T18:27:32.097Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 48)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":48}}
+{"timestamp":"2026-10-14T18:27:32.097Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 49)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":49}}
+{"timestamp":"2026-10-14T18:27:32.097Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/crm/contacts?limit=25&page=1' excedeu 3 chamadas no ciclo de 5s (total: 50)","context":{"routeKey":"GET:/crm/contacts?limit=25&page=1","count":50}}
+
+[90mstdout[2m | src/lib/mock-gateway/__tests__/request-deduplicator.test.ts[2m:59:3[22m[2m[2m > [22m[2mRequestDeduplicator & Telemetry (S11.5-T1)[2m > [22m[2minstrumenta telemetria e emite alerta quando chamadas idênticas excedem 3 no ciclo
+[22m[39m{"timestamp":"2026-10-14T18:27:32.236Z","level":"warn","message":"[Telemetry Warning] Rota 'GET:/api/crm/scoring/evaluate?lead_id=123' excedeu 3 chamadas no ciclo de 5s (total: 4)","context":{"routeKey":"GET:/api/crm/scoring/evaluate?lead_id=123","count":4}}
+
+[90mstdout[2m | src/lib/mock-gateway/__tests__/request-deduplicator.test.ts[2m:75:3[22m[2m[2m > [22m[2mRequestDeduplicator & Telemetry (S11.5-T1)[2m > [22m[2mrastreia telemetria de 429 registrando ocorrência e mantendo contador sob controle
+[22m[39m{"timestamp":"2026-10-14T18:27:32.267Z","level":"error","message":"[Telemetry Critical] HTTP 429 detectado na rota test-rate-limit","context":{"routeKey":"test-rate-limit"}}
+
+[90mstdout[2m | src/lib/mock-gateway/__tests__/request-deduplicator.test.ts[2m:75:3[22m[2m[2m > [22m[2mRequestDeduplicator & Telemetry (S11.5-T1)[2m > [22m[2mrastreia telemetria de 429 registrando ocorrência e mantendo contador sob controle
+[22m[39m{"timestamp":"2026-10-14T18:27:32.333Z","level":"error","message":"[Telemetry Critical] HTTP 429 detectado na rota test-rate-limit","context":{"routeKey":"test-rate-limit"}}
+
+[90mstdout[2m | src/lib/mock-gateway/__tests__/request-deduplicator.test.ts[2m:75:3[22m[2m[2m > [22m[2mRequestDeduplicator & Telemetry (S11.5-T1)[2m > [22m[2mrastreia telemetria de 429 registrando ocorrência e mantendo contador sob controle
+[22m[39m{"timestamp":"2026-10-14T18:27:32.364Z","level":"error","message":"[Telemetry Critical] HTTP 429 detectado na rota test-rate-limit","context":{"routeKey":"test-rate-limit"}}
+
+[90mstdout[2m | src/lib/mock-gateway/__tests__/request-deduplicator.test.ts[2m:75:3[22m[2m[2m > [22m[2mRequestDeduplicator & Telemetry (S11.5-T1)[2m > [22m[2mrastreia telemetria de 429 registrando ocorrência e mantendo contador sob controle
+[22m[39m{"timestamp":"2026-10-14T18:27:32.426Z","level":"error","message":"[Telemetry Critical] HTTP 429 detectado na rota test-rate-limit","context":{"routeKey":"test-rate-limit"}}
+
+ [32m✓[39m src/lib/mock-gateway/__tests__/request-deduplicator.test.ts [2m([22m[2m5 tests[22m[2m)[22m[33m 373[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-0/route-inventory.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 188[2mms[22m[39m
+ [32m✓[39m src/modules/captacao/extrator_provider.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 149[2mms[22m[39m
+ [32m✓[39m src/app/api/crm/captures/webhook/[source]/__tests__/webhook.test.ts [2m([22m[2m6 tests[22m[2m)[22m[33m 326[2mms[22m[39m
+ [32m✓[39m src/lib/module-flags/__tests__/guards.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 94[2mms[22m[39m
+ [32m✓[39m src/lib/extrator/__tests__/integration.service.test.ts [2m([22m[2m11 tests[22m[2m)[22m[32m 165[2mms[22m[39m
+ [32m✓[39m src/lib/kb/__tests__/kb-hybrid-rag.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 177[2mms[22m[39m
+ [32m✓[39m src/lib/auth.service.test.ts [2m([22m[2m8 tests[22m[2m)[22m[33m 421[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-4/dialogs-menus-contract.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 154[2mms[22m[39m
+ [32m✓[39m src/lib/enrichment/identify.test.ts [2m([22m[2m41 tests[22m[2m)[22m[32m 98[2mms[22m[39m
+ [32m✓[39m src/lib/whatsapp/__tests__/canonical-taxonomy.test.ts [2m([22m[2m16 tests[22m[2m)[22m[32m 58[2mms[22m[39m
+ [32m✓[39m src/lib/__tests__/ui-jargon-hygiene.test.ts [2m([22m[2m5 tests[22m[2m)[22m[33m 5889[2mms[22m[39m
+     [33m[2m✓[22m[39m garante que nenhuma página TSX sob src/app/crm expõe 'pgvector' ou 'Row Level Security' aos usuários [33m 5750[2mms[22m[39m
+ [32m✓[39m src/lib/whatsapp/__tests__/qr-generator.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 128[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-11/pageheader-landmarks-skiplink-contract.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 286[2mms[22m[39m
+ [32m✓[39m src/lib/rate-limit.test.ts [2m([22m[2m5 tests[22m[2m)[22m[33m 311[2mms[22m[39m
+ [32m✓[39m src/lib/__tests__/tenancy.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 145[2mms[22m[39m
+[90mstdout[2m | src/lib/whatsapp/__tests__/openwa-service.test.ts[2m:76:3[22m[2m[2m > [22m[2mOpenWAService & OpenWAWhatsAppProvider[2m > [22m[2mgetConnectionStatus retorna DISCONNECTED em caso de falha de conexão com o servidor
+[22m[39m{"timestamp":"2026-10-14T18:27:39.228Z","level":"error","message":"[OpenWAService] Erro na requisição HTTP (status) na sessão business: Connection refused","context":{},"error":{"name":"Error","message":"Connection refused","stack":"Error: Connection refused\n    at C:/Users/Gustavo/.cline/data/workspaces/chat/pilotcrm/apps/pilotcrm/src/lib/whatsapp/__tests__/openwa-service.test.ts:77:49\n    at file:///C:/Users/Gustavo/.cline/data/workspaces/chat/pilotcrm/node_modules/.pnpm/@vitest+runner@4.1.11/node_modules/@vitest/runner/dist/chunk-artifact.js:302:11\n    at file:///C:/Users/Gustavo/.cline/data/workspaces/chat/pilotcrm/node_modules/.pnpm/@vitest+runner@4.1.11/node_modules/@vitest/runner/dist/chunk-artifact.js:1903:26\n    at file:///C:/Users/Gustavo/.cline/data/workspaces/chat/pilotcrm/node_modules/.pnpm/@vitest+runner@4.1.11/node_modules/@vitest/runner/dist/chunk-artifact.js:2326:20\n    at new Promise (<anonymous>)\n    at runWithCancel (file:///C:/Users/Gustavo/.cline/data/workspaces/chat/pilotcrm/node_modules/.pnpm/@vitest+runner@4.1.11/node_modules/@vitest/runner/dist/chunk-artifact.js:2323:10)\n    at file:///C:/Users/Gustavo/.cline/data/workspaces/chat/pilotcrm/node_modules/.pnpm/@vitest+runner@4.1.11/node_modules/@vitest/runner/dist/chunk-artifact.js:2305:20\n    at new Promise (<anonymous>)\n    at runWithTimeout (file:///C:/Users/Gustavo/.cline/data/workspaces/chat/pilotcrm/node_modules/.pnpm/@vitest+runner@4.1.11/node_modules/@vitest/runner/dist/chunk-artifact.js:2272:10)\n    at file:///C:/Users/Gustavo/.cline/data/workspaces/chat/pilotcrm/node_modules/.pnpm/@vitest+runner@4.1.11/node_modules/@vitest/runner/dist/chunk-artifact.js:2956:64"}}
+
+ [32m✓[39m src/lib/whatsapp/__tests__/openwa-service.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 20[2mms[22m[39m
+ [32m✓[39m src/lib/api/__tests__/response.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 52[2mms[22m[39m
+ [32m✓[39m src/lib/whatsapp/__tests__/deterministic-parser.test.ts [2m([22m[2m13 tests[22m[2m)[22m[32m 48[2mms[22m[39m
+ [32m✓[39m src/lib/demo-analytics.test.ts [2m([22m[2m13 tests[22m[2m)[22m[32m 27[2mms[22m[39m
+ [32m✓[39m src/lib/whatsapp/__tests__/contact-analyzer.test.ts [2m([22m[2m9 tests[22m[2m)[22m[32m 16[2mms[22m[39m
+ [32m✓[39m src/modules/captacao/__tests__/ui_writing_and_batch_dispatch.test.ts [2m([22m[2m12 tests[22m[2m)[22m[32m 113[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-4/forms-errors-contract.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 122[2mms[22m[39m
+ [32m✓[39m src/lib/real-estate/validation.test.ts [2m([22m[2m16 tests[22m[2m)[22m[32m 79[2mms[22m[39m
+ [32m✓[39m src/lib/forms/__tests__/validation-schemas.test.ts [2m([22m[2m18 tests[22m[2m)[22m[32m 70[2mms[22m[39m
+ [32m✓[39m src/lib/media/__tests__/media.service.test.ts [2m([22m[2m14 tests[22m[2m)[22m[32m 36[2mms[22m[39m
+ [32m✓[39m src/app/api/crm/whatsapp/webhook/__tests__/openwa-webhook.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 66[2mms[22m[39m
+ [32m✓[39m src/modules/captacao/__tests__/wave2_captacao_flow.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 134[2mms[22m[39m
+ [32m✓[39m src/lib/lifecycle/__tests__/promotion-engine.test.ts [2m([22m[2m11 tests[22m[2m)[22m[32m 76[2mms[22m[39m
+ [32m✓[39m src/lib/scoring/__tests__/unified-scoring-engine.test.ts [2m([22m[2m13 tests[22m[2m)[22m[32m 92[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-15/copilot-contract.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 199[2mms[22m[39m
+ [32m✓[39m src/lib/kb.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 194[2mms[22m[39m
+ [32m✓[39m src/app/api/crm/properties/developments/__tests__/route.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 72[2mms[22m[39m
+ [32m✓[39m src/lib/hydration.test.tsx [2m([22m[2m7 tests[22m[2m)[22m[33m 4875[2mms[22m[39m
+       [33m[2m✓[22m[39m renders PropertyDetail SSR skeleton deterministically [33m 2471[2mms[22m[39m
+       [33m[2m✓[22m[39m renders ContactDetail SSR skeleton deterministically without layout shift [33m 2338[2mms[22m[39m
+ [32m✓[39m src/lib/enrichment/__tests__/bant-enrichment.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 16[2mms[22m[39m
+ [32m✓[39m src/lib/whatsapp/__tests__/taxonomy-formatter.test.ts [2m([22m[2m9 tests[22m[2m)[22m[32m 14[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-6/async-state-contract.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[32m 261[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-11/icon-button-a11y-contract.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 215[2mms[22m[39m
+ [32m✓[39m src/modules/captacao/__tests__/p0_golden_path_e2e.test.ts [2m([22m[2m1 test[22m[2m)[22m[33m 337[2mms[22m[39m
+     [33m[2m✓[22m[39m executa o ciclo completo: extração -> segregação morador vs proprietário -> owner-occupier -> idempotência x10 -> masking de PII -> envelope de API [33m 305[2mms[22m[39m
+ [32m✓[39m src/lib/scoring/evaluation-engine.test.ts [2m([22m[2m14 tests[22m[2m)[22m[32m 51[2mms[22m[39m
+ [32m✓[39m src/lib/real-estate/repositories.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 55[2mms[22m[39m
+ [32m✓[39m src/modules/captacao/__tests__/importer.test.ts [2m([22m[2m13 tests[22m[2m)[22m[32m 54[2mms[22m[39m
+ [32m✓[39m src/lib/module-flags/__tests__/feature-gate.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[32m 22[2mms[22m[39m
+[90mstdout[2m | src/lib/handoff/__tests__/concurrent-claim.test.ts[2m:32:3[22m[2m[2m > [22m[2mSprint 12 - Fila de Handoff com Atribuição Concorrente e SLA (Issue #122)[2m > [22m[2mbloqueia concorrência: dois corretores clicando simultaneamente no mesmo lead; exatamente um obtém sucesso
+[22m[39m[Mock WhatsApp] Sending message to conversation conv-race-01: [HANDOFF CLAIMED] Atendimento assumido por Carlos Corretor em 14/10/2026, 15:27:53. Tempo de espera: 0.0 min.
+
+[90mstdout[2m | src/lib/handoff/__tests__/concurrent-claim.test.ts[2m:80:3[22m[2m[2m > [22m[2mSprint 12 - Fila de Handoff com Atribuição Concorrente e SLA (Issue #122)[2m > [22m[2maudita a transição com carimbo de tempo e cronometra o tempo de espera
+[22m[39m[Mock WhatsApp] Sending message to conversation conv-audit-01: [HANDOFF CLAIMED] Atendimento assumido por Carlos em 14/10/2026, 15:27:53. Tempo de espera: 0.0 min.
+
+[90mstdout[2m | src/lib/handoff/__tests__/concurrent-claim.test.ts[2m:129:3[22m[2m[2m > [22m[2mSprint 12 - Fila de Handoff com Atribuição Concorrente e SLA (Issue #122)[2m > [22m[2mgerencia o ciclo de vida completo: pending -> claimed -> in_progress -> resolved
+[22m[39m[Mock WhatsApp] Sending message to conversation conv-cycle-01: [HANDOFF CLAIMED] Atendimento assumido por Pedro Corretor em 14/10/2026, 15:27:53. Tempo de espera: 0.0 min.
+
+ [32m✓[39m src/lib/handoff/__tests__/concurrent-claim.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 105[2mms[22m[39m
+ [32m✓[39m src/lib/owners/supabase-repository.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 100[2mms[22m[39m
+ [32m✓[39m src/lib/owners/import.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 48[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-7/inbox-contract.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 53[2mms[22m[39m
+[90mstdout[2m | src/lib/logger.test.ts[2m:63:5[22m[2m[2m > [22m[2mLogger[2m > [22m[2mlogError[2m > [22m[2mlogs error with context
+[22m[39m{"timestamp":"2026-10-14T18:27:55.280Z","level":"error","message":"Something went wrong","context":{"service":"test","err":{"name":"Error","message":"Test error","stack":"Error: Test error\n    at test"},"userId":"123"}}
+
+[90mstdout[2m | src/lib/logger.test.ts[2m:85:5[22m[2m[2m > [22m[2mLogger[2m > [22m[2mcreateTimer[2m > [22m[2mmeasures operation duration
+[22m[39m{"timestamp":"2026-10-14T18:27:55.315Z","level":"info","message":"test-operation completed in 0ms","context":{"service":"test","operation":"test-operation","itemsProcessed":10}}
+
+[90mstdout[2m | src/lib/logger.test.ts[2m:106:5[22m[2m[2m > [22m[2mLogger[2m > [22m[2msetLogTransporter[2m > [22m[2mnotifies registered transporter when logs are emitted
+[22m[39m{"timestamp":"2026-10-14T18:27:55.335Z","level":"info","message":"Transporter audit test","context":{"test":true}}
+
+ [32m✓[39m src/lib/logger.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 121[2mms[22m[39m
+[90mstderr[2m | src/lib/owners/campaign.test.ts[2m:136:3[22m[2m[2m > [22m[2menqueueCampaign[2m > [22m[2mmarks sends failed when sendText throws
+[22m[39m[owners campaign c-1] send to +5511988887777 failed: Error: whatsapp down
+    at C:/Users/Gustavo/.cline/data/workspaces/chat/pilotcrm/apps/pilotcrm/src/lib/owners/campaign.test.ts:140:48
+    at file:///C:/Users/Gustavo/.cline/data/workspaces/chat/pilotcrm/node_modules/[4m.pnpm[24m/@vitest+runner@4.1.11/node_modules/[4m@vitest/runner[24m/dist/chunk-artifact.js:1903:20
+
+ [32m✓[39m src/lib/owners/campaign.test.ts [2m([22m[2m9 tests[22m[2m)[22m[32m 138[2mms[22m[39m
+ [32m✓[39m src/modules/captacao/__tests__/e2e_lote.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 59[2mms[22m[39m
+ [32m✓[39m src/modules/captacao/__tests__/extrator_bidirectional_sync.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 96[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-4/semantic-focus-contract.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 46[2mms[22m[39m
+ [32m✓[39m src/modules/captacao/sheets.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 37[2mms[22m[39m
+ [32m✓[39m src/modules/captacao/provider.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 149[2mms[22m[39m
+ [31m❯[39m src/lib/sprint-5/mobile-forms-contract.test.ts [2m([22m[2m3 tests[22m[2m | [22m[31m1 failed[39m[2m)[22m[32m 103[2mms[22m[39m
+     [32m✓[39m mantém targets confortáveis em inputs e autenticação[32m 27[2mms[22m[39m
+     [32m✓[39m usa action bars com safe-area nos fluxos longos[32m 9[2mms[22m[39m
+[31m     [31m×[31m evita submits acidentais nos passos do broadcast[39m[32m 49[2mms[22m[39m
+ [32m✓[39m src/lib/owners/identity.test.ts [2m([22m[2m9 tests[22m[2m)[22m[32m 54[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-5/responsive-shell-contract.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 41[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-6/empty-state-contract.test.tsx [2m([22m[2m4 tests[22m[2m)[22m[32m 180[2mms[22m[39m
+ [32m✓[39m src/lib/ai/router.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 143[2mms[22m[39m
+[90mstdout[2m | src/lib/owners/owners.service.test.ts[2m:76:3[22m[2m[2m > [22m[2mOwnersService.merge[2m > [22m[2munions fields, phones, emails, tags, properties and sends
+[22m[39mDEBUG keep.sends: [ { campaignId: [32m'c-1'[39m, phone: [32m'+5511982531234'[39m, status: [32m'pending'[39m } ]
+
+[90mstdout[2m | src/lib/owners/owners.service.test.ts[2m:76:3[22m[2m[2m > [22m[2mOwnersService.merge[2m > [22m[2munions fields, phones, emails, tags, properties and sends
+[22m[39mDEBUG drop.sends: [ { campaignId: [32m'c-2'[39m, phone: [32m'+551138251234'[39m, status: [32m'sent'[39m } ]
+
+[90mstdout[2m | src/lib/owners/owners.service.test.ts[2m:76:3[22m[2m[2m > [22m[2mOwnersService.merge[2m > [22m[2munions fields, phones, emails, tags, properties and sends
+[22m[39mDEBUG merged.sends: [
+  { campaignId: [32m'c-1'[39m, phone: [32m'+5511982531234'[39m, status: [32m'pending'[39m },
+  { campaignId: [32m'c-2'[39m, phone: [32m'+551138251234'[39m, status: [32m'sent'[39m }
+]
+
+ [32m✓[39m src/lib/owners/owners.service.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 100[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-6/error-recovery-contract.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 121[2mms[22m[39m
+ [32m✓[39m src/lib/__tests__/real-estate-catalog-consolidation.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 72[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-10/observable-communication-signals-contract.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 32[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-10/conversation-engine-schema-contract.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 19[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-7/contacts-contract.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 94[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-2/status-state-contract.test.tsx [2m([22m[2m5 tests[22m[2m)[22m[33m 360[2mms[22m[39m
+ [32m✓[39m src/modules/captacao/__tests__/capture_cases_schema.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 102[2mms[22m[39m
+ [32m✓[39m src/lib/ai/__tests__/orchestrator-security.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 82[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-6/toast-live-regions-contract.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 27[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-15/copilot-settings-contract.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 44[2mms[22m[39m
+ [32m✓[39m src/modules/portais/__tests__/portais.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 48[2mms[22m[39m
+ [32m✓[39m src/modules/captacao/extrator_contract.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 83[2mms[22m[39m
+ [32m✓[39m src/lib/routes-convention.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 44[2mms[22m[39m
+ [32m✓[39m src/lib/module-flags/__tests__/module-flags-api.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 48[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-9/automations-contract.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 45[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-8/captacao-contract.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 57[2mms[22m[39m
+ [32m✓[39m src/lib/owners/normalize.test.ts [2m([22m[2m10 tests[22m[2m)[22m[32m 69[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-1/token-contract.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 23[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-10/message-classification-v2-contract.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 31[2mms[22m[39m
+ [32m✓[39m src/lib/pipeline/__tests__/deal-urgency.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 20[2mms[22m[39m
+ [32m✓[39m src/lib/demo-surface.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 30[2mms[22m[39m
+ [32m✓[39m src/app/api/crm/properties/__tests__/route.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 97[2mms[22m[39m
+ [32m✓[39m src/lib/pipeline/__tests__/kanban-stale-radar.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 80[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-8/owners-contract.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 29[2mms[22m[39m
+ [32m✓[39m src/lib/whatsapp/__tests__/privacy-filter.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 49[2mms[22m[39m
+ [32m✓[39m src/lib/owners/contactability.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 49[2mms[22m[39m
+ [32m✓[39m src/lib/owners/crypto.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 79[2mms[22m[39m
+ [32m✓[39m src/lib/auth/access.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 26[2mms[22m[39m
+ [32m✓[39m src/lib/auth/client-portal-token.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 35[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-0/baseline-contract.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 18[2mms[22m[39m
+ [32m✓[39m src/modules/captacao/dedupe.test.ts [2m([22m[2m13 tests[22m[2m)[22m[32m 55[2mms[22m[39m
+ [32m✓[39m src/lib/integrations/google/__tests__/taxonomy-formatter.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 45[2mms[22m[39m
+ [32m✓[39m src/modules/captacao/__tests__/navigation_and_ux_flows.test.ts [2m([22m[2m22 tests[22m[2m)[22m[32m 52[2mms[22m[39m
+ [32m✓[39m src/modules/captacao/__tests__/loop_closure_webhook.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 145[2mms[22m[39m
+ [32m✓[39m src/modules/captacao/extraction.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 53[2mms[22m[39m
+[90mstdout[2m | src/lib/instagram/InstagramWebhook.test.ts[2m:5:3[22m[2m[2m > [22m[2mInstagramWebhook[2m > [22m[2mshould verify webhook
+[22m[39mTesting webhook verification...
+
+[90mstdout[2m | src/lib/instagram/InstagramWebhook.test.ts[2m:26:3[22m[2m[2m > [22m[2mInstagramWebhook[2m > [22m[2mshould parse events
+[22m[39mTesting event parsing...
+
+ [32m✓[39m src/lib/instagram/InstagramWebhook.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 20[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-2/admin-tenants-ui-contract.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 11[2mms[22m[39m
+[90mstderr[2m | src/lib/instagram/InstagramService.test.ts
+[22m[39mIG_APP_SECRET or IG_APP_ID missing. Token refresh will not work.
+
+ [32m✓[39m src/lib/instagram/InstagramService.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 38[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-3/property-detail-breadcrumb-contract.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 11[2mms[22m[39m
+ [32m✓[39m src/modules/captacao/credentials.test.ts [2m([22m[2m12 tests[22m[2m)[22m[32m 24[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-8/market-price-contract.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 23[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-10/profile-signals-contract.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 19[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-7/inbox-audio-receipts.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 84[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-7/pipeline-contract.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 42[2mms[22m[39m
+ [32m✓[39m src/app/crm/settings/portais/__tests__/portais-ui.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 23[2mms[22m[39m
+ [32m✓[39m src/lib/owners/supabase-integration.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 32[2mms[22m[39m
+ [32m✓[39m src/lib/deal-properties/deal-properties.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 28[2mms[22m[39m
+ [32m✓[39m src/modules/captacao/__tests__/smoke_corretor_journey.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 46[2mms[22m[39m
+ [32m✓[39m src/lib/__tests__/masking.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 33[2mms[22m[39m
+ [32m✓[39m src/components/whatsapp/__tests__/WhatsAppHeaderWidget.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 12[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-3/navigation-registry-contract.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 41[2mms[22m[39m
+ [32m✓[39m src/lib/presentation/market-json.adapter.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 55[2mms[22m[39m
+ [32m✓[39m src/lib/module-flags/__tests__/rollout.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 20[2mms[22m[39m
+ [32m✓[39m src/modules/__tests__/e2e_business_flows_certification.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 114[2mms[22m[39m
+ [32m✓[39m src/lib/dispatch/dispatch.service.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 54[2mms[22m[39m
+[90mstdout[2m | src/lib/instagram/InstagramTokenManager.test.ts[2m:53:3[22m[2m[2m > [22m[2mInstagramTokenManager[2m > [22m[2mshould refresh expired tokens
+[22m[39m[InstagramTokenManager] Refreshing Page Access Token...
+
+ [32m✓[39m src/lib/instagram/InstagramTokenManager.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 16[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-7/leads-contract.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 32[2mms[22m[39m
+ [32m✓[39m src/lib/module-flags/__tests__/module-flags.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 48[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-6/confirmations-dirty-state-contract.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 16[2mms[22m[39m
+ [32m✓[39m src/lib/integrations/google/__tests__/phone-normalizer.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 20[2mms[22m[39m
+ [32m✓[39m src/lib/utils.test.ts [2m([22m[2m10 tests[22m[2m)[22m[32m 47[2mms[22m[39m
+ [32m✓[39m src/lib/owners/segmentation.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 36[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-12/routes-consolidation-contract.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 60[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-7/dashboard-contract.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 30[2mms[22m[39m
+ [32m✓[39m src/lib/properties/__tests__/auto-match.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 52[2mms[22m[39m
+ [32m✓[39m src/lib/real-estate/units.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 44[2mms[22m[39m
+ [32m✓[39m src/lib/custom-fields/__tests__/demo-custom-fields.test.ts [2m([22m[2m11 tests[22m[2m)[22m[32m 45[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-1/onboarding-token-contract.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 45[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-2/design-system-contract.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 14[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-3/admin-navigation-rbac-contract.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 24[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-8/properties-contract.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 28[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-2/admin-billing-ui-contract.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 18[2mms[22m[39m
+ [32m✓[39m src/lib/properties/__tests__/catalog-repository.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 49[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-9/knowledge-base-contract.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 19[2mms[22m[39m
+ [32m✓[39m src/lib/owners/properties.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 36[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-5/responsive-tables-contract.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 51[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-9/campaigns-broadcast-contract.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 25[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-2/products-ui-contract.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 13[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-2/admin-audit-ui-contract.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 11[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-5/kanban-inbox-contract.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 12[2mms[22m[39m
+ [32m✓[39m src/lib/__tests__/onboarding-cockpit-contract.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 46[2mms[22m[39m
+ [32m✓[39m src/lib/sprint-2/admin-users-ui-contract.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 58[2mms[22m[39m
+ [32m✓[39m src/app/crm/properties/__tests__/properties-page.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[32m 19[2mms[22m[39m
+ [32m✓[39m src/lib/integrations/google/__tests__/people-client.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 21[2mms[22m[39m
+ [32m✓[39m src/lib/whatsapp/__tests__/turn-reporter.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 21[2mms[22m[39m
+ [32m✓[39m src/lib/scoring/__tests__/scoring-routes.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 24[2mms[22m[39m
+ [2m[90m↓[39m[22m src/modules/captacao/__tests__/zz_e2e_real_db.test.ts [2m([22m[2m1 test[22m[2m | [22m[33m1 skipped[39m[2m)[22m
+
+[31m⎯⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Tests 1 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+
+[41m[1m FAIL [22m[49m src/lib/sprint-5/mobile-forms-contract.test.ts[2m:34:3[22m[2m > [22mcontratos de formulários móveis da Sprint 5[2m > [22mevita submits acidentais nos passos do broadcast
+[31m[1mAssertionError[22m: expected '"use client";\n\nimport React from "r…' to contain 'type="button" onClick={goBack}'[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- type="button" onClick={goBack}[39m
+[31m+ "use client";[39m
+[31m+[39m
+[31m+ import React from "react";[39m
+[31m+ import { ArrowLeft, ArrowRight, ShieldAlert } from "lucide-react";[39m
+[31m+ import { AudienceStep, SOURCE_OPTIONS } from "./BroadcastAudienceStep";[39m
+[31m+ import { Button } from "@repo/ui";[39m
+[31m+[39m
+[31m+ export { AudienceStep, SOURCE_OPTIONS };[39m
+[31m+[39m
+[31m+ type Setter<T> = (value: T) => void;[39m
+[31m+[39m
+[31m+ interface MessageStepProps {[39m
+[31m+   messageType: "text" | "template";[39m
+[31m+   setMessageType: Setter<"text" | "template">;[39m
+[31m+   messageText: string;[39m
+[31m+   setMessageText: Setter<string>;[39m
+[31m+   templateId: string;[39m
+[31m+   setTemplateId: Setter<string>;[39m
+[31m+   canGoNext: () => unknown;[39m
+[31m+   goBack: () => void;[39m
+[31m+   goNext: () => void;[39m
+[31m+ }[39m
+[31m+[39m
+[31m+ export const MOCK_TEMPLATES = [[39m
+[31m+   { id: "temp-promo", name: "Oferta Promocional", category: "marketing", content: "Olá {{1}}, temos uma oferta especial para você!" },[39m
+[31m+   { id: "temp-recall", name: "Recall Cliente", category: "marketing", content: "Passando pra saber como estão as obras, {{1}}!" },[39m
+[31m+   { id: "temp-lembte", name: "Lembrete Consulta", category: "utility", content: "Lembrete: sua consulta é amanhã às {{1}}, {{2}}." },[39m
+[31m+   { id: "temp-cobranca", name: "Cobrança", category: "utility", content: "Sua fatura de {{1}} vence em {{2}} dias." },[39m
+[31m+ ];[39m
+[31m+[39m
+[31m+ export function MessageStep({[39m
+[31m+   messageType, setMessageType, messageText, setMessageText,[39m
+[31m+   templateId, setTemplateId, canGoNext, goBack, goNext,[39m
+[31m+ }: MessageStepProps) {[39m
+[31m+   return ([39m
+[31m+     <div className="rounded-xl border bg-card p-6 shadow-sm space-y-6">[39m
+[31m+       <div className="flex gap-3">[39m
+[31m+ {([[39m
+[31m+           { value: "text", label: "Texto Livre" },[39m
+[31m+           { value: "template", label: "Template Meta" },[39m
+[31m+         ] as const).map(opt => ([39m
+[31m+           <Button[39m
+[31m+             key={opt.value}[39m
+[31m+             type="button"[39m
+[31m+             variant={messageType === opt.value ? "default" : "outline"}[39m
+[31m+             onClick={() => setMessageType(opt.value)}[39m
+[31m+             className="flex-1 rounded-xl border-2 py-3 text-sm font-medium transition-colors"[39m
+[31m+           >[39m
+[31m+             {opt.label}[39m
+[31m+           </Button>[39m
+[31m+         ))}[39m
+[31m+       </div>[39m
+[31m+[39m
+[31m+       {messageType === "text" ? ([39m
+[31m+         <textarea[39m
+[31m+           value={messageText} onChange={e => setMessageText(e.target.value)}[39m
+[31m+           placeholder="Digite a mensagem que será enviada..."[39m
+[31m+           className="w-full rounded-lg border border-border px-4 py-3 text-sm min-h-[120px] focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"[39m
+[31m+         />[39m
+[31m+       ) : ([39m
+[31m+         <div className="space-y-3">[39m
+[31m+           <label className="text-sm font-medium text-foreground">Selecione um template aprovado</label>[39m
+[31m+           <div className="grid gap-3">[39m
+[31m+             {MOCK_TEMPLATES.map(t => ([39m
+[31m+               <Button[39m
+[31m+                 key={t.id}[39m
+[31m+                 type="button"[39m
+[31m+                 variant={templateId === t.id ? "default" : "outline"}[39m
+[31m+                 onClick={() => setTemplateId(t.id)}[39m
+[31m+                 className="w-full text-left rounded-xl border-2 p-4 transition-colors"[39m
+[31m+               >[39m
+[31m+                 <div className="flex items-center justify-between">[39m
+[31m+                   <span className="font-medium text-sm text-foreground">{t.name}</span>[39m
+[31m+                   <span className={`text-2xs uppercase px-2 py-0.5 rounded-full font-medium ${t.category === "marketing" ? "bg-blue-100 text-blue-800" : "bg-muted text-muted-foreground"}`}>{t.category}</span>[39m
+[31m+                 </div>[39m
+[31m+                 <p className="text-xs text-muted-foreground mt-1">{t.content}</p>[39m
+[31m+               </Button>[39m
+[31m+             ))}[39m
+[31m+           </div>[39m
+[31m+           <p className="text-xs text-muted-foreground">Apenas templates com status <strong>approved</strong> no WhatsApp Business Platform.</p>[39m
+[31m+         </div>[39m
+[31m+       )}[39m
+[31m+[39m
+[31m+       {messageText && messageType === "text" ? ([39m
+[31m+         <div className="rounded-lg bg-muted border p-4">[39m
+[31m+           <p className="text-xs text-muted-foreground mb-2">Preview:</p>[39m
+[31m+           <p className="text-sm text-foreground whitespace-pre-wrap">{messageText}</p>[39m
+[31m+         </div>[39m
+[31m+       ) : null}[39m
+[31m+[39m
+[31m+       <div className="mobile-action-bar flex justify-between gap-3">[39m
+[31m+         <Button type="button" variant="ghost" onClick={goBack} className="min-h-11 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">[39m
+[31m+           <ArrowLeft className="h-4 w-4" /> Voltar[39m
+[31m+         </Button>[39m
+[31m+         <Button type="button" onClick={goNext} disabled={!canGoNext()} className="min-h-11 inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:bg-primary/90 disabled:opacity-50 transition-colors">[39m
+[31m+           Próximo <ArrowRight className="h-4 w-4" />[39m
+[31m+         </Button>[39m
+[31m+       </div>[39m
+[31m+     </div>[39m
+[31m+   );[39m
+[31m+ }[39m
+[31m+[39m
+[31m+ export function ContinuationStep({[39m
+[31m+   handler, setHandler, aiPersona, setAiPersona,[39m
+[31m+   pipelineStageId, setPipelineStageId, goBack, goNext,[39m
+[31m+ }: {[39m
+[31m+   handler: "ai" | "human" | "ai_then_human";[39m
+[31m+   setHandler: Setter<"ai" | "human" | "ai_then_human">;[39m
+[31m+   aiPersona: string;[39m
+[31m+   setAiPersona: Setter<string>;[39m
+[31m+   pipelineStageId: string;[39m
+[31m+   setPipelineStageId: Setter<string>;[39m
+[31m+   goBack: () => void;[39m
+[31m+   goNext: () => void;[39m
+[31m+ }) {[39m
+[31m+   return ([39m
+[31m+     <div className="rounded-xl border bg-card p-6 shadow-sm space-y-6">[39m
+[31m+       <div>[39m
+[31m+         <h3 className="font-semibold text-foreground mb-1">O que acontece quando o lead responder?</h3>[39m
+[31m+         <p className="text-sm text-muted-foreground">Configure como as respostas dos contatos serão tratadas.</p>[39m
+[31m+       </div>[39m
+[31m+[39m
+[31m+       <div className="space-y-3">[39m
+[31m+         <label className="text-sm font-medium text-foreground">Tipo de Atendimento</label>[39m
+[31m+         {([[39m
+[31m+           { value: "ai", label: "IA Auto-Reply", desc: "IA responde automaticamente todas as respostas" },[39m
+[31m+           { value: "human", label: "SDR Humano", desc: "Respostas vão para o inbox de um SDR" },[39m
+[31m+           { value: "ai_then_human", label: "IA → SDR", desc: "IA responde primeiro, transfere se não resolver" },[39m
+[31m+         ] as const).map(opt => ([39m
+[31m+           <Button[39m
+[31m+             key={opt.value}[39m
+[31m+             variant={handler === opt.value ? "default" : "outline"}[39m
+[31m+             onClick={() => setHandler(opt.value)}[39m
+[31m+             className="w-full text-left rounded-xl border-2 p-4 transition-colors"[39m
+[31m+           >[39m
+[31m+             <div className="font-medium text-sm text-foreground">{opt.label}</div>[39m
+[31m+             <div className="text-xs text-muted-foreground mt-0.5">{opt.desc}</div>[39m
+[31m+           </Button>[39m
+[31m+         ))}[39m
+[31m+       </div>[39m
+[31m+[39m
+[31m+       {handler !== "human" && ([39m
+[31m+         <div className="space-y-2">[39m
+[31m+           <label className="text-sm font-medium text-foreground">Persona da IA</label>[39m
+[31m+           <input[39m
+[31m+             value={aiPersona} onChange={e => setAiPersona(e.target.value)}[39m
+[31m+             placeholder="agent-sdr"[39m
+[31m+             className="w-full rounded-lg border border-border px-4 py-2 text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"[39m
+[31m+           />[39m
+[31m+           <p className="text-xs text-muted-foreground">Define o tom e o estilo da IA ao responder.</p>[39m
+[31m+         </div>[39m
+[31m+       )}[39m
+[31m+[39m
+[31m+       <div className="space-y-2">[39m
+[31m+         <label className="text-sm font-medium text-foreground">Etapa do Funil</label>[39m
+[31m+         <input[39m
+[31m+           value={pipelineStageId} onChange={e => setPipelineStageId(e.target.value)}[39m
+[31m+           placeholder="stage-001"[39m
+[31m+           className="w-full rounded-lg border border-border px-4 py-2 text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"[39m
+[31m+         />[39m
+[31m+         <p className="text-xs text-muted-foreground">Lead que responder será movido para esta etapa do funil.</p>[39m
+[31m+       </div>[39m
+[31m+[39m
+[31m+       <div className="mobile-action-bar flex justify-between gap-3">[39m
+[31m+         <Button type="button" variant="ghost" onClick={goBack} className="min-h-11 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">[39m
+[31m+           <ArrowLeft className="h-4 w-4" /> Voltar[39m
+[31m+         </Button>[39m
+[31m+         <Button type="button" onClick={goNext} className="min-h-11 inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors">[39m
+[31m+           Próximo <ArrowRight className="h-4 w-4" />[39m
+[31m+         </Button>[39m
+[31m+       </div>[39m
+[31m+     </div>[39m
+[31m+   );[39m
+[31m+ }[39m
+[31m+[39m
+[31m+ export function ConfirmStep({[39m
+[31m+   name, audienceType, audienceTag, audienceList, csvPhones, audienceSource,[39m
+[31m+   audienceDateFrom, audienceDateTo, estimatedCount, messageType, messageText,[39m
+[31m+   templateId, handler, needsHITL, hitlApproved, setHitlApproved, submitting,[39m
+[31m+   goBack, handleSubmit,[39m
+[31m+ }: {[39m
+[31m+   name: string;[39m
+[31m+   audienceType: "tag" | "list" | "csv";[39m
+[31m+   audienceTag: string;[39m
+[31m+   audienceList: string;[39m
+[31m+   csvPhones: string;[39m
+[31m+   audienceSource: string;[39m
+[31m+   audienceDateFrom: string;[39m
+[31m+   audienceDateTo: string;[39m
+[31m+   estimatedCount: number | null;[39m
+[31m+   messageType: "text" | "template";[39m
+[31m+   messageText: string;[39m
+[31m+   templateId: string;[39m
+[31m+   handler: "ai" | "human" | "ai_then_human";[39m
+[31m+   needsHITL: boolean;[39m
+[31m+   hitlApproved: boolean;[39m
+[31m+   setHitlApproved: Setter<boolean>;[39m
+[31m+   submitting: boolean;[39m
+[31m+   goBack: () => void;[39m
+[31m+   handleSubmit: () => void | Promise<void>;[39m
+[31m+ }) {[39m
+[31m+   return ([39m
+[31m+     <div className="rounded-xl border bg-card p-6 shadow-sm space-y-6">[39m
+[31m+       <h3 className="font-semibold text-foreground">Resumo do Disparo</h3>[39m
+[31m+[39m
+[31m+       <div className="divide-y rounded-lg border">[39m
+[31m+         <div className="flex justify-between px-4 py-3 text-sm">[39m
+[31m+           <span className="text-muted-foreground">Nome</span>[39m
+[31m+           <span className="font-medium">{name}</span>[39m
+[31m+         </div>[39m
+[31m+         <div className="flex justify-between px-4 py-3 text-sm">[39m
+[31m+           <span className="text-muted-foreground">Público</span>[39m
+[31m+           <span className="font-medium capitalize">{audienceType === "tag" ? `Tag: ${audienceTag}` : audienceType === "list" ? `Lista: ${audienceList}` : `CSV: ${csvPhones.split("\n").filter((l: string) => l.trim()).length} números`}</span>[39m
+[31m+         </div>[39m
+[31m+         <div className="flex justify-between px-4 py-3 text-sm">[39m
+[31m+           <span className="text-muted-foreground">Origem</span>[39m
+[31m+           <span className="font-medium capitalize">{audienceSource === "all" ? "Todas" : audienceSource}</span>[39m
+[31m+         </div>[39m
+[31m+         {(audienceDateFrom || audienceDateTo) ? ([39m
+[31m+           <div className="flex justify-between px-4 py-3 text-sm">[39m
+[31m+             <span className="text-muted-foreground">Período</span>[39m
+[31m+             <span className="font-medium">{audienceDateFrom || "..."} até {audienceDateTo || "..."}</span>[39m
+[31m+           </div>[39m
+[31m+         ) : null}[39m
+[31m+         <div className="flex justify-between px-4 py-3 text-sm">[39m
+[31m+           <span className="text-muted-foreground">Contatos</span>[39m
+[31m+           <span className="font-medium">{estimatedCount}</span>[39m
+[31m+         </div>[39m
+[31m+         <div className="flex justify-between px-4 py-3 text-sm">[39m
+[31m+           <span className="text-muted-foreground">Mensagem</span>[39m
+[31m+           <span className="font-medium truncate max-w-[200px]">{messageType === "text" ? messageText.slice(0, 60) + "..." : `Template: ${MOCK_TEMPLATES.find(t => t.id === templateId)?.name || templateId}`}</span>[39m
+[31m+         </div>[39m
+[31m+         <div className="flex justify-between px-4 py-3 text-sm">[39m
+[31m+           <span className="text-muted-foreground">Continuação</span>[39m
+[31m+           <span className="font-medium">{handler === "ai" ? "IA Auto-Reply" : handler === "human" ? "SDR Humano" : "IA → SDR"}</span>[39m
+[31m+         </div>[39m
+[31m+         <div className="flex justify-between px-4 py-3 text-sm">[39m
+[31m+           <span className="text-muted-foreground">Tempo estimado</span>[39m
+[31m+           <span className="font-medium">~{estimatedCount ? Math.ceil(estimatedCount / 60) : "?"} min</span>[39m
+[31m+         </div>[39m
+[31m+         <div className="flex justify-between px-4 py-3 text-sm">[39m
+[31m+           <span className="text-muted-foreground">Limite por contato</span>[39m
+[31m+           <span className="font-medium">2 mensagens/dia</span>[39m
+[31m+         </div>[39m
+[31m+       </div>[39m
+[31m+[39m
+[31m+       {needsHITL ? ([39m
+[31m+         <div className="rounded-lg border border-warning/20 bg-warning/10 p-4 space-y-3">[39m
+[31m+           <div className="flex items-start gap-3">[39m
+[31m+             <ShieldAlert className="h-5 w-5 text-warning shrink-0 mt-0.5" />[39m
+[31m+             <div>[39m
+[31m+               <p className="text-sm font-medium text-warning">Aprovação necessária</p>[39m
+[31m+               <p className="text-xs text-warning mt-1">Disparos para mais de 50 contatos exigem aprovação manual antes do envio.</p>[39m
+[31m+             </div>[39m
+[31m+           </div>[39m
+[31m+           <label className="flex items-start gap-2 cursor-pointer">[39m
+[31m+             <input[39m
+[31m+               type="checkbox"[39m
+[31m+               checked={hitlApproved}[39m
+[31m+               onChange={e => setHitlApproved(e.target.checked)}[39m
+[31m+               className="mt-0.5 rounded border-border"[39m
+[31m+             />[39m
+[31m+             <span className="text-xs text-warning">Confirmo que revisei a lista de contatos e autorizo o disparo para <strong>{estimatedCount}</strong> contatos.</span>[39m
+[31m+           </label>[39m
+[31m+         </div>[39m
+[31m+       ) : null}[39m
+[31m+[39m
+[31m+       <div className="mobile-action-bar flex justify-between gap-3">[39m
+[31m+         <Button type="button" variant="ghost" onClick={goBack} className="min-h-11 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">[39m
+[31m+           <ArrowLeft className="h-4 w-4" /> Voltar[39m
+[31m+         </Button>[39m
+[31m+         <Button[39m
+[31m+           type="button"[39m
+[31m+           onClick={handleSubmit}[39m
+[31m+           disabled={submitting || (needsHITL && !hitlApproved)}[39m
+[31m+           className="min-h-11 inline-flex items-center gap-2 rounded-lg bg-primary px-6 py-3 text-sm font-bold text-primary-foreground hover:bg-primary/90 disabled:opacity-50 transition-colors"[39m
+[31m+         >[39m
+[31m+           {submitting ? "Enviando..." : needsHITL ? "Autorizar e Iniciar Disparo" : "Iniciar Disparo"}[39m
+[31m+           <ArrowRight className="h-4 w-4" />[39m
+[31m+         </Button>[39m
+[31m+       </div>[39m
+[31m+     </div>[39m
+[31m+   );[39m
+[31m+ }[39m
+[31m+[39m
+
+[36m [2m❯[22m src/lib/sprint-5/mobile-forms-contract.test.ts:[2m37:23[22m[39m
+    [90m 35|[39m     const broadcast = readRepo("apps/pilotcrm/src/app/crm/broadcast/ne…
+    [90m 36|[39m
+    [90m 37|[39m     [34mexpect[39m(broadcast)[33m.[39m[34mtoContain[39m([32m'type="button" onClick={goBack}'[39m)[33m;[39m
+    [90m   |[39m                       [31m^[39m
+    [90m 38|[39m     [34mexpect[39m(broadcast)[33m.[39m[34mtoContain[39m([32m'type="button" onClick={goNext}'[39m)[33m;[39m
+    [90m 39|[39m     expect(broadcast).toContain('type="button"\n          onClick={han…
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯[22m[39m
+
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m147 passed[39m[22m[2m | [22m[33m1 skipped[39m[90m (149)[39m
+[2m      Tests [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m863 passed[39m[22m[2m | [22m[33m1 skipped[39m[90m (865)[39m
+[2m   Start at [22m 15:27:17
+[2m   Duration [22m 66.85s[2m (transform 51.31s, setup 265.40s, import 207.57s, tests 22.50s, environment 92ms)[22m
+
+[1m[7m[35m HTML [39m[27m[22m [35mReport is generated[39m
+[2m       You can run [22m[1mnpx vite preview --outDir coverage[22m[2m to see the test results.[22m
+JUNIT report written to C:/Users/Gustavo/.cline/data/workspaces/chat/pilotcrm/apps/pilotcrm/coverage/junit.xml

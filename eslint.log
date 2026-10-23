@@ -1,0 +1,25 @@
+
+C:\Users\Gustavo\.cline\data\workspaces\chat\pilotcrm\apps\pilotcrm\src\lib\whatsapp\analysis-engine.ts
+   5:10  error    'enrichment_proposals' is defined but never used. Allowed unused vars must match /^_/u        @typescript-eslint/no-unused-vars
+  84:8   warning  Async function 'runWhatsAppTurnAnalysis' has too many lines (224). Maximum allowed is 150     max-lines-per-function
+  84:8   warning  Async function 'runWhatsAppTurnAnalysis' has too many statements (91). Maximum allowed is 20  max-statements
+  84:8   warning  Async function 'runWhatsAppTurnAnalysis' has a complexity of 78. Maximum allowed is 12        complexity
+
+C:\Users\Gustavo\.cline\data\workspaces\chat\pilotcrm\apps\pilotcrm\src\lib\whatsapp\contact-analyzer.ts
+  51:8  warning  Function 'analyzeContactRoleAndSuffix' has too many statements (56). Maximum allowed is 20     max-statements
+  51:8  warning  Function 'analyzeContactRoleAndSuffix' has a complexity of 26. Maximum allowed is 12           complexity
+  88:5  error    'availabilityStatus' is assigned a value but never used. Allowed unused vars must match /^_/u  @typescript-eslint/no-unused-vars
+
+C:\Users\Gustavo\.cline\data\workspaces\chat\pilotcrm\apps\pilotcrm\src\lib\whatsapp\privacy-filter.ts
+  17:91  error    Unnecessary escape character: \)                                                     no-useless-escape
+  29:8   warning  Function 'evaluateMessagePrivacy' has too many parameters (5). Maximum allowed is 4  max-params
+  29:8   warning  Function 'evaluateMessagePrivacy' has a complexity of 13. Maximum allowed is 12      complexity
+
+C:\Users\Gustavo\.cline\data\workspaces\chat\pilotcrm\apps\pilotcrm\src\lib\whatsapp\taxonomy-formatter.ts
+  90:66  error  Unnecessary escape character: \)  no-useless-escape
+
+✖ 11 problems (4 errors, 7 warnings)
+
+undefined
+C:\Users\Gustavo\.cline\data\workspaces\chat\pilotcrm\apps\pilotcrm:
+[ERR_PNPM_RECURSIVE_EXEC_FIRST_FAIL] Command failed with exit code 1: eslint src/lib/whatsapp/privacy-filter.ts src/lib/whatsapp/contact-analyzer.ts src/lib/whatsapp/taxonomy-formatter.ts src/lib/whatsapp/analysis-engine.ts src/lib/whatsapp/turn-reporter.ts src/lib/whatsapp/__tests__/privacy-filter.test.ts src/lib/whatsapp/__tests__/contact-analyzer.test.ts src/lib/whatsapp/__tests__/taxonomy-formatter.test.ts

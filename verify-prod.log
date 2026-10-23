@@ -1,0 +1,3 @@
+CONNECTED db=postgres user=postgres
+QUEUE_TABLE_EXISTS=yes
+CONVERSATIONS_ROWS=1834

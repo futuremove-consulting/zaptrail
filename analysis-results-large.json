@@ -1,0 +1,53 @@
+{
+  "total": 11,
+  "byCode": {
+    "sale_and_rent": 6,
+    "available_sale": 5
+  },
+  "results": [
+    {
+      "text": "Carlos, aproveitando o contato, por acaso você possui algum outro imóvel que tenha intenção de vender ou alugar?",
+      "code": "sale_and_rent"
+    },
+    {
+      "text": "Lourdes, aproveitando o contato, por acaso você possui algum outro imóvel que tenha intenção de vender ou alugar?",
+      "code": "sale_and_rent"
+    },
+    {
+      "text": "Entendido. Vou deixar meu contato aqui e, você decidindo vender ou querendo avaliar o imóvel, conte comigo, ok?",
+      "code": "available_sale"
+    },
+    {
+      "text": "Vamos fortalecer a nossa parceria então. Você sabendo de algum proprietário querendo vender ou alugar, me avisa. Marcamos um café.",
+      "code": "sale_and_rent"
+    },
+    {
+      "text": "Antônio, aproveitando o contato, por acaso você possui algum outro imóvel que tenha intenção de vender ou alugar?",
+      "code": "sale_and_rent"
+    },
+    {
+      "text": "Aproveitando meu contato, por acaso você tem algum outro imóvel que gostaria de vender ou alugar? Ou busca algum perfil específico para investimento?",
+      "code": "sale_and_rent"
+    },
+    {
+      "text": "Sabendo de alguém que quer vender ou alugar o próprio imóvel, ou comprar/investir...me fala",
+      "code": "sale_and_rent"
+    },
+    {
+      "text": "as vezes o cara tem imovel e quer vender pra reinvestir. Chama que dá negócio!",
+      "code": "available_sale"
+    },
+    {
+      "text": "Você pensa em vender?",
+      "code": "available_sale"
+    },
+    {
+      "text": "Então depende de encontrar o maior e vender o dele.",
+      "code": "available_sale"
+    },
+    {
+      "text": "Salva meu contato e decidindo vender ou querendo uma avaliação, estou à disposição, ok?",
+      "code": "available_sale"
+    }
+  ]
+}

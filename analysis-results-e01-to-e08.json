@@ -1,0 +1,53 @@
+{
+  "total": 11,
+  "byCode": {
+    "e07_both_options": 6,
+    "unknown": 5
+  },
+  "results": [
+    {
+      "text": "Carlos, aproveitando o contato, por acaso você possui algum outro imóvel que tenha intenção de vender ou alugar?",
+      "code": "e07_both_options"
+    },
+    {
+      "text": "Lourdes, aproveitando o contato, por acaso você possui algum outro imóvel que tenha intenção de vender ou alugar?",
+      "code": "e07_both_options"
+    },
+    {
+      "text": "Entendido. Vou deixar meu contato aqui e, você decidindo vender ou querendo avaliar o imóvel, conte comigo, ok?",
+      "code": "unknown"
+    },
+    {
+      "text": "Vamos fortalecer a nossa parceria então. Você sabendo de algum proprietário querendo vender ou alugar, me avisa. Marcamo",
+      "code": "e07_both_options"
+    },
+    {
+      "text": "Antônio, aproveitando o contato, por acaso você possui algum outro imóvel que tenha intenção de vender ou alugar?",
+      "code": "e07_both_options"
+    },
+    {
+      "text": "Aproveitando meu contato, por acaso você tem algum outro imóvel que gostaria de vender ou alugar? Ou busca algum perfil ",
+      "code": "e07_both_options"
+    },
+    {
+      "text": "Sabendo de alguém que quer vender ou alugar o próprio imóvel, ou comprar/investir...me fala",
+      "code": "e07_both_options"
+    },
+    {
+      "text": "as vezes o cara tem imovel e quer vender pra reinvestir. Chama que dá negócio!",
+      "code": "unknown"
+    },
+    {
+      "text": "Você pensa em vender?",
+      "code": "unknown"
+    },
+    {
+      "text": "Então depende de encontrar o maior e vender o dele.",
+      "code": "unknown"
+    },
+    {
+      "text": "Salva meu contato e decidindo vender ou querendo uma avaliação, estou à disposição, ok?",
+      "code": "unknown"
+    }
+  ]
+}
