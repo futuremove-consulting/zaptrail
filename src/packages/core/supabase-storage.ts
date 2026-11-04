@@ -1,4 +1,4 @@
-import {
+import type {
   StoragePort,
   UniversalInterpretationEnvelope,
   ValueObservation,
@@ -6,10 +6,10 @@ import {
 } from './types';
 import {
   PostgrestSupabaseClient,
-  PostgrestSupabaseClientOptions,
+  type PostgrestSupabaseClientOptions,
 } from './postgrest-supabase-client';
 
-export { PostgrestSupabaseClient, PostgrestSupabaseClientOptions };
+export { PostgrestSupabaseClient, type PostgrestSupabaseClientOptions };
 
 export function assertTenantScope(tenantId?: string | null): string {
   if (typeof tenantId !== 'string' || !tenantId.trim()) {

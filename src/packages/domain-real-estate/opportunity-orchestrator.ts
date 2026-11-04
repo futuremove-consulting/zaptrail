@@ -35,12 +35,12 @@ import {
   detectRealEstateConditions,
 } from './role-intent-rules';
 import {
-  CoalesceTurnWindowParams,
+  type CoalesceTurnWindowParams,
   coalesceTurnWindow,
 } from './turn-window-coalescer';
 import {
   RealEstateLLMStructuredOutputSchema,
-  RealEstateLLMStructuredOutput,
+  type RealEstateLLMStructuredOutput,
 } from './llm/real-estate-llm-schema';
 import { convertRealEstateLlmOutputToCorePayload } from './llm/real-estate-llm-converter';
 import {
@@ -50,7 +50,7 @@ import {
 import { MockLLMProvider } from './llm/mock-llm-provider';
 import { enrichOpportunitiesWithAttributes } from './opportunity-attributes-builder';
 
-export { CoalesceTurnWindowParams, coalesceTurnWindow };
+export { type CoalesceTurnWindowParams, coalesceTurnWindow };
 const PARSER_VERSION = '1.0.0';
 
 function makeOpp(id: string, type: RealEstateOpportunityType, entityKey: string, stage: OpportunityAssessment['stage'], conf: number, evidence: EvidenceRef[]): OpportunityAssessment {
