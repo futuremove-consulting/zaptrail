@@ -169,4 +169,85 @@ describe('Standalone HTTP Server (src/server.ts) & Canonical TypeScript Backfill
     expect(demandSuggestion.payload.neighborhood).toBe('Moema');
     expect(demandSuggestion.payload.targetValue).toBe('950000');
   });
+
+  it('R1-01 & R1-02 (Cycle 1): returns clean HTTP 413 JSON on oversized payload without ECONNRESET and sets X-Content-Type-Options: nosniff', async () => {
+    const zaptrailServer = createZapTrailHttpServer({ maxBodyBytes: 256 });
+    await new Promise<void>((resolve) => zaptrailServer.listen(0, '127.0.0.1', () => resolve()));
+    serversToClose.push(zaptrailServer);
+    const port = (zaptrailServer.address() as AddressInfo).port;
+    const baseUrl = `http://127.0.0.1:${port}`;
+
+    const healthRes = await fetch(`${baseUrl}/health`);
+    expect(healthRes.headers.get('x-content-type-options')).toBe('nosniff');
+    expect(healthRes.headers.get('cache-control')).toBe('no-store');
+
+    const oversizedBody = JSON.stringify({
+      tenant_id: '11111111-1111-4111-8111-111111111111',
+      padding: 'x'.repeat(1024),
+    });
+
+    const res413 = await fetch(`${baseUrl}/api/v1/ingest/whatsapp`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: oversizedBody,
+    });
+
+    expect(res413.status).toBe(413);
+    const json413 = await res413.json();
+    expect(json413.success).toBe(false);
+    expect(json413.error).toContain('Payload Too Large');
+  });
+
+  it('R2-01 (Cycle 2): migration 005 guards current_setting(request.jwt.claims) with NULLIF and enforces WITH CHECK + FORCE ROW LEVEL SECURITY', async () => {
+    const fs = await import('node:fs');
+    const path = await import('node:path');
+    const sqlContent = fs.readFileSync(
+      path.resolve(process.cwd(), 'supabase/migrations/005-zaptrail-prefixed-tenant-tables.sql'),
+      'utf8'
+    );
+
+    expect(sqlContent).toContain("NULLIF(current_setting('request.jwt.claims', true), '')");
+    expect(sqlContent).toContain('FORCE ROW LEVEL SECURITY');
+    expect(sqlContent).toContain('WITH CHECK');
+  });
+
+  it('R3-01 (Cycle 3): runHistoricalBackfill tracks outboundFailures, errorDetails, and invokes onProgress', async () => {
+    const failingFetch = async (): Promise<Response> => {
+      return new Response('Bad Gateway', { status: 502 });
+    };
+
+    const progressSteps: Array<{ current: number; total: number }> = [];
+
+    const summary = await runHistoricalBackfill({
+      turns: [
+        {
+          tenant_id: '11111111-1111-4111-8111-111111111111',
+          conversation_id: '44444444-4444-4444-8444-444444444444',
+          messages: [
+            {
+              external_message_id: 'hist-fail-cb-1',
+              sender_id: '5541977776666',
+              direction: 'inbound',
+              raw_text: 'Quero vender meu apartamento no Batel por 900 mil',
+              timestamp: '2026-11-04T11:00:00Z',
+            },
+          ],
+        },
+      ],
+      callbackUrl: 'https://pilotcrm.local/api/crm/whatsapp/ai-suggestions/ingest',
+      callbackToken: 'super-secret-cb-token',
+      fetchFn: failingFetch as typeof fetch,
+      onProgress: (current, total) => progressSteps.push({ current, total }),
+    });
+
+    expect(progressSteps).toEqual([{ current: 1, total: 1 }]);
+    expect(summary.processedNew).toBe(1);
+    expect(summary.outboundDispatched).toBe(0);
+    expect(summary.outboundFailures).toBe(1);
+    expect(summary.errorDetails).toHaveLength(1);
+    expect(summary.errorDetails[0].stage).toBe('outbound');
+    expect(summary.errorDetails[0].message).toContain('502');
+    expect(summary.errorDetails[0].message).not.toContain('super-secret-cb-token');
+  });
 });
+

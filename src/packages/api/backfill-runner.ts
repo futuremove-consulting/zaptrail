@@ -6,6 +6,12 @@ import { dispatchOutboundSuggestions } from './outbound-dispatcher';
 
 export type BackfillTurnInput = z.input<typeof IngestWhatsappPayloadSchema>;
 
+export interface BackfillErrorDetail {
+  conversation_id?: string;
+  stage: 'ingest' | 'outbound';
+  message: string;
+}
+
 export interface HistoricalBackfillOptions {
   turns: BackfillTurnInput[];
   callbackUrl?: string;
@@ -13,6 +19,7 @@ export interface HistoricalBackfillOptions {
   storage?: SupabaseStoragePort;
   engine?: HybridInterpretationEngine;
   fetchFn?: typeof fetch;
+  onProgress?: (current: number, total: number) => void;
 }
 
 export interface HistoricalBackfillSummary {
@@ -21,7 +28,14 @@ export interface HistoricalBackfillSummary {
   duplicatesSkipped: number;
   opportunitiesExtracted: number;
   outboundDispatched: number;
+  outboundFailures: number;
   errors: number;
+  errorDetails: BackfillErrorDetail[];
+}
+
+function redactSecret(text: string, secret?: string): string {
+  if (!secret || !secret.trim()) return text;
+  return text.split(secret.trim()).join('[REDACTED]');
 }
 
 /**
@@ -35,16 +49,21 @@ export async function runHistoricalBackfill(
   options: HistoricalBackfillOptions
 ): Promise<HistoricalBackfillSummary> {
   const storage = options.storage ?? new SupabaseStoragePort();
+  const total = options.turns.length;
   const summary: HistoricalBackfillSummary = {
-    totalTurns: options.turns.length,
+    totalTurns: total,
     processedNew: 0,
     duplicatesSkipped: 0,
     opportunitiesExtracted: 0,
     outboundDispatched: 0,
+    outboundFailures: 0,
     errors: 0,
+    errorDetails: [],
   };
 
-  for (const turn of options.turns) {
+  for (let idx = 0; idx < total; idx++) {
+    const turn = options.turns[idx];
+    const targetCallbackToken = options.callbackToken || turn.callback_token;
     try {
       const result = await ingestWhatsappTurn(
         {
@@ -61,6 +80,7 @@ export async function runHistoricalBackfill(
 
       if (result.duplicate) {
         summary.duplicatesSkipped++;
+        options.onProgress?.(idx + 1, total);
         continue;
       }
 
@@ -68,7 +88,6 @@ export async function runHistoricalBackfill(
       summary.opportunitiesExtracted += result.envelope.opportunities?.length ?? 0;
 
       const targetCallbackUrl = options.callbackUrl || turn.callback_url;
-      const targetCallbackToken = options.callbackToken || turn.callback_token;
       if (targetCallbackUrl) {
         const dispatchRes = await dispatchOutboundSuggestions({
           envelope: result.envelope,
@@ -78,11 +97,25 @@ export async function runHistoricalBackfill(
         });
         if (dispatchRes.dispatched) {
           summary.outboundDispatched += dispatchRes.count ?? 0;
+        } else if (dispatchRes.error) {
+          summary.outboundFailures++;
+          summary.errorDetails.push({
+            conversation_id: turn.conversation_id,
+            stage: 'outbound',
+            message: redactSecret(dispatchRes.error, targetCallbackToken),
+          });
         }
       }
-    } catch {
+    } catch (err: unknown) {
       summary.errors++;
+      const rawMsg = err instanceof Error ? err.message : String(err);
+      summary.errorDetails.push({
+        conversation_id: turn?.conversation_id,
+        stage: 'ingest',
+        message: redactSecret(rawMsg, targetCallbackToken),
+      });
     }
+    options.onProgress?.(idx + 1, total);
   }
 
   return summary;

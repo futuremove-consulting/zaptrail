@@ -70,21 +70,37 @@ CREATE TABLE IF NOT EXISTS zaptrail_review_queue (
 );
 
 ALTER TABLE zaptrail_origin_messages ENABLE ROW LEVEL SECURITY;
+ALTER TABLE zaptrail_origin_messages FORCE ROW LEVEL SECURITY;
 ALTER TABLE zaptrail_extraction_runs ENABLE ROW LEVEL SECURITY;
+ALTER TABLE zaptrail_extraction_runs FORCE ROW LEVEL SECURITY;
 ALTER TABLE zaptrail_evidence_spans ENABLE ROW LEVEL SECURITY;
+ALTER TABLE zaptrail_evidence_spans FORCE ROW LEVEL SECURITY;
 ALTER TABLE zaptrail_review_queue ENABLE ROW LEVEL SECURITY;
+ALTER TABLE zaptrail_review_queue FORCE ROW LEVEL SECURITY;
 
+DROP POLICY IF EXISTS zaptrail_origin_messages_tenant_isolation ON zaptrail_origin_messages;
 CREATE POLICY zaptrail_origin_messages_tenant_isolation ON zaptrail_origin_messages
-  FOR ALL USING (tenant_id = current_setting('request.jwt.claims', true)::json->>'tenant_id');
+  FOR ALL
+  USING (tenant_id = NULLIF(current_setting('request.jwt.claims', true), '')::json->>'tenant_id')
+  WITH CHECK (tenant_id = NULLIF(current_setting('request.jwt.claims', true), '')::json->>'tenant_id');
 
+DROP POLICY IF EXISTS zaptrail_extraction_runs_tenant_isolation ON zaptrail_extraction_runs;
 CREATE POLICY zaptrail_extraction_runs_tenant_isolation ON zaptrail_extraction_runs
-  FOR ALL USING (tenant_id = current_setting('request.jwt.claims', true)::json->>'tenant_id');
+  FOR ALL
+  USING (tenant_id = NULLIF(current_setting('request.jwt.claims', true), '')::json->>'tenant_id')
+  WITH CHECK (tenant_id = NULLIF(current_setting('request.jwt.claims', true), '')::json->>'tenant_id');
 
+DROP POLICY IF EXISTS zaptrail_evidence_spans_tenant_isolation ON zaptrail_evidence_spans;
 CREATE POLICY zaptrail_evidence_spans_tenant_isolation ON zaptrail_evidence_spans
-  FOR ALL USING (tenant_id = current_setting('request.jwt.claims', true)::json->>'tenant_id');
+  FOR ALL
+  USING (tenant_id = NULLIF(current_setting('request.jwt.claims', true), '')::json->>'tenant_id')
+  WITH CHECK (tenant_id = NULLIF(current_setting('request.jwt.claims', true), '')::json->>'tenant_id');
 
+DROP POLICY IF EXISTS zaptrail_review_queue_tenant_isolation ON zaptrail_review_queue;
 CREATE POLICY zaptrail_review_queue_tenant_isolation ON zaptrail_review_queue
-  FOR ALL USING (tenant_id = current_setting('request.jwt.claims', true)::json->>'tenant_id');
+  FOR ALL
+  USING (tenant_id = NULLIF(current_setting('request.jwt.claims', true), '')::json->>'tenant_id')
+  WITH CHECK (tenant_id = NULLIF(current_setting('request.jwt.claims', true), '')::json->>'tenant_id');
 
 REVOKE ALL ON zaptrail_origin_messages FROM anon;
 REVOKE ALL ON zaptrail_extraction_runs FROM anon;
