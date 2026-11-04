@@ -132,6 +132,26 @@ export class PilotCRMAdapter implements CRMAdapter<PilotCRMProposal> {
     }
 
     const isReview = envelope.review_required || envelope.actions.some((a) => a.action_type === 'human_review');
+    const buildDealPayload = (opp: UniversalInterpretationEnvelope['opportunities'][0], recAction: string, extra?: Record<string, unknown>) => {
+      const attrs = (opp.attributes || {}) as Record<string, unknown>;
+      return {
+        opportunity_type: opp.opportunity_type,
+        recommended_action: recAction,
+        attributes: opp.attributes,
+        side: attrs.side,
+        intention: attrs.intention,
+        timing: attrs.timing,
+        neighborhood: attrs.neighborhood,
+        targetValue: attrs.targetValue ?? (attrs.price !== undefined ? String(attrs.price) : undefined),
+        phone: attrs.phone,
+        contactName: attrs.contactName,
+        title: attrs.title,
+        nextAction: recAction,
+        stageName: recAction === 'human_review' ? 'Revisão' : 'Qualificação',
+        propertyDraft: attrs.propertyDraft,
+        ...extra,
+      };
+    };
 
     // 3. Opportunities
     for (const opp of envelope.opportunities) {
@@ -139,14 +159,14 @@ export class PilotCRMAdapter implements CRMAdapter<PilotCRMProposal> {
         proposals.push(makeProposal(
           envelope, `prop-${envId}-defer-${opp.opportunity_id}`, 'DEFER', 'deal', opp.entity_key,
           opp.epistemic_status, opp.confidence, false,
-          { opportunity_type: opp.opportunity_type, recommended_action: 'register_future_followup', attributes: opp.attributes },
+          buildDealPayload(opp, 'register_future_followup'),
           opp.evidence_refs
         ));
       } else if (isReview && opp.confidence < 0.65) {
         proposals.push(makeProposal(
           envelope, `prop-${envId}-review-${opp.opportunity_id}`, 'REVIEW', 'deal', opp.entity_key,
           opp.epistemic_status, opp.confidence, true,
-          { opportunity_type: opp.opportunity_type, recommended_action: 'human_review', review_reasons: envelope.review_items.map((r) => r.reason), attributes: opp.attributes },
+          buildDealPayload(opp, 'human_review', { review_reasons: envelope.review_items.map((r) => r.reason) }),
           opp.evidence_refs
         ));
       } else {
@@ -159,7 +179,7 @@ export class PilotCRMAdapter implements CRMAdapter<PilotCRMProposal> {
         proposals.push(makeProposal(
           envelope, `prop-${envId}-add-${opp.opportunity_id}`, 'ADD', 'deal', opp.entity_key,
           opp.epistemic_status, opp.confidence, false,
-          { opportunity_type: opp.opportunity_type, recommended_action: recAction, attributes: opp.attributes },
+          buildDealPayload(opp, recAction),
           opp.evidence_refs
         ));
       }

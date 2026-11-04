@@ -4,6 +4,12 @@ import {
   ValueObservation,
   EvidenceRef,
 } from './types';
+import {
+  PostgrestSupabaseClient,
+  PostgrestSupabaseClientOptions,
+} from './postgrest-supabase-client';
+
+export { PostgrestSupabaseClient, PostgrestSupabaseClientOptions };
 
 export function assertTenantScope(tenantId?: string | null): string {
   if (typeof tenantId !== 'string' || !tenantId.trim()) {
@@ -102,21 +108,40 @@ export class InMemorySupabaseTableClient {
 
 export class SupabaseStoragePort implements StoragePort {
   private readonly client: InMemorySupabaseTableClient;
+  private readonly pgClient?: PostgrestSupabaseClient;
 
-  constructor(client?: InMemorySupabaseTableClient) {
-    this.client = client ?? new InMemorySupabaseTableClient();
+  constructor(client?: InMemorySupabaseTableClient | PostgrestSupabaseClient) {
+    if (client instanceof PostgrestSupabaseClient) {
+      this.client = new InMemorySupabaseTableClient();
+      this.pgClient = client;
+    } else {
+      this.client = client ?? new InMemorySupabaseTableClient();
+      const envPg = new PostgrestSupabaseClient();
+      if (!client && envPg.isConfigured()) {
+        this.pgClient = envPg;
+      }
+    }
   }
 
   public async isProcessed(tenantId: string, provider: string, externalMessageId: string): Promise<boolean> {
     const validTenant = assertTenantScope(tenantId);
     const key = `${validTenant}:${provider}:${externalMessageId}`;
-    return this.client.processedEvents.has(key);
+    if (this.client.processedEvents.has(key)) return true;
+    if (this.pgClient?.isConfigured()) {
+      const remoteHas = await this.pgClient.checkProcessed(validTenant, provider, externalMessageId);
+      if (remoteHas) this.client.processedEvents.add(key);
+      return remoteHas;
+    }
+    return false;
   }
 
   public async markProcessed(tenantId: string, provider: string, externalMessageId: string): Promise<void> {
     const validTenant = assertTenantScope(tenantId);
     const key = `${validTenant}:${provider}:${externalMessageId}`;
     this.client.processedEvents.add(key);
+    if (this.pgClient?.isConfigured()) {
+      await this.pgClient.insertProcessedMarker(validTenant, provider, externalMessageId);
+    }
   }
 
   public async saveEnvelope(envelope: UniversalInterpretationEnvelope): Promise<void> {

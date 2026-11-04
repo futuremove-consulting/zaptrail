@@ -1,10 +1,8 @@
-/** ZT-007 — ZapTrail Semantic Extractor
- * Ponytail: minimal extraction function using Zod validation, English identifiers only
- * 
- * Transforms a WhatsApp message into a structured management object
- * with evidence, confidence, and typed object classification.
+/**
+ * @deprecated Legacy ZT-007 prototype extractor.
+ * Canonical interpretation now runs through `src/packages/core` (HybridInterpretationEngine)
+ * and `src/packages/domain-real-estate` (RealEstateDomainPack + 7-layer rules).
  */
-
 import { objectTypeOptions, ExtractedManagementObject, ExtractedEvidence, ExtractedObjectMetadata } from './schema'
 
 /** Map a message body keyword to an object type hint */

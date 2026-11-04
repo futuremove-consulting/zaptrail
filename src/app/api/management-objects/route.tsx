@@ -31,13 +31,22 @@ export function getSupabaseClient(_request?: Request): SupabaseClient | any {
   return createClient(supabaseUrl, supabaseKey);
 }
 
+export type RouteContextParams = {
+  params?: { workspace?: string } | Promise<{ workspace?: string }>;
+};
+
+async function resolveWorkspaceFromContext(context?: RouteContextParams): Promise<string> {
+  const resolvedParams = context?.params ? await Promise.resolve(context.params) : undefined;
+  return validateWorkspaceScope(resolvedParams?.workspace);
+}
+
 export async function GET(
   request: Request,
-  { params }: { params: { workspace: string } }
+  context: RouteContextParams
 ) {
   let workspaceId: string;
   try {
-    workspaceId = validateWorkspaceScope(params?.workspace);
+    workspaceId = await resolveWorkspaceFromContext(context);
   } catch (err: any) {
     return NextResponse.json({ error: err.message }, { status: 400 });
   }
@@ -89,16 +98,16 @@ export async function GET(
     );
   }
 
-  return NextResponse.json({ data: filtered });
+  return NextResponse.json({ data: filtered, workspace: workspaceId });
 }
 
 export async function POST(
   request: Request,
-  { params }: { params: { workspace: string } }
+  context: RouteContextParams
 ) {
   let workspaceId: string;
   try {
-    workspaceId = validateWorkspaceScope(params?.workspace);
+    workspaceId = await resolveWorkspaceFromContext(context);
   } catch (err: any) {
     return NextResponse.json({ error: err.message }, { status: 400 });
   }
@@ -167,11 +176,11 @@ export async function POST(
 
 export async function PUT(
   request: Request,
-  { params }: { params: { workspace: string } }
+  context: RouteContextParams
 ) {
   let workspaceId: string;
   try {
-    workspaceId = validateWorkspaceScope(params?.workspace);
+    workspaceId = await resolveWorkspaceFromContext(context);
   } catch (err: any) {
     return NextResponse.json({ error: err.message }, { status: 400 });
   }

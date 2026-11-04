@@ -10,9 +10,12 @@ const PARSER_VERSION = '1.0.0';
 
 export interface PropertyMetricsResult {
   property_type?: RealEstatePropertyType;
+  property_subtype?: string;
   occupancy_status?: RealEstateOccupancyStatus;
   bedrooms?: number;
   area_m2?: number;
+  neighborhood?: string;
+  timing?: 'immediate' | 'short_term' | 'medium_term' | 'flexible';
   secondary_property_type?: RealEstatePropertyType;
   secondary_occupancy_status?: RealEstateOccupancyStatus;
   secondary_bedrooms?: number;
@@ -123,8 +126,8 @@ export function extractMonetaryValuesPtBr(
     if (hasOverlap(claimedSpans, start, end)) continue;
     claimedSpans.push({ start, end });
     const amount = Math.round(parseFloat(match[1].replace(',', '.')) * 1_000_000);
-    const prefix = text.slice(Math.max(0, start - 40), start).toLowerCase();
-    const isDemand = /procurando|procura|at[eé]|comprar|compra|busca|buscando/.test(prefix);
+    const prefix = text.slice(Math.max(0, start - 50), start).toLowerCase();
+    const isDemand = /\b(?:procuro|procurando|procura|or[çc]amento|at[eé]|comprar|compra|busca|buscando)\b/.test(prefix);
     const target = isDemand ? 'demand_primary' : isSec(start) ? 'property_secondary' : defaultTargetKey;
     results.push(makeVal(message, results.length + 1, isDemand ? 'budget_max' : 'sale_asking_price', amount, rawQuote, target));
   }
@@ -153,17 +156,17 @@ export function extractMonetaryValuesPtBr(
     if (hasOverlap(claimedSpans, start, end)) continue;
     claimedSpans.push({ start, end });
     const amount = Math.round(parseFloat(match[1].replace(',', '.')) * 1000);
-    const before = text.slice(Math.max(0, start - 30), start).toLowerCase();
+    const before = text.slice(Math.max(0, start - 50), start).toLowerCase();
     const after = text.slice(end, Math.min(text.length, end + 25)).toLowerCase();
     let field = 'sale_asking_price';
-    if (/venda|vender/.test(before)) {
+    if (/\b(?:procuro|procurando|comprar|or[çc]amento|at[eé]|busca|buscando)\b/.test(before)) {
+      field = 'budget_max';
+    } else if (/venda|vender/.test(before)) {
       field = 'sale_asking_price';
     } else if (/aluguel|loca[çc][ãa]o|alugar/.test(before) || /de\s*aluguel/.test(after)) {
       field = 'rent_asking_price';
-    } else if (/procurando|comprar|at[eé]/.test(before)) {
-      field = 'budget_max';
     }
-    const target = isSec(start) ? 'property_secondary' : defaultTargetKey;
+    const target = field === 'budget_max' ? 'demand_primary' : isSec(start) ? 'property_secondary' : defaultTargetKey;
     results.push(makeVal(message, results.length + 1, field, amount, rawQuote, target));
   }
 
@@ -185,7 +188,7 @@ export function extractMonetaryValuesPtBr(
 }
 
 /**
- * Extracts property types, occupancy status, bedrooms, and area.
+ * Extracts property types, subtypes, occupancy status, bedrooms, area, neighborhood and timing (7-layer engine).
  */
 export function extractPropertyMetricsPtBr(message: ConversationMessage): PropertyMetricsResult {
   const text = message.normalized_text;
@@ -200,16 +203,28 @@ export function extractPropertyMetricsPtBr(message: ConversationMessage): Proper
   else if (/est[áa]\s+alugado|com\s+inquilino/i.test(text)) result.occupancy_status = 'tenant_occupied';
   else if (/desocupado|vazio/i.test(text)) result.occupancy_status = 'vacant';
 
-  const commMatch = /\b(?:sala\s+comercial|loja|escrit[oó]rio|galp[ãa]o)\b/i.exec(text);
+  const commMatch = /\b(?:sala\s+comercial|loja|escrit[oó]rio|galp[ãa]o|pr[ée]dio\s+comercial|ponto\s+comercial)\b/i.exec(text);
   if (commMatch) {
     if (secIdx !== -1 && commMatch.index >= secIdx) result.secondary_property_type = 'commercial';
     else result.property_type = 'commercial';
   }
+  const landMatch = /\b(?:terreno|lote|ch[áa]cara|s[íi]tio)\b/i.exec(text);
+  if (landMatch && !result.property_type) {
+    result.property_type = 'land';
+    result.property_subtype = landMatch[0].toLowerCase();
+  }
   const houseMatch = /\b(?:casa|sobrado)\b/i.exec(text);
   if (houseMatch) {
-    const pfx = text.slice(Math.max(0, houseMatch.index - 30), houseMatch.index).toLowerCase();
-    if (/procurando|comprar|busca|buscando/.test(pfx)) result.demand_property_types = ['house'];
+    const pfx = text.slice(Math.max(0, houseMatch.index - 35), houseMatch.index).toLowerCase();
+    if (/procuro|procurando|comprar|busca|buscando/.test(pfx)) result.demand_property_types = ['house'];
     else result.property_type = 'house';
+  }
+  const subtypeMatch = /\b(duplex|triplex|cobertura|studio|kitnet|loft|flat|garden)\b/i.exec(text);
+  if (subtypeMatch) {
+    result.property_subtype = subtypeMatch[1].toLowerCase();
+    const pfx = text.slice(Math.max(0, subtypeMatch.index - 35), subtypeMatch.index).toLowerCase();
+    if (/procuro|procurando|comprar|busca|buscando/.test(pfx)) result.demand_property_types = ['apartment'];
+    else if (!result.property_type) result.property_type = 'apartment';
   }
   if (/\b(?:apartamento|apto)\b/i.test(text) && !result.property_type) result.property_type = 'apartment';
 
@@ -218,12 +233,24 @@ export function extractPropertyMetricsPtBr(message: ConversationMessage): Proper
   while ((bMatch = bRegex.exec(text)) !== null) {
     const count = parseInt(bMatch[1], 10);
     const before = text.slice(Math.max(0, bMatch.index - 30), bMatch.index).toLowerCase();
-    if (/comprar|procurando|busca|buscando/.test(before)) result.demand_bedrooms_min = count;
+    if (/comprar|procuro|procurando|busca|buscando/.test(before)) result.demand_bedrooms_min = count;
     else result.bedrooms = count;
   }
 
   const aMatch = /(\d+(?:[.,]\d+)?)\s*m(?:2|²)/i.exec(text);
   if (aMatch) result.area_m2 = parseFloat(aMatch[1].replace(',', '.'));
+
+  // Layer 4: Neighborhood extraction ("no Batel", "em Moema", "no Água Verde")
+  const nbMatch = /\b(?:no\s+bairro\s+|bairro\s+|no\s+|na\s+|em\s+)([A-ZÁÀÂÃÉÊÍÓÔÕÚÇ][a-záàâãéêíóôõúç]+(?:\s+[A-ZÁÀÂÃÉÊÍÓÔÕÚÇ][a-záàâãéêíóôõúç]+)?)/.exec(text);
+  if (nbMatch && !/^(?:Brasil|Mar[çc]o|Janeiro|Dezembro|Valor|Total|Condom[íi]nio|Ano|M[êe]s)$/i.test(nbMatch[1])) {
+    result.neighborhood = nbMatch[1].trim();
+  }
+
+  // Layer 7: Temporal urgency extraction
+  if (/\b(?:urgente|imediato|imediata|mudan[çc]a\s+imediata|o\s+quanto\s+antes)\b/i.test(text)) result.timing = 'immediate';
+  else if (/\b(?:m[êe]s\s+que\s+vem|pr[óo]ximo\s+m[êe]s|em\s+(?:15|30|45|60)\s+dias|este\s+m[êe]s)\b/i.test(text)) result.timing = 'short_term';
+  else if (/\b(?:at[eé]\s+dezembro|ano\s+que\s+vem|pr[óo]ximo\s+ano|depois\s+de\s+mar[çc]o)\b/i.test(text)) result.timing = 'medium_term';
+  else if (/\b(?:sem\s+pressa|s[óo]\s+pesquisando|avaliando)\b/i.test(text)) result.timing = 'flexible';
 
   return result;
 }

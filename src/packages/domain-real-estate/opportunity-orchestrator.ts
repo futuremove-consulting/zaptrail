@@ -48,9 +48,9 @@ import {
   buildRealEstateLlmUserPrompt,
 } from './llm/real-estate-prompt';
 import { MockLLMProvider } from './llm/mock-llm-provider';
+import { enrichOpportunitiesWithAttributes } from './opportunity-attributes-builder';
 
 export { CoalesceTurnWindowParams, coalesceTurnWindow };
-
 const PARSER_VERSION = '1.0.0';
 
 function makeOpp(id: string, type: RealEstateOpportunityType, entityKey: string, stage: OpportunityAssessment['stage'], conf: number, evidence: EvidenceRef[]): OpportunityAssessment {
@@ -269,12 +269,8 @@ export class RealEstateDomainPack implements DomainPack<RealEstateDomainEntities
       actions.push(makeAct(`act-${tid}-qual-ambig`, 'qualify_property', 'property_primary', undefined, 'assist', true, 0.65, ambig.evidence_refs));
     }
 
-    const allEv = [
-      ...participants.flatMap((p) => p.evidence_refs),
-      ...intents.flatMap((i) => i.evidence_refs),
-      ...values.flatMap((v) => v.evidence_refs),
-    ];
-
+    enrichOpportunitiesWithAttributes({ turnWindow, opportunities, propertyCandidates: property_candidates, demandProfiles: demand_profiles, metrics: allMetrics });
+    const allEv = [...participants.flatMap((p) => p.evidence_refs), ...intents.flatMap((i) => i.evidence_refs), ...values.flatMap((v) => v.evidence_refs)];
     return {
       participants, intents, facts: [], values, relationships, conditions,
       opportunities, actions, media_results, evidence_refs: allEv, review_items,

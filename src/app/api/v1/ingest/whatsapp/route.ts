@@ -1,13 +1,35 @@
+import { timingSafeEqual } from 'crypto';
 import { NextResponse } from 'next/server';
 import { ZodError } from 'zod';
 import { ingestWhatsappTurn } from '../../../../../packages/api/ingest-handler';
+
+function extractBearerToken(request: Request): string | undefined {
+  const authHeader =
+    request.headers.get('authorization') || request.headers.get('Authorization');
+  if (authHeader && authHeader.startsWith('Bearer ')) {
+    const token = authHeader.slice(7).trim().replace(/^["']|["']$/g, '').trim();
+    if (token.length > 0) return token;
+  }
+  return undefined;
+}
+
+function verifyApiTokenIfConfigured(request: Request): boolean {
+  const expectedToken = process.env.ZAPTRAIL_API_TOKEN?.trim();
+  if (!expectedToken) return true;
+  const provided = extractBearerToken(request);
+  if (!provided) return false;
+  const expectedBuf = Buffer.from(expectedToken, 'utf8');
+  const providedBuf = Buffer.from(provided, 'utf8');
+  if (expectedBuf.length !== providedBuf.length) return false;
+  return timingSafeEqual(expectedBuf, providedBuf);
+}
 
 /**
  * Extracts tenant scope from request body or HTTP headers (E-04-01 / T-04-01).
  * Priority:
  * 1. body.tenant_id
  * 2. Header `x-zaptrail-tenant-id`
- * 3. Header `Authorization: Bearer <token>`
+ * 3. Header `Authorization: Bearer <token>` (only when ZAPTRAIL_API_TOKEN is not enforced)
  */
 function extractTenantId(body: any, request: Request): string | undefined {
   if (typeof body?.tenant_id === 'string' && body.tenant_id.trim().length > 0) {
@@ -19,32 +41,25 @@ function extractTenantId(body: any, request: Request): string | undefined {
     return customHeader.trim();
   }
 
-  const authHeader =
-    request.headers.get('authorization') || request.headers.get('Authorization');
-  if (authHeader && authHeader.startsWith('Bearer ')) {
-    const token = authHeader.slice(7).trim().replace(/^["']|["']$/g, '').trim();
-    if (token.length > 0) {
-      return token;
-    }
+  if (!process.env.ZAPTRAIL_API_TOKEN?.trim()) {
+    return extractBearerToken(request);
   }
 
   return undefined;
 }
 
-/**
- * POST /api/v1/ingest/whatsapp
- *
- * Webhook ingestion endpoint for WhatsApp provider integrations.
- * Supports turn coalescing, domain-pack interpretation, idempotency guards,
- * and tenant isolation.
- *
- * Status codes:
- * - 201 Created: New turn successfully processed and persisted.
- * - 200 OK: Duplicate webhook detected (idempotent cached envelope returned).
- * - 400 Bad Request: Malformed JSON, missing tenant scope, or schema validation failure.
- * - 500 Internal Server Error: Unhandled execution failure.
- */
 export async function POST(request: Request) {
+  // 0. Enforce Bearer token authentication when ZAPTRAIL_API_TOKEN is configured (ASVS L1)
+  if (!verifyApiTokenIfConfigured(request)) {
+    return NextResponse.json(
+      {
+        success: false,
+        error: 'Unauthorized: invalid or missing Bearer token.',
+      },
+      { status: 401 }
+    );
+  }
+
   let body: any;
 
   // 1. Safe JSON parsing

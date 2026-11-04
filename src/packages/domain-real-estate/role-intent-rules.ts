@@ -247,8 +247,8 @@ export function classifyRealEstateIntents(turnWindow: TurnWindow): IntentObserva
   const notSellBuy = findMatch(turnWindow, /(?:n[ãa]o\s+quero\s+vender\s+o\s+meu).*?(?:procurando\s+(?:uma\s+casa|um\s+apto)|quero\s+comprar)/i);
   if (notSellBuy) pushIntent(intents, tid, 'notprop', 'intent.not_interested_property', 'property_primary', notSellBuy.message, notSellBuy.match[0], 0.92);
 
-  // 6. Buy demand (CT-09, CT-10)
-  const buy = findMatch(turnWindow, /(?:quero\s+comprar|procurando\s+(?:uma\s+casa|um\s+apartamento|comprar)|busco\s+comprar)/i);
+  // 6. Buy demand (CT-09, CT-10 + 7-layer demand patterns)
+  const buy = findMatch(turnWindow, /(?:quero\s+comprar|procurando\s+(?:uma?\s+)?(?:casa|sobrado|apartamento|apto|cobertura|studio|kitnet|loft|im[oó]vel|terreno|lote|comprar)|procuro\s+(?:uma?\s+)?(?:casa|sobrado|apartamento|apto|cobertura|studio|kitnet|loft|im[oó]vel|terreno|lote)|cliente\s+procurando|busco\s+(?:comprar|uma?\s+(?:casa|apartamento|apto|studio|loft|im[oó]vel))|or[çc]amento\s+at[eé])/i);
   if (buy) pushIntent(intents, tid, 'buy', 'intent.buy_demand', 'demand_primary', buy.message, buy.match[0], 0.88);
 
   // 7. Simultaneous sale and rent (CT-03)
