@@ -4,6 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "dev": "node --import tsx src/server.ts",
+    "start": "node --import tsx src/server.ts",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
     "check:quality-gates": "node scripts/check-quality-gates.mjs",

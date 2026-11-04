@@ -23,3 +23,13 @@ export type {
   OutboundDispatcherResult,
   OutboundSuggestionsPayload,
 } from './outbound-dispatcher';
+
+export {
+  runHistoricalBackfill,
+} from './backfill-runner';
+
+export type {
+  HistoricalBackfillOptions,
+  HistoricalBackfillSummary,
+} from './backfill-runner';
+

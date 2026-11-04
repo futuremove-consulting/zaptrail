@@ -1,7 +1,17 @@
 import { timingSafeEqual } from 'crypto';
-import { NextResponse } from 'next/server';
 import { ZodError } from 'zod';
 import { ingestWhatsappTurn } from '../../../../../packages/api/ingest-handler';
+
+function jsonResponse(body: unknown, init?: ResponseInit): Response {
+  const headers = new Headers(init?.headers);
+  if (!headers.has('content-type')) {
+    headers.set('content-type', 'application/json');
+  }
+  return new Response(JSON.stringify(body), {
+    ...init,
+    headers,
+  });
+}
 
 function extractBearerToken(request: Request): string | undefined {
   const authHeader =
@@ -51,7 +61,7 @@ function extractTenantId(body: any, request: Request): string | undefined {
 export async function POST(request: Request) {
   // 0. Enforce Bearer token authentication when ZAPTRAIL_API_TOKEN is configured (ASVS L1)
   if (!verifyApiTokenIfConfigured(request)) {
-    return NextResponse.json(
+    return jsonResponse(
       {
         success: false,
         error: 'Unauthorized: invalid or missing Bearer token.',
@@ -66,7 +76,7 @@ export async function POST(request: Request) {
   try {
     body = await request.json();
   } catch (parseError: any) {
-    return NextResponse.json(
+    return jsonResponse(
       {
         success: false,
         error: `Malformed JSON payload: ${parseError?.message ?? 'Invalid JSON syntax'}`,
@@ -76,7 +86,7 @@ export async function POST(request: Request) {
   }
 
   if (!body || typeof body !== 'object') {
-    return NextResponse.json(
+    return jsonResponse(
       {
         success: false,
         error: 'Request body must be a valid JSON object',
@@ -88,7 +98,7 @@ export async function POST(request: Request) {
   // 2. Resolve tenant scope with header fallback
   const resolvedTenantId = extractTenantId(body, request);
   if (!resolvedTenantId) {
-    return NextResponse.json(
+    return jsonResponse(
       {
         success: false,
         error:
@@ -104,7 +114,7 @@ export async function POST(request: Request) {
   try {
     const result = await ingestWhatsappTurn(body);
 
-    return NextResponse.json(
+    return jsonResponse(
       {
         success: true,
         duplicate: result.duplicate,
@@ -114,7 +124,7 @@ export async function POST(request: Request) {
     );
   } catch (error: any) {
     if (error instanceof ZodError) {
-      return NextResponse.json(
+      return jsonResponse(
         {
           success: false,
           error: `Validation error: ${error.issues.map((i) => `${i.path.join('.')}: ${i.message}`).join(', ')}`,
@@ -124,7 +134,7 @@ export async function POST(request: Request) {
       );
     }
 
-    return NextResponse.json(
+    return jsonResponse(
       {
         success: false,
         error: error?.message || 'Internal server error during turn ingestion',
