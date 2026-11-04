@@ -2,11 +2,13 @@ import { describe, expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { GET as healthGet } from '../../api/health';
+import { GET as nextAppHealthGet } from '../../src/app/api/health/route';
 import { POST as vercelIngestPost } from '../../api/v1/ingest/whatsapp';
 import { POST as canonicalIngestPost } from '../../src/app/api/v1/ingest/whatsapp/route';
 
 describe('Vercel Serverless Entrypoints', () => {
   it('GET /api/health returns 200 with service metadata and security headers', async () => {
+    expect(healthGet).toBe(nextAppHealthGet);
     const response = await healthGet();
     expect(response.status).toBe(200);
     expect(response.headers.get('x-content-type-options')).toBe('nosniff');
