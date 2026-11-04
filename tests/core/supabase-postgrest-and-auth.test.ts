@@ -3,10 +3,11 @@ import {
   SupabaseStoragePort,
   PostgrestSupabaseClient,
 } from '../../src/packages/core/supabase-storage';
+import { interpretRealEstateTurn, coalesceTurnWindow } from '../../src/packages/domain-real-estate';
 import { POST as ingestWhatsappPost } from '../../src/app/api/v1/ingest/whatsapp/route';
 import { GET as getManagementObjects, setTestSupabaseClient } from '../../src/app/api/management-objects/route';
 
-describe('Decision 4 & 5: Real Supabase PostgREST Storage, Auth Hardening & Next 16 Params', () => {
+describe('Decision 4 & 5 + Review Cycle 2: Real Supabase PostgREST Storage, Auth Hardening & Next 16 Params', () => {
   const originalToken = process.env.ZAPTRAIL_API_TOKEN;
 
   afterEach(() => {
@@ -19,10 +20,12 @@ describe('Decision 4 & 5: Real Supabase PostgREST Storage, Auth Hardening & Next
     vi.restoreAllMocks();
   });
 
-  it('persists and queries processed messages via PostgrestSupabaseClient when configured', async () => {
+  it('persists and queries processed messages AND audit trail (saveEnvelope) via PostgrestSupabaseClient when configured (C2-02)', async () => {
+    const calledUrls: string[] = [];
     const fetchMock = vi.fn(async (url: string | URL | Request, init?: RequestInit) => {
       const urlStr = String(url);
-      if (init?.method === 'POST' && urlStr.includes('/rest/v1/zaptrail_origin_messages')) {
+      calledUrls.push(`${init?.method || 'GET'} ${urlStr}`);
+      if (init?.method === 'POST') {
         return new Response(JSON.stringify([{ id: 'row-1' }]), { status: 201 });
       }
       if ((!init?.method || init.method === 'GET') && urlStr.includes('/rest/v1/zaptrail_origin_messages')) {
@@ -49,12 +52,31 @@ describe('Decision 4 & 5: Real Supabase PostgREST Storage, Auth Hardening & Next
     const writerStorage = new SupabaseStoragePort(pgClient);
     await writerStorage.markProcessed('tenant-123', 'whatsapp', 'msg-ext-1');
 
+    const turn = coalesceTurnWindow({
+      tenant_id: 'tenant-123',
+      provider: 'whatsapp',
+      conversation_id: 'conv-audit-1',
+      raw_messages: [
+        {
+          message_id: 'm1',
+          external_message_id: 'msg-ext-1',
+          sender_id: '5541999991111',
+          direction: 'inbound',
+          raw_text: 'Quero vender meu apartamento por 900 mil',
+          timestamp: '2026-11-04T10:00:00Z',
+        },
+      ],
+    });
+    const env = await interpretRealEstateTurn(turn);
+    await writerStorage.saveEnvelope(env);
+
     // Fresh reader storage simulates cold start reading from PostgREST
     const readerStorage = new SupabaseStoragePort(pgClient);
     const isProc = await readerStorage.isProcessed('tenant-123', 'whatsapp', 'msg-ext-1');
 
     expect(isProc).toBe(true);
-    expect(fetchMock).toHaveBeenCalledTimes(2);
+    expect(calledUrls.some((u) => u.includes('/rest/v1/zaptrail_extraction_runs'))).toBe(true);
+    expect(calledUrls.some((u) => u.includes('/rest/v1/zaptrail_evidence_spans'))).toBe(true);
   });
 
   it('rejects requests to POST /api/v1/ingest/whatsapp with 401 when ZAPTRAIL_API_TOKEN is set and Bearer token does not match', async () => {

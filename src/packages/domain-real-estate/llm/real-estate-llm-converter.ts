@@ -15,6 +15,8 @@ import {
   SeededPropertyCandidate,
 } from '../types';
 import { RealEstateLLMStructuredOutput } from './real-estate-llm-schema';
+import { enrichOpportunitiesWithAttributes } from '../opportunity-attributes-builder';
+import { extractPropertyMetricsPtBr } from '../normalizer-ptbr';
 
 export interface RealEstateLlmCorePayload {
   participants: ParticipantObservation[];
@@ -313,17 +315,16 @@ export function convertRealEstateLlmOutputToCorePayload(
     });
   }
 
-  return {
-    participants,
-    intents,
-    values,
-    conditions,
+  enrichOpportunitiesWithAttributes({
+    turnWindow: window,
     opportunities,
-    actions,
-    domain_entities: {
-      property_candidates,
-      demand_profiles,
-      seeded_candidates: rawSeeds,
-    },
+    propertyCandidates: property_candidates,
+    demandProfiles: demand_profiles,
+    metrics: window.messages.map((m) => extractPropertyMetricsPtBr(m)),
+  });
+
+  return {
+    participants, intents, values, conditions, opportunities, actions,
+    domain_entities: { property_candidates, demand_profiles, seeded_candidates: rawSeeds },
   };
 }

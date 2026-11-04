@@ -170,8 +170,8 @@ export function extractMonetaryValuesPtBr(
     results.push(makeVal(message, results.length + 1, field, amount, rawQuote, target));
   }
 
-  // 6. Formatted thousands for rent/sale without 'mil': e.g. "por 4.500", "locação por 4.200"
-  const thousandsRegex = /(?:alugar\s+(?:por\s+)?|loca[çc][ãa]o\s+(?:por\s+)?|venda\s+(?:por\s+)?|vender\s+(?:por\s+)?|fecho\s+por\s+|por\s+)(?:R\$\s*)?(\d{1,3}(?:\.\d{3})+|\d{4,})\b/gi;
+  // 6. Formatted thousands for rent/sale/demand without 'mil': e.g. "por 4.500", "locação por 4.200", "orçamento até 750.000"
+  const thousandsRegex = /(?:alugar\s+(?:por\s+)?|loca[çc][ãa]o\s+(?:por\s+)?|venda\s+(?:por\s+)?|vender\s+(?:por\s+)?|fecho\s+por\s+|or[çc]amento\s+(?:de\s+|at[eé]\s+)?|at[eé]\s+|por\s+)(?:R\$\s*)?(\d{1,3}(?:\.\d{3})+|\d{4,})\b/gi;
   while ((match = thousandsRegex.exec(text)) !== null) {
     const numDigits = match[1];
     const numStart = match.index + match[0].indexOf(numDigits);
@@ -179,9 +179,12 @@ export function extractMonetaryValuesPtBr(
     if (hasOverlap(claimedSpans, numStart, numEnd)) continue;
     claimedSpans.push({ start: numStart, end: numEnd });
     const amount = parseInt(numDigits.replace(/\./g, ''), 10);
+    const before = text.slice(Math.max(0, match.index - 40), numStart).toLowerCase();
+    const isDemand = /\b(?:procuro|procurando|comprar|or[çc]amento|at[eé]|busca|buscando)\b/.test(before);
     const isRent = /alugar|loca[çc][ãa]o/i.test(match[0]);
-    const target = isSec(numStart) ? 'property_secondary' : defaultTargetKey;
-    results.push(makeVal(message, results.length + 1, isRent ? 'rent_asking_price' : 'sale_asking_price', amount, numDigits, target));
+    const field = isDemand ? 'budget_max' : isRent ? 'rent_asking_price' : 'sale_asking_price';
+    const target = isDemand ? 'demand_primary' : isSec(numStart) ? 'property_secondary' : defaultTargetKey;
+    results.push(makeVal(message, results.length + 1, field, amount, numDigits, target));
   }
 
   return results;
@@ -240,10 +243,15 @@ export function extractPropertyMetricsPtBr(message: ConversationMessage): Proper
   const aMatch = /(\d+(?:[.,]\d+)?)\s*m(?:2|²)/i.exec(text);
   if (aMatch) result.area_m2 = parseFloat(aMatch[1].replace(',', '.'));
 
-  // Layer 4: Neighborhood extraction ("no Batel", "em Moema", "no Água Verde")
-  const nbMatch = /\b(?:no\s+bairro\s+|bairro\s+|no\s+|na\s+|em\s+)([A-ZÁÀÂÃÉÊÍÓÔÕÚÇ][a-záàâãéêíóôõúç]+(?:\s+[A-ZÁÀÂÃÉÊÍÓÔÕÚÇ][a-záàâãéêíóôõúç]+)?)/.exec(text);
-  if (nbMatch && !/^(?:Brasil|Mar[çc]o|Janeiro|Dezembro|Valor|Total|Condom[íi]nio|Ano|M[êe]s)$/i.test(nbMatch[1])) {
-    result.neighborhood = nbMatch[1].trim();
+  // Layer 4: Neighborhood extraction ("no Batel", "em Moema", "no Alto da Glória", "no Jardim das Américas")
+  const nbRegex = /\b(?:no\s+bairro\s+|bairro\s+|no\s+|na\s+|em\s+)([A-ZÁÀÂÃÉÊÍÓÔÕÚÇ][a-záàâãéêíóôõúç]+\b(?:\s+(?:(?:da|de|do|das|dos)\s+)?[A-ZÁÀÂÃÉÊÍÓÔÕÚÇ][a-záàâãéêíóôõúç]+\b){0,2})/g;
+  let nbMatch: RegExpExecArray | null;
+  while ((nbMatch = nbRegex.exec(text)) !== null) {
+    const candidate = nbMatch[1].trim();
+    if (!/^(?:Brasil|Mar[çc]o|Janeiro|Dezembro|Valor|Total|Condom[íi]nio|Ano|M[êe]s|Whats|WhatsApp|D[úu]vida|Contato|Im[oó]vel|Apartamento|Casa|Venda|Loca[çc][ãa]o|Aluguel)$/i.test(candidate)) {
+      result.neighborhood = candidate;
+      break;
+    }
   }
 
   // Layer 7: Temporal urgency extraction

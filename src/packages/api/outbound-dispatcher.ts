@@ -33,6 +33,11 @@ export interface OutboundSuggestionsPayload {
  * - Idempotency: Duplicate envelopes are rejected without HTTP traffic.
  * - Non-blocking: Network failures, timeouts or 5xx responses are caught gracefully.
  */
+function redactToken(text: string, token?: string): string {
+  if (!token || !token.trim()) return text;
+  return text.split(token.trim()).join('[REDACTED]');
+}
+
 export async function dispatchOutboundSuggestions(
   input: OutboundDispatcherInput
 ): Promise<OutboundDispatcherResult> {
@@ -87,7 +92,7 @@ export async function dispatchOutboundSuggestions(
       return {
         dispatched: false,
         status: response.status,
-        error: `Outbound webhook failed with status ${response.status}: ${errorText}`,
+        error: redactToken(`Outbound webhook failed with status ${response.status}: ${errorText}`, callbackToken),
       };
     }
 
@@ -100,7 +105,7 @@ export async function dispatchOutboundSuggestions(
     const errorMessage = err instanceof Error ? err.message : String(err);
     return {
       dispatched: false,
-      error: `Outbound webhook dispatch error: ${errorMessage}`,
+      error: redactToken(`Outbound webhook dispatch error: ${errorMessage}`, callbackToken),
     };
   }
 }

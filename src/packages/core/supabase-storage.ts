@@ -146,58 +146,42 @@ export class SupabaseStoragePort implements StoragePort {
 
   public async saveEnvelope(envelope: UniversalInterpretationEnvelope): Promise<void> {
     const validTenant = assertTenantScope(envelope.tenant_id);
+    const nowIso = new Date().toISOString();
 
-    // 1. Extraction run audit persistence (idempotent by envelope_id)
     const runKey = `${validTenant}:${envelope.envelope_id}`;
+    const runRecord: ExtractionRunRecord = {
+      envelope_id: envelope.envelope_id,
+      tenant_id: validTenant,
+      conversation_id: envelope.conversation_id,
+      turn_id: envelope.turn_id,
+      domain_key: envelope.domain_key,
+      parser_version: envelope.parser_version,
+      extractor_type: envelope.extractor_type ?? 'rule',
+      llm_invoked: Boolean(envelope.llm_invoked),
+      llm_error: Boolean(envelope.llm_error),
+      review_required: Boolean(envelope.review_required),
+      envelope_payload: envelope,
+      created_at: nowIso,
+    };
     if (!this.client.extractionRuns.has(runKey)) {
-      this.client.extractionRuns.set(runKey, {
-        envelope_id: envelope.envelope_id,
-        tenant_id: validTenant,
-        conversation_id: envelope.conversation_id,
-        turn_id: envelope.turn_id,
-        domain_key: envelope.domain_key,
-        parser_version: envelope.parser_version,
-        extractor_type: envelope.extractor_type ?? 'rule',
-        llm_invoked: Boolean(envelope.llm_invoked),
-        llm_error: Boolean(envelope.llm_error),
-        review_required: Boolean(envelope.review_required),
-        envelope_payload: envelope,
-        created_at: new Date().toISOString(),
-      });
+      this.client.extractionRuns.set(runKey, runRecord);
     }
 
-    // 2. Fine-grained evidence spans persistence
     const collectedEvidences: Array<{ targetId: string; evidence: EvidenceRef }> = [];
+    for (const ev of envelope.evidence_refs || []) collectedEvidences.push({ targetId: envelope.envelope_id, evidence: ev });
+    for (const p of envelope.participants || []) for (const ev of p.evidence_refs || []) collectedEvidences.push({ targetId: p.participant_id, evidence: ev });
+    for (const i of envelope.intents || []) for (const ev of i.evidence_refs || []) collectedEvidences.push({ targetId: i.intent_id, evidence: ev });
+    for (const f of envelope.facts || []) for (const ev of f.evidence_refs || []) collectedEvidences.push({ targetId: f.fact_id, evidence: ev });
+    for (const v of envelope.values || []) for (const ev of v.evidence_refs || []) collectedEvidences.push({ targetId: v.value_id, evidence: ev });
+    for (const o of envelope.opportunities || []) for (const ev of o.evidence_refs || []) collectedEvidences.push({ targetId: o.opportunity_id, evidence: ev });
+    for (const a of envelope.actions || []) for (const ev of a.evidence_refs || []) collectedEvidences.push({ targetId: a.action_id, evidence: ev });
+    for (const r of envelope.review_items || []) for (const ev of r.evidence_refs || []) collectedEvidences.push({ targetId: r.review_id, evidence: ev });
 
-    for (const ev of envelope.evidence_refs || []) {
-      collectedEvidences.push({ targetId: envelope.envelope_id, evidence: ev });
-    }
-    for (const p of envelope.participants || []) {
-      for (const ev of p.evidence_refs || []) collectedEvidences.push({ targetId: p.participant_id, evidence: ev });
-    }
-    for (const i of envelope.intents || []) {
-      for (const ev of i.evidence_refs || []) collectedEvidences.push({ targetId: i.intent_id, evidence: ev });
-    }
-    for (const f of envelope.facts || []) {
-      for (const ev of f.evidence_refs || []) collectedEvidences.push({ targetId: f.fact_id, evidence: ev });
-    }
-    for (const v of envelope.values || []) {
-      for (const ev of v.evidence_refs || []) collectedEvidences.push({ targetId: v.value_id, evidence: ev });
-    }
-    for (const o of envelope.opportunities || []) {
-      for (const ev of o.evidence_refs || []) collectedEvidences.push({ targetId: o.opportunity_id, evidence: ev });
-    }
-    for (const a of envelope.actions || []) {
-      for (const ev of a.evidence_refs || []) collectedEvidences.push({ targetId: a.action_id, evidence: ev });
-    }
-    for (const r of envelope.review_items || []) {
-      for (const ev of r.evidence_refs || []) collectedEvidences.push({ targetId: r.review_id, evidence: ev });
-    }
-
+    const newSpans: EvidenceSpanRecord[] = [];
     for (const { targetId, evidence } of collectedEvidences) {
       const spanKey = `${validTenant}:${envelope.envelope_id}:${evidence.evidence_id}:${targetId}`;
       if (!this.client.evidenceSpans.has(spanKey)) {
-        this.client.evidenceSpans.set(spanKey, {
+        const spanRec: EvidenceSpanRecord = {
           tenant_id: validTenant,
           external_message_id: evidence.message_id,
           target_id: targetId,
@@ -207,16 +191,18 @@ export class SupabaseStoragePort implements StoragePort {
           epistemic_status: 'inferred',
           confidence: evidence.confidence,
           hallucination_detected: evidence.hallucination_detected ?? false,
-          created_at: evidence.timestamp || new Date().toISOString(),
-        });
+          created_at: evidence.timestamp || nowIso,
+        };
+        this.client.evidenceSpans.set(spanKey, spanRec);
+        newSpans.push(spanRec);
       }
     }
 
-    // 3. Review queue items enqueueing (idempotent by tenant_id + review_id)
+    const newReviews: ReviewQueueRecord[] = [];
     for (const item of envelope.review_items || []) {
       const reviewKey = `${validTenant}:${item.review_id}`;
       if (!this.client.reviewQueue.has(reviewKey)) {
-        this.client.reviewQueue.set(reviewKey, {
+        const revRec: ReviewQueueRecord = {
           review_id: item.review_id,
           tenant_id: validTenant,
           conversation_id: envelope.conversation_id,
@@ -224,89 +210,69 @@ export class SupabaseStoragePort implements StoragePort {
           severity: item.severity,
           reason: item.reason,
           status: 'pending',
-          original_payload: {
-            envelope_id: envelope.envelope_id,
-            target_id: item.target_id,
-            reason: item.reason,
-          },
+          original_payload: { envelope_id: envelope.envelope_id, target_id: item.target_id, reason: item.reason },
           evidence_refs: item.evidence_refs,
-          created_at: new Date().toISOString(),
-          updated_at: new Date().toISOString(),
-        });
+          created_at: nowIso,
+          updated_at: nowIso,
+        };
+        this.client.reviewQueue.set(reviewKey, revRec);
+        newReviews.push(revRec);
       }
+    }
+
+    if (this.pgClient?.isConfigured()) {
+      await this.pgClient.insertExtractionRun(runRecord);
+      if (newSpans.length > 0) await this.pgClient.insertEvidenceSpans(newSpans);
+      if (newReviews.length > 0) await this.pgClient.upsertReviewItems(newReviews);
     }
   }
 
   public async getHistoricalValues(tenantId: string, conversationId: string): Promise<ValueObservation[]> {
     const validTenant = assertTenantScope(tenantId);
     const historicalValues: ValueObservation[] = [];
-
     for (const run of this.client.extractionRuns.values()) {
-      if (run.tenant_id === validTenant && run.conversation_id === conversationId) {
-        if (run.envelope_payload.values && Array.isArray(run.envelope_payload.values)) {
-          historicalValues.push(...run.envelope_payload.values);
-        }
+      if (run.tenant_id === validTenant && run.conversation_id === conversationId && Array.isArray(run.envelope_payload.values)) {
+        historicalValues.push(...run.envelope_payload.values);
       }
     }
-
     return historicalValues;
   }
 
   public async getExtractionRuns(tenantId: string, conversationId?: string): Promise<ExtractionRunRecord[]> {
     const validTenant = assertTenantScope(tenantId);
     const runs: ExtractionRunRecord[] = [];
-
     for (const run of this.client.extractionRuns.values()) {
-      if (run.tenant_id === validTenant) {
-        if (!conversationId || run.conversation_id === conversationId) {
-          runs.push(run);
-        }
-      }
+      if (run.tenant_id === validTenant && (!conversationId || run.conversation_id === conversationId)) runs.push(run);
     }
-
     return runs;
   }
 
   public async getEvidenceSpans(tenantId: string, targetId?: string): Promise<EvidenceSpanRecord[]> {
     const validTenant = assertTenantScope(tenantId);
     const spans: EvidenceSpanRecord[] = [];
-
     for (const span of this.client.evidenceSpans.values()) {
-      if (span.tenant_id === validTenant) {
-        if (!targetId || span.target_id === targetId) {
-          spans.push(span);
-        }
-      }
+      if (span.tenant_id === validTenant && (!targetId || span.target_id === targetId)) spans.push(span);
     }
-
     return spans;
   }
 
   public async getReviewQueue(tenantId: string, status?: string): Promise<ReviewQueueRecord[]> {
     const validTenant = assertTenantScope(tenantId);
     const items: ReviewQueueRecord[] = [];
-
     for (const item of this.client.reviewQueue.values()) {
-      if (item.tenant_id === validTenant) {
-        if (!status || item.status === status) {
-          items.push(item);
-        }
-      }
+      if (item.tenant_id === validTenant && (!status || item.status === status)) items.push(item);
     }
-
     return items;
   }
 
   public async getReviewItem(tenantId: string, reviewId: string): Promise<ReviewQueueRecord | null> {
     const validTenant = assertTenantScope(tenantId);
-    const key = `${validTenant}:${reviewId}`;
-    return this.client.reviewQueue.get(key) || null;
+    return this.client.reviewQueue.get(`${validTenant}:${reviewId}`) || null;
   }
 
   public async updateReviewItem(tenantId: string, item: ReviewQueueRecord): Promise<void> {
     const validTenant = assertTenantScope(tenantId);
-    const key = `${validTenant}:${item.review_id}`;
-    this.client.reviewQueue.set(key, {
+    this.client.reviewQueue.set(`${validTenant}:${item.review_id}`, {
       ...item,
       tenant_id: validTenant,
       updated_at: new Date().toISOString(),
@@ -315,26 +281,23 @@ export class SupabaseStoragePort implements StoragePort {
 
   public async upsertOriginMessage(record: OriginMessageRecord): Promise<void> {
     const validTenant = assertTenantScope(record.tenant_id);
-    const key = `${validTenant}:${record.provider}:${record.external_message_id}`;
-    this.client.originMessages.set(key, {
+    const normalized: OriginMessageRecord = {
       ...record,
       tenant_id: validTenant,
       created_at: record.created_at || new Date().toISOString(),
-    });
+    };
+    this.client.originMessages.set(`${validTenant}:${record.provider}:${record.external_message_id}`, normalized);
+    if (this.pgClient?.isConfigured()) {
+      await this.pgClient.upsertOriginMessageRow(normalized);
+    }
   }
 
   public async getOriginMessages(tenantId: string, conversationId?: string): Promise<OriginMessageRecord[]> {
     const validTenant = assertTenantScope(tenantId);
     const messages: OriginMessageRecord[] = [];
-
     for (const msg of this.client.originMessages.values()) {
-      if (msg.tenant_id === validTenant) {
-        if (!conversationId || msg.conversation_id === conversationId) {
-          messages.push(msg);
-        }
-      }
+      if (msg.tenant_id === validTenant && (!conversationId || msg.conversation_id === conversationId)) messages.push(msg);
     }
-
     return messages;
   }
 }
