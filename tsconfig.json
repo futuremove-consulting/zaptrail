@@ -16,6 +16,8 @@
     }
   },
   "include": [
+    "api/**/*.ts",
+    "src/server.ts",
     "src/packages/**/*.ts",
     "src/app/api/v1/**/*.ts",
     "tests/**/*.ts"
