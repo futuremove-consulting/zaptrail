@@ -45,6 +45,7 @@ export const RealEstateConditionTypeSchema = z.enum([
   'sale_before_purchase',
   'minimum_net_proceeds',
   'tenant_vacating',
+  'property_sold',
   'family_approval',
   'documentation_regularization',
   'reform_or_maintenance',

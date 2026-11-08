@@ -330,6 +330,71 @@ describe('ZapTrail 20 Mandatory Golden Cases (CT-01..CT-20)', () => {
     expect(reviewProp?.requires_human_review).toBe(true);
   });
 
+  it('CT-21: Recusa educada de proprietário ao outbound de captação', async () => {
+    const fixture = getFixture('CT-21');
+    const envelope = await interpretRealEstateTurn(fixture.turnWindow);
+
+    expect(envelope.participants[0].role_label).toBe('owner');
+    expect(envelope.participants[0].epistemic_status).toBe('inferred');
+    expect(envelope.participants[0].confidence).toBe(0.7);
+    expect(envelope.intents.some((i) => i.intent_label === 'intent.not_interested_property')).toBe(true);
+    expect(envelope.opportunities).toHaveLength(0);
+    assertEvidenceSlices(envelope.participants, fixture.turnWindow);
+    assertEvidenceSlices(envelope.intents, fixture.turnWindow);
+  });
+
+  it('CT-22: Recusa de venda com interesse em aluguel', async () => {
+    const fixture = getFixture('CT-22');
+    const envelope = await interpretRealEstateTurn(fixture.turnWindow);
+    const proposals = PilotCRMAdapter.toProposals(envelope);
+
+    expect(envelope.participants[0].role_label).toBe('owner');
+    expect(envelope.participants[0].epistemic_status).toBe('inferred');
+    expect(envelope.participants[0].confidence).toBe(0.8);
+    expect(envelope.intents.some((i) => i.intent_label === 'intent.capture_for_rent')).toBe(true);
+    expect(envelope.intents.some((i) => i.intent_label === 'intent.not_interested_property')).toBe(true);
+    expect(envelope.opportunities[0].opportunity_type).toBe('real_estate.capture_rent');
+
+    expect(proposals).toHaveLength(1);
+    expect(proposals[0].enrichment_action).toBe('ADD');
+    assertEvidenceSlices(envelope.intents, fixture.turnWindow);
+  });
+
+  it('CT-23: Familiar indica o titular com contato', async () => {
+    const fixture = getFixture('CT-23');
+    const envelope = await interpretRealEstateTurn(fixture.turnWindow);
+    const proposals = PilotCRMAdapter.toProposals(envelope);
+
+    expect(envelope.participants[0].role_label).toBe('family_member');
+    expect(envelope.participants[0].confidence).toBe(0.9);
+    expect(envelope.intents.some((i) => i.intent_label === 'intent.refer_third_party')).toBe(true);
+    expect(envelope.relationships[0]?.referred_name).toBe('Ricardo');
+    expect(envelope.relationships[0]?.referred_phone).toBe('11 98888-7777');
+    expect(envelope.opportunities[0].opportunity_type).toBe('real_estate.owner_discovery');
+    expect(envelope.actions[0].action_type).toBe('request_owner_contact');
+
+    expect(proposals).toHaveLength(1);
+    expect(proposals[0].enrichment_action).toBe('ADD');
+    assertEvidenceSlices(envelope.relationships, fixture.turnWindow);
+  });
+
+  it('CT-24: Número sem relação com o titular', async () => {
+    const fixture = getFixture('CT-24');
+    const envelope = await interpretRealEstateTurn(fixture.turnWindow);
+    const proposals = PilotCRMAdapter.toProposals(envelope);
+
+    expect(envelope.participants[0].role_label).toBe('unrelated_third_party');
+    expect(envelope.participants[0].confidence).toBe(0.9);
+    expect(envelope.intents.some((i) => i.intent_label === 'intent.not_interested_general')).toBe(true);
+    expect(envelope.opportunities).toHaveLength(0);
+
+    expect(proposals).toHaveLength(1);
+    expect(proposals[0].enrichment_action).toBe('INVALIDATE');
+    expect(proposals[0].target_entity).toBe('contact');
+    assertEvidenceSlices(envelope.participants, fixture.turnWindow);
+    assertEvidenceSlices(envelope.intents, fixture.turnWindow);
+  });
+
   it('Validates that 100% of proposals across all 20 golden cases pass PilotCRMEnrichmentActionSchema', async () => {
     for (const fixture of GOLDEN_CASE_FIXTURES) {
       const envelope = await interpretRealEstateTurn(fixture.turnWindow);

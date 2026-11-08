@@ -279,4 +279,49 @@ export const GOLDEN_CASE_FIXTURES: GoldenCaseFixture[] = [
       action_types: ['human_review'], enrichment_actions: ['REVIEW'],
     },
   },
+  {
+    case_id: 'CT-21', name: 'Recusa educada de proprietário (vocabulário de captação)',
+    description: 'Não, não obrigado em resposta ao outbound de captação do condomínio',
+    turnWindow: turn('CT-21', ['Não, não obrigado'], {
+      priorOutbound: 'Tenho um cliente buscando apartamento no Reserva Manacá. Você tem interesse em vender ou alugar seu imóvel?',
+    }),
+    expectations: {
+      role_label: 'owner', intent_labels: ['intent.not_interested_property'],
+      opportunity_types: [],
+    },
+  },
+  {
+    case_id: 'CT-22', name: 'Recusa de venda com interesse em aluguel',
+    description: 'Vender não, só alugar em resposta ao outbound de captação',
+    turnWindow: turn('CT-22', ['Vender não, só alugar'], {
+      priorOutbound: 'Tenho um cliente buscando apartamento no Reserva Manacá. Você tem interesse em vender ou alugar seu imóvel?',
+    }),
+    expectations: {
+      role_label: 'owner',
+      intent_labels: ['intent.capture_for_rent', 'intent.not_interested_property'],
+      opportunity_types: ['real_estate.capture_rent'],
+    },
+  },
+  {
+    case_id: 'CT-23', name: 'Familiar indica o titular do imóvel',
+    description: 'Não sou eu, é do meu pai Ricardo, fala com ele no 11 98888-7777',
+    turnWindow: turn('CT-23', ['Não sou eu, é do meu pai Ricardo, fala com ele no 11 98888-7777.'], {
+      priorOutbound: 'Tenho um cliente buscando apartamento no Reserva Manacá. Você tem interesse em vender ou alugar seu imóvel?',
+    }),
+    expectations: {
+      role_label: 'family_member', intent_labels: ['intent.refer_third_party'],
+      opportunity_types: ['real_estate.owner_discovery'], action_types: ['request_owner_contact'],
+    },
+  },
+  {
+    case_id: 'CT-24', name: 'Número sem relação com o titular (vocabulário de captação)',
+    description: 'Não me chamo Ricardo, meu nome não é Ricardo, não conheço nenhum Ricardo',
+    turnWindow: turn('CT-24', ['Não me chamo Ricardo, meu nome não é Ricardo, não conheço nenhum Ricardo.'], {
+      priorOutbound: 'Tenho um cliente buscando apartamento no Reserva Manacá. Você tem interesse em vender ou alugar seu imóvel?',
+    }),
+    expectations: {
+      role_label: 'unrelated_third_party', intent_labels: ['intent.not_interested_general'],
+      opportunity_types: [], enrichment_actions: ['INVALIDATE'],
+    },
+  },
 ];

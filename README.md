@@ -16,8 +16,9 @@ ZapTrail is built around a **Package-First ("Spin-Out Ready")** modular architec
 
 - **Universal Semantic Core (`@futuremove/zaptrail-core`)**: Domain-agnostic semantic envelope (`UniversalInterpretationEnvelope`) providing deterministic character offsets (`char_start`, `char_end`) strictly verified against source text.
 - **Real Estate Domain Pack (`@futuremove/zaptrail-domain-real-estate`)**: Deterministic pt-BR normalizers (`1,2 mi` → `1200000`), second-property capture (`CAPTURE_OTHER_PROPERTY`), conditional links (`sale_before_purchase`), and 100% pass on all 20 canonical Golden Cases (`CT-01` to `CT-20`).
+- **Deterministic Party-Role Classification (`classifyPartyRole`)**: labels the interlocutor as `owner`, `spouse_or_partner`, `family_member` (with referred contact extraction), `broker_or_intermediary`, `unrelated_third_party`, or `unknown` — the identity signals that feed downstream owner-validation flows. Confidence bands (<0.65 / ≥0.65 / ≥0.85) govern auto-update vs. human review per `docs/spec.md` §2.5 (D-04).
 - **PilotCRM Adapter (`PilotCRMAdapter`)**: Strict compliance with database check constraint `enrichment_action_ck` (`NO_CHANGE|CONFIRM|UPDATE|ADD|RELATE|CONTRADICT|INVALIDATE|SUPPRESS|DEFER|REVIEW`), permanently fixing the P0 `create_deal` error.
-- **Hybrid 80/20 Pipeline**: Fast-path deterministic Stage 1 resolves unambiguous turns in <10ms with zero LLM token cost. Ambiguous turns activate Stage 2 LLM extraction guarded by strict `exact_quote` verification.
+- **Hybrid 80/20 Pipeline**: Fast-path deterministic Stage 1 resolves unambiguous turns in <10ms with zero LLM token cost. Ambiguous turns activate Stage 2 LLM extraction guarded by strict `exact_quote` verification. Stage 2 is pluggable via the `LLMProvider` interface (`MockLLMProvider` is the default; real OpenAI/Anthropic adapters are not yet implemented, so unresolved ambiguous turns currently route to the Human Review Inbox).
 - **Audit Trail & Human Review Inbox**: PostgreSQL RLS persistence in Supabase, immutable historical value tracking (`superseded`), and Dual Timeline UI with exact substring highlighting ("Mostrar na conversa").
 - **Standalone Spin-Out Surface**: Idempotent REST webhook endpoint (`/api/v1/ingest/whatsapp`) and stdio JSON-RPC 2.0 MCP server (`@futuremove/zaptrail-mcp`) for direct consumption by Claude Desktop, Cursor, and custom AI agents.
 
@@ -39,7 +40,7 @@ npm install
 
 ### 1. Verify the Engine and Test Suite
 
-Run the full automated test suite (14 suites, 214 tests):
+Run the full automated test suite (20 suites, 252 tests):
 
 ```bash
 npm test

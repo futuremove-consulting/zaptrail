@@ -11,8 +11,13 @@ import {
 import { buildEvidenceRef } from '../core/evidence';
 import { extractReferredContactPtBr } from './normalizer-ptbr';
 import { RealEstateIntentLabel, RealEstateConditionType } from './types';
+import {
+  classifyCapturePartyRole,
+  classifyCaptureIntents,
+  detectCaptureConditions,
+} from './capture-response-rules';
 
-const PARSER_VERSION = '1.0.0';
+const PARSER_VERSION = '1.1.0';
 
 export interface PartyRoleClassification {
   participant: ParticipantObservation;
@@ -89,6 +94,11 @@ function pushCond(
  */
 export function classifyPartyRole(turnWindow: TurnWindow): PartyRoleClassification {
   const tid = turnWindow.turn_id;
+
+  // 0. Capture-response vocabulary (spec Onda 0-ZT): named spouse/family, identity
+  // negations, and short owner inferences. Falls through to legacy rules when null.
+  const captureRole = classifyCapturePartyRole(turnWindow);
+  if (captureRole) return captureRole;
 
   // 1. Spousal role (CT-04, CT-20)
   const spouse = findMatch(turnWindow, /(?:meu\s+e\s+do\s+meu\s+marido|minha\s+e\s+da\s+minha\s+esposa|meu\s+marido\s+disse|minha\s+esposa\s+disse|meu\s+marido|minha\s+esposa)/i);
@@ -298,7 +308,10 @@ export function classifyRealEstateIntents(turnWindow: TurnWindow): IntentObserva
     const amb = findMatch(turnWindow, /depende\s+da\s+proposta|quanto\s+est[ãa]o\s+pagando/i);
     if (amb) pushIntent(intents, tid, 'ambig-probe', 'intent.ambiguous_or_open', 'property_primary', amb.message, amb.match[0], 0.65, 'inferred');
   }
-
+  // 14. Capture-response vocabulary (Onda 0-ZT), deduplicated against legacy labels
+  for (const ci of classifyCaptureIntents(turnWindow)) {
+    if (!intents.some((i) => i.intent_label === ci.intent_label)) intents.push(ci);
+  }
   return intents;
 }
 
@@ -326,6 +339,11 @@ export function detectRealEstateConditions(turnWindow: TurnWindow): ConditionObs
 
   const date = findMatch(turnWindow, /(?:depois\s+de\s+mar[çc]o\s+do\s+ano\s+que\s+vem|ano\s+que\s+vem)/i);
   if (date) pushCond(conditions, tid, 'date', 'date_or_timeframe', 'Janela temporal futura', date.message, date.match[0], 0.9);
+
+  // Capture-response vocabulary (Onda 0-ZT), deduplicated against legacy condition types
+  for (const cc of detectCaptureConditions(turnWindow)) {
+    if (!conditions.some((c) => c.condition_type === cc.condition_type)) conditions.push(cc);
+  }
 
   return conditions;
 }
