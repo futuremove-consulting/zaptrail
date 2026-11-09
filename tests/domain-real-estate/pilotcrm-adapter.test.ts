@@ -109,7 +109,7 @@ describe('PilotCRMAdapter (CRM-01, D-11)', () => {
     });
 
     const proposals = PilotCRMAdapter.toProposals(envelope);
-    expect(proposals).toHaveLength(1);
+    expect(proposals).toHaveLength(2);
     const p = proposals[0];
     expect(p.enrichment_action).toBe('ADD');
     expect(p.target_entity).toBe('deal');
@@ -139,7 +139,7 @@ describe('PilotCRMAdapter (CRM-01, D-11)', () => {
     });
 
     const proposals = PilotCRMAdapter.toProposals(envelope);
-    expect(proposals).toHaveLength(1);
+    expect(proposals).toHaveLength(2);
     expect(proposals[0].enrichment_action).toBe('DEFER');
     expect(proposals[0].payload.recommended_action).toBe('register_future_followup');
   });
@@ -305,7 +305,7 @@ describe('PilotCRMAdapter (CRM-01, D-11)', () => {
     });
 
     const proposals = PilotCRMAdapter.toProposals(envelope);
-    expect(proposals).toHaveLength(1);
+    expect(proposals).toHaveLength(2);
     expect(proposals[0].enrichment_action).toBe('REVIEW');
     expect(proposals[0].requires_human_review).toBe(true);
     expect(proposals[0].payload.recommended_action).toBe('human_review');
@@ -342,10 +342,69 @@ describe('PilotCRMAdapter (CRM-01, D-11)', () => {
     });
 
     const proposals = adapter.translateEnvelope(envelope);
-    expect(proposals).toHaveLength(1);
+    expect(proposals).toHaveLength(2);
 
     const result = await adapter.applyProposals(proposals);
-    expect(result.applied_count).toBe(1);
+    expect(result.applied_count).toBe(2);
     expect(result.rejected_count).toBe(0);
+  });
+});
+
+describe('PilotCRMAdapter — identity contract (pilotcrm#489 Onda 1)', () => {
+  const participant = (role_label: string, confidence = 0.95) => ({
+    participant_id: 'part-1',
+    role_label,
+    epistemic_status: 'declared' as const,
+    confidence,
+    evidence_refs: [createDummyEvidence('Sou o dono')],
+  });
+
+  it('emits CONFIRM identity proposal for a declared owner', () => {
+    const envelope = createDummyEnvelope({ participants: [participant('owner')] });
+    const proposals = PilotCRMAdapter.toProposals(envelope);
+
+    const identity = proposals.find((p) => p.proposal_id.endsWith('-identity'));
+    expect(identity).toBeDefined();
+    expect(identity!.enrichment_action).toBe('CONFIRM');
+    expect(identity!.target_entity).toBe('contact');
+    expect(identity!.payload.party_role).toBe('owner');
+    expect(identity!.payload.identity_status).toBe('verified');
+    expect(identity!.payload.exact_quote).toBe('Sou o dono');
+  });
+
+  it('emits RELATE for spouse/family with referred contact', () => {
+    const envelope = createDummyEnvelope({
+      participants: [participant('family_member')],
+      relationships: [
+        {
+          relationship_id: 'rel-1',
+          source_participant_id: 'part-1',
+          target_entity_key: 'property_primary',
+          relation_type: 'family_member',
+          referred_name: 'Ricardo',
+          epistemic_status: 'declared',
+          confidence: 0.9,
+          evidence_refs: [createDummyEvidence('Ricardo é meu pai')],
+        },
+      ],
+    });
+    const proposals = PilotCRMAdapter.toProposals(envelope);
+
+    const identity = proposals.find((p) => p.proposal_id.endsWith('-identity'));
+    expect(identity!.enrichment_action).toBe('RELATE');
+    expect(identity!.payload.identity_status).toBe('relationship');
+    expect(identity!.payload.referred_name).toBe('Ricardo');
+  });
+
+  it('emits REVIEW for unknown role (goes to the human review queue)', () => {
+    const envelope = createDummyEnvelope({
+      participants: [participant('unknown', 0.4)],
+    });
+    const proposals = PilotCRMAdapter.toProposals(envelope);
+
+    const identity = proposals.find((p) => p.proposal_id.endsWith('-identity'));
+    expect(identity!.enrichment_action).toBe('REVIEW');
+    expect(identity!.payload.identity_status).toBe('unknown');
+    expect(identity!.requires_human_review).toBe(true);
   });
 });
