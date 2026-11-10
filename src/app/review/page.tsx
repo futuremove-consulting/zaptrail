@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { CheckCircle2 } from 'lucide-react';
 import type { ReviewQueueRecord } from '@/packages/core/supabase-storage';
@@ -21,7 +21,7 @@ interface ReviewInboxPageProps {
   _testSearchQuery?: string;
 }
 
-export default function ReviewInboxPage({
+function ReviewInboxContent({
   _testItems,
   _testLoaded = false,
   _testLoading = false,
@@ -293,5 +293,19 @@ export default function ReviewInboxPage({
         }
       />
     </div>
+  );
+}
+
+export default function ReviewInboxPage(props: ReviewInboxPageProps = {}) {
+  return (
+    <Suspense
+      fallback={
+        <div className="p-6">
+          <SkeletonTable rows={6} columns={6} />
+        </div>
+      }
+    >
+      <ReviewInboxContent {...props} />
+    </Suspense>
   );
 }

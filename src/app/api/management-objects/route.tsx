@@ -289,11 +289,18 @@ export async function PUT(
 
 export async function DELETE(
   request: Request,
-  { params }: { params: { workspace: string } }
+  context?: RouteContextParams
 ) {
   let workspaceId: string;
   try {
-    workspaceId = validateWorkspaceScope(params?.workspace);
+    const searchParams = new URL(request.url).searchParams;
+    let resolvedWorkspace: string | undefined;
+    try {
+      resolvedWorkspace = await resolveWorkspaceFromContext(context);
+    } catch {
+      resolvedWorkspace = searchParams.get("workspace") ?? undefined;
+    }
+    workspaceId = validateWorkspaceScope(resolvedWorkspace);
   } catch (err: any) {
     return NextResponse.json({ error: err.message }, { status: 400 });
   }
