@@ -36,7 +36,7 @@ function DrawerOverlay({
   return (
     <DrawerPrimitive.Overlay
       data-slot="drawer-overlay"
-      className={cn('fixed inset-0 z-50 bg-foreground/60 backdrop-blur-xs', className)}
+      className={cn('fixed inset-0 z-50 bg-black/60 backdrop-blur-xs', className)}
       {...props}
     />
   );

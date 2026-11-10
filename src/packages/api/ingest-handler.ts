@@ -9,6 +9,7 @@ import {
 } from '../core/types';
 import { HybridInterpretationEngine } from '../core/hybrid-engine';
 import { SupabaseStoragePort } from '../core/supabase-storage';
+import { DomainRegistry } from '../core/domain-registry';
 import { RealEstateDomainPack } from '../domain-real-estate/opportunity-orchestrator';
 import {
   coalesceTurnWindowWithDebounce,
@@ -95,8 +96,11 @@ export function getDefaultStoragePort(): StoragePort {
  * Defaults to RealEstateDomainPack; falls back gracefully for unknown keys (E-04-03).
  */
 export function resolveDomainPack(domainKey?: string): DomainPack {
-  if (!domainKey || domainKey === 'real_estate') {
-    return new RealEstateDomainPack();
+  if (domainKey) {
+    const registered = DomainRegistry.resolve(domainKey);
+    if (registered) {
+      return registered;
+    }
   }
   return new RealEstateDomainPack();
 }

@@ -13,7 +13,7 @@ import {
   setTestSupabaseClient,
   getSupabaseClient,
 } from './route';
-import { buildTimelineHighlightSegments } from '../../../components/timeline/TimelineDual';
+import { buildTimelineHighlightSegments } from '@/components/conversations/timeline-dual';
 
 interface ManagementObjectRow {
   id: string;

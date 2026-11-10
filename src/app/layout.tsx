@@ -1,4 +1,5 @@
 import './globals.css';
+import { DomainProvider } from '@/context/domain-context';
 import { AppShell } from '@/components/layout/app-shell';
 
 export const metadata = {
@@ -21,9 +22,9 @@ export default function RootLayout({
         >
           Pular para o conteúdo
         </a>
-        <AppShell domainKey="real_estate" pendingReviewCount={0}>
-          {children}
-        </AppShell>
+        <DomainProvider initialDomainKey="real_estate">
+          <AppShell pendingReviewCount={0}>{children}</AppShell>
+        </DomainProvider>
       </body>
     </html>
   );

@@ -7,7 +7,12 @@ interface SkeletonTableProps {
 
 export function SkeletonTable({ rows = 8, columns = 5 }: SkeletonTableProps) {
   return (
-    <div className="w-full" aria-label="Carregando dados..." aria-busy="true">
+    <div
+      data-testid="skeleton-table"
+      className="w-full"
+      aria-label="Carregando dados..."
+      aria-busy="true"
+    >
       {/* Header row */}
       <div className="flex gap-4 border-b border-border px-4 pb-3">
         {Array.from({ length: columns }).map((_, i) => (
