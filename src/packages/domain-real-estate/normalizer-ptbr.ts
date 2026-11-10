@@ -127,7 +127,7 @@ export function extractMonetaryValuesPtBr(
     claimedSpans.push({ start, end });
     const amount = Math.round(parseFloat(match[1].replace(',', '.')) * 1_000_000);
     const prefix = text.slice(Math.max(0, start - 50), start).toLowerCase();
-    const isDemand = /\b(?:procuro|procurando|procura|or[çc]amento|at[eé]|comprar|compra|busca|buscando)\b/.test(prefix);
+    const isDemand = /\b(?:procuro|procurando|procura|or[çc]amento|comprar|compra|busca|buscando)\b|(?:^|\W)at[eé](?:$|\W)/i.test(prefix);
     const target = isDemand ? 'demand_primary' : isSec(start) ? 'property_secondary' : defaultTargetKey;
     results.push(makeVal(message, results.length + 1, isDemand ? 'budget_max' : 'sale_asking_price', amount, rawQuote, target));
   }
@@ -159,7 +159,7 @@ export function extractMonetaryValuesPtBr(
     const before = text.slice(Math.max(0, start - 50), start).toLowerCase();
     const after = text.slice(end, Math.min(text.length, end + 25)).toLowerCase();
     let field = 'sale_asking_price';
-    if (/\b(?:procuro|procurando|comprar|or[çc]amento|at[eé]|busca|buscando)\b/.test(before)) {
+    if (/\b(?:procuro|procurando|comprar|or[çc]amento|busca|buscando)\b|(?:^|\W)at[eé](?:$|\W)/i.test(before)) {
       field = 'budget_max';
     } else if (/venda|vender/.test(before)) {
       field = 'sale_asking_price';
@@ -180,7 +180,7 @@ export function extractMonetaryValuesPtBr(
     claimedSpans.push({ start: numStart, end: numEnd });
     const amount = parseInt(numDigits.replace(/\./g, ''), 10);
     const before = text.slice(Math.max(0, match.index - 40), numStart).toLowerCase();
-    const isDemand = /\b(?:procuro|procurando|comprar|or[çc]amento|at[eé]|busca|buscando)\b/.test(before);
+    const isDemand = /\b(?:procuro|procurando|comprar|or[çc]amento|busca|buscando)\b|(?:^|\W)at[eé](?:$|\W)/i.test(before) || /(?:^|\W)at[eé](?:$|\W)|or[çc]amento/i.test(match[0]);
     const isRent = /alugar|loca[çc][ãa]o/i.test(match[0]);
     const field = isDemand ? 'budget_max' : isRent ? 'rent_asking_price' : 'sale_asking_price';
     const target = isDemand ? 'demand_primary' : isSec(numStart) ? 'property_secondary' : defaultTargetKey;

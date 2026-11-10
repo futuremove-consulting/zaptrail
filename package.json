@@ -5,8 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "node --import tsx src/server.ts",
+    "build": "next build",
     "start": "node --import tsx src/server.ts",
     "test": "vitest run",
+    "test:e2e": "playwright test",
     "typecheck": "tsc --noEmit",
     "check:quality-gates": "node scripts/check-quality-gates.mjs",
     "check:all": "node scripts/check-quality-gates.mjs && tsc --noEmit && vitest run"
@@ -22,6 +24,7 @@
     "zod": "^3.23.8"
   },
   "devDependencies": {
+    "@playwright/test": "^1.65.0",
     "@tailwindcss/postcss": "^4.3.4",
     "@testing-library/jest-dom": "^7.0.1",
     "@testing-library/react": "^16.3.3",
