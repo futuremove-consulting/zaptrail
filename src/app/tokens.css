@@ -1,0 +1,138 @@
+/* ==========================================================
+   Design Tokens — OKLCH Purple Theme (Canonical PilotCRM DS)
+   Single source of truth for ZapTrail & PilotCRM design system.
+   ========================================================== */
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --radius: 0.625rem;
+  --text-2xs: 0.625rem;
+  --text-3xs: 0.5625rem;
+  --text-4xs: 0.5rem;
+
+  /* Light mode (OKLCH) */
+  --background: oklch(0.96 0.002 285);
+  --foreground: oklch(0.141 0.005 285.823);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.141 0.005 285.823);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.141 0.005 285.823);
+  --primary: oklch(0.491 0.27 292.581);
+  --primary-foreground: oklch(0.969 0.016 293.756);
+  --secondary: oklch(0.967 0.001 286.375);
+  --secondary-foreground: oklch(0.21 0.006 285.885);
+  --muted: oklch(0.967 0.001 286.375);
+  --muted-foreground: oklch(0.45 0.016 285.938);
+  --accent: oklch(0.967 0.001 286.375);
+  --accent-foreground: oklch(0.21 0.006 285.885);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.92 0.004 286.32);
+  --input: oklch(0.92 0.004 286.32);
+  --ring: oklch(0.62 0.015 286.067);
+
+  /* Status colors */
+  --success: oklch(0.535 0.16 142.1);
+  --success-foreground: oklch(0.985 0 0);
+  --warning: oklch(0.555 0.15 66.29);
+  --warning-foreground: oklch(0.985 0 0);
+  --info: oklch(0.705 0.213 47.604);
+  --info-foreground: oklch(0.985 0 0);
+
+  /* Chart colors */
+  --chart-1: oklch(0.837 0.128 66.29);
+  --chart-2: oklch(0.705 0.213 47.604);
+  --chart-3: oklch(0.646 0.222 41.116);
+  --chart-4: oklch(0.553 0.195 38.402);
+  --chart-5: oklch(0.47 0.157 37.304);
+  --chart-label: oklch(0.552 0.016 285.938);
+
+  /* Categorical colors (DS-71) */
+  --category-visit: oklch(0.55 0.24 290);
+  --category-visit-foreground: oklch(0.985 0 0);
+  --category-visit-muted: oklch(0.95 0.02 290);
+  --category-visit-border: oklch(0.88 0.03 290);
+  --category-visit-ring: var(--category-visit);
+
+  --category-proposal: oklch(0.55 0.24 310);
+  --category-proposal-foreground: oklch(0.985 0 0);
+  --category-proposal-muted: oklch(0.95 0.02 310);
+  --category-proposal-border: oklch(0.88 0.03 310);
+
+  --category-negotiation: oklch(0.58 0.15 180);
+  --category-negotiation-foreground: oklch(0.985 0 0);
+  --category-negotiation-muted: oklch(0.95 0.015 180);
+  --category-negotiation-border: oklch(0.88 0.02 180);
+
+  --category-lead: oklch(0.535 0.16 142.1);
+  --category-lead-foreground: oklch(0.985 0 0);
+  --category-lead-muted: oklch(0.95 0.03 142.1);
+  --category-lead-border: oklch(0.88 0.04 142.1);
+
+  --category-info: oklch(0.65 0.18 210);
+  --category-info-foreground: oklch(0.985 0 0);
+  --category-info-muted: oklch(0.95 0.015 210);
+  --category-info-border: oklch(0.88 0.02 210);
+  --category-info-ring: var(--category-info);
+
+  /* Surface (cards) */
+  --surface: oklch(1 0 0);
+  --surface-foreground: oklch(0.141 0.005 285.823);
+
+  /* Sidebar */
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.141 0.005 285.823);
+  --sidebar-primary: oklch(0.541 0.281 293.009);
+  --sidebar-primary-foreground: oklch(0.969 0.016 293.756);
+  --sidebar-accent: oklch(0.967 0.001 286.375);
+  --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
+  --sidebar-border: oklch(0.92 0.004 286.32);
+  --sidebar-ring: oklch(0.62 0.015 286.067);
+
+  /* Brand */
+  --brand-primary: oklch(0.491 0.27 292.581);
+  --brand-secondary: oklch(0.606 0.25 292.717);
+  --brand-accent: oklch(0.541 0.281 293.009);
+}
+
+.dark {
+  --background: oklch(0.141 0.005 285.823);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.21 0.006 285.885);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.21 0.006 285.885);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.432 0.232 292.759);
+  --primary-foreground: oklch(0.969 0.016 293.756);
+  --secondary: oklch(0.274 0.006 286.033);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.274 0.006 286.033);
+  --muted-foreground: oklch(0.795 0.015 286.067);
+  --accent: oklch(0.274 0.006 286.033);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.141 0.005 285.823);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.552 0.016 285.938);
+
+  --success: oklch(0.69 0.19 142.1);
+  --success-foreground: oklch(0.141 0.005 285.823);
+  --warning: oklch(0.75 0.12 66.29);
+  --warning-foreground: oklch(0.141 0.005 285.823);
+  --info: oklch(0.65 0.21 47.604);
+  --info-foreground: oklch(0.985 0 0);
+
+  --surface: oklch(0.21 0.006 285.885);
+  --surface-foreground: oklch(0.985 0 0);
+
+  --sidebar: oklch(0.21 0.006 285.885);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.606 0.25 292.717);
+  --sidebar-primary-foreground: oklch(0.969 0.016 293.756);
+  --sidebar-accent: oklch(0.274 0.006 286.033);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.552 0.015 285.938);
+}

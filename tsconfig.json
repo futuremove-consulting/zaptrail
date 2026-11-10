@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
     "target": "ES2022",
+    "lib": ["dom", "dom.iterable", "ESNext"],
     "module": "ESNext",
     "moduleResolution": "bundler",
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "strict": true,
     "noEmit": true,
     "esModuleInterop": true,
@@ -12,14 +13,25 @@
     "paths": {
       "next/server": ["tests/shims/next-server.ts"],
       "@supabase/supabase-js": ["tests/shims/supabase-js.ts"],
+      "next/navigation": ["src/test/mocks/next-navigation.ts"],
       "@/*": ["src/*"]
-    }
+    },
+    "plugins": [{ "name": "next" }]
   },
   "include": [
     "api/**/*.ts",
+    "next.config.ts",
     "src/server.ts",
     "src/packages/**/*.ts",
-    "src/app/api/v1/**/*.ts",
+    "src/app/**/*.ts",
+    "src/app/**/*.tsx",
+    "src/components/**/*.ts",
+    "src/components/**/*.tsx",
+    "src/hooks/**/*.ts",
+    "src/context/**/*.ts",
+    "src/context/**/*.tsx",
+    "src/lib/**/*.ts",
+    "src/test/**/*.ts",
     "tests/**/*.ts"
   ]
 }
