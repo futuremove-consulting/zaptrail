@@ -1,18 +1,17 @@
 import { NextResponse } from 'next/server';
-
-let confidenceState = {
-  high: 0.85,
-  medium: 0.65,
-};
+import {
+  getConfidenceConfig,
+  setConfidenceConfig,
+} from '@/lib/server-storage';
 
 export async function GET() {
-  return NextResponse.json(confidenceState);
+  return NextResponse.json(getConfidenceConfig());
 }
 
 export async function PATCH(request: Request) {
   const body = await request.json();
   if (typeof body?.high === 'number' && typeof body?.medium === 'number') {
-    confidenceState = { high: body.high, medium: body.medium };
+    setConfidenceConfig({ high: body.high, medium: body.medium });
   }
-  return NextResponse.json(confidenceState);
+  return NextResponse.json(getConfidenceConfig());
 }

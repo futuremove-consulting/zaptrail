@@ -10,6 +10,12 @@ export async function PATCH(
   context: { params: Promise<{ id: string }> }
 ) {
   const { id } = await Promise.resolve(context.params);
+  const url = new URL(request.url);
+  const tenantId =
+    url.searchParams.get('tenant_id') ??
+    request.headers.get('x-zaptrail-tenant-id') ??
+    DEFAULT_TENANT_ID;
+
   const body = await request.json();
   const parsed = ReviewResolutionInputSchema.safeParse(body);
 
@@ -22,7 +28,7 @@ export async function PATCH(
 
   const service = getSharedReviewService();
   const updated = await service.resolveReviewItem(
-    DEFAULT_TENANT_ID,
+    tenantId,
     id,
     parsed.data
   );

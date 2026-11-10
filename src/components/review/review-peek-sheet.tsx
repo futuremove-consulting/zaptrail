@@ -12,6 +12,8 @@ import { ConfidenceBadge } from './confidence-badge';
 
 interface ReviewPeekSheetProps {
   item: ReviewQueueRecord | null;
+  mode?: 'inspect' | 'edit' | 'reject';
+  onModeChange?: (mode: 'inspect' | 'edit' | 'reject') => void;
   onClose: () => void;
   onApprove: (item: ReviewQueueRecord) => void;
   onEdit: (item: ReviewQueueRecord, editedPayload: Record<string, unknown>, notes?: string) => void;
@@ -20,12 +22,19 @@ interface ReviewPeekSheetProps {
 
 export function ReviewPeekSheet({
   item,
+  mode: controlledMode,
+  onModeChange,
   onClose,
   onApprove,
   onEdit,
   onReject,
 }: ReviewPeekSheetProps) {
-  const [mode, setMode] = useState<'inspect' | 'edit' | 'reject'>('inspect');
+  const [internalMode, setInternalMode] = useState<'inspect' | 'edit' | 'reject'>('inspect');
+  const mode = controlledMode ?? internalMode;
+  const setMode = (m: 'inspect' | 'edit' | 'reject') => {
+    setInternalMode(m);
+    onModeChange?.(m);
+  };
   const [notes, setNotes] = useState('');
   const [editedJson, setEditedJson] = useState('');
 
@@ -126,7 +135,7 @@ export function ReviewPeekSheet({
           {mode === 'edit' ? (
             <div className="space-y-3">
               <Textarea
-                aria-label="Payload editado"
+                aria-label="Dados extraídos editados"
                 value={editedJson}
                 onChange={(e) => setEditedJson(e.target.value)}
                 className="font-mono text-xs"

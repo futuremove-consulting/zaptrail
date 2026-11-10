@@ -2,13 +2,19 @@ import { NextResponse } from 'next/server';
 import { DEFAULT_TENANT_ID, getSharedStorage } from '@/lib/server-storage';
 
 export async function GET(
-  _request: Request,
+  request: Request,
   context: { params: Promise<{ id: string }> }
 ) {
   const { id } = await Promise.resolve(context.params);
+  const url = new URL(request.url);
+  const tenantId =
+    url.searchParams.get('tenant_id') ??
+    request.headers.get('x-zaptrail-tenant-id') ??
+    DEFAULT_TENANT_ID;
+
   const storage = getSharedStorage();
-  const originMessages = await storage.getOriginMessages(DEFAULT_TENANT_ID, id);
-  const runs = await storage.getExtractionRuns(DEFAULT_TENANT_ID, id);
+  const originMessages = await storage.getOriginMessages(tenantId, id);
+  const runs = await storage.getExtractionRuns(tenantId, id);
 
   const messages = originMessages.map((m) => ({
     message_id: m.external_message_id,

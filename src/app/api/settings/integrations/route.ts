@@ -1,26 +1,14 @@
 import { NextResponse } from 'next/server';
-
-let integrationsState = {
-  crm: {
-    label: 'PilotCRM Hexagonal Adapter',
-    status: 'ok',
-    url: 'https://app.pilotcrm.com.br/api/crm/whatsapp/ai-suggestions/ingest',
-    token: 'zt_live_pilotcrm_982',
-  },
-  whatsapp: {
-    label: 'WhatsApp Webhook Ingest',
-    status: 'ok',
-    url: 'https://zaptrail.app/api/v1/ingest/whatsapp',
-    token: 'zt_wh_ingest_441',
-  },
-};
+import { getIntegrationsConfig } from '@/lib/server-storage';
 
 export async function GET() {
-  return NextResponse.json(integrationsState);
+  return NextResponse.json(getIntegrationsConfig());
 }
 
 export async function PATCH(request: Request) {
   const body = await request.json();
-  integrationsState = { ...integrationsState, ...body };
-  return NextResponse.json(integrationsState);
+  const config = getIntegrationsConfig();
+  if (body?.crm) Object.assign(config.crm, body.crm);
+  if (body?.whatsapp) Object.assign(config.whatsapp, body.whatsapp);
+  return NextResponse.json(config);
 }

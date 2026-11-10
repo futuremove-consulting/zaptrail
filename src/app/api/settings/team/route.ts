@@ -1,28 +1,17 @@
 import { NextResponse } from 'next/server';
-
-let teamState = [
-  {
-    id: 'usr_1',
-    name: 'Gustavo Oliveira',
-    email: 'gustavo@pilotcrm.com.br',
-    role: 'admin',
-  },
-  {
-    id: 'usr_2',
-    name: 'Mariana Costa',
-    email: 'mariana@pilotcrm.com.br',
-    role: 'reviewer',
-  },
-];
+import {
+  getWorkspaceMembers,
+  setWorkspaceMembers,
+} from '@/lib/server-storage';
 
 export async function GET() {
-  return NextResponse.json({ members: teamState });
+  return NextResponse.json({ members: getWorkspaceMembers() });
 }
 
 export async function PATCH(request: Request) {
   const body = await request.json();
   if (Array.isArray(body?.members)) {
-    teamState = body.members;
+    setWorkspaceMembers(body.members);
   }
-  return NextResponse.json({ members: teamState });
+  return NextResponse.json({ members: getWorkspaceMembers() });
 }

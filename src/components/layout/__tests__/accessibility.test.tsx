@@ -34,14 +34,24 @@ describe('Accessibility & WCAG 2.2 AA Contracts', () => {
     expect(screen.getByTestId('mobile-bottom-nav')).toBeInTheDocument();
   });
 
-  it('CommandPalette opens on Ctrl+K and filters commands', () => {
+  it('CommandPalette navigates through commands with arrow keys and selects with Enter', () => {
     render(<CommandPalette initialOpen={true} />);
     const input = screen.getByLabelText(/buscar comando/i);
-    expect(input).toBeInTheDocument();
 
-    fireEvent.change(input, { target: { value: 'inexistente_xyz' } });
-    expect(
-      screen.getByText(/nenhum resultado encontrado/i)
-    ).toBeInTheDocument();
+    const getCommandButtons = () =>
+      screen
+        .getAllByRole('button')
+        .filter((b) => b.getAttribute('data-command-item') === 'true');
+
+    // Initially index 0 is selected
+    expect(getCommandButtons()[0]).toHaveAttribute('aria-selected', 'true');
+
+    // ArrowDown navigates to index 1
+    fireEvent.keyDown(input, { key: 'ArrowDown' });
+    expect(getCommandButtons()[1]).toHaveAttribute('aria-selected', 'true');
+
+    // ArrowUp navigates back to index 0
+    fireEvent.keyDown(input, { key: 'ArrowUp' });
+    expect(getCommandButtons()[0]).toHaveAttribute('aria-selected', 'true');
   });
 });

@@ -11,7 +11,7 @@ export default defineConfig({
     globals: true,
     include: [
       'tests/**/*.test.ts',
-      'src/app/api/management-objects/management-objects.test.ts',
+      'src/app/api/**/*.test.ts',
       'src/components/**/__tests__/**/*.test.{ts,tsx}',
       'src/components/**/*.test.tsx',
       'src/hooks/__tests__/**/*.test.{ts,tsx}',
