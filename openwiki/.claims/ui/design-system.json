@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:cf31c77dc6059c3468ce315d1e46f81ee0ff2bd08675591f114a374b0b790cf5",
+  "claims": [
+    {
+      "id": "claim_85927a95e1474ffaa86fc45da526adc0",
+      "statement": "The user interface utilizes PilotCRM OKLCH semantic tokens defined in globals.css without raw hardcoded palette colors.",
+      "evidence": [
+        {
+          "resource": "repo://src/app/globals.css",
+          "version": "repo-file-v1:sha256:d2056f36e94bc645df1a6269e785c595a1757fd8791553af69e0788cbf587671"
+        }
+      ]
+    },
+    {
+      "id": "claim_69d7d1eee4ae46a48af6b9a238643991",
+      "statement": "The AppShell coordinates a fixed h-14 datum line header with a responsive sidebar and bottom navigation layout.",
+      "evidence": [
+        {
+          "resource": "repo://src/components/layout/app-shell.tsx",
+          "version": "repo-file-v1:sha256:7e9934090a4aee1946f84c827b152f44ae47259b1c1a4bc9f3644492d53c5d38"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.9.0",
+    "at": "2026-11-10T22:22:09.496Z"
+  }
+}

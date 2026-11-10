@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:303727c7f57d11b9eab2512ed677a3d2584b97f2b4a2c8fd27d56cb8451aa1d3",
+  "claims": [
+    {
+      "id": "claim_e81082899a214168b2dbef3b11f43d89",
+      "statement": "PilotCRMAdapter translates UniversalInterpretationEnvelope events into PilotCRM proposals adhering to the enrichment_action_ck constraint.",
+      "evidence": [
+        {
+          "resource": "repo://src/packages/domain-real-estate/adapters/pilotcrm-adapter.ts",
+          "version": "repo-file-v1:sha256:7d35118ab01891f2bd8bbd1c03343e36d3a7814250e7df5b2a060e05b8b197d5"
+        }
+      ]
+    },
+    {
+      "id": "claim_00260481db0d40dc9f40fcdd80d7b714",
+      "statement": "The outbound suggestions dispatcher transmits proposals to PilotCRM webhooks with token masking and an 8000 millisecond timeout guard.",
+      "evidence": [
+        {
+          "resource": "repo://src/packages/api/outbound-dispatcher.ts",
+          "version": "repo-file-v1:sha256:f91eca903ea4cbf945e5fca2195164b18eef0f9af752556d66eb289918f19459"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.9.0",
+    "at": "2026-11-10T22:22:09.496Z"
+  }
+}

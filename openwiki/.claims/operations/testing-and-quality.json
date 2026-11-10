@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:9318d9956b5cc37232c24c9b72cc5b73fd74891718b4791a3a74266fed3b169a",
+  "claims": [
+    {
+      "id": "claim_3ad0b5224ccb4f9f8bf3b9294b6d64fd",
+      "statement": "The check-quality-gates script verifies that all production source files remain at or below 350 lines and use semantic design tokens.",
+      "evidence": [
+        {
+          "resource": "repo://scripts/check-quality-gates.mjs",
+          "version": "repo-file-v1:sha256:ea4222cbd087a479871eb33466c43046e070745e4dc02ec4db3efe4039d0452a"
+        }
+      ]
+    },
+    {
+      "id": "claim_5367b7bf786c4147a89a7b57450c049e",
+      "statement": "Playwright end-to-end tests validate browser workflows including the review flow and playground in an isolated Next.js environment.",
+      "evidence": [
+        {
+          "resource": "repo://playwright.config.ts",
+          "version": "repo-file-v1:sha256:cf8f46b264a2e1ed986751e341f31a5de417f3c79a6a29f4409124057dcdd8a8"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.9.0",
+    "at": "2026-11-10T22:22:09.496Z"
+  }
+}

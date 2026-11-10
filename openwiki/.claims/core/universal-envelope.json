@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:c21d586089cdc8af62b3263048752de288c850625cc5e78c3560037cc81b1012",
+  "claims": [
+    {
+      "id": "claim_5951c3e589ef442fbc6575ea5c446bdd",
+      "statement": "The UniversalInterpretationEnvelope is the central semantic contract containing participants, intents, facts, values, opportunities, and actions.",
+      "evidence": [
+        {
+          "resource": "repo://src/packages/core/types.ts",
+          "version": "repo-file-v1:sha256:1a54187928bd2d5ea5254dededea00ee5f79fc04d61a03821d7366dc04446fcf"
+        }
+      ]
+    },
+    {
+      "id": "claim_239d0ddd85f3471281ece454780b97b8",
+      "statement": "Every evidence reference requires exact quote validation against raw conversation messages to prevent hallucinations.",
+      "evidence": [
+        {
+          "resource": "repo://src/packages/core/types.ts",
+          "version": "repo-file-v1:sha256:1a54187928bd2d5ea5254dededea00ee5f79fc04d61a03821d7366dc04446fcf"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.9.0",
+    "at": "2026-11-10T22:22:09.496Z"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:c093777ae21ebe87007eb37168133c2a381bfc0e622ea7645f0c4cd50c872580",
+  "claims": [
+    {
+      "id": "claim_2dbd689d2b5f4813b1b10eaa9f3a0dad",
+      "statement": "The Real Estate Domain Pack implements a 7-layer deterministic extraction pipeline covering property types, transactions, BRL monetary values, neighborhoods, physical metrics, supply vs demand, and urgency.",
+      "evidence": [
+        {
+          "resource": "repo://src/packages/domain-real-estate/opportunity-orchestrator.ts",
+          "version": "repo-file-v1:sha256:92fedfa94b0cce54785883b1363c2f7b4be0c668f442ee87b3d6204304da3453"
+        }
+      ]
+    },
+    {
+      "id": "claim_1a5e1913424545778152b21cbe95cb77",
+      "statement": "normalizer-ptbr extracts Brazilian real estate monetary values across millions, thousands, and formatted currency expressions.",
+      "evidence": [
+        {
+          "resource": "repo://src/packages/domain-real-estate/normalizer-ptbr.ts",
+          "version": "repo-file-v1:sha256:bd1f2aa6358916ce26ccf2c7b68b707d09576d6324904e07ce6b3cb860d7aac6"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.9.0",
+    "at": "2026-11-10T22:22:09.496Z"
+  }
+}

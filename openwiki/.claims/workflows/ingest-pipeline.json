@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:8a2210b9670df79d4f9eccbc3f6e2a8e250d8e90b791dd2b3dd6b7ac07758fcf",
+  "claims": [
+    {
+      "id": "claim_fce0f85e1d64487cb4513d5ebd768dc0",
+      "statement": "The WhatsApp ingestion pipeline coalesces fragmented conversational messages into TurnWindows using a 120-second debounce window.",
+      "evidence": [
+        {
+          "resource": "repo://src/packages/domain-real-estate/turn-window-coalescer.ts",
+          "version": "repo-file-v1:sha256:ecfd8620abd5bf501a95758a1031b19f7e7ba3290cbb428202db8825a9e39d91"
+        }
+      ]
+    },
+    {
+      "id": "claim_7040a26f882a4adb8d6618738159de5e",
+      "statement": "Inbound webhook authorization validates Bearer tokens via constant-time timingSafeEqual comparisons.",
+      "evidence": [
+        {
+          "resource": "repo://src/app/api/v1/ingest/whatsapp/route.ts",
+          "version": "repo-file-v1:sha256:3009c4aa4cdfc0814f5e5b69576ff0c83d91d66d6bc6906beab1cf074bcb2ba6"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.9.0",
+    "at": "2026-11-10T22:22:09.496Z"
+  }
+}

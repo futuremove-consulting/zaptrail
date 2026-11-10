@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "pages": {
+    "/openwiki/architecture/overview.md": {
+      "pageVersion": "sha256:5067aff0ce1eb2a3ffeb55b85198212761c2a2c815b10af33908d4a683fdd472",
+      "completedBy": "antigravity",
+      "completedRunId": "ccf69293-fe44-47c5-8a0b-e5d6703cf845",
+      "gitHead": "86277a92120bb2b37ea07a293eec800f4d3d0bc3",
+      "sourceFingerprint": "sha256:b46d49181ff753ea28421b425bb13c1473cb8ae873fb21d8f803124bb8d94270"
+    },
+    "/openwiki/core/universal-envelope.md": {
+      "pageVersion": "sha256:c21d586089cdc8af62b3263048752de288c850625cc5e78c3560037cc81b1012",
+      "completedBy": "antigravity",
+      "completedRunId": "ccf69293-fe44-47c5-8a0b-e5d6703cf845",
+      "gitHead": "86277a92120bb2b37ea07a293eec800f4d3d0bc3",
+      "sourceFingerprint": "sha256:b46d49181ff753ea28421b425bb13c1473cb8ae873fb21d8f803124bb8d94270"
+    },
+    "/openwiki/domain/real-estate-engine.md": {
+      "pageVersion": "sha256:c093777ae21ebe87007eb37168133c2a381bfc0e622ea7645f0c4cd50c872580",
+      "completedBy": "antigravity",
+      "completedRunId": "ccf69293-fe44-47c5-8a0b-e5d6703cf845",
+      "gitHead": "86277a92120bb2b37ea07a293eec800f4d3d0bc3",
+      "sourceFingerprint": "sha256:b46d49181ff753ea28421b425bb13c1473cb8ae873fb21d8f803124bb8d94270"
+    },
+    "/openwiki/integrations/pilotcrm.md": {
+      "pageVersion": "sha256:303727c7f57d11b9eab2512ed677a3d2584b97f2b4a2c8fd27d56cb8451aa1d3",
+      "completedBy": "antigravity",
+      "completedRunId": "ccf69293-fe44-47c5-8a0b-e5d6703cf845",
+      "gitHead": "86277a92120bb2b37ea07a293eec800f4d3d0bc3",
+      "sourceFingerprint": "sha256:b46d49181ff753ea28421b425bb13c1473cb8ae873fb21d8f803124bb8d94270"
+    },
+    "/openwiki/operations/testing-and-quality.md": {
+      "pageVersion": "sha256:9318d9956b5cc37232c24c9b72cc5b73fd74891718b4791a3a74266fed3b169a",
+      "completedBy": "antigravity",
+      "completedRunId": "ccf69293-fe44-47c5-8a0b-e5d6703cf845",
+      "gitHead": "86277a92120bb2b37ea07a293eec800f4d3d0bc3",
+      "sourceFingerprint": "sha256:b46d49181ff753ea28421b425bb13c1473cb8ae873fb21d8f803124bb8d94270"
+    },
+    "/openwiki/quickstart.md": {
+      "pageVersion": "sha256:d624151eb80c2dca060bfeeb0f280ed763466830d234bc5e98235d86eb37ad52",
+      "completedBy": "antigravity",
+      "completedRunId": "ccf69293-fe44-47c5-8a0b-e5d6703cf845",
+      "gitHead": "86277a92120bb2b37ea07a293eec800f4d3d0bc3",
+      "sourceFingerprint": "sha256:b46d49181ff753ea28421b425bb13c1473cb8ae873fb21d8f803124bb8d94270"
+    },
+    "/openwiki/ui/design-system.md": {
+      "pageVersion": "sha256:cf31c77dc6059c3468ce315d1e46f81ee0ff2bd08675591f114a374b0b790cf5",
+      "completedBy": "antigravity",
+      "completedRunId": "ccf69293-fe44-47c5-8a0b-e5d6703cf845",
+      "gitHead": "86277a92120bb2b37ea07a293eec800f4d3d0bc3",
+      "sourceFingerprint": "sha256:b46d49181ff753ea28421b425bb13c1473cb8ae873fb21d8f803124bb8d94270"
+    },
+    "/openwiki/workflows/ingest-pipeline.md": {
+      "pageVersion": "sha256:8a2210b9670df79d4f9eccbc3f6e2a8e250d8e90b791dd2b3dd6b7ac07758fcf",
+      "completedBy": "antigravity",
+      "completedRunId": "ccf69293-fe44-47c5-8a0b-e5d6703cf845",
+      "gitHead": "86277a92120bb2b37ea07a293eec800f4d3d0bc3",
+      "sourceFingerprint": "sha256:b46d49181ff753ea28421b425bb13c1473cb8ae873fb21d8f803124bb8d94270"
+    }
+  }
+}

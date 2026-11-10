@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:5067aff0ce1eb2a3ffeb55b85198212761c2a2c815b10af33908d4a683fdd472",
+  "claims": [
+    {
+      "id": "claim_d912c906cd3b460db0b153552469cc1e",
+      "statement": "ZapTrail separates its architecture into a domain-agnostic Universal Core and pluggable Domain Packs.",
+      "evidence": [
+        {
+          "resource": "repo://src/packages/core/types.ts",
+          "version": "repo-file-v1:sha256:1a54187928bd2d5ea5254dededea00ee5f79fc04d61a03821d7366dc04446fcf"
+        }
+      ]
+    },
+    {
+      "id": "claim_4ae622d337d5489a8b1dfef8a5eb0d6b",
+      "statement": "The PilotCRMAdapter maps universal envelope opportunities to PilotCRM enrichment_action_ck constraints.",
+      "evidence": [
+        {
+          "resource": "repo://src/packages/domain-real-estate/adapters/pilotcrm-adapter.ts",
+          "version": "repo-file-v1:sha256:7d35118ab01891f2bd8bbd1c03343e36d3a7814250e7df5b2a060e05b8b197d5"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.9.0",
+    "at": "2026-11-10T22:22:09.496Z"
+  }
+}
