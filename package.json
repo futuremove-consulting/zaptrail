@@ -11,7 +11,11 @@
     "test:e2e": "playwright test",
     "typecheck": "tsc --noEmit",
     "check:quality-gates": "node scripts/check-quality-gates.mjs",
-    "check:all": "node scripts/check-quality-gates.mjs && tsc --noEmit && vitest run"
+    "check:all": "node scripts/check-quality-gates.mjs && tsc --noEmit && vitest run",
+    "ci:check": "node scripts/ci-gateway.mjs --check",
+    "ci:standby": "node scripts/ci-gateway.mjs --standby",
+    "ci:full": "node scripts/ci-gateway.mjs --full",
+    "ci:auto": "node scripts/ci-gateway.mjs --auto"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.5.0",

@@ -79,3 +79,25 @@ Tests cover:
 - Review Inbox table rendering and item selection.
 - Global Command Palette (`Ctrl+K`) filtering and keyboard navigation.
 - Playground real-time conversation extraction and link transitions.
+
+## Zero-Cost CI Gateway (`scripts/ci-gateway.mjs`)
+
+To prevent exhaustion of free GitHub Actions billing quotas (2,000 minutes/month), ZapTrail adopts the **CI Gateway** pattern identical to PilotCRM:
+- **`CI_MODE=full` (default):** Runs quality gates, TypeScript checks, Vitest test suites, and Next.js builds on push/PR.
+- **`CI_MODE=standby`:** Automatically skips all jobs (`skipped` status, 0 minutes consumed).
+- **Manual Overrides:** Any run can be manually triggered via `workflow_dispatch` with `force_run=true` or `run_e2e=true`.
+
+```bash
+# Check current CI mode and billing status
+pnpm ci:check
+
+# Activate standby mode (save quota)
+pnpm ci:standby
+
+# Re-activate full mode
+pnpm ci:full
+
+# Auto-detect billing blockage and toggle
+pnpm ci:auto
+```
+

@@ -1,0 +1,122 @@
+# ZapTrail CI/CD Pipeline (Modo Custo-Zero + Gateway CI_MODE)
+# Alinhado com o padrão de engenharia do PilotCRM.
+#
+# GATEWAY CI_MODE (variável de repositório `CI_MODE`, via scripts/ci-gateway.mjs):
+# - `full` (default): Todos os jobs rodam conforme seus triggers normais.
+# - `standby`: Todos os jobs são pulados (run conclui como `skipped` com 0 minutos gastos).
+#
+# ESTRATÉGIA CUSTO-ZERO PARA PLANO GRATUITO:
+# 1. `paths-ignore` evita gasto de minutos em commits de documentação/OpenWiki.
+# 2. `concurrency.cancel-in-progress` cancela execuções obsoletas do mesmo branch.
+# 3. Testes E2E (Playwright) rodam apenas sob demanda (workflow_dispatch ou CI_RUN_E2E=true).
+
+name: CI/CD
+
+on:
+  push:
+    branches: [master]
+    paths-ignore:
+      - 'docs/**'
+      - 'openwiki/**'
+      - '**/*.md'
+      - '.openwikiignore'
+  pull_request:
+    branches: [master]
+    paths-ignore:
+      - 'docs/**'
+      - 'openwiki/**'
+      - '**/*.md'
+      - '.openwikiignore'
+  workflow_dispatch:
+    inputs:
+      force_run:
+        description: 'Forçar execução mesmo se CI_MODE=standby'
+        required: false
+        default: false
+        type: boolean
+      run_e2e:
+        description: 'Executar testes E2E com Playwright (Chromium)'
+        required: false
+        default: false
+        type: boolean
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NODE_VERSION: '22'
+
+jobs:
+  # ──────────────────────────────────────────────
+  # QUALITY & TESTS (Quality Gates, Types, Vitest, Next Build)
+  # Em standby: pulado automaticamente (0 minutos de cota gastos)
+  # ──────────────────────────────────────────────
+  test-and-build:
+    name: Quality, Tests & Build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    if: vars.CI_MODE != 'standby' || inputs.force_run == true
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Quality Gates (350-line ceiling, OKLCH tokens, UI Writing)
+        run: node scripts/check-quality-gates.mjs
+
+      - name: TypeScript Typecheck
+        run: npx tsc --noEmit
+
+      - name: Unit & Integration Tests (Vitest)
+        run: pnpm test
+
+      - name: Production Build (Next.js 16 App Router)
+        run: pnpm build
+
+  # ──────────────────────────────────────────────
+  # E2E PLAYWRIGHT (Opcional / Custo Controlado)
+  # Só roda quando explicitamente habilitado para poupar minutos
+  # ──────────────────────────────────────────────
+  e2e-playwright:
+    name: Playwright E2E
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: [test-and-build]
+    if: (vars.CI_MODE != 'standby' && (vars.CI_RUN_E2E == 'true' || inputs.run_e2e == true)) || inputs.force_run == true
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Install Playwright Browsers
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Run Playwright Tests
+        run: pnpm test:e2e
