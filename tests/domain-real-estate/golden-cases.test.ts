@@ -52,7 +52,7 @@ describe('ZapTrail 20 Mandatory Golden Cases (CT-01..CT-20)', () => {
     const price = envelope.values.find((v) => v.field_key === 'sale_asking_price');
     expect(price?.amount).toBe(1200000);
 
-    expect(proposals).toHaveLength(1);
+    expect(proposals).toHaveLength(2);
     expect(proposals[0].enrichment_action).toBe('ADD');
     expect(proposals[0].payload.recommended_action).toBe('qualify_property');
     assertEvidenceSlices(envelope.opportunities, fixture.turnWindow);
@@ -72,7 +72,7 @@ describe('ZapTrail 20 Mandatory Golden Cases (CT-01..CT-20)', () => {
     expect(envelope.values.find((v) => v.field_key === 'condo_fee')?.amount).toBe(900);
     expect(envelope.values.find((v) => v.field_key === 'iptu_amount')?.amount).toBe(250);
 
-    expect(proposals).toHaveLength(1);
+    expect(proposals).toHaveLength(2);
     expect(proposals[0].enrichment_action).toBe('ADD');
     assertEvidenceSlices(envelope.values, fixture.turnWindow);
   });
@@ -87,7 +87,7 @@ describe('ZapTrail 20 Mandatory Golden Cases (CT-01..CT-20)', () => {
     expect(envelope.values.find((v) => v.field_key === 'sale_asking_price')?.amount).toBe(950000);
     expect(envelope.values.find((v) => v.field_key === 'rent_asking_price')?.amount).toBe(4200);
 
-    expect(proposals).toHaveLength(1);
+    expect(proposals).toHaveLength(2);
     expect(proposals[0].enrichment_action).toBe('ADD');
     assertEvidenceSlices(envelope.opportunities, fixture.turnWindow);
   });
@@ -101,7 +101,7 @@ describe('ZapTrail 20 Mandatory Golden Cases (CT-01..CT-20)', () => {
     expect(envelope.intents.some((i) => i.intent_label === 'intent.capture_for_sale')).toBe(true);
     expect(envelope.opportunities[0].opportunity_type).toBe('real_estate.capture_sale');
 
-    expect(proposals).toHaveLength(1);
+    expect(proposals).toHaveLength(2);
     expect(proposals[0].enrichment_action).toBe('ADD');
     assertEvidenceSlices(envelope.participants, fixture.turnWindow);
   });
@@ -118,7 +118,7 @@ describe('ZapTrail 20 Mandatory Golden Cases (CT-01..CT-20)', () => {
     expect(envelope.opportunities[0].opportunity_type).toBe('real_estate.owner_discovery');
     expect(envelope.actions[0].action_type).toBe('request_owner_contact');
 
-    expect(proposals).toHaveLength(1);
+    expect(proposals).toHaveLength(2);
     expect(proposals[0].enrichment_action).toBe('ADD');
     expect(proposals[0].payload.recommended_action).toBe('request_owner_contact');
     assertEvidenceSlices(envelope.relationships, fixture.turnWindow);
@@ -168,7 +168,7 @@ describe('ZapTrail 20 Mandatory Golden Cases (CT-01..CT-20)', () => {
     const secVal = envelope.values.find((v) => v.target_entity_key === 'property_secondary');
     expect(secVal?.amount).toBe(380000);
 
-    expect(proposals).toHaveLength(1);
+    expect(proposals).toHaveLength(2);
     expect(proposals[0].enrichment_action).toBe('ADD');
     expect(proposals[0].target_key).toBe('property_secondary');
     assertEvidenceSlices(envelope.opportunities, fixture.turnWindow);
@@ -184,7 +184,7 @@ describe('ZapTrail 20 Mandatory Golden Cases (CT-01..CT-20)', () => {
     expect(envelope.opportunities[0].opportunity_type).toBe('real_estate.demand_buy');
     expect(envelope.values.find((v) => v.field_key === 'budget_max')?.amount).toBe(2000000);
 
-    expect(proposals).toHaveLength(1);
+    expect(proposals).toHaveLength(2);
     expect(proposals[0].enrichment_action).toBe('ADD');
     expect(proposals[0].payload.recommended_action).toBe('open_buyer_search');
     assertEvidenceSlices(envelope.opportunities, fixture.turnWindow);
@@ -215,7 +215,7 @@ describe('ZapTrail 20 Mandatory Golden Cases (CT-01..CT-20)', () => {
     expect(envelope.opportunities[0].opportunity_type).toBe('real_estate.future_nurture');
     expect(envelope.actions.some((a) => a.action_type === 'register_future_followup')).toBe(true);
 
-    expect(proposals).toHaveLength(1);
+    expect(proposals).toHaveLength(2);
     expect(proposals[0].enrichment_action).toBe('DEFER');
     expect(proposals[0].payload.recommended_action).toBe('register_future_followup');
     assertEvidenceSlices(envelope.opportunities, fixture.turnWindow);
@@ -355,7 +355,7 @@ describe('ZapTrail 20 Mandatory Golden Cases (CT-01..CT-20)', () => {
     expect(envelope.intents.some((i) => i.intent_label === 'intent.not_interested_property')).toBe(true);
     expect(envelope.opportunities[0].opportunity_type).toBe('real_estate.capture_rent');
 
-    expect(proposals).toHaveLength(1);
+    expect(proposals).toHaveLength(2);
     expect(proposals[0].enrichment_action).toBe('ADD');
     assertEvidenceSlices(envelope.intents, fixture.turnWindow);
   });
@@ -373,7 +373,7 @@ describe('ZapTrail 20 Mandatory Golden Cases (CT-01..CT-20)', () => {
     expect(envelope.opportunities[0].opportunity_type).toBe('real_estate.owner_discovery');
     expect(envelope.actions[0].action_type).toBe('request_owner_contact');
 
-    expect(proposals).toHaveLength(1);
+    expect(proposals).toHaveLength(2);
     expect(proposals[0].enrichment_action).toBe('ADD');
     assertEvidenceSlices(envelope.relationships, fixture.turnWindow);
   });

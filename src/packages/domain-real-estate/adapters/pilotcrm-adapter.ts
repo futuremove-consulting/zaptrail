@@ -231,6 +231,48 @@ export class PilotCRMAdapter implements CRMAdapter<PilotCRMProposal> {
       ));
     }
 
+    // 2. Identity proposal (pilotcrm#489 Onda 1): party role drives the 3-level
+    // identity model (owner -> verified; spouse/family -> relationship; unknown -> review).
+    const party = envelope.participants[0];
+    if (party) {
+      const identityPayload: Record<string, unknown> = {
+        party_role: party.role_label,
+        party_confidence: party.confidence,
+        party_epistemic_status: party.epistemic_status,
+      };
+      const relationship = envelope.relationships[0];
+      if (relationship) {
+        identityPayload.referred_name = relationship.referred_name;
+        identityPayload.referred_phone = relationship.referred_phone;
+      }
+      const roleEvidence = party.evidence_refs.length > 0 ? party.evidence_refs : defaultEv;
+      const identityQuote = roleEvidence[0]?.exact_quote;
+      if (identityQuote) identityPayload.exact_quote = identityQuote;
+
+      let identityAction: PilotCRMEnrichmentAction;
+      if (party.role_label === 'owner') {
+        identityAction = party.confidence >= 0.85 ? 'CONFIRM' : 'ADD';
+        identityPayload.identity_status = party.confidence >= 0.85 ? 'verified' : 'verified_pending_review';
+      } else if (party.role_label === 'spouse_or_partner' || party.role_label === 'family_member') {
+        identityAction = 'RELATE';
+        identityPayload.identity_status = 'relationship';
+      } else if (party.role_label === 'unknown') {
+        identityAction = 'REVIEW';
+        identityPayload.identity_status = 'unknown';
+        identityPayload.recommended_action = 'human_review';
+      } else {
+        identityAction = 'NO_CHANGE';
+        identityPayload.identity_status = 'unrelated';
+      }
+
+      proposals.push(makeProposal(
+        envelope, `prop-${envId}-identity`, identityAction, 'contact', 'contact_primary',
+        party.epistemic_status, party.confidence, identityAction === 'REVIEW',
+        identityPayload,
+        roleEvidence
+      ));
+    }
+
     return proposals;
   }
 
